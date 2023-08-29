@@ -1,0 +1,6 @@
+introduction
+purpose-of-this-site
+loading-data
+lab-i-introduction-to-r-r-studio
+intro-to-r
+intro-to-librarytidyverse

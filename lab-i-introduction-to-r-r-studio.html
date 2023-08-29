@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>2 Lab I: Introduction to R &amp; R Studio | GOVT 8001: Shared Working Book</title>
+  <meta name="description" content="2 Lab I: Introduction to R &amp; R Studio | GOVT 8001: Shared Working Book" />
+  <meta name="generator" content="bookdown 0.30 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="2 Lab I: Introduction to R &amp; R Studio | GOVT 8001: Shared Working Book" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="2 Lab I: Introduction to R &amp; R Studio | GOVT 8001: Shared Working Book" />
+  
+  
+  
+
+<meta name="author" content="Benjamin Reese" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="index.html"/>
+
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#purpose-of-this-site"><i class="fa fa-check"></i><b>1.1</b> Purpose of This Site</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#loading-data"><i class="fa fa-check"></i><b>1.2</b> Loading Data</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="lab-i-introduction-to-r-r-studio.html"><a href="lab-i-introduction-to-r-r-studio.html"><i class="fa fa-check"></i><b>2</b> Lab I: Introduction to R &amp; R Studio</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="lab-i-introduction-to-r-r-studio.html"><a href="lab-i-introduction-to-r-r-studio.html#intro-to-r"><i class="fa fa-check"></i><b>2.1</b> Intro to R</a></li>
+<li class="chapter" data-level="2.2" data-path="lab-i-introduction-to-r-r-studio.html"><a href="lab-i-introduction-to-r-r-studio.html#intro-to-librarytidyverse"><i class="fa fa-check"></i><b>2.2</b> Intro to <code>library(tidyverse)</code></a></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">GOVT 8001: Shared Working Book</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="lab-i-introduction-to-r-r-studio" class="section level1 hasAnchor" number="2">
+<h1><span class="header-section-number">2</span> Lab I: Introduction to R &amp; R Studio<a href="lab-i-introduction-to-r-r-studio.html#lab-i-introduction-to-r-r-studio" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p><img src="image_1.png" width="600" /></p>
+<div id="intro-to-r" class="section level2 hasAnchor" number="2.1">
+<h2><span class="header-section-number">2.1</span> Intro to R<a href="lab-i-introduction-to-r-r-studio.html#intro-to-r" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="lab-i-introduction-to-r-r-studio.html#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Author: QSS Ch. 1 script with edits by Mark Richardson &amp; Benjamin Reese</span></span>
+<span id="cb1-2"><a href="lab-i-introduction-to-r-r-studio.html#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Date: 08/24/2023</span></span>
+<span id="cb1-3"><a href="lab-i-introduction-to-r-r-studio.html#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Purpose: Introduction to R - GOVT 8001 Lab I</span></span>
+<span id="cb1-4"><a href="lab-i-introduction-to-r-r-studio.html#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-5"><a href="lab-i-introduction-to-r-r-studio.html#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="do">#### Arithmetic Operations ####</span></span>
+<span id="cb1-6"><a href="lab-i-introduction-to-r-r-studio.html#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-7"><a href="lab-i-introduction-to-r-r-studio.html#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="dv">5</span> <span class="sc">+</span> <span class="dv">3</span></span></code></pre></div>
+<pre><code>## [1] 8</code></pre>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="lab-i-introduction-to-r-r-studio.html#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="dv">5</span> <span class="sc">-</span> <span class="dv">3</span></span></code></pre></div>
+<pre><code>## [1] 2</code></pre>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="lab-i-introduction-to-r-r-studio.html#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="dv">5</span> <span class="sc">/</span> <span class="dv">3</span></span></code></pre></div>
+<pre><code>## [1] 1.666667</code></pre>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="lab-i-introduction-to-r-r-studio.html#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="dv">5</span> <span class="sc">^</span> <span class="dv">3</span></span></code></pre></div>
+<pre><code>## [1] 125</code></pre>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="lab-i-introduction-to-r-r-studio.html#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="dv">5</span> <span class="sc">*</span> (<span class="dv">10</span> <span class="sc">-</span> <span class="dv">3</span>)</span></code></pre></div>
+<pre><code>## [1] 35</code></pre>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="lab-i-introduction-to-r-r-studio.html#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sqrt</span>(<span class="dv">4</span>)</span></code></pre></div>
+<pre><code>## [1] 2</code></pre>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="lab-i-introduction-to-r-r-studio.html#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="do">#### Objects ####</span></span>
+<span id="cb13-2"><a href="lab-i-introduction-to-r-r-studio.html#cb13-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-3"><a href="lab-i-introduction-to-r-r-studio.html#cb13-3" aria-hidden="true" tabindex="-1"></a>result <span class="ot">&lt;-</span> <span class="dv">5</span> <span class="sc">+</span> <span class="dv">3</span></span>
+<span id="cb13-4"><a href="lab-i-introduction-to-r-r-studio.html#cb13-4" aria-hidden="true" tabindex="-1"></a>result</span></code></pre></div>
+<pre><code>## [1] 8</code></pre>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="lab-i-introduction-to-r-r-studio.html#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(result)</span></code></pre></div>
+<pre><code>## [1] 8</code></pre>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="lab-i-introduction-to-r-r-studio.html#cb17-1" aria-hidden="true" tabindex="-1"></a>result <span class="ot">&lt;-</span> <span class="dv">5</span> <span class="sc">-</span> <span class="dv">3</span></span>
+<span id="cb17-2"><a href="lab-i-introduction-to-r-r-studio.html#cb17-2" aria-hidden="true" tabindex="-1"></a>result</span></code></pre></div>
+<pre><code>## [1] 2</code></pre>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="lab-i-introduction-to-r-r-studio.html#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="do">## R is case sensitive so we get an error.</span></span>
+<span id="cb19-2"><a href="lab-i-introduction-to-r-r-studio.html#cb19-2" aria-hidden="true" tabindex="-1"></a>Result</span></code></pre></div>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="lab-i-introduction-to-r-r-studio.html#cb20-1" aria-hidden="true" tabindex="-1"></a>kosuke <span class="ot">&lt;-</span> <span class="st">&quot;instructor&quot;</span></span>
+<span id="cb20-2"><a href="lab-i-introduction-to-r-r-studio.html#cb20-2" aria-hidden="true" tabindex="-1"></a>kosuke</span></code></pre></div>
+<pre><code>## [1] &quot;instructor&quot;</code></pre>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="lab-i-introduction-to-r-r-studio.html#cb22-1" aria-hidden="true" tabindex="-1"></a>kosuke <span class="ot">&lt;-</span> <span class="st">&quot;instructor and author&quot;</span></span>
+<span id="cb22-2"><a href="lab-i-introduction-to-r-r-studio.html#cb22-2" aria-hidden="true" tabindex="-1"></a>kosuke</span></code></pre></div>
+<pre><code>## [1] &quot;instructor and author&quot;</code></pre>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="lab-i-introduction-to-r-r-studio.html#cb24-1" aria-hidden="true" tabindex="-1"></a>Result <span class="ot">&lt;-</span> <span class="dv">5</span></span>
+<span id="cb24-2"><a href="lab-i-introduction-to-r-r-studio.html#cb24-2" aria-hidden="true" tabindex="-1"></a>Result <span class="sc">+</span> <span class="dv">2</span></span></code></pre></div>
+<pre><code>## [1] 7</code></pre>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="lab-i-introduction-to-r-r-studio.html#cb26-1" aria-hidden="true" tabindex="-1"></a>result</span></code></pre></div>
+<pre><code>## [1] 2</code></pre>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="lab-i-introduction-to-r-r-studio.html#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(result)</span></code></pre></div>
+<pre><code>## [1] &quot;numeric&quot;</code></pre>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="lab-i-introduction-to-r-r-studio.html#cb30-1" aria-hidden="true" tabindex="-1"></a>Result</span></code></pre></div>
+<pre><code>## [1] 5</code></pre>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="lab-i-introduction-to-r-r-studio.html#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(Result)</span></code></pre></div>
+<pre><code>## [1] &quot;numeric&quot;</code></pre>
+<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="lab-i-introduction-to-r-r-studio.html#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(sqrt)</span></code></pre></div>
+<pre><code>## [1] &quot;function&quot;</code></pre>
+<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="lab-i-introduction-to-r-r-studio.html#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(result)</span></code></pre></div>
+<pre><code>## [1] 2</code></pre>
+<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="lab-i-introduction-to-r-r-studio.html#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(Result)</span></code></pre></div>
+<pre><code>## [1] 5</code></pre>
+<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="lab-i-introduction-to-r-r-studio.html#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="do">#### Vectors ####</span></span>
+<span id="cb40-2"><a href="lab-i-introduction-to-r-r-studio.html#cb40-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-3"><a href="lab-i-introduction-to-r-r-studio.html#cb40-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Creating vectors</span></span>
+<span id="cb40-4"><a href="lab-i-introduction-to-r-r-studio.html#cb40-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-5"><a href="lab-i-introduction-to-r-r-studio.html#cb40-5" aria-hidden="true" tabindex="-1"></a>world.pop <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">2525779</span>, <span class="dv">3026003</span>, <span class="dv">3691173</span>, <span class="dv">4449049</span>, <span class="dv">5320817</span>, <span class="dv">6127700</span>, <span class="dv">6916183</span>)</span>
+<span id="cb40-6"><a href="lab-i-introduction-to-r-r-studio.html#cb40-6" aria-hidden="true" tabindex="-1"></a>world.pop</span></code></pre></div>
+<pre><code>## [1] 2525779 3026003 3691173 4449049 5320817 6127700 6916183</code></pre>
+<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="lab-i-introduction-to-r-r-studio.html#cb42-1" aria-hidden="true" tabindex="-1"></a>pop.first <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">2525779</span>, <span class="dv">3026003</span>, <span class="dv">3691173</span>)</span>
+<span id="cb42-2"><a href="lab-i-introduction-to-r-r-studio.html#cb42-2" aria-hidden="true" tabindex="-1"></a>pop.second <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">4449049</span>, <span class="dv">5320817</span>, <span class="dv">6127700</span>, <span class="dv">6916183</span>)</span>
+<span id="cb42-3"><a href="lab-i-introduction-to-r-r-studio.html#cb42-3" aria-hidden="true" tabindex="-1"></a>pop.all <span class="ot">&lt;-</span> <span class="fu">c</span>(pop.first, pop.second)</span>
+<span id="cb42-4"><a href="lab-i-introduction-to-r-r-studio.html#cb42-4" aria-hidden="true" tabindex="-1"></a>pop.all</span></code></pre></div>
+<pre><code>## [1] 2525779 3026003 3691173 4449049 5320817 6127700 6916183</code></pre>
+<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="lab-i-introduction-to-r-r-studio.html#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Accessing elements of a vector</span></span>
+<span id="cb44-2"><a href="lab-i-introduction-to-r-r-studio.html#cb44-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb44-3"><a href="lab-i-introduction-to-r-r-studio.html#cb44-3" aria-hidden="true" tabindex="-1"></a>world.pop[<span class="dv">2</span>]</span></code></pre></div>
+<pre><code>## [1] 3026003</code></pre>
+<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb46-1"><a href="lab-i-introduction-to-r-r-studio.html#cb46-1" aria-hidden="true" tabindex="-1"></a>world.pop[<span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">4</span>)] </span></code></pre></div>
+<pre><code>## [1] 3026003 4449049</code></pre>
+<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb48-1"><a href="lab-i-introduction-to-r-r-studio.html#cb48-1" aria-hidden="true" tabindex="-1"></a>world.pop[<span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">2</span>)] </span></code></pre></div>
+<pre><code>## [1] 4449049 3026003</code></pre>
+<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb50-1"><a href="lab-i-introduction-to-r-r-studio.html#cb50-1" aria-hidden="true" tabindex="-1"></a>world.pop[<span class="sc">-</span><span class="dv">3</span>]</span></code></pre></div>
+<pre><code>## [1] 2525779 3026003 4449049 5320817 6127700 6916183</code></pre>
+<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb52-1"><a href="lab-i-introduction-to-r-r-studio.html#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Arithmetic operations on a vector</span></span>
+<span id="cb52-2"><a href="lab-i-introduction-to-r-r-studio.html#cb52-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-3"><a href="lab-i-introduction-to-r-r-studio.html#cb52-3" aria-hidden="true" tabindex="-1"></a>pop.million <span class="ot">&lt;-</span> world.pop <span class="sc">/</span> <span class="dv">1000</span></span>
+<span id="cb52-4"><a href="lab-i-introduction-to-r-r-studio.html#cb52-4" aria-hidden="true" tabindex="-1"></a>pop.million</span></code></pre></div>
+<pre><code>## [1] 2525.779 3026.003 3691.173 4449.049 5320.817 6127.700 6916.183</code></pre>
+<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb54-1"><a href="lab-i-introduction-to-r-r-studio.html#cb54-1" aria-hidden="true" tabindex="-1"></a>pop.rate <span class="ot">&lt;-</span> world.pop <span class="sc">/</span> world.pop[<span class="dv">1</span>]</span>
+<span id="cb54-2"><a href="lab-i-introduction-to-r-r-studio.html#cb54-2" aria-hidden="true" tabindex="-1"></a>pop.rate</span></code></pre></div>
+<pre><code>## [1] 1.000000 1.198047 1.461400 1.761456 2.106604 2.426063 2.738238</code></pre>
+<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb56-1"><a href="lab-i-introduction-to-r-r-studio.html#cb56-1" aria-hidden="true" tabindex="-1"></a>pop.increase <span class="ot">&lt;-</span> world.pop[<span class="sc">-</span><span class="dv">1</span>] <span class="sc">-</span> world.pop[<span class="sc">-</span><span class="dv">7</span>]</span>
+<span id="cb56-2"><a href="lab-i-introduction-to-r-r-studio.html#cb56-2" aria-hidden="true" tabindex="-1"></a>pop.increase</span></code></pre></div>
+<pre><code>## [1] 500224 665170 757876 871768 806883 788483</code></pre>
+<div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb58-1"><a href="lab-i-introduction-to-r-r-studio.html#cb58-1" aria-hidden="true" tabindex="-1"></a>percent.increase <span class="ot">&lt;-</span> (pop.increase <span class="sc">/</span> world.pop[<span class="sc">-</span><span class="dv">7</span>]) <span class="sc">*</span> <span class="dv">100</span></span>
+<span id="cb58-2"><a href="lab-i-introduction-to-r-r-studio.html#cb58-2" aria-hidden="true" tabindex="-1"></a>percent.increase</span></code></pre></div>
+<pre><code>## [1] 19.80474 21.98180 20.53212 19.59448 15.16464 12.86752</code></pre>
+<div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb60-1"><a href="lab-i-introduction-to-r-r-studio.html#cb60-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Can replace individual elements (better way is to use round())</span></span>
+<span id="cb60-2"><a href="lab-i-introduction-to-r-r-studio.html#cb60-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb60-3"><a href="lab-i-introduction-to-r-r-studio.html#cb60-3" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(percent.increase)</span></code></pre></div>
+<pre><code>## [1] 20 22 21 20 15 13</code></pre>
+<div class="sourceCode" id="cb62"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb62-1"><a href="lab-i-introduction-to-r-r-studio.html#cb62-1" aria-hidden="true" tabindex="-1"></a>percent.increase[<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>)] <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">20</span>, <span class="dv">22</span>)</span>
+<span id="cb62-2"><a href="lab-i-introduction-to-r-r-studio.html#cb62-2" aria-hidden="true" tabindex="-1"></a>percent.increase</span></code></pre></div>
+<pre><code>## [1] 20.00000 22.00000 20.53212 19.59448 15.16464 12.86752</code></pre>
+<div class="sourceCode" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb64-1"><a href="lab-i-introduction-to-r-r-studio.html#cb64-1" aria-hidden="true" tabindex="-1"></a><span class="do">#### Functions ####</span></span>
+<span id="cb64-2"><a href="lab-i-introduction-to-r-r-studio.html#cb64-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb64-3"><a href="lab-i-introduction-to-r-r-studio.html#cb64-3" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(world.pop)  </span></code></pre></div>
+<pre><code>## [1] 7</code></pre>
+<div class="sourceCode" id="cb66"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb66-1"><a href="lab-i-introduction-to-r-r-studio.html#cb66-1" aria-hidden="true" tabindex="-1"></a><span class="fu">min</span>(world.pop)     </span></code></pre></div>
+<pre><code>## [1] 2525779</code></pre>
+<div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb68-1"><a href="lab-i-introduction-to-r-r-studio.html#cb68-1" aria-hidden="true" tabindex="-1"></a><span class="fu">max</span>(world.pop)     </span></code></pre></div>
+<pre><code>## [1] 6916183</code></pre>
+<div class="sourceCode" id="cb70"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb70-1"><a href="lab-i-introduction-to-r-r-studio.html#cb70-1" aria-hidden="true" tabindex="-1"></a><span class="fu">range</span>(world.pop)   </span></code></pre></div>
+<pre><code>## [1] 2525779 6916183</code></pre>
+<div class="sourceCode" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb72-1"><a href="lab-i-introduction-to-r-r-studio.html#cb72-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(world.pop)    </span></code></pre></div>
+<pre><code>## [1] 4579529</code></pre>
+<div class="sourceCode" id="cb74"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb74-1"><a href="lab-i-introduction-to-r-r-studio.html#cb74-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(world.pop) <span class="sc">/</span> <span class="fu">length</span>(world.pop) </span></code></pre></div>
+<pre><code>## [1] 4579529</code></pre>
+<div class="sourceCode" id="cb76"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb76-1"><a href="lab-i-introduction-to-r-r-studio.html#cb76-1" aria-hidden="true" tabindex="-1"></a>year <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="at">from =</span> <span class="dv">1950</span>, <span class="at">to =</span> <span class="dv">2010</span>, <span class="at">by =</span> <span class="dv">10</span>)</span>
+<span id="cb76-2"><a href="lab-i-introduction-to-r-r-studio.html#cb76-2" aria-hidden="true" tabindex="-1"></a>year</span></code></pre></div>
+<pre><code>## [1] 1950 1960 1970 1980 1990 2000 2010</code></pre>
+<div class="sourceCode" id="cb78"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb78-1"><a href="lab-i-introduction-to-r-r-studio.html#cb78-1" aria-hidden="true" tabindex="-1"></a><span class="fu">seq</span>(<span class="at">to =</span> <span class="dv">2010</span>, <span class="at">by =</span> <span class="dv">10</span>, <span class="at">from =</span> <span class="dv">1950</span>)</span></code></pre></div>
+<pre><code>## [1] 1950 1960 1970 1980 1990 2000 2010</code></pre>
+<div class="sourceCode" id="cb80"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb80-1"><a href="lab-i-introduction-to-r-r-studio.html#cb80-1" aria-hidden="true" tabindex="-1"></a><span class="fu">seq</span>(<span class="dv">1950</span>, <span class="dv">2010</span>, <span class="dv">10</span>)</span></code></pre></div>
+<pre><code>## [1] 1950 1960 1970 1980 1990 2000 2010</code></pre>
+<div class="sourceCode" id="cb82"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb82-1"><a href="lab-i-introduction-to-r-r-studio.html#cb82-1" aria-hidden="true" tabindex="-1"></a><span class="fu">seq</span>(<span class="dv">2010</span>, <span class="dv">1950</span>, <span class="sc">-</span><span class="dv">10</span>)</span></code></pre></div>
+<pre><code>## [1] 2010 2000 1990 1980 1970 1960 1950</code></pre>
+<div class="sourceCode" id="cb84"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb84-1"><a href="lab-i-introduction-to-r-r-studio.html#cb84-1" aria-hidden="true" tabindex="-1"></a><span class="fu">seq</span>(<span class="at">from =</span> <span class="dv">2010</span>, <span class="at">to =</span> <span class="dv">1950</span>, <span class="at">by =</span> <span class="sc">-</span><span class="dv">10</span>)</span></code></pre></div>
+<pre><code>## [1] 2010 2000 1990 1980 1970 1960 1950</code></pre>
+<div class="sourceCode" id="cb86"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb86-1"><a href="lab-i-introduction-to-r-r-studio.html#cb86-1" aria-hidden="true" tabindex="-1"></a><span class="dv">2008</span><span class="sc">:</span><span class="dv">2012</span></span></code></pre></div>
+<pre><code>## [1] 2008 2009 2010 2011 2012</code></pre>
+<div class="sourceCode" id="cb88"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb88-1"><a href="lab-i-introduction-to-r-r-studio.html#cb88-1" aria-hidden="true" tabindex="-1"></a><span class="dv">2012</span><span class="sc">:</span><span class="dv">2008</span></span></code></pre></div>
+<pre><code>## [1] 2012 2011 2010 2009 2008</code></pre>
+<div class="sourceCode" id="cb90"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb90-1"><a href="lab-i-introduction-to-r-r-studio.html#cb90-1" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(world.pop) </span></code></pre></div>
+<pre><code>## NULL</code></pre>
+<div class="sourceCode" id="cb92"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb92-1"><a href="lab-i-introduction-to-r-r-studio.html#cb92-1" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(world.pop) <span class="ot">&lt;-</span> year</span>
+<span id="cb92-2"><a href="lab-i-introduction-to-r-r-studio.html#cb92-2" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(world.pop)</span></code></pre></div>
+<pre><code>## [1] &quot;1950&quot; &quot;1960&quot; &quot;1970&quot; &quot;1980&quot; &quot;1990&quot; &quot;2000&quot; &quot;2010&quot;</code></pre>
+<div class="sourceCode" id="cb94"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb94-1"><a href="lab-i-introduction-to-r-r-studio.html#cb94-1" aria-hidden="true" tabindex="-1"></a>world.pop</span></code></pre></div>
+<pre><code>##    1950    1960    1970    1980    1990    2000    2010 
+## 2525779 3026003 3691173 4449049 5320817 6127700 6916183</code></pre>
+<div class="sourceCode" id="cb96"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb96-1"><a href="lab-i-introduction-to-r-r-studio.html#cb96-1" aria-hidden="true" tabindex="-1"></a><span class="do">#### Saving data and loading data ####</span></span>
+<span id="cb96-2"><a href="lab-i-introduction-to-r-r-studio.html#cb96-2" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb96-3"><a href="lab-i-introduction-to-r-r-studio.html#cb96-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a data set (Table 1.2)</span></span>
+<span id="cb96-4"><a href="lab-i-introduction-to-r-r-studio.html#cb96-4" aria-hidden="true" tabindex="-1"></a><span class="co"># tibble() is the equivalent of data.frame() tidyverse function from the tibble package</span></span>
+<span id="cb96-5"><a href="lab-i-introduction-to-r-r-studio.html#cb96-5" aria-hidden="true" tabindex="-1"></a>UNpop <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">world.pop =</span> world.pop,</span>
+<span id="cb96-6"><a href="lab-i-introduction-to-r-r-studio.html#cb96-6" aria-hidden="true" tabindex="-1"></a>                    <span class="at">year =</span> year)</span>
+<span id="cb96-7"><a href="lab-i-introduction-to-r-r-studio.html#cb96-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-8"><a href="lab-i-introduction-to-r-r-studio.html#cb96-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Get basic information about the data set</span></span>
+<span id="cb96-9"><a href="lab-i-introduction-to-r-r-studio.html#cb96-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb96-10"><a href="lab-i-introduction-to-r-r-studio.html#cb96-10" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(UNpop)</span></code></pre></div>
+<pre><code>## [1] &quot;world.pop&quot; &quot;year&quot;</code></pre>
+<div class="sourceCode" id="cb98"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb98-1"><a href="lab-i-introduction-to-r-r-studio.html#cb98-1" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(UNpop)</span></code></pre></div>
+<pre><code>## [1] 7</code></pre>
+<div class="sourceCode" id="cb100"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb100-1"><a href="lab-i-introduction-to-r-r-studio.html#cb100-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ncol</span>(UNpop)</span></code></pre></div>
+<pre><code>## [1] 2</code></pre>
+<div class="sourceCode" id="cb102"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb102-1"><a href="lab-i-introduction-to-r-r-studio.html#cb102-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(UNpop)</span></code></pre></div>
+<pre><code>## [1] 7 2</code></pre>
+<div class="sourceCode" id="cb104"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb104-1"><a href="lab-i-introduction-to-r-r-studio.html#cb104-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(UNpop)</span></code></pre></div>
+<pre><code>##    world.pop            year     
+##  Min.   :2525779   Min.   :1950  
+##  1st Qu.:3358588   1st Qu.:1965  
+##  Median :4449049   Median :1980  
+##  Mean   :4579529   Mean   :1980  
+##  3rd Qu.:5724258   3rd Qu.:1995  
+##  Max.   :6916183   Max.   :2010</code></pre>
+<div class="sourceCode" id="cb106"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb106-1"><a href="lab-i-introduction-to-r-r-studio.html#cb106-1" aria-hidden="true" tabindex="-1"></a>UNpop<span class="sc">$</span>world.pop</span></code></pre></div>
+<pre><code>## [1] 2525779 3026003 3691173 4449049 5320817 6127700 6916183</code></pre>
+<div class="sourceCode" id="cb108"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb108-1"><a href="lab-i-introduction-to-r-r-studio.html#cb108-1" aria-hidden="true" tabindex="-1"></a>UNpop[, <span class="st">&quot;world.pop&quot;</span>] <span class="co"># extract the column called &quot;world.pop&quot;</span></span></code></pre></div>
+<pre><code>## [1] 2525779 3026003 3691173 4449049 5320817 6127700 6916183</code></pre>
+<div class="sourceCode" id="cb110"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb110-1"><a href="lab-i-introduction-to-r-r-studio.html#cb110-1" aria-hidden="true" tabindex="-1"></a>UNpop[<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">5</span>), ]   <span class="co"># extract the first three rows (and all columns)</span></span></code></pre></div>
+<pre><code>##      world.pop year
+## 1950   2525779 1950
+## 1960   3026003 1960
+## 1970   3691173 1970
+## 1990   5320817 1990</code></pre>
+<div class="sourceCode" id="cb112"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb112-1"><a href="lab-i-introduction-to-r-r-studio.html#cb112-1" aria-hidden="true" tabindex="-1"></a>UNpop[<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>, <span class="st">&quot;year&quot;</span>]   <span class="co"># extract the first three rows of the &quot;year&quot; column</span></span></code></pre></div>
+<pre><code>## [1] 1950 1960 1970</code></pre>
+<div class="sourceCode" id="cb114"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb114-1"><a href="lab-i-introduction-to-r-r-studio.html#cb114-1" aria-hidden="true" tabindex="-1"></a>UNpop<span class="sc">$</span>world.pop[<span class="fu">seq</span>(<span class="at">from =</span> <span class="dv">1</span>, <span class="at">to =</span> <span class="fu">nrow</span>(UNpop), <span class="at">by =</span> <span class="dv">2</span>)]</span></code></pre></div>
+<pre><code>## [1] 2525779 3691173 5320817 6916183</code></pre>
+<div class="sourceCode" id="cb116"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb116-1"><a href="lab-i-introduction-to-r-r-studio.html#cb116-1" aria-hidden="true" tabindex="-1"></a><span class="co"># File paths and working directory</span></span>
+<span id="cb116-2"><a href="lab-i-introduction-to-r-r-studio.html#cb116-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb116-3"><a href="lab-i-introduction-to-r-r-studio.html#cb116-3" aria-hidden="true" tabindex="-1"></a><span class="fu">getwd</span>() <span class="co"># Confirm the change</span></span></code></pre></div>
+<pre><code>## [1] &quot;C:/Users/17176/Documents/QuantI&quot;</code></pre>
+<div class="sourceCode" id="cb118"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb118-1"><a href="lab-i-introduction-to-r-r-studio.html#cb118-1" aria-hidden="true" tabindex="-1"></a><span class="do">#### Getting Help: mean() example ####</span></span>
+<span id="cb118-2"><a href="lab-i-introduction-to-r-r-studio.html#cb118-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb118-3"><a href="lab-i-introduction-to-r-r-studio.html#cb118-3" aria-hidden="true" tabindex="-1"></a>world.pop <span class="ot">&lt;-</span> <span class="fu">c</span>(UNpop<span class="sc">$</span>world.pop, <span class="cn">NA</span>)</span>
+<span id="cb118-4"><a href="lab-i-introduction-to-r-r-studio.html#cb118-4" aria-hidden="true" tabindex="-1"></a>world.pop</span></code></pre></div>
+<pre><code>## [1] 2525779 3026003 3691173 4449049 5320817 6127700 6916183      NA</code></pre>
+<div class="sourceCode" id="cb120"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb120-1"><a href="lab-i-introduction-to-r-r-studio.html#cb120-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(world.pop)</span></code></pre></div>
+<pre><code>## [1] NA</code></pre>
+<div class="sourceCode" id="cb122"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb122-1"><a href="lab-i-introduction-to-r-r-studio.html#cb122-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Use Question Marks to see help documentation</span></span>
+<span id="cb122-2"><a href="lab-i-introduction-to-r-r-studio.html#cb122-2" aria-hidden="true" tabindex="-1"></a>?mean</span>
+<span id="cb122-3"><a href="lab-i-introduction-to-r-r-studio.html#cb122-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb122-4"><a href="lab-i-introduction-to-r-r-studio.html#cb122-4" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(world.pop, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<pre><code>## [1] 4579529</code></pre>
+</div>
+<div id="intro-to-librarytidyverse" class="section level2 hasAnchor" number="2.2">
+<h2><span class="header-section-number">2.2</span> Intro to <code>library(tidyverse)</code><a href="lab-i-introduction-to-r-r-studio.html#intro-to-librarytidyverse" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="sourceCode" id="cb124"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb124-1"><a href="lab-i-introduction-to-r-r-studio.html#cb124-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Packages</span></span>
+<span id="cb124-2"><a href="lab-i-introduction-to-r-r-studio.html#cb124-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb124-3"><a href="lab-i-introduction-to-r-r-studio.html#cb124-3" aria-hidden="true" tabindex="-1"></a><span class="do">## install.packages(&quot;devtools&quot;) # install the package</span></span>
+<span id="cb124-4"><a href="lab-i-introduction-to-r-r-studio.html#cb124-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(devtools) <span class="co"># load the package</span></span>
+<span id="cb124-5"><a href="lab-i-introduction-to-r-r-studio.html#cb124-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb124-6"><a href="lab-i-introduction-to-r-r-studio.html#cb124-6" aria-hidden="true" tabindex="-1"></a><span class="do">## install a package from github</span></span>
+<span id="cb124-7"><a href="lab-i-introduction-to-r-r-studio.html#cb124-7" aria-hidden="true" tabindex="-1"></a><span class="do">## devtools::install_github(&quot;kosukeimai/qss-package&quot;, build_vignettes = TRUE)</span></span>
+<span id="cb124-8"><a href="lab-i-introduction-to-r-r-studio.html#cb124-8" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(qss) <span class="do">## loading in qss</span></span>
+<span id="cb124-9"><a href="lab-i-introduction-to-r-r-studio.html#cb124-9" aria-hidden="true" tabindex="-1"></a><span class="do">## You may need to allow R to update/install additional packages</span></span>
+<span id="cb124-10"><a href="lab-i-introduction-to-r-r-studio.html#cb124-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb124-11"><a href="lab-i-introduction-to-r-r-studio.html#cb124-11" aria-hidden="true" tabindex="-1"></a><span class="do">## Loading in tidyverse</span></span>
+<span id="cb124-12"><a href="lab-i-introduction-to-r-r-studio.html#cb124-12" aria-hidden="true" tabindex="-1"></a><span class="do">## install.packages(&quot;tidyverse&quot;)</span></span>
+<span id="cb124-13"><a href="lab-i-introduction-to-r-r-studio.html#cb124-13" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb124-14"><a href="lab-i-introduction-to-r-r-studio.html#cb124-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb124-15"><a href="lab-i-introduction-to-r-r-studio.html#cb124-15" aria-hidden="true" tabindex="-1"></a><span class="do">## Loading in a Dataset</span></span>
+<span id="cb124-16"><a href="lab-i-introduction-to-r-r-studio.html#cb124-16" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(UNpop, <span class="at">package =</span> <span class="st">&quot;qss&quot;</span>)</span>
+<span id="cb124-17"><a href="lab-i-introduction-to-r-r-studio.html#cb124-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb124-18"><a href="lab-i-introduction-to-r-r-studio.html#cb124-18" aria-hidden="true" tabindex="-1"></a><span class="do">## Number of Rows and Columns - Base R</span></span>
+<span id="cb124-19"><a href="lab-i-introduction-to-r-r-studio.html#cb124-19" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(UNpop)</span></code></pre></div>
+<pre><code>## [1] 7 2</code></pre>
+<div class="sourceCode" id="cb126"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb126-1"><a href="lab-i-introduction-to-r-r-studio.html#cb126-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Number of observation, number of variables, and initial observations - tidyverse</span></span>
+<span id="cb126-2"><a href="lab-i-introduction-to-r-r-studio.html#cb126-2" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(UNpop)</span></code></pre></div>
+<pre><code>## Rows: 7
+## Columns: 2
+## $ year      &lt;int&gt; 1950, 1960, 1970, 1980, 1990, 2000, 2010
+## $ world.pop &lt;int&gt; 2525779, 3026003, 3691173, 4449049, 5320817, 6127700, 6916183</code></pre>
+<div class="sourceCode" id="cb128"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb128-1"><a href="lab-i-introduction-to-r-r-studio.html#cb128-1" aria-hidden="true" tabindex="-1"></a><span class="do">## First 6 rows</span></span>
+<span id="cb128-2"><a href="lab-i-introduction-to-r-r-studio.html#cb128-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(UNpop)</span></code></pre></div>
+<pre><code>##   year world.pop
+## 1 1950   2525779
+## 2 1960   3026003
+## 3 1970   3691173
+## 4 1980   4449049
+## 5 1990   5320817
+## 6 2000   6127700</code></pre>
+<div class="sourceCode" id="cb130"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb130-1"><a href="lab-i-introduction-to-r-r-studio.html#cb130-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Last 6 Rows</span></span>
+<span id="cb130-2"><a href="lab-i-introduction-to-r-r-studio.html#cb130-2" aria-hidden="true" tabindex="-1"></a><span class="fu">tail</span>(UNpop)</span></code></pre></div>
+<pre><code>##   year world.pop
+## 2 1960   3026003
+## 3 1970   3691173
+## 4 1980   4449049
+## 5 1990   5320817
+## 6 2000   6127700
+## 7 2010   6916183</code></pre>
+<div class="sourceCode" id="cb132"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb132-1"><a href="lab-i-introduction-to-r-r-studio.html#cb132-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Selecting A Variable - Base R</span></span>
+<span id="cb132-2"><a href="lab-i-introduction-to-r-r-studio.html#cb132-2" aria-hidden="true" tabindex="-1"></a>UNpop<span class="sc">$</span>world.pop</span></code></pre></div>
+<pre><code>## [1] 2525779 3026003 3691173 4449049 5320817 6127700 6916183</code></pre>
+<div class="sourceCode" id="cb134"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb134-1"><a href="lab-i-introduction-to-r-r-studio.html#cb134-1" aria-hidden="true" tabindex="-1"></a><span class="do">## subset all rows for the column called &quot;world.pop&quot; from the UNpop data</span></span>
+<span id="cb134-2"><a href="lab-i-introduction-to-r-r-studio.html#cb134-2" aria-hidden="true" tabindex="-1"></a>UNpop[, <span class="st">&quot;world.pop&quot;</span>]</span></code></pre></div>
+<pre><code>## [1] 2525779 3026003 3691173 4449049 5320817 6127700 6916183</code></pre>
+<div class="sourceCode" id="cb136"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb136-1"><a href="lab-i-introduction-to-r-r-studio.html#cb136-1" aria-hidden="true" tabindex="-1"></a><span class="do">## subset the first three rows (and all columns)</span></span>
+<span id="cb136-2"><a href="lab-i-introduction-to-r-r-studio.html#cb136-2" aria-hidden="true" tabindex="-1"></a>UNpop[<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>),]</span></code></pre></div>
+<pre><code>##   year world.pop
+## 1 1950   2525779
+## 2 1960   3026003
+## 3 1970   3691173</code></pre>
+<div class="sourceCode" id="cb138"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb138-1"><a href="lab-i-introduction-to-r-r-studio.html#cb138-1" aria-hidden="true" tabindex="-1"></a><span class="do">## subset the first three rows of the &quot;year&quot; column</span></span>
+<span id="cb138-2"><a href="lab-i-introduction-to-r-r-studio.html#cb138-2" aria-hidden="true" tabindex="-1"></a>UNpop[<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>, <span class="st">&quot;year&quot;</span>]</span></code></pre></div>
+<pre><code>## [1] 1950 1960 1970</code></pre>
+<div class="sourceCode" id="cb140"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb140-1"><a href="lab-i-introduction-to-r-r-studio.html#cb140-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Now with tidyverse</span></span>
+<span id="cb140-2"><a href="lab-i-introduction-to-r-r-studio.html#cb140-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb140-3"><a href="lab-i-introduction-to-r-r-studio.html#cb140-3" aria-hidden="true" tabindex="-1"></a><span class="do">## Subset the first three rows of UNpop with tidyverse</span></span>
+<span id="cb140-4"><a href="lab-i-introduction-to-r-r-studio.html#cb140-4" aria-hidden="true" tabindex="-1"></a><span class="fu">slice</span>(UNpop, <span class="at">n =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>)</span></code></pre></div>
+<pre><code>##   year world.pop
+## 1 1950   2525779
+## 2 1960   3026003
+## 3 1970   3691173</code></pre>
+<div class="sourceCode" id="cb142"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb142-1"><a href="lab-i-introduction-to-r-r-studio.html#cb142-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Extract/subset the world.pop variable (column)</span></span>
+<span id="cb142-2"><a href="lab-i-introduction-to-r-r-studio.html#cb142-2" aria-hidden="true" tabindex="-1"></a><span class="fu">select</span>(UNpop, world.pop)</span></code></pre></div>
+<pre><code>##   world.pop
+## 1   2525779
+## 2   3026003
+## 3   3691173
+## 4   4449049
+## 5   5320817
+## 6   6127700
+## 7   6916183</code></pre>
+<div class="sourceCode" id="cb144"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb144-1"><a href="lab-i-introduction-to-r-r-studio.html#cb144-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Base R subset the first three rows of the year variable</span></span>
+<span id="cb144-2"><a href="lab-i-introduction-to-r-r-studio.html#cb144-2" aria-hidden="true" tabindex="-1"></a>UNpop[<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>, <span class="st">&quot;year&quot;</span>]</span></code></pre></div>
+<pre><code>## [1] 1950 1960 1970</code></pre>
+<div class="sourceCode" id="cb146"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb146-1"><a href="lab-i-introduction-to-r-r-studio.html#cb146-1" aria-hidden="true" tabindex="-1"></a><span class="do">## or in tidyverse, combining slice() and select()</span></span>
+<span id="cb146-2"><a href="lab-i-introduction-to-r-r-studio.html#cb146-2" aria-hidden="true" tabindex="-1"></a><span class="fu">select</span>(<span class="fu">slice</span>(UNpop, <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>), year)</span></code></pre></div>
+<pre><code>##   year
+## 1 1950
+## 2 1960
+## 3 1970</code></pre>
+<div class="sourceCode" id="cb148"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb148-1"><a href="lab-i-introduction-to-r-r-studio.html#cb148-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Basic Data Wrangling with the tidyverse using pipes (i.e., %&gt;%)</span></span>
+<span id="cb148-2"><a href="lab-i-introduction-to-r-r-studio.html#cb148-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb148-3"><a href="lab-i-introduction-to-r-r-studio.html#cb148-3" aria-hidden="true" tabindex="-1"></a>UNpop <span class="sc">%&gt;%</span> <span class="co"># take the UNpop data we have loaded, and then...</span></span>
+<span id="cb148-4"><a href="lab-i-introduction-to-r-r-studio.html#cb148-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">slice</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>) <span class="sc">%&gt;%</span> <span class="co"># subset the first three rows, and then...</span></span>
+<span id="cb148-5"><a href="lab-i-introduction-to-r-r-studio.html#cb148-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(year) <span class="co"># subset the year column</span></span></code></pre></div>
+<pre><code>##   year
+## 1 1950
+## 2 1960
+## 3 1970</code></pre>
+<div class="sourceCode" id="cb150"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb150-1"><a href="lab-i-introduction-to-r-r-studio.html#cb150-1" aria-hidden="true" tabindex="-1"></a>UNpop <span class="sc">%&gt;%</span></span>
+<span id="cb150-2"><a href="lab-i-introduction-to-r-r-studio.html#cb150-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">slice</span>(<span class="fu">seq</span>(<span class="dv">1</span>, <span class="fu">n</span>(), <span class="at">by =</span> <span class="dv">2</span>)) <span class="sc">%&gt;%</span> <span class="co"># using a sequence from 1 to n()</span></span>
+<span id="cb150-3"><a href="lab-i-introduction-to-r-r-studio.html#cb150-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(world.pop)</span></code></pre></div>
+<pre><code>##   world.pop
+## 1   2525779
+## 2   3691173
+## 3   5320817
+## 4   6916183</code></pre>
+<div class="sourceCode" id="cb152"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb152-1"><a href="lab-i-introduction-to-r-r-studio.html#cb152-1" aria-hidden="true" tabindex="-1"></a>pop<span class="fl">.1970</span> <span class="ot">&lt;-</span> UNpop <span class="sc">%&gt;%</span> <span class="co"># take the UNpop data and then....</span></span>
+<span id="cb152-2"><a href="lab-i-introduction-to-r-r-studio.html#cb152-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(year <span class="sc">==</span> <span class="dv">1970</span>) <span class="sc">%&gt;%</span> <span class="co"># subset rows where the year variable is equal to 1970</span></span>
+<span id="cb152-3"><a href="lab-i-introduction-to-r-r-studio.html#cb152-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(world.pop) <span class="sc">%&gt;%</span> <span class="co"># subset just the world.pop column</span></span>
+<span id="cb152-4"><a href="lab-i-introduction-to-r-r-studio.html#cb152-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pull</span>() <span class="co"># return a vector, not a tibble</span></span>
+<span id="cb152-5"><a href="lab-i-introduction-to-r-r-studio.html#cb152-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb152-6"><a href="lab-i-introduction-to-r-r-studio.html#cb152-6" aria-hidden="true" tabindex="-1"></a><span class="do">## Print the vector to the console to see it</span></span>
+<span id="cb152-7"><a href="lab-i-introduction-to-r-r-studio.html#cb152-7" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(pop<span class="fl">.1970</span>)</span></code></pre></div>
+<pre><code>## [1] 3691173</code></pre>
+<div class="sourceCode" id="cb154"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb154-1"><a href="lab-i-introduction-to-r-r-studio.html#cb154-1" aria-hidden="true" tabindex="-1"></a>UNpop.mill <span class="ot">&lt;-</span> UNpop <span class="sc">%&gt;%</span> <span class="co"># create a new tibble from UNpop</span></span>
+<span id="cb154-2"><a href="lab-i-introduction-to-r-r-studio.html#cb154-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">world.pop.mill =</span> world.pop <span class="sc">/</span> <span class="dv">1000</span>) <span class="sc">%&gt;%</span> <span class="co"># create a new variable, world.pop.mill</span></span>
+<span id="cb154-3"><a href="lab-i-introduction-to-r-r-studio.html#cb154-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>world.pop) <span class="co"># drop the original world.pop column</span></span>
+<span id="cb154-4"><a href="lab-i-introduction-to-r-r-studio.html#cb154-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb154-5"><a href="lab-i-introduction-to-r-r-studio.html#cb154-5" aria-hidden="true" tabindex="-1"></a><span class="do">## Adding a variable with if_else</span></span>
+<span id="cb154-6"><a href="lab-i-introduction-to-r-r-studio.html#cb154-6" aria-hidden="true" tabindex="-1"></a>UNpop.mill <span class="ot">&lt;-</span> UNpop.mill <span class="sc">%&gt;%</span></span>
+<span id="cb154-7"><a href="lab-i-introduction-to-r-r-studio.html#cb154-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">after.1980 =</span> <span class="fu">if_else</span>(year <span class="sc">&gt;=</span> <span class="dv">1980</span>, <span class="dv">1</span>, <span class="dv">0</span>))</span>
+<span id="cb154-8"><a href="lab-i-introduction-to-r-r-studio.html#cb154-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb154-9"><a href="lab-i-introduction-to-r-r-studio.html#cb154-9" aria-hidden="true" tabindex="-1"></a><span class="do">## Creating a vector of the years of interest</span></span>
+<span id="cb154-10"><a href="lab-i-introduction-to-r-r-studio.html#cb154-10" aria-hidden="true" tabindex="-1"></a>specific.years <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1950</span>, <span class="dv">1980</span>, <span class="dv">2000</span>)</span>
+<span id="cb154-11"><a href="lab-i-introduction-to-r-r-studio.html#cb154-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb154-12"><a href="lab-i-introduction-to-r-r-studio.html#cb154-12" aria-hidden="true" tabindex="-1"></a><span class="do">## Adding a variable with if_else and %in%</span></span>
+<span id="cb154-13"><a href="lab-i-introduction-to-r-r-studio.html#cb154-13" aria-hidden="true" tabindex="-1"></a>UNpop.mill <span class="ot">&lt;-</span> UNpop.mill <span class="sc">%&gt;%</span></span>
+<span id="cb154-14"><a href="lab-i-introduction-to-r-r-studio.html#cb154-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">year.of.interest =</span> <span class="fu">if_else</span>(year <span class="sc">%in%</span> specific.years, <span class="dv">1</span>, <span class="dv">0</span>))</span>
+<span id="cb154-15"><a href="lab-i-introduction-to-r-r-studio.html#cb154-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb154-16"><a href="lab-i-introduction-to-r-r-studio.html#cb154-16" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(UNpop.mill)</span></code></pre></div>
+<pre><code>##       year      world.pop.mill   after.1980     year.of.interest
+##  Min.   :1950   Min.   :2526   Min.   :0.0000   Min.   :0.0000  
+##  1st Qu.:1965   1st Qu.:3359   1st Qu.:0.0000   1st Qu.:0.0000  
+##  Median :1980   Median :4449   Median :1.0000   Median :0.0000  
+##  Mean   :1980   Mean   :4580   Mean   :0.5714   Mean   :0.4286  
+##  3rd Qu.:1995   3rd Qu.:5724   3rd Qu.:1.0000   3rd Qu.:1.0000  
+##  Max.   :2010   Max.   :6916   Max.   :1.0000   Max.   :1.0000</code></pre>
+<div class="sourceCode" id="cb156"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb156-1"><a href="lab-i-introduction-to-r-r-studio.html#cb156-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(UNpop.mill<span class="sc">$</span>world.pop.mill)</span></code></pre></div>
+<pre><code>## [1] 4579.529</code></pre>
+<div class="sourceCode" id="cb158"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb158-1"><a href="lab-i-introduction-to-r-r-studio.html#cb158-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Add a row where values for all columns is NA</span></span>
+<span id="cb158-2"><a href="lab-i-introduction-to-r-r-studio.html#cb158-2" aria-hidden="true" tabindex="-1"></a>UNpop.mill.wNAs <span class="ot">&lt;-</span> UNpop.mill <span class="sc">%&gt;%</span></span>
+<span id="cb158-3"><a href="lab-i-introduction-to-r-r-studio.html#cb158-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_row</span>(<span class="at">year =</span> <span class="cn">NA</span>, <span class="at">world.pop.mill =</span> <span class="cn">NA</span>,</span>
+<span id="cb158-4"><a href="lab-i-introduction-to-r-r-studio.html#cb158-4" aria-hidden="true" tabindex="-1"></a>          <span class="at">after.1980 =</span> <span class="cn">NA</span>,</span>
+<span id="cb158-5"><a href="lab-i-introduction-to-r-r-studio.html#cb158-5" aria-hidden="true" tabindex="-1"></a>          <span class="at">year.of.interest =</span> <span class="cn">NA</span>)</span>
+<span id="cb158-6"><a href="lab-i-introduction-to-r-r-studio.html#cb158-6" aria-hidden="true" tabindex="-1"></a><span class="do">## Take the mean of world.pop.mill (returns NA)</span></span>
+<span id="cb158-7"><a href="lab-i-introduction-to-r-r-studio.html#cb158-7" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(UNpop.mill.wNAs<span class="sc">$</span>world.pop.mill)</span></code></pre></div>
+<pre><code>## [1] NA</code></pre>
+<div class="sourceCode" id="cb160"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb160-1"><a href="lab-i-introduction-to-r-r-studio.html#cb160-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Take the mean of world.pop.mill (ignores the NA)</span></span>
+<span id="cb160-2"><a href="lab-i-introduction-to-r-r-studio.html#cb160-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(UNpop.mill.wNAs<span class="sc">$</span>world.pop.mill, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<pre><code>## [1] 4579.529</code></pre>
+<div class="sourceCode" id="cb162"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb162-1"><a href="lab-i-introduction-to-r-r-studio.html#cb162-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Other Summary Statistics with tidyverse</span></span>
+<span id="cb162-2"><a href="lab-i-introduction-to-r-r-studio.html#cb162-2" aria-hidden="true" tabindex="-1"></a>UNpop.mill <span class="sc">%&gt;%</span></span>
+<span id="cb162-3"><a href="lab-i-introduction-to-r-r-studio.html#cb162-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">mean.pop =</span> <span class="fu">mean</span>(world.pop.mill),</span>
+<span id="cb162-4"><a href="lab-i-introduction-to-r-r-studio.html#cb162-4" aria-hidden="true" tabindex="-1"></a>            <span class="at">median.pop =</span> <span class="fu">median</span>(world.pop.mill))</span></code></pre></div>
+<pre><code>##   mean.pop median.pop
+## 1 4579.529   4449.049</code></pre>
+<div class="sourceCode" id="cb164"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb164-1"><a href="lab-i-introduction-to-r-r-studio.html#cb164-1" aria-hidden="true" tabindex="-1"></a>UNpop.mill <span class="sc">%&gt;%</span></span>
+<span id="cb164-2"><a href="lab-i-introduction-to-r-r-studio.html#cb164-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(after<span class="fl">.1980</span>) <span class="sc">%&gt;%</span> <span class="co"># create subset group for each value of after.1980</span></span>
+<span id="cb164-3"><a href="lab-i-introduction-to-r-r-studio.html#cb164-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">mean.pop =</span> <span class="fu">mean</span>(world.pop.mill)) <span class="co"># calculate mean for each group</span></span></code></pre></div>
+<pre><code>## # A tibble: 2 × 2
+##   after.1980 mean.pop
+##        &lt;dbl&gt;    &lt;dbl&gt;
+## 1          0    3081.
+## 2          1    5703.</code></pre>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="index.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>
