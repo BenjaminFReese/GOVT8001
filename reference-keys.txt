@@ -4,3 +4,11 @@ loading-data
 lab-i-introduction-to-r-r-studio
 intro-to-r
 intro-to-librarytidyverse
+lab-ii-introduction-to-r-markdown-logical-values-subsetting-and-factor-variables
+in-the-setup-chunk-above-load-the-tidyverse-packages-as-well-as-libraryreadr
+load-in-the-resume.rdata-file-and-use-head-tail-glimpse-dim-summary-and-view-to-examine-each-variable-in-the-dataset.-how-many-of-the-resumes-have-white-sounding-names-how-many-have-african-american-sounding-names.
+this-experiment-seeks-to-determine-whether-or-not-hiring-managers-discriminate-on-the-basis-of-racial-identity-by-sending-idential-resumes-with-african-american-and-white-sounding-names-to-job-postings.-the-basic-logic-is-that-resumes-are-identical-and-only-the-name-is-changing-so-any-differences-in-call-backs-for-jobs-can-be-attributed-to-racial-discrimination.-why-do-the-authors-want-to-randomize-and-do-you-think-this-is-an-effective-research-design
+we-are-going-to-see-if-there-is-a-racial-discrepency-by-taking-the-difference-in-callback-rates-between-racial-groups.-calculate-the-callback-rate-for-white-sounding-name-applicants-and-african-american-sounding-name-applicants.-use-latex-commands-to-write-the-formula-for-this-calculation-and-display-the-result-in-text.-write-the-formula-between-s-like-y-mx-b-to-use-latex-commands.
+now-create-a-new-object-that-stores-the-difference-in-callback-rates-named-race_diff.
+since-crenshaw-1989-manny-scholars-have-concerned-with-intersectionality-or-how-race-and-gender-interact-to-make-the-experiences-of-african-american-women-unique.-we-can-use-the-data-we-have-to-explore-the-effect-of-race-and-gender-specific-sounding-names-on-employment-prospects.-calculate-the-call-back-rate-by-each-race-and-gender-category.
+what-is-the-difference-in-call-back-rates-for-each-racegender-group

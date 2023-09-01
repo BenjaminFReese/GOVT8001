@@ -344,3 +344,136 @@ UNpop.mill %>%
   summarize(mean.pop = mean(world.pop.mill)) # calculate mean for each group
 
 ```
+
+# Lab II: Introduction to R Markdown, Logical Values, Subsetting, and Factor Variables
+
+```{r, echo=FALSE}
+knitr::include_graphics("image_2.jpg")
+```
+
+
+We can use R Markdown to create well-formatted PDFs or .html files that can easily display the results of our analyses. R Markdown, through Latex, also allows to write mathematical formulas with ease. Go ahead and knit - found in the top left corner - this file now and see what it looks like.
+
+### 1. In the setup chunk above, load the tidyverse packages as well as library(readr)
+
+
+
+### 2. Load in the resume.RData file and use head(), tail(), glimpse(), dim(), summary(), and View() to examine each variable in the dataset. How many of the resumes have white sounding names? How many have African-American sounding names.
+
+```{r}
+## Loading Data
+data(resume, package = "qss")
+
+## Learning About the Dataset
+
+head(resume)
+
+tail(resume)
+
+glimpse(resume)
+
+dim(resume)
+
+summary(resume)
+
+View(resume) ## Comment this out when knitting.
+
+## Number of observations by race
+resume %>%
+  group_by(race) %>%
+  count()
+
+```
+
+### 3. This experiment seeks to determine whether or not hiring managers discriminate on the basis of racial identity by sending idential resumes with African-American and white sounding names to job postings. The basic logic is that resumes are identical and only the name is changing, so any differences in call backs for jobs can be attributed to racial discrimination. Why do the authors want to randomize? And do you think this is an effective research design?
+
+The concerns of examining race and the number of callbacks without randomization is that there could be confounders like workplace connections, amount of education, and employment history that could be correlated with race. It is possible that African-American applicants did not have the same employment and educational opportunities as white Americans, and, therefore, their resumes may look significantly different. This raises issues of counfounding and makes it impossible to differentiate if an employer made their decision based on race or based on the substance of the resume. The authors, though, randomized race, reducing this risk of confounding. Employers in this study are seeing nearly identical resumes, with only the race of the applicant being different, as indicated by a name. 
+
+The field experiment presented here relies on racial connotations of different names, not explicit racial cues. Therefore, hiring managers are determining an applicant's race largely based on what scholars of identity politics would call "perceived race" or "street race" ([Lopez et al. 2017](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5800755/)), which is how others perceive an individual's race. This fact means that the selection of names is integral to the internal validity of the research design.
+
+### 4. We are going to see if there is a racial discrepency by taking the difference in callback rates between racial groups. Calculate the callback rate for white sounding name applicants and African-American sounding name applicants. Use Latex commands to write the formula for this calculation and display the result in text. Write the formula between $'s like $y = mx + b$ to use Latex commands.
+
+```{r}
+## Call Back for white Sounding Name Applicants
+resume %>%
+  group_by(race) %>%
+  summarise(callback_rates = mean(call))
+
+```
+
+The callback rate for whites is .096. We take the mean of the binary callback variable, $\overline{x} = \frac{1}{n}\Sigma^{n}_{i=1}x_i$
+
+The callback rate for African-American sounding name applicants is .064.
+
+### 5. Now, create a new object that stores the difference in callback rates named race_diff.
+
+```{r}
+## Calculating Callback Proportions
+race_call <- resume %>%
+  group_by(race, call) %>%
+  count() %>%
+  pivot_wider(names_from = call,
+              values_from = n) %>%
+  rename(no_call = `0`,
+         call = `1`) %>%
+  mutate(total_resumes = no_call + call,
+         call_prop = call / total_resumes)
+
+## Difference in call back rates
+race_diff <- race_call %>% 
+  select(race, call_prop) %>%
+  pivot_wider(names_from = c(race),
+              values_from = call_prop) %>%
+  mutate(race_diff = white - black) %>%
+  select(race_diff)
+
+## Printing
+race_diff
+
+```
+
+### 6. Since Crenshaw (1989), manny scholars have concerned with intersectionality, or how race and gender interact to make the experiences of African-American women unique. We can use the data we have to explore the effect of race and gender specific sounding names on employment prospects. Calculate the call back rate by each race and gender category.
+
+```{r}
+## Callbacks by race and gender
+resume %>%
+  group_by(race, call, sex) %>%
+  count() %>%
+  pivot_wider(names_from = call,
+              values_from = n) %>%
+  rename(no_call = `0`,
+         call = `1`) %>%
+  mutate(total_resumes = no_call + call,
+         call_prop = call / total_resumes)
+
+```
+
+### 7. What is the difference in call back rates for each race/gender group?
+
+```{r}
+## Saving tibble from 8
+dta <- resume %>%
+  group_by(race, call, sex) %>%
+  count() %>%
+  pivot_wider(names_from = call,
+              values_from = n) %>%
+  rename(no_call = `0`,
+         call = `1`) %>%
+  mutate(total_resumes = no_call + call,
+         call_prop = call / total_resumes)
+
+## Calculating Differences
+call_backs <- dta %>% 
+  select(race, sex, call_prop) %>%
+  pivot_wider(names_from = c(sex, race),
+              values_from = call_prop) %>%
+  mutate(white_sex_diff = female_white - male_white,
+         black_sex_diff = female_black - male_black,
+         male_race_diff = male_white - male_black,
+         female_race_diff = female_white - female_black) %>%
+  select(white_sex_diff, black_sex_diff, male_race_diff, female_race_diff)
+
+## Printing
+print(call_backs) ## print() is optional
+
+```
