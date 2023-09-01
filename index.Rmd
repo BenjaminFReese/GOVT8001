@@ -16,7 +16,7 @@ library(qss)
 # Introduction
 
 ```{r, echo=FALSE}
-knitr::include_graphics("intro_image.jpg")
+knitr::include_graphics("intro_image_.jpg")
 ```
 
 ## Purpose of This Site
@@ -348,7 +348,7 @@ UNpop.mill %>%
 # Lab II: Introduction to R Markdown, Logical Values, Subsetting, and Factor Variables
 
 ```{r, echo=FALSE}
-knitr::include_graphics("image_2.png")
+knitr::include_graphics("image_2_.png")
 ```
 
 
