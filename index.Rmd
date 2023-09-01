@@ -348,7 +348,7 @@ UNpop.mill %>%
 # Lab II: Introduction to R Markdown, Logical Values, Subsetting, and Factor Variables
 
 ```{r, echo=FALSE}
-knitr::include_graphics("image_2.jpg")
+knitr::include_graphics("image_2.png")
 ```
 
 
@@ -356,7 +356,15 @@ We can use R Markdown to create well-formatted PDFs or .html files that can easi
 
 ### 1. In the setup chunk above, load the tidyverse packages as well as library(readr)
 
+```{r, echo=TRUE, eval=FALSE}
+## Example Setup Chunk
 
+knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE)
+## Packages
+library(readr)
+library(tidyverse)
+
+```
 
 ### 2. Load in the resume.RData file and use head(), tail(), glimpse(), dim(), summary(), and View() to examine each variable in the dataset. How many of the resumes have white sounding names? How many have African-American sounding names.
 
