@@ -4,7 +4,7 @@ loading-data
 lab-i-introduction-to-r-r-studio
 intro-to-r
 intro-to-librarytidyverse
-lab-ii-introduction-to-r-markdown-logical-values-subsetting-and-factor-variables
+lab-ii-introduction-to-librarytidyverse-r-markdown
 in-the-setup-chunk-above-load-the-tidyverse-packages-as-well-as-libraryreadr
 load-in-the-resume.rdata-file-and-use-head-tail-glimpse-dim-summary-and-view-to-examine-each-variable-in-the-dataset.-how-many-of-the-resumes-have-white-sounding-names-how-many-have-african-american-sounding-names.
 this-experiment-seeks-to-determine-whether-or-not-hiring-managers-discriminate-on-the-basis-of-racial-identity-by-sending-idential-resumes-with-african-american-and-white-sounding-names-to-job-postings.-the-basic-logic-is-that-resumes-are-identical-and-only-the-name-is-changing-so-any-differences-in-call-backs-for-jobs-can-be-attributed-to-racial-discrimination.-why-do-the-authors-want-to-randomize-and-do-you-think-this-is-an-effective-research-design
