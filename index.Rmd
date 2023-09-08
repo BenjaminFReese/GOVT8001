@@ -485,3 +485,195 @@ call_backs <- dta %>%
 print(call_backs) ## print() is optional
 
 ```
+
+# Lab III: The Basics of Data Visualization
+
+```{r, echo=FALSE}
+knitr::include_graphics("image_3.png")
+
+```
+
+```{r}
+
+## Packages
+library(tidyverse)
+library(ggthemes)
+
+## Data Loading
+## Replace this with your working directory
+load("~/GOVT8001/Lab 3/white_minwage.RData") 
+
+```
+
+This lab shows step-by-step how to build basic histograms and barplots with `library(ggplot2)`
+
+## Histograms with `library(ggplot2)`
+
+Histograms are good to visualize the distribution of one continuous variable.
+
+### Step One
+- Specify the tibble to be piped into `ggplot()`
+
+```{r, eval = FALSE}
+## Building A Basic Histogram 
+df.county
+
+```
+
+### Step Two
+- Pipe the tibble into ggplot()
+- Specify the variable of interest with `ggplot(aes(x = X))`
+
+
+```{r}
+## Building A Basic Histogram 
+df.county %>%
+  ggplot(aes(x = minimum.wage))
+
+```
+
+### Step 3
+- Use `+` instead of `%>%` to move to next line in `ggplot()`
+- `geom_histogram()` creates the histogram
+
+```{r}
+## Building A Basic Histogram 
+df.county %>%
+  ggplot(aes(x = minimum.wage)) + 
+  geom_histogram(aes(y = ..density..))
+
+```
+
+### Step 4
+- Customization of theme, colors, and labels.
+- You can also save the object above and customize it later as shown below
+  - Use `col =` and `fill =` in `geom_histogram()` to set colors
+  
+```{r}
+## Building A Basic Histogram 
+df.county %>%
+  ggplot(aes(x = minimum.wage)) + 
+  geom_histogram(aes(y = ..density..), col = "dark red", fill = "tomato")
+
+```
+
+  - Use ` + theme()` to set the theme
+    - `library(ggtheme)` has themes from your favorite publications!
+  
+```{r}
+## Building A Basic Histogram 
+df.county %>%
+  ggplot(aes(x = minimum.wage)) + 
+  geom_histogram(aes(y = ..density..), col = "dark red", fill = "tomato") + 
+  theme_minimal()
+
+```
+
+  - Use `+ labs` to set labels
+    - `title =` for a title
+    - `subtitle =` for a subtitle
+    - `x =` for x axis label and `y =` for y axis label
+    - `caption =` for caption to include data source or note
+  
+```{r}
+## Building A Basic Histogram 
+df.county %>%
+  ggplot(aes(x = minimum.wage)) + 
+  geom_histogram(aes(y = ..density..), col = "dark red", fill = "tomato") + 
+  theme_minimal() +
+  labs(title = "Distribution of Minimum Wage", subtitle = "All US Counties 1996 - 2016",
+       x = "Minimum Wage", caption = "Data Source: Markovich & White (2022)",
+       y = "Density")
+
+## Or You Can Save the Basic Plot and Experiment
+
+p <- df.county %>%
+  ggplot(aes(x = minimum.wage)) + 
+  geom_histogram(aes(y = ..density..), col = "dark red", fill = "tomato")
+p
+p + 
+  theme_minimal() +
+  labs(title = "Distribution of Minimum Wage", subtitle = "All US Counties 1996 - 2016",
+       x = "Minimum Wage", caption = "Data Source: Markovich & White (2022)",
+       y = "Density")
+
+
+```
+
+## Barplots with `library(ggplot2)`
+
+Barplots are good for visualizing distributions by groups. The steps here follow closely what we did for the histogram.
+
+### Step One
+- We will be using simulated data for this example.
+- First we need to format our simulated data into something we can use for the barplot with the skills we learned last week.
+
+```{r}
+## Simulated Data
+df <- data.frame("age" = c("18 to 29", "36 to 50", "51 to 64", "65+"),
+                "popPct" = c(29, 21, 30, 20),
+                "svyPct" = c(19, 21, 32, 28))
+df
+## Building A Basic Barplot
+df %>% 
+  rename(Population = popPct, Survey = svyPct) %>%
+  pivot_longer(-age, names_to = "Group", values_to = "Percent")
+
+```
+
+### Step Two
+- Pipe the tibble into ggplot()
+- Specify the variable of interest with `ggplot(aes(x = X))`
+- Since we want to show the distribution of X by some group, we can use `fill =` to specify the group 
+
+```{r}
+## Building A Basic Barplot
+df %>% 
+  rename(Population = popPct, Survey = svyPct) %>%
+  pivot_longer(-age, names_to = "Group", values_to = "Percent") %>%
+  ggplot(aes(x = age, y = Percent, fill = Group))
+
+```
+
+### Step 3
+- Use `+` instead of `%>%` to move to next line in `ggplot()`
+- `geom_bar()` creates a barplot
+
+```{r}
+## Building A Basic Barplot
+df %>% 
+  rename(Population = popPct, Survey = svyPct) %>%
+  pivot_longer(-age, names_to = "Group", values_to = "Percent") %>%
+  ggplot(aes(x = age, y = Percent, fill = Group)) +
+  geom_bar(stat = "identity", position = "dodge")
+
+```
+
+### Step 4
+- Now, we can customize just like above with the histogram.
+- `scale_fill_grey()` changes the color palette to greyscale
+
+```{r}
+## Building A Basic Barplot 
+df %>% 
+  rename(Population = popPct, Survey = svyPct) %>%
+  pivot_longer(-age, names_to = "Group", values_to = "Percent") %>%
+  ggplot(aes(x = age, y = Percent, fill = Group)) +
+  geom_bar(stat = "identity", position = "dodge") +
+  scale_fill_grey() + 
+  theme_minimal() +
+  labs(x = "Age Group", y = "Percent",
+       title = "Population and Survey Sample Proportions by Age Group")
+
+```
+
+## Now Make Your Own Histogram or Barplot!
+
+```{r}
+df.county %>%
+  ggplot(aes(x = minimum.wage)) + 
+  geom_histogram(aes(y = ..density..), col = "pink", fill = "black") +
+  theme_economist() +
+  labs(title = "Our Beautiful Plot")
+
+```

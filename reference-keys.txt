@@ -12,3 +12,15 @@ we-are-going-to-see-if-there-is-a-racial-discrepency-by-taking-the-difference-in
 now-create-a-new-object-that-stores-the-difference-in-callback-rates-named-race_diff.
 since-crenshaw-1989-manny-scholars-have-concerned-with-intersectionality-or-how-race-and-gender-interact-to-make-the-experiences-of-african-american-women-unique.-we-can-use-the-data-we-have-to-explore-the-effect-of-race-and-gender-specific-sounding-names-on-employment-prospects.-calculate-the-call-back-rate-by-each-race-and-gender-category.
 what-is-the-difference-in-call-back-rates-for-each-racegender-group
+lab-iii-the-basics-of-data-visualization
+histograms-with-libraryggplot2
+step-one
+step-two
+step-3
+step-4
+barplots-with-libraryggplot2
+step-one-1
+step-two-1
+step-3-1
+step-4-1
+now-make-your-own-histogram-or-barplot
