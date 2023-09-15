@@ -790,11 +790,13 @@ SaratogaHouses %>%
 ## Showing if_else()
 SaratogaHouses %>%
   mutate(fireplace = if_else(fireplaces > 0, 1, 0)) %>%
-  select(fireplace)
+  select(fireplace) %>%
+  slice(1:5)
 
 SaratogaHouses %>%
   mutate(large_house = if_else(rooms > mean(rooms), 1, 0)) %>%
-  select(large_house)
+  select(large_house) %>%
+  slice(1:5)
 
 ```
 
