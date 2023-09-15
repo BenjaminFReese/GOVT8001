@@ -486,7 +486,7 @@ print(call_backs) ## print() is optional
 
 ```
 
-# Lab III: The Basics of Data Visualization
+# Lab III: Univariate Visualizations
 
 ```{r, echo=FALSE}
 knitr::include_graphics("image_3.png")
@@ -677,3 +677,365 @@ df.county %>%
   labs(title = "Our Beautiful Plot")
 
 ```
+
+# Lab IV: Loops, Lists, & Conditional Statements
+
+```{r, echo=FALSE}
+knitr::include_graphics("image_4.png")
+
+```
+
+```{r}
+## Packages
+library(tidyverse)
+library(mosaic) ## for the Saratoga Houses Dataset
+
+## Data
+data("SaratogaHouses")
+
+```
+
+## Lists
+
+### What is a list?
+- A list is what is called a recursive vector
+  - A recursive vector is a vector than can contain other vectors or lists
+- Think of lists intuitively as a more flexible vector that can contain individual vectors and even dataframes/tibbles
+
+```{r}
+## Creating A List
+presidents <- c("Washington", "Adams", "Jefferson", "Madison", "Monroe")
+
+chief_justices <- c("Marshall", "Warren", "Burger", "Rehnquist", "Roberts")
+
+ages <- c(51, 82, 12, 18, 43)
+
+df <- data.frame(presidents, chief_justices)
+
+list_1 <- list(presidents, chief_justices, ages, SaratogaHouses)
+
+## Displaying List
+list_1
+
+## Accessing specific objects in the list
+list_1[[3]]
+
+list_1[[4]]
+
+```
+
+## Indexing, Conditional Statements, & `if_else()`
+- We can pull specific values of a variable out with []
+  - This works with vectors and dataframes/tibbles
+
+```{r}
+## Pulling 4th observation of ages
+ages[4]
+
+## Pulling 1st observation of presidents
+presidents[1]
+
+## Pulling 2-4th observation of presidents
+presidents[2:4]
+
+## Pulling all except the 3rd-5th observation of ages
+ages[-3]
+
+## Example with a dataframe/tibble
+SaratogaHouses[2,4]
+
+
+SaratogaHouses[1:3, 4:7]
+
+```
+
+- You can also use indexing to pull out specific observations of a variable
+
+```{r}
+## Finding the prices for all houses with 3 bathrooms
+SaratogaHouses$price[SaratogaHouses$bathrooms == 3]
+
+## With dplyr
+SaratogaHouses %>%
+  filter(bathrooms == 3) %>%
+  pull(price)
+
+```
+
+- These conditional statements can get more complicated as well
+
+```{r}
+## Finding the average price of a house with 5 bedrooms, 2 bathrooms, and a fireplace
+
+mean(SaratogaHouses$price[SaratogaHouses$bedrooms == 5 & 
+                            SaratogaHouses$bathrooms == 3 & 
+                            SaratogaHouses$fireplaces > 0])
+
+## With dplyr
+SaratogaHouses %>%
+  filter(bedrooms == 5, bathrooms == 3, fireplaces > 0) %>%
+  summarise(avg_price = mean(price))
+
+## Finding the cheapest house with 3 bedrooms on the water
+min(SaratogaHouses$price[SaratogaHouses$bedrooms == 3 &
+                           SaratogaHouses$waterfront == "Yes"])
+
+## With dply
+SaratogaHouses %>%
+  filter(bedrooms == 3, waterfront == "Yes") %>%
+  summarise(cheapest_house = min(price))
+
+```
+
+- You can also use `if_else()` to create new variables in `mutate()`
+
+```{r}
+## Showing if_else()
+SaratogaHouses <- SaratogaHouses %>%
+  mutate(fireplace = if_else(fireplaces > 0, 1, 0))
+
+SaratogaHouses %>%
+  mutate(large_house = if_else(rooms > mean(rooms), 1, 0))
+
+```
+
+## Loops
+
+### What is a Loop?
+- A central concept of programming that is found in most programming languages
+- Loops are control statements that execute one or more statements for a desired number of times
+- Loops can be used to iterate applying a function a certain number of times to a specified object(s)
+
+### How Loops Work in R
+
+```{r}
+## Basic Loop
+for (i in 1:15) {
+  
+  print(i)
+  
+}
+
+```
+
+- Without `print()`
+  - What happened?
+
+```{r}
+## Basic Loop
+for (i in 1:5) {
+  
+  i
+  
+}
+
+```
+
+- Works for character and numeric vectors too
+
+```{r}
+## Character Vector
+parties <- c("Democratic", "Republican", "Libertarian", "Green")
+
+for (i in parties) {
+  
+  print(i)
+  
+}
+
+## Numeric Vector
+numbers <- c(1, 2, 3, 4, 5)
+for (i in numbers) {
+  
+  print(i)
+  
+}
+
+```
+
+- Let's write a loop that applies the square root function to a vector of integers
+
+
+```{r}
+## Square Root Loop
+for (i in 1:length(numbers)) {
+  
+  print(sqrt(i))
+  
+}
+
+```
+
+### Conditional Statements & Stopping Loops
+
+```{r}
+## A Loop That Stops
+for (i in parties) {
+  
+  if (i == "Libertarian") {
+    
+    break
+  }
+  
+  print(i)
+}
+
+```
+
+### Conditional Statements & Skipping Iterations
+
+```{r}
+## A Loop That Skips An Iteration
+for (i in parties) {
+  
+  if (i == "Republican") {
+    
+    next
+  }
+  
+  print(i)
+  
+}
+
+```
+
+### if else Statements
+
+```{r}
+## Using if else
+for (i in numbers) {
+  
+  if (i > 3) {
+    
+    print("Number Greater Than 3")
+    
+  }
+  
+  else {
+    
+    print("Number Less Than 4")
+    
+  }
+  
+  print(i)
+  
+}
+
+```
+
+### More Complicated Loops
+- What is going on here?
+  - page 146 in Imai & Williams (2022)
+
+```{r}
+## Example from QSS
+values <- c(2, 4, 6)
+
+n <- length(values)
+
+results <- rep(NA, n)
+
+for (i in seq_along(values)) {
+  
+  results[i] <- values[i] * 2
+  print(str_c(values[i], " times 2 is equal to ", results[i]))
+  
+}
+
+```
+
+- What is going on here?
+
+```{r}
+## Loop to Calculate A Series of Means
+for (i in 1:length(unique(SaratogaHouses$bedrooms))) {
+  
+  x <- mean(SaratogaHouses$price[SaratogaHouses$bedrooms == i])
+  
+  names(x) <- i
+  
+  print(x)
+  
+}
+
+```
+
+- Same thing with `library(tidyverse)`
+
+```{r}
+## Using dplyr()
+SaratogaHouses %>%
+    group_by(bedrooms) %>%
+    summarise(avg_price = mean(price))
+
+```
+
+### Conditional Means
+- A conditional mean is simply the mean of some variable given when a certain set of conditions are met. We do this in R by indexing and subsetting. As an example, assume that you may be interested in voter turnout by identity group. Thus, you are calculating the mean of voter turnout conditional on identity status. Remember this for regression to help intuitively understand what OLS is doing.
+
+### Factor Variables
+- A factor variable is a categorical variable that can only take a distinct set of values. An example is marital status which could take single, married, or divorced. A categorical variable like a people's names is not a factor variable as it could essentially take an infinite number of possible values.
+
+## Lab Questions
+
+### Use a loop and `library(dplyr)` to calculate the maximum price of a house conditional on the number of rooms that a house has.
+
+```{r}
+## Loop
+for (i in 1:length(unique(SaratogaHouses$rooms))) {
+  
+  x <- mean(SaratogaHouses$price[SaratogaHouses$rooms == i], na.rm = T)
+  
+  names(x) <- i
+  
+  print(x)
+  
+}
+
+## With dplyr
+SaratogaHouses %>%
+  group_by(rooms) %>%
+  summarise(avg_price = mean(price))
+
+
+```
+
+### Create a loop that calculates the maximum and minimum house prices by number of bedrooms. Replicate with `library(dplyr)`
+
+```{r}
+## With Loop
+for (i in 1:length(unique(SaratogaHouses$bedrooms))) {
+  
+  max_price <- max(SaratogaHouses$price[SaratogaHouses$bedrooms == i], na.rm = T)
+  
+  min_price <- min(SaratogaHouses$price[SaratogaHouses$bedrooms == i], na.rm = T)
+  
+  names(max_price) <- i
+  
+  names(min_price) <- i
+  
+  print(c(max_price, min_price))
+  
+}
+
+## With dplyr
+SaratogaHouses %>%
+  group_by(bedrooms) %>%
+  summarise(max_price = max(price),
+            min_price = min(price))
+
+
+```
+
+### What is the most number of fireplaces in a house with five bedrooms?
+
+```{r}
+## Most Fireplace in 5 bedroom house
+max(SaratogaHouses$fireplaces[SaratogaHouses$bedrooms == 5])
+
+```
+
+## Practice Creating Your Own Loops
+- Use `SaratogaHouses` or use the `data()` command to bring in a dataset of your interest and write a loop to carry out an easy task.
+
+

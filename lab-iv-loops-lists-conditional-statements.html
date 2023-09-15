@@ -1,0 +1,1139 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>5 Lab IV: Loops, Lists, &amp; Conditional Statements | GOVT 8001: Shared Working Book</title>
+  <meta name="description" content="5 Lab IV: Loops, Lists, &amp; Conditional Statements | GOVT 8001: Shared Working Book" />
+  <meta name="generator" content="bookdown 0.35 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="5 Lab IV: Loops, Lists, &amp; Conditional Statements | GOVT 8001: Shared Working Book" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="5 Lab IV: Loops, Lists, &amp; Conditional Statements | GOVT 8001: Shared Working Book" />
+  
+  
+  
+
+<meta name="author" content="Benjamin Reese" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="lab-iii-univariate-visualizations.html"/>
+
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#purpose-of-this-site"><i class="fa fa-check"></i><b>1.1</b> Purpose of This Site</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#loading-data"><i class="fa fa-check"></i><b>1.2</b> Loading Data</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="lab-i-introduction-to-r-r-studio.html"><a href="lab-i-introduction-to-r-r-studio.html"><i class="fa fa-check"></i><b>2</b> Lab I: Introduction to R &amp; R Studio</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="lab-i-introduction-to-r-r-studio.html"><a href="lab-i-introduction-to-r-r-studio.html#intro-to-r"><i class="fa fa-check"></i><b>2.1</b> Intro to R</a></li>
+<li class="chapter" data-level="2.2" data-path="lab-i-introduction-to-r-r-studio.html"><a href="lab-i-introduction-to-r-r-studio.html#intro-to-librarytidyverse"><i class="fa fa-check"></i><b>2.2</b> Intro to <code>library(tidyverse)</code></a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="lab-ii-introduction-to-librarytidyverse-r-markdown.html"><a href="lab-ii-introduction-to-librarytidyverse-r-markdown.html"><i class="fa fa-check"></i><b>3</b> Lab II: Introduction to <code>library(tidyverse)</code> &amp; R Markdown</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="lab-ii-introduction-to-librarytidyverse-r-markdown.html"><a href="lab-ii-introduction-to-librarytidyverse-r-markdown.html#in-the-setup-chunk-above-load-the-tidyverse-packages-as-well-as-libraryreadr"><i class="fa fa-check"></i><b>3.1</b> In the setup chunk above, load the tidyverse packages as well as library(readr)</a></li>
+<li class="chapter" data-level="3.2" data-path="lab-ii-introduction-to-librarytidyverse-r-markdown.html"><a href="lab-ii-introduction-to-librarytidyverse-r-markdown.html#load-in-the-resume.rdata-file-and-use-head-tail-glimpse-dim-summary-and-view-to-examine-each-variable-in-the-dataset.-how-many-of-the-resumes-have-white-sounding-names-how-many-have-african-american-sounding-names."><i class="fa fa-check"></i><b>3.2</b> Load in the resume.RData file and use head(), tail(), glimpse(), dim(), summary(), and View() to examine each variable in the dataset. How many of the resumes have white sounding names? How many have African-American sounding names.</a></li>
+<li class="chapter" data-level="3.3" data-path="lab-ii-introduction-to-librarytidyverse-r-markdown.html"><a href="lab-ii-introduction-to-librarytidyverse-r-markdown.html#this-experiment-seeks-to-determine-whether-or-not-hiring-managers-discriminate-on-the-basis-of-racial-identity-by-sending-idential-resumes-with-african-american-and-white-sounding-names-to-job-postings.-the-basic-logic-is-that-resumes-are-identical-and-only-the-name-is-changing-so-any-differences-in-call-backs-for-jobs-can-be-attributed-to-racial-discrimination.-why-do-the-authors-want-to-randomize-and-do-you-think-this-is-an-effective-research-design"><i class="fa fa-check"></i><b>3.3</b> This experiment seeks to determine whether or not hiring managers discriminate on the basis of racial identity by sending idential resumes with African-American and white sounding names to job postings. The basic logic is that resumes are identical and only the name is changing, so any differences in call backs for jobs can be attributed to racial discrimination. Why do the authors want to randomize? And do you think this is an effective research design?</a></li>
+<li class="chapter" data-level="3.4" data-path="lab-ii-introduction-to-librarytidyverse-r-markdown.html"><a href="lab-ii-introduction-to-librarytidyverse-r-markdown.html#we-are-going-to-see-if-there-is-a-racial-discrepency-by-taking-the-difference-in-callback-rates-between-racial-groups.-calculate-the-callback-rate-for-white-sounding-name-applicants-and-african-american-sounding-name-applicants.-use-latex-commands-to-write-the-formula-for-this-calculation-and-display-the-result-in-text.-write-the-formula-between-s-like-y-mx-b-to-use-latex-commands."><i class="fa fa-check"></i><b>3.4</b> We are going to see if there is a racial discrepency by taking the difference in callback rates between racial groups. Calculate the callback rate for white sounding name applicants and African-American sounding name applicants. Use Latex commands to write the formula for this calculation and display the result in text. Write the formula between $’s like <span class="math inline">\(y = mx + b\)</span> to use Latex commands.</a></li>
+<li class="chapter" data-level="3.5" data-path="lab-ii-introduction-to-librarytidyverse-r-markdown.html"><a href="lab-ii-introduction-to-librarytidyverse-r-markdown.html#now-create-a-new-object-that-stores-the-difference-in-callback-rates-named-race_diff."><i class="fa fa-check"></i><b>3.5</b> Now, create a new object that stores the difference in callback rates named race_diff.</a></li>
+<li class="chapter" data-level="3.6" data-path="lab-ii-introduction-to-librarytidyverse-r-markdown.html"><a href="lab-ii-introduction-to-librarytidyverse-r-markdown.html#since-crenshaw-1989-manny-scholars-have-concerned-with-intersectionality-or-how-race-and-gender-interact-to-make-the-experiences-of-african-american-women-unique.-we-can-use-the-data-we-have-to-explore-the-effect-of-race-and-gender-specific-sounding-names-on-employment-prospects.-calculate-the-call-back-rate-by-each-race-and-gender-category."><i class="fa fa-check"></i><b>3.6</b> Since Crenshaw (1989), manny scholars have concerned with intersectionality, or how race and gender interact to make the experiences of African-American women unique. We can use the data we have to explore the effect of race and gender specific sounding names on employment prospects. Calculate the call back rate by each race and gender category.</a></li>
+<li class="chapter" data-level="3.7" data-path="lab-ii-introduction-to-librarytidyverse-r-markdown.html"><a href="lab-ii-introduction-to-librarytidyverse-r-markdown.html#what-is-the-difference-in-call-back-rates-for-each-racegender-group"><i class="fa fa-check"></i><b>3.7</b> What is the difference in call back rates for each race/gender group?</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="lab-iii-univariate-visualizations.html"><a href="lab-iii-univariate-visualizations.html"><i class="fa fa-check"></i><b>4</b> Lab III: Univariate Visualizations</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="lab-iii-univariate-visualizations.html"><a href="lab-iii-univariate-visualizations.html#histograms-with-libraryggplot2"><i class="fa fa-check"></i><b>4.1</b> Histograms with <code>library(ggplot2)</code></a>
+<ul>
+<li class="chapter" data-level="4.1.1" data-path="lab-iii-univariate-visualizations.html"><a href="lab-iii-univariate-visualizations.html#step-one"><i class="fa fa-check"></i><b>4.1.1</b> Step One</a></li>
+<li class="chapter" data-level="4.1.2" data-path="lab-iii-univariate-visualizations.html"><a href="lab-iii-univariate-visualizations.html#step-two"><i class="fa fa-check"></i><b>4.1.2</b> Step Two</a></li>
+<li class="chapter" data-level="4.1.3" data-path="lab-iii-univariate-visualizations.html"><a href="lab-iii-univariate-visualizations.html#step-3"><i class="fa fa-check"></i><b>4.1.3</b> Step 3</a></li>
+<li class="chapter" data-level="4.1.4" data-path="lab-iii-univariate-visualizations.html"><a href="lab-iii-univariate-visualizations.html#step-4"><i class="fa fa-check"></i><b>4.1.4</b> Step 4</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="lab-iii-univariate-visualizations.html"><a href="lab-iii-univariate-visualizations.html#barplots-with-libraryggplot2"><i class="fa fa-check"></i><b>4.2</b> Barplots with <code>library(ggplot2)</code></a>
+<ul>
+<li class="chapter" data-level="4.2.1" data-path="lab-iii-univariate-visualizations.html"><a href="lab-iii-univariate-visualizations.html#step-one-1"><i class="fa fa-check"></i><b>4.2.1</b> Step One</a></li>
+<li class="chapter" data-level="4.2.2" data-path="lab-iii-univariate-visualizations.html"><a href="lab-iii-univariate-visualizations.html#step-two-1"><i class="fa fa-check"></i><b>4.2.2</b> Step Two</a></li>
+<li class="chapter" data-level="4.2.3" data-path="lab-iii-univariate-visualizations.html"><a href="lab-iii-univariate-visualizations.html#step-3-1"><i class="fa fa-check"></i><b>4.2.3</b> Step 3</a></li>
+<li class="chapter" data-level="4.2.4" data-path="lab-iii-univariate-visualizations.html"><a href="lab-iii-univariate-visualizations.html#step-4-1"><i class="fa fa-check"></i><b>4.2.4</b> Step 4</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="lab-iii-univariate-visualizations.html"><a href="lab-iii-univariate-visualizations.html#now-make-your-own-histogram-or-barplot"><i class="fa fa-check"></i><b>4.3</b> Now Make Your Own Histogram or Barplot!</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="lab-iv-loops-lists-conditional-statements.html"><a href="lab-iv-loops-lists-conditional-statements.html"><i class="fa fa-check"></i><b>5</b> Lab IV: Loops, Lists, &amp; Conditional Statements</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="lab-iv-loops-lists-conditional-statements.html"><a href="lab-iv-loops-lists-conditional-statements.html#lists"><i class="fa fa-check"></i><b>5.1</b> Lists</a>
+<ul>
+<li class="chapter" data-level="5.1.1" data-path="lab-iv-loops-lists-conditional-statements.html"><a href="lab-iv-loops-lists-conditional-statements.html#what-is-a-list"><i class="fa fa-check"></i><b>5.1.1</b> What is a list?</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="lab-iv-loops-lists-conditional-statements.html"><a href="lab-iv-loops-lists-conditional-statements.html#indexing-conditional-statements-if_else"><i class="fa fa-check"></i><b>5.2</b> Indexing, Conditional Statements, &amp; <code>if_else()</code></a></li>
+<li class="chapter" data-level="5.3" data-path="lab-iv-loops-lists-conditional-statements.html"><a href="lab-iv-loops-lists-conditional-statements.html#loops"><i class="fa fa-check"></i><b>5.3</b> Loops</a>
+<ul>
+<li class="chapter" data-level="5.3.1" data-path="lab-iv-loops-lists-conditional-statements.html"><a href="lab-iv-loops-lists-conditional-statements.html#what-is-a-loop"><i class="fa fa-check"></i><b>5.3.1</b> What is a Loop?</a></li>
+<li class="chapter" data-level="5.3.2" data-path="lab-iv-loops-lists-conditional-statements.html"><a href="lab-iv-loops-lists-conditional-statements.html#how-loops-work-in-r"><i class="fa fa-check"></i><b>5.3.2</b> How Loops Work in R</a></li>
+<li class="chapter" data-level="5.3.3" data-path="lab-iv-loops-lists-conditional-statements.html"><a href="lab-iv-loops-lists-conditional-statements.html#conditional-statements-stopping-loops"><i class="fa fa-check"></i><b>5.3.3</b> Conditional Statements &amp; Stopping Loops</a></li>
+<li class="chapter" data-level="5.3.4" data-path="lab-iv-loops-lists-conditional-statements.html"><a href="lab-iv-loops-lists-conditional-statements.html#conditional-statements-skipping-iterations"><i class="fa fa-check"></i><b>5.3.4</b> Conditional Statements &amp; Skipping Iterations</a></li>
+<li class="chapter" data-level="5.3.5" data-path="lab-iv-loops-lists-conditional-statements.html"><a href="lab-iv-loops-lists-conditional-statements.html#if-else-statements"><i class="fa fa-check"></i><b>5.3.5</b> if else Statements</a></li>
+<li class="chapter" data-level="5.3.6" data-path="lab-iv-loops-lists-conditional-statements.html"><a href="lab-iv-loops-lists-conditional-statements.html#more-complicated-loops"><i class="fa fa-check"></i><b>5.3.6</b> More Complicated Loops</a></li>
+<li class="chapter" data-level="5.3.7" data-path="lab-iv-loops-lists-conditional-statements.html"><a href="lab-iv-loops-lists-conditional-statements.html#conditional-means"><i class="fa fa-check"></i><b>5.3.7</b> Conditional Means</a></li>
+<li class="chapter" data-level="5.3.8" data-path="lab-iv-loops-lists-conditional-statements.html"><a href="lab-iv-loops-lists-conditional-statements.html#factor-variables"><i class="fa fa-check"></i><b>5.3.8</b> Factor Variables</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="lab-iv-loops-lists-conditional-statements.html"><a href="lab-iv-loops-lists-conditional-statements.html#lab-questions"><i class="fa fa-check"></i><b>5.4</b> Lab Questions</a>
+<ul>
+<li class="chapter" data-level="5.4.1" data-path="lab-iv-loops-lists-conditional-statements.html"><a href="lab-iv-loops-lists-conditional-statements.html#use-a-loop-and-librarydplyr-to-calculate-the-maximum-price-of-a-house-conditional-on-the-number-of-rooms-that-a-house-has."><i class="fa fa-check"></i><b>5.4.1</b> Use a loop and <code>library(dplyr)</code> to calculate the maximum price of a house conditional on the number of rooms that a house has.</a></li>
+<li class="chapter" data-level="5.4.2" data-path="lab-iv-loops-lists-conditional-statements.html"><a href="lab-iv-loops-lists-conditional-statements.html#create-a-loop-that-calculates-the-maximum-and-minimum-house-prices-by-number-of-bedrooms.-replicate-with-librarydplyr"><i class="fa fa-check"></i><b>5.4.2</b> Create a loop that calculates the maximum and minimum house prices by number of bedrooms. Replicate with <code>library(dplyr)</code></a></li>
+<li class="chapter" data-level="5.4.3" data-path="lab-iv-loops-lists-conditional-statements.html"><a href="lab-iv-loops-lists-conditional-statements.html#what-is-the-most-number-of-fireplaces-in-a-house-with-five-bedrooms"><i class="fa fa-check"></i><b>5.4.3</b> What is the most number of fireplaces in a house with five bedrooms?</a></li>
+</ul></li>
+<li class="chapter" data-level="5.5" data-path="lab-iv-loops-lists-conditional-statements.html"><a href="lab-iv-loops-lists-conditional-statements.html#practice-creating-your-own-loops"><i class="fa fa-check"></i><b>5.5</b> Practice Creating Your Own Loops</a></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">GOVT 8001: Shared Working Book</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="lab-iv-loops-lists-conditional-statements" class="section level1 hasAnchor" number="5">
+<h1><span class="header-section-number">5</span> Lab IV: Loops, Lists, &amp; Conditional Statements<a href="lab-iv-loops-lists-conditional-statements.html#lab-iv-loops-lists-conditional-statements" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p><img src="image_4.png" width="652" /></p>
+<div class="sourceCode" id="cb204"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb204-1"><a href="lab-iv-loops-lists-conditional-statements.html#cb204-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Packages</span></span>
+<span id="cb204-2"><a href="lab-iv-loops-lists-conditional-statements.html#cb204-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb204-3"><a href="lab-iv-loops-lists-conditional-statements.html#cb204-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(mosaic) <span class="do">## for the Saratoga Houses Dataset</span></span>
+<span id="cb204-4"><a href="lab-iv-loops-lists-conditional-statements.html#cb204-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb204-5"><a href="lab-iv-loops-lists-conditional-statements.html#cb204-5" aria-hidden="true" tabindex="-1"></a><span class="do">## Data</span></span>
+<span id="cb204-6"><a href="lab-iv-loops-lists-conditional-statements.html#cb204-6" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(<span class="st">&quot;SaratogaHouses&quot;</span>)</span></code></pre></div>
+<div id="lists" class="section level2 hasAnchor" number="5.1">
+<h2><span class="header-section-number">5.1</span> Lists<a href="lab-iv-loops-lists-conditional-statements.html#lists" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="what-is-a-list" class="section level3 hasAnchor" number="5.1.1">
+<h3><span class="header-section-number">5.1.1</span> What is a list?<a href="lab-iv-loops-lists-conditional-statements.html#what-is-a-list" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ul>
+<li>A list is what is called a recursive vector
+<ul>
+<li>A recursive vector is a vector than can contain other vectors or lists</li>
+</ul></li>
+<li>Think of lists intuitively as a more flexible vector that can contain individual vectors and even dataframes/tibbles</li>
+</ul>
+<div class="sourceCode" id="cb205"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb205-1"><a href="lab-iv-loops-lists-conditional-statements.html#cb205-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Creating A List</span></span>
+<span id="cb205-2"><a href="lab-iv-loops-lists-conditional-statements.html#cb205-2" aria-hidden="true" tabindex="-1"></a>presidents <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Washington&quot;</span>, <span class="st">&quot;Adams&quot;</span>, <span class="st">&quot;Jefferson&quot;</span>, <span class="st">&quot;Madison&quot;</span>, <span class="st">&quot;Monroe&quot;</span>)</span>
+<span id="cb205-3"><a href="lab-iv-loops-lists-conditional-statements.html#cb205-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb205-4"><a href="lab-iv-loops-lists-conditional-statements.html#cb205-4" aria-hidden="true" tabindex="-1"></a>chief_justices <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Marshall&quot;</span>, <span class="st">&quot;Warren&quot;</span>, <span class="st">&quot;Burger&quot;</span>, <span class="st">&quot;Rehnquist&quot;</span>, <span class="st">&quot;Roberts&quot;</span>)</span>
+<span id="cb205-5"><a href="lab-iv-loops-lists-conditional-statements.html#cb205-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb205-6"><a href="lab-iv-loops-lists-conditional-statements.html#cb205-6" aria-hidden="true" tabindex="-1"></a>ages <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">51</span>, <span class="dv">82</span>, <span class="dv">12</span>, <span class="dv">18</span>, <span class="dv">43</span>)</span>
+<span id="cb205-7"><a href="lab-iv-loops-lists-conditional-statements.html#cb205-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb205-8"><a href="lab-iv-loops-lists-conditional-statements.html#cb205-8" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(presidents, chief_justices)</span>
+<span id="cb205-9"><a href="lab-iv-loops-lists-conditional-statements.html#cb205-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb205-10"><a href="lab-iv-loops-lists-conditional-statements.html#cb205-10" aria-hidden="true" tabindex="-1"></a>list_1 <span class="ot">&lt;-</span> <span class="fu">list</span>(presidents, chief_justices, ages, SaratogaHouses)</span>
+<span id="cb205-11"><a href="lab-iv-loops-lists-conditional-statements.html#cb205-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb205-12"><a href="lab-iv-loops-lists-conditional-statements.html#cb205-12" aria-hidden="true" tabindex="-1"></a><span class="do">## Displaying List</span></span>
+<span id="cb205-13"><a href="lab-iv-loops-lists-conditional-statements.html#cb205-13" aria-hidden="true" tabindex="-1"></a>list_1</span></code></pre></div>
+<pre><code>## [[1]]
+## [1] &quot;Washington&quot; &quot;Adams&quot;      &quot;Jefferson&quot;  &quot;Madison&quot;    &quot;Monroe&quot;    
+## 
+## [[2]]
+## [1] &quot;Marshall&quot;  &quot;Warren&quot;    &quot;Burger&quot;    &quot;Rehnquist&quot; &quot;Roberts&quot;  
+## 
+## [[3]]
+## [1] 51 82 12 18 43
+## 
+## [[4]]
+##     price lotSize age landValue livingArea pctCollege bedrooms fireplaces bathrooms rooms         heating     fuel
+## 1  132500    0.09  42     50000        906         35        2          1       1.0     5        electric electric
+## 2  181115    0.92   0     22300       1953         51        3          0       2.5     6 hot water/steam      gas
+## 3  109000    0.19 133      7300       1944         51        4          1       1.0     8 hot water/steam      gas
+## 4  155000    0.41  13     18700       1944         51        3          1       1.5     5         hot air      gas
+## 5   86060    0.11   0     15000        840         51        2          0       1.0     3         hot air      gas
+## 6  120000    0.68  31     14000       1152         22        4          1       1.0     8         hot air      gas
+## 7  153000    0.40  33     23300       2752         51        4          1       1.5     8 hot water/steam      oil
+## 8  170000    1.21  23     14600       1662         35        4          1       1.5     9         hot air      oil
+## 9   90000    0.83  36     22200       1632         51        3          0       1.5     8        electric electric
+## 10 122900    1.94   4     21200       1416         44        3          0       1.5     6         hot air      gas
+## 11 325000    2.29 123     12600       2894         51        7          0       1.0    12         hot air      oil
+## 12 120000    0.92   1     22300       1624         51        3          0       2.0     6         hot air      gas
+## 13  85860    8.97  13      4800        704         41        2          0       1.0     4        electric electric
+## 14  97000    0.11 153      3100       1383         57        3          0       2.0     5 hot water/steam      gas
+## 15 127000    0.14   9       300       1300         41        3          0       1.5     8         hot air      oil
+## 16  89900    0.00  88      2500        936         57        3          0       1.0     4 hot water/steam      gas
+## 17 155000    0.13   9       300       1300         41        3          0       1.5     7         hot air      oil
+## 18 253750    2.00   0     49800       2816         71        4          1       2.5    12         hot air      gas
+## 19  60000    0.21  82      8500        924         35        2          0       1.0     6 hot water/steam      oil
+## 20  87500    0.88  17     19400       1092         35        3          0       1.0     6         hot air      oil
+## 21 112000    1.00  12      8600       1056         35        3          0       1.0     7        electric electric
+## 22 104900    0.43  21      5600       1600         39        3          0       1.5     4        electric electric
+## 23 148635    0.32   1      6200       1576         39        3          0       2.5     7         hot air      gas
+## 24 150000    0.03  24      5100       2080         39        3          0       2.0     6         hot air      oil
+## 25  90400    0.36  16      5200       1600         39        3          0       1.5     4        electric electric
+## 26 248800    4.00  28      5500       2224         39        4          0       3.0    10         hot air      oil
+## 27 135000    1.83 126      6000       1656         39        3          0       1.0     6 hot water/steam      oil
+## 28 145000    3.00  26      4500       1170         39        4          0       1.5     5         hot air      oil
+## 29 457000    0.43  53      2700       2461         39        4          1       2.0    10         hot air      oil
+## 30 140000    0.44  56     19400       1544         71        3          1       1.5     7         hot air      oil
+## 31 130000    1.24  51     24800       1220         71        2          2       1.0     4 hot water/steam      oil
+## 32 187000    0.46   3     15200       1858         52        3          1       2.5     7         hot air      gas
+## 33 229000    0.87   9     41100       2219         64        3          1       2.0     8         hot air      gas
+## 34 227000    1.80 201     25500       1876         52        3          0       2.5     5         hot air      oil
+## 35 179900    0.46   1     15200       2026         52        4          1       2.5     6         hot air      gas
+## 36 169900    0.91  19     20200       1671         71        4          1       3.0     8         hot air      gas
+## 37 209900    0.46   1     15200       2060         52        4          1       2.5     7         hot air      gas
+## 38 169900    0.59   0     17300       1884         52        4          1       2.5     9         hot air      gas
+## 39 293000    7.24  43     36600       2022         71        4          2       3.0     6 hot water/steam      gas
+## 40 245900    0.19   0     20700       2394         71        4          1       2.5     7         hot air      gas
+## 41 157000    0.46  45     20200       1390         71        3          1       1.5     6         hot air      gas
+## 42 195000    0.41  32     27100       1954         71        4          0       2.5     8         hot air      gas
+## 43 150000    0.78  54     24500       1554         71        3          1       1.5     5         hot air      oil
+## 44 234900    0.89   9     41600       1976         64        3          0       2.5     6         hot air      gas
+## 45 279550    1.34   0     44400       2479         71        4          1       2.5    10         hot air      gas
+## 46 246500    1.00   0     17100       2714         71        4          1       2.5     9         hot air      gas
+## 47 124000    1.00  98     15500        797         52        2          0       1.0     3         hot air      oil
+## 48 138000    0.27  54      8900       1500         71        3          0       2.5     7 hot water/steam      gas
+## 49 290000    0.71  73     61000       1838         71        4          0       2.0     8         hot air      oil
+## 50 108000    0.90  48     19000       1042         71        2          1       2.0     3         hot air      gas
+## 51 134900    0.24  10      8000       1782         52        3          0       2.5     6         hot air      gas
+## 52  64500    0.06  16      1600       1480         52        2          1       2.5     5         hot air      gas
+## 53 142000    0.55  20     13800       1426         52        3          1       2.0     6         hot air      gas
+## 54 125000    0.34  32     11100       1404         52        3          0       2.0     5         hot air      gas
+## 55  88000    0.19  15      3400       1480         52        3          1       1.5     5 hot water/steam      gas
+## 56 135000    0.23 135      8100       1344         52        3          0       1.0     5 hot water/steam      gas
+## 57  90000    0.07  14      1800       1480         52        2          1       2.5     5         hot air      gas
+## 58  90100    0.09  15      2400       1480         52        3          1       1.5     7 hot water/steam      gas
+## 59 126900    0.25  10      8400       1596         52        3          0       2.5     6         hot air      gas
+## 60 175000    0.47  15     27200       1768         52        3          1       2.0     5        electric electric
+## 61 158000    0.36  10     12100       1348         52        2          1       2.0     3         hot air      gas
+## 62  92000    0.07  14      1800       1480         52        3          1       1.5     8         hot air      gas
+##                sewer waterfront newConstruction centralAir
+## 1             septic         No              No         No
+## 2             septic         No              No         No
+## 3  public/commercial         No              No         No
+## 4             septic         No              No         No
+## 5  public/commercial         No             Yes        Yes
+## 6             septic         No              No         No
+## 7             septic         No              No         No
+## 8             septic         No              No         No
+## 9             septic         No              No         No
+## 10              none         No              No         No
+## 11            septic         No              No         No
+## 12            septic         No              No         No
+## 13            septic         No              No         No
+## 14 public/commercial         No              No         No
+## 15            septic         No              No         No
+## 16 public/commercial         No              No         No
+## 17            septic         No              No         No
+## 18              none         No              No        Yes
+## 19            septic         No              No         No
+## 20            septic         No              No         No
+## 21            septic         No              No         No
+## 22 public/commercial         No              No         No
+## 23            septic         No             Yes        Yes
+## 24            septic         No              No         No
+## 25 public/commercial         No              No         No
+## 26            septic         No              No         No
+## 27            septic         No              No         No
+## 28            septic         No              No         No
+## 29 public/commercial        Yes              No         No
+## 30            septic         No              No        Yes
+## 31            septic         No              No         No
+## 32            septic         No              No         No
+## 33 public/commercial         No              No         No
+## 34            septic         No              No         No
+## 35            septic         No              No         No
+## 36            septic         No              No        Yes
+## 37              none         No              No         No
+## 38            septic         No              No         No
+## 39            septic         No              No         No
+## 40              none         No              No        Yes
+## 41            septic         No              No         No
+## 42            septic         No              No        Yes
+## 43            septic         No              No        Yes
+## 44 public/commercial         No              No        Yes
+## 45            septic         No              No         No
+## 46              none         No              No         No
+## 47            septic         No              No         No
+## 48            septic         No              No         No
+## 49            septic        Yes              No         No
+## 50            septic         No              No         No
+## 51 public/commercial         No              No        Yes
+## 52 public/commercial         No              No         No
+## 53            septic         No              No         No
+## 54            septic         No              No         No
+## 55 public/commercial         No              No        Yes
+## 56 public/commercial         No              No         No
+## 57 public/commercial         No              No        Yes
+## 58 public/commercial         No              No         No
+## 59 public/commercial         No              No         No
+## 60            septic         No              No         No
+## 61 public/commercial         No              No        Yes
+## 62 public/commercial         No              No         No
+##  [ reached &#39;max&#39; / getOption(&quot;max.print&quot;) -- omitted 1666 rows ]</code></pre>
+<div class="sourceCode" id="cb207"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb207-1"><a href="lab-iv-loops-lists-conditional-statements.html#cb207-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Accessing specific objects in the list</span></span>
+<span id="cb207-2"><a href="lab-iv-loops-lists-conditional-statements.html#cb207-2" aria-hidden="true" tabindex="-1"></a>list_1[[<span class="dv">3</span>]]</span></code></pre></div>
+<pre><code>## [1] 51 82 12 18 43</code></pre>
+<div class="sourceCode" id="cb209"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb209-1"><a href="lab-iv-loops-lists-conditional-statements.html#cb209-1" aria-hidden="true" tabindex="-1"></a>list_1[[<span class="dv">4</span>]]</span></code></pre></div>
+<pre><code>##     price lotSize age landValue livingArea pctCollege bedrooms fireplaces bathrooms rooms         heating     fuel
+## 1  132500    0.09  42     50000        906         35        2          1       1.0     5        electric electric
+## 2  181115    0.92   0     22300       1953         51        3          0       2.5     6 hot water/steam      gas
+## 3  109000    0.19 133      7300       1944         51        4          1       1.0     8 hot water/steam      gas
+## 4  155000    0.41  13     18700       1944         51        3          1       1.5     5         hot air      gas
+## 5   86060    0.11   0     15000        840         51        2          0       1.0     3         hot air      gas
+## 6  120000    0.68  31     14000       1152         22        4          1       1.0     8         hot air      gas
+## 7  153000    0.40  33     23300       2752         51        4          1       1.5     8 hot water/steam      oil
+## 8  170000    1.21  23     14600       1662         35        4          1       1.5     9         hot air      oil
+## 9   90000    0.83  36     22200       1632         51        3          0       1.5     8        electric electric
+## 10 122900    1.94   4     21200       1416         44        3          0       1.5     6         hot air      gas
+## 11 325000    2.29 123     12600       2894         51        7          0       1.0    12         hot air      oil
+## 12 120000    0.92   1     22300       1624         51        3          0       2.0     6         hot air      gas
+## 13  85860    8.97  13      4800        704         41        2          0       1.0     4        electric electric
+## 14  97000    0.11 153      3100       1383         57        3          0       2.0     5 hot water/steam      gas
+## 15 127000    0.14   9       300       1300         41        3          0       1.5     8         hot air      oil
+## 16  89900    0.00  88      2500        936         57        3          0       1.0     4 hot water/steam      gas
+## 17 155000    0.13   9       300       1300         41        3          0       1.5     7         hot air      oil
+## 18 253750    2.00   0     49800       2816         71        4          1       2.5    12         hot air      gas
+## 19  60000    0.21  82      8500        924         35        2          0       1.0     6 hot water/steam      oil
+## 20  87500    0.88  17     19400       1092         35        3          0       1.0     6         hot air      oil
+## 21 112000    1.00  12      8600       1056         35        3          0       1.0     7        electric electric
+## 22 104900    0.43  21      5600       1600         39        3          0       1.5     4        electric electric
+## 23 148635    0.32   1      6200       1576         39        3          0       2.5     7         hot air      gas
+## 24 150000    0.03  24      5100       2080         39        3          0       2.0     6         hot air      oil
+## 25  90400    0.36  16      5200       1600         39        3          0       1.5     4        electric electric
+## 26 248800    4.00  28      5500       2224         39        4          0       3.0    10         hot air      oil
+## 27 135000    1.83 126      6000       1656         39        3          0       1.0     6 hot water/steam      oil
+## 28 145000    3.00  26      4500       1170         39        4          0       1.5     5         hot air      oil
+## 29 457000    0.43  53      2700       2461         39        4          1       2.0    10         hot air      oil
+## 30 140000    0.44  56     19400       1544         71        3          1       1.5     7         hot air      oil
+## 31 130000    1.24  51     24800       1220         71        2          2       1.0     4 hot water/steam      oil
+## 32 187000    0.46   3     15200       1858         52        3          1       2.5     7         hot air      gas
+## 33 229000    0.87   9     41100       2219         64        3          1       2.0     8         hot air      gas
+## 34 227000    1.80 201     25500       1876         52        3          0       2.5     5         hot air      oil
+## 35 179900    0.46   1     15200       2026         52        4          1       2.5     6         hot air      gas
+## 36 169900    0.91  19     20200       1671         71        4          1       3.0     8         hot air      gas
+## 37 209900    0.46   1     15200       2060         52        4          1       2.5     7         hot air      gas
+## 38 169900    0.59   0     17300       1884         52        4          1       2.5     9         hot air      gas
+## 39 293000    7.24  43     36600       2022         71        4          2       3.0     6 hot water/steam      gas
+## 40 245900    0.19   0     20700       2394         71        4          1       2.5     7         hot air      gas
+## 41 157000    0.46  45     20200       1390         71        3          1       1.5     6         hot air      gas
+## 42 195000    0.41  32     27100       1954         71        4          0       2.5     8         hot air      gas
+## 43 150000    0.78  54     24500       1554         71        3          1       1.5     5         hot air      oil
+## 44 234900    0.89   9     41600       1976         64        3          0       2.5     6         hot air      gas
+## 45 279550    1.34   0     44400       2479         71        4          1       2.5    10         hot air      gas
+## 46 246500    1.00   0     17100       2714         71        4          1       2.5     9         hot air      gas
+## 47 124000    1.00  98     15500        797         52        2          0       1.0     3         hot air      oil
+## 48 138000    0.27  54      8900       1500         71        3          0       2.5     7 hot water/steam      gas
+## 49 290000    0.71  73     61000       1838         71        4          0       2.0     8         hot air      oil
+## 50 108000    0.90  48     19000       1042         71        2          1       2.0     3         hot air      gas
+## 51 134900    0.24  10      8000       1782         52        3          0       2.5     6         hot air      gas
+## 52  64500    0.06  16      1600       1480         52        2          1       2.5     5         hot air      gas
+## 53 142000    0.55  20     13800       1426         52        3          1       2.0     6         hot air      gas
+## 54 125000    0.34  32     11100       1404         52        3          0       2.0     5         hot air      gas
+## 55  88000    0.19  15      3400       1480         52        3          1       1.5     5 hot water/steam      gas
+## 56 135000    0.23 135      8100       1344         52        3          0       1.0     5 hot water/steam      gas
+## 57  90000    0.07  14      1800       1480         52        2          1       2.5     5         hot air      gas
+## 58  90100    0.09  15      2400       1480         52        3          1       1.5     7 hot water/steam      gas
+## 59 126900    0.25  10      8400       1596         52        3          0       2.5     6         hot air      gas
+## 60 175000    0.47  15     27200       1768         52        3          1       2.0     5        electric electric
+## 61 158000    0.36  10     12100       1348         52        2          1       2.0     3         hot air      gas
+## 62  92000    0.07  14      1800       1480         52        3          1       1.5     8         hot air      gas
+##                sewer waterfront newConstruction centralAir
+## 1             septic         No              No         No
+## 2             septic         No              No         No
+## 3  public/commercial         No              No         No
+## 4             septic         No              No         No
+## 5  public/commercial         No             Yes        Yes
+## 6             septic         No              No         No
+## 7             septic         No              No         No
+## 8             septic         No              No         No
+## 9             septic         No              No         No
+## 10              none         No              No         No
+## 11            septic         No              No         No
+## 12            septic         No              No         No
+## 13            septic         No              No         No
+## 14 public/commercial         No              No         No
+## 15            septic         No              No         No
+## 16 public/commercial         No              No         No
+## 17            septic         No              No         No
+## 18              none         No              No        Yes
+## 19            septic         No              No         No
+## 20            septic         No              No         No
+## 21            septic         No              No         No
+## 22 public/commercial         No              No         No
+## 23            septic         No             Yes        Yes
+## 24            septic         No              No         No
+## 25 public/commercial         No              No         No
+## 26            septic         No              No         No
+## 27            septic         No              No         No
+## 28            septic         No              No         No
+## 29 public/commercial        Yes              No         No
+## 30            septic         No              No        Yes
+## 31            septic         No              No         No
+## 32            septic         No              No         No
+## 33 public/commercial         No              No         No
+## 34            septic         No              No         No
+## 35            septic         No              No         No
+## 36            septic         No              No        Yes
+## 37              none         No              No         No
+## 38            septic         No              No         No
+## 39            septic         No              No         No
+## 40              none         No              No        Yes
+## 41            septic         No              No         No
+## 42            septic         No              No        Yes
+## 43            septic         No              No        Yes
+## 44 public/commercial         No              No        Yes
+## 45            septic         No              No         No
+## 46              none         No              No         No
+## 47            septic         No              No         No
+## 48            septic         No              No         No
+## 49            septic        Yes              No         No
+## 50            septic         No              No         No
+## 51 public/commercial         No              No        Yes
+## 52 public/commercial         No              No         No
+## 53            septic         No              No         No
+## 54            septic         No              No         No
+## 55 public/commercial         No              No        Yes
+## 56 public/commercial         No              No         No
+## 57 public/commercial         No              No        Yes
+## 58 public/commercial         No              No         No
+## 59 public/commercial         No              No         No
+## 60            septic         No              No         No
+## 61 public/commercial         No              No        Yes
+## 62 public/commercial         No              No         No
+##  [ reached &#39;max&#39; / getOption(&quot;max.print&quot;) -- omitted 1666 rows ]</code></pre>
+</div>
+</div>
+<div id="indexing-conditional-statements-if_else" class="section level2 hasAnchor" number="5.2">
+<h2><span class="header-section-number">5.2</span> Indexing, Conditional Statements, &amp; <code>if_else()</code><a href="lab-iv-loops-lists-conditional-statements.html#indexing-conditional-statements-if_else" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<ul>
+<li>We can pull specific values of a variable out with []
+<ul>
+<li>This works with vectors and dataframes/tibbles</li>
+</ul></li>
+</ul>
+<div class="sourceCode" id="cb211"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb211-1"><a href="lab-iv-loops-lists-conditional-statements.html#cb211-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Pulling 4th observation of ages</span></span>
+<span id="cb211-2"><a href="lab-iv-loops-lists-conditional-statements.html#cb211-2" aria-hidden="true" tabindex="-1"></a>ages[<span class="dv">4</span>]</span></code></pre></div>
+<pre><code>## [1] 18</code></pre>
+<div class="sourceCode" id="cb213"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb213-1"><a href="lab-iv-loops-lists-conditional-statements.html#cb213-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Pulling 1st observation of presidents</span></span>
+<span id="cb213-2"><a href="lab-iv-loops-lists-conditional-statements.html#cb213-2" aria-hidden="true" tabindex="-1"></a>presidents[<span class="dv">1</span>]</span></code></pre></div>
+<pre><code>## [1] &quot;Washington&quot;</code></pre>
+<div class="sourceCode" id="cb215"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb215-1"><a href="lab-iv-loops-lists-conditional-statements.html#cb215-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Pulling 2-4th observation of presidents</span></span>
+<span id="cb215-2"><a href="lab-iv-loops-lists-conditional-statements.html#cb215-2" aria-hidden="true" tabindex="-1"></a>presidents[<span class="dv">2</span><span class="sc">:</span><span class="dv">4</span>]</span></code></pre></div>
+<pre><code>## [1] &quot;Adams&quot;     &quot;Jefferson&quot; &quot;Madison&quot;</code></pre>
+<div class="sourceCode" id="cb217"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb217-1"><a href="lab-iv-loops-lists-conditional-statements.html#cb217-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Pulling all except the 3rd-5th observation of ages</span></span>
+<span id="cb217-2"><a href="lab-iv-loops-lists-conditional-statements.html#cb217-2" aria-hidden="true" tabindex="-1"></a>ages[<span class="sc">-</span><span class="dv">3</span>]</span></code></pre></div>
+<pre><code>## [1] 51 82 18 43</code></pre>
+<div class="sourceCode" id="cb219"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb219-1"><a href="lab-iv-loops-lists-conditional-statements.html#cb219-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Example with a dataframe/tibble</span></span>
+<span id="cb219-2"><a href="lab-iv-loops-lists-conditional-statements.html#cb219-2" aria-hidden="true" tabindex="-1"></a>SaratogaHouses[<span class="dv">2</span>,<span class="dv">4</span>]</span></code></pre></div>
+<pre><code>## [1] 22300</code></pre>
+<div class="sourceCode" id="cb221"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb221-1"><a href="lab-iv-loops-lists-conditional-statements.html#cb221-1" aria-hidden="true" tabindex="-1"></a>SaratogaHouses[<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>, <span class="dv">4</span><span class="sc">:</span><span class="dv">7</span>]</span></code></pre></div>
+<pre><code>##   landValue livingArea pctCollege bedrooms
+## 1     50000        906         35        2
+## 2     22300       1953         51        3
+## 3      7300       1944         51        4</code></pre>
+<ul>
+<li>You can also use indexing to pull out specific observations of a variable</li>
+</ul>
+<div class="sourceCode" id="cb223"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb223-1"><a href="lab-iv-loops-lists-conditional-statements.html#cb223-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Finding the prices for all houses with 3 bathrooms</span></span>
+<span id="cb223-2"><a href="lab-iv-loops-lists-conditional-statements.html#cb223-2" aria-hidden="true" tabindex="-1"></a>SaratogaHouses<span class="sc">$</span>price[SaratogaHouses<span class="sc">$</span>bathrooms <span class="sc">==</span> <span class="dv">3</span>]</span></code></pre></div>
+<pre><code>##  [1] 248800 169900 293000 205000 240000 235000 187000 293565 285558 133000 250000 322277 336000 359770 303374 500075
+## [17] 425000 465000 285000 374900 405000 278500 229000 420000 225000 349900 349900 330000 244900 253000 375000 262000
+## [33] 725000 455000 430000 397200 275055 272699 287989 300279 304065 314940 440760 255000 284595 342269 297065 345264
+## [49] 319000 307890 410000 395000 360000 281520 225570 314230</code></pre>
+<div class="sourceCode" id="cb225"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb225-1"><a href="lab-iv-loops-lists-conditional-statements.html#cb225-1" aria-hidden="true" tabindex="-1"></a><span class="do">## With dplyr</span></span>
+<span id="cb225-2"><a href="lab-iv-loops-lists-conditional-statements.html#cb225-2" aria-hidden="true" tabindex="-1"></a>SaratogaHouses <span class="sc">%&gt;%</span></span>
+<span id="cb225-3"><a href="lab-iv-loops-lists-conditional-statements.html#cb225-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(bathrooms <span class="sc">==</span> <span class="dv">3</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb225-4"><a href="lab-iv-loops-lists-conditional-statements.html#cb225-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pull</span>(price)</span></code></pre></div>
+<pre><code>##  [1] 248800 169900 293000 205000 240000 235000 187000 293565 285558 133000 250000 322277 336000 359770 303374 500075
+## [17] 425000 465000 285000 374900 405000 278500 229000 420000 225000 349900 349900 330000 244900 253000 375000 262000
+## [33] 725000 455000 430000 397200 275055 272699 287989 300279 304065 314940 440760 255000 284595 342269 297065 345264
+## [49] 319000 307890 410000 395000 360000 281520 225570 314230</code></pre>
+<ul>
+<li>These conditional statements can get more complicated as well</li>
+</ul>
+<div class="sourceCode" id="cb227"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb227-1"><a href="lab-iv-loops-lists-conditional-statements.html#cb227-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Finding the average price of a house with 5 bedrooms, 2 bathrooms, and a fireplace</span></span>
+<span id="cb227-2"><a href="lab-iv-loops-lists-conditional-statements.html#cb227-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb227-3"><a href="lab-iv-loops-lists-conditional-statements.html#cb227-3" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(SaratogaHouses<span class="sc">$</span>price[SaratogaHouses<span class="sc">$</span>bedrooms <span class="sc">==</span> <span class="dv">5</span> <span class="sc">&amp;</span> </span>
+<span id="cb227-4"><a href="lab-iv-loops-lists-conditional-statements.html#cb227-4" aria-hidden="true" tabindex="-1"></a>                            SaratogaHouses<span class="sc">$</span>bathrooms <span class="sc">==</span> <span class="dv">3</span> <span class="sc">&amp;</span> </span>
+<span id="cb227-5"><a href="lab-iv-loops-lists-conditional-statements.html#cb227-5" aria-hidden="true" tabindex="-1"></a>                            SaratogaHouses<span class="sc">$</span>fireplaces <span class="sc">&gt;</span> <span class="dv">0</span>])</span></code></pre></div>
+<pre><code>## [1] 256506.7</code></pre>
+<div class="sourceCode" id="cb229"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb229-1"><a href="lab-iv-loops-lists-conditional-statements.html#cb229-1" aria-hidden="true" tabindex="-1"></a><span class="do">## With dplyr</span></span>
+<span id="cb229-2"><a href="lab-iv-loops-lists-conditional-statements.html#cb229-2" aria-hidden="true" tabindex="-1"></a>SaratogaHouses <span class="sc">%&gt;%</span></span>
+<span id="cb229-3"><a href="lab-iv-loops-lists-conditional-statements.html#cb229-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(bedrooms <span class="sc">==</span> <span class="dv">5</span>, bathrooms <span class="sc">==</span> <span class="dv">3</span>, fireplaces <span class="sc">&gt;</span> <span class="dv">0</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb229-4"><a href="lab-iv-loops-lists-conditional-statements.html#cb229-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">avg_price =</span> <span class="fu">mean</span>(price))</span></code></pre></div>
+<pre><code>##   avg_price
+## 1  256506.7</code></pre>
+<div class="sourceCode" id="cb231"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb231-1"><a href="lab-iv-loops-lists-conditional-statements.html#cb231-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Finding the cheapest house with 3 bedrooms on the water</span></span>
+<span id="cb231-2"><a href="lab-iv-loops-lists-conditional-statements.html#cb231-2" aria-hidden="true" tabindex="-1"></a><span class="fu">min</span>(SaratogaHouses<span class="sc">$</span>price[SaratogaHouses<span class="sc">$</span>bedrooms <span class="sc">==</span> <span class="dv">3</span> <span class="sc">&amp;</span></span>
+<span id="cb231-3"><a href="lab-iv-loops-lists-conditional-statements.html#cb231-3" aria-hidden="true" tabindex="-1"></a>                           SaratogaHouses<span class="sc">$</span>waterfront <span class="sc">==</span> <span class="st">&quot;Yes&quot;</span>])</span></code></pre></div>
+<pre><code>## [1] 319000</code></pre>
+<div class="sourceCode" id="cb233"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb233-1"><a href="lab-iv-loops-lists-conditional-statements.html#cb233-1" aria-hidden="true" tabindex="-1"></a><span class="do">## With dply</span></span>
+<span id="cb233-2"><a href="lab-iv-loops-lists-conditional-statements.html#cb233-2" aria-hidden="true" tabindex="-1"></a>SaratogaHouses <span class="sc">%&gt;%</span></span>
+<span id="cb233-3"><a href="lab-iv-loops-lists-conditional-statements.html#cb233-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(bedrooms <span class="sc">==</span> <span class="dv">3</span>, waterfront <span class="sc">==</span> <span class="st">&quot;Yes&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb233-4"><a href="lab-iv-loops-lists-conditional-statements.html#cb233-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">cheapest_house =</span> <span class="fu">min</span>(price))</span></code></pre></div>
+<pre><code>##   cheapest_house
+## 1         319000</code></pre>
+<ul>
+<li>You can also use <code>if_else()</code> to create new variables in <code>mutate()</code></li>
+</ul>
+<div class="sourceCode" id="cb235"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb235-1"><a href="lab-iv-loops-lists-conditional-statements.html#cb235-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Showing if_else()</span></span>
+<span id="cb235-2"><a href="lab-iv-loops-lists-conditional-statements.html#cb235-2" aria-hidden="true" tabindex="-1"></a>SaratogaHouses <span class="ot">&lt;-</span> SaratogaHouses <span class="sc">%&gt;%</span></span>
+<span id="cb235-3"><a href="lab-iv-loops-lists-conditional-statements.html#cb235-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">fireplace =</span> <span class="fu">if_else</span>(fireplaces <span class="sc">&gt;</span> <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">0</span>))</span>
+<span id="cb235-4"><a href="lab-iv-loops-lists-conditional-statements.html#cb235-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb235-5"><a href="lab-iv-loops-lists-conditional-statements.html#cb235-5" aria-hidden="true" tabindex="-1"></a>SaratogaHouses <span class="sc">%&gt;%</span></span>
+<span id="cb235-6"><a href="lab-iv-loops-lists-conditional-statements.html#cb235-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">large_house =</span> <span class="fu">if_else</span>(rooms <span class="sc">&gt;</span> <span class="fu">mean</span>(rooms), <span class="dv">1</span>, <span class="dv">0</span>))</span></code></pre></div>
+<pre><code>##     price lotSize age landValue livingArea pctCollege bedrooms fireplaces bathrooms rooms         heating     fuel
+## 1  132500    0.09  42     50000        906         35        2          1       1.0     5        electric electric
+## 2  181115    0.92   0     22300       1953         51        3          0       2.5     6 hot water/steam      gas
+## 3  109000    0.19 133      7300       1944         51        4          1       1.0     8 hot water/steam      gas
+## 4  155000    0.41  13     18700       1944         51        3          1       1.5     5         hot air      gas
+## 5   86060    0.11   0     15000        840         51        2          0       1.0     3         hot air      gas
+## 6  120000    0.68  31     14000       1152         22        4          1       1.0     8         hot air      gas
+## 7  153000    0.40  33     23300       2752         51        4          1       1.5     8 hot water/steam      oil
+## 8  170000    1.21  23     14600       1662         35        4          1       1.5     9         hot air      oil
+## 9   90000    0.83  36     22200       1632         51        3          0       1.5     8        electric electric
+## 10 122900    1.94   4     21200       1416         44        3          0       1.5     6         hot air      gas
+## 11 325000    2.29 123     12600       2894         51        7          0       1.0    12         hot air      oil
+## 12 120000    0.92   1     22300       1624         51        3          0       2.0     6         hot air      gas
+## 13  85860    8.97  13      4800        704         41        2          0       1.0     4        electric electric
+## 14  97000    0.11 153      3100       1383         57        3          0       2.0     5 hot water/steam      gas
+## 15 127000    0.14   9       300       1300         41        3          0       1.5     8         hot air      oil
+## 16  89900    0.00  88      2500        936         57        3          0       1.0     4 hot water/steam      gas
+## 17 155000    0.13   9       300       1300         41        3          0       1.5     7         hot air      oil
+## 18 253750    2.00   0     49800       2816         71        4          1       2.5    12         hot air      gas
+## 19  60000    0.21  82      8500        924         35        2          0       1.0     6 hot water/steam      oil
+## 20  87500    0.88  17     19400       1092         35        3          0       1.0     6         hot air      oil
+## 21 112000    1.00  12      8600       1056         35        3          0       1.0     7        electric electric
+## 22 104900    0.43  21      5600       1600         39        3          0       1.5     4        electric electric
+## 23 148635    0.32   1      6200       1576         39        3          0       2.5     7         hot air      gas
+## 24 150000    0.03  24      5100       2080         39        3          0       2.0     6         hot air      oil
+## 25  90400    0.36  16      5200       1600         39        3          0       1.5     4        electric electric
+## 26 248800    4.00  28      5500       2224         39        4          0       3.0    10         hot air      oil
+## 27 135000    1.83 126      6000       1656         39        3          0       1.0     6 hot water/steam      oil
+## 28 145000    3.00  26      4500       1170         39        4          0       1.5     5         hot air      oil
+## 29 457000    0.43  53      2700       2461         39        4          1       2.0    10         hot air      oil
+## 30 140000    0.44  56     19400       1544         71        3          1       1.5     7         hot air      oil
+## 31 130000    1.24  51     24800       1220         71        2          2       1.0     4 hot water/steam      oil
+## 32 187000    0.46   3     15200       1858         52        3          1       2.5     7         hot air      gas
+## 33 229000    0.87   9     41100       2219         64        3          1       2.0     8         hot air      gas
+## 34 227000    1.80 201     25500       1876         52        3          0       2.5     5         hot air      oil
+## 35 179900    0.46   1     15200       2026         52        4          1       2.5     6         hot air      gas
+## 36 169900    0.91  19     20200       1671         71        4          1       3.0     8         hot air      gas
+## 37 209900    0.46   1     15200       2060         52        4          1       2.5     7         hot air      gas
+## 38 169900    0.59   0     17300       1884         52        4          1       2.5     9         hot air      gas
+## 39 293000    7.24  43     36600       2022         71        4          2       3.0     6 hot water/steam      gas
+## 40 245900    0.19   0     20700       2394         71        4          1       2.5     7         hot air      gas
+## 41 157000    0.46  45     20200       1390         71        3          1       1.5     6         hot air      gas
+## 42 195000    0.41  32     27100       1954         71        4          0       2.5     8         hot air      gas
+## 43 150000    0.78  54     24500       1554         71        3          1       1.5     5         hot air      oil
+## 44 234900    0.89   9     41600       1976         64        3          0       2.5     6         hot air      gas
+## 45 279550    1.34   0     44400       2479         71        4          1       2.5    10         hot air      gas
+## 46 246500    1.00   0     17100       2714         71        4          1       2.5     9         hot air      gas
+## 47 124000    1.00  98     15500        797         52        2          0       1.0     3         hot air      oil
+## 48 138000    0.27  54      8900       1500         71        3          0       2.5     7 hot water/steam      gas
+## 49 290000    0.71  73     61000       1838         71        4          0       2.0     8         hot air      oil
+## 50 108000    0.90  48     19000       1042         71        2          1       2.0     3         hot air      gas
+## 51 134900    0.24  10      8000       1782         52        3          0       2.5     6         hot air      gas
+## 52  64500    0.06  16      1600       1480         52        2          1       2.5     5         hot air      gas
+## 53 142000    0.55  20     13800       1426         52        3          1       2.0     6         hot air      gas
+## 54 125000    0.34  32     11100       1404         52        3          0       2.0     5         hot air      gas
+## 55  88000    0.19  15      3400       1480         52        3          1       1.5     5 hot water/steam      gas
+##                sewer waterfront newConstruction centralAir fireplace large_house
+## 1             septic         No              No         No         1           0
+## 2             septic         No              No         No         0           0
+## 3  public/commercial         No              No         No         1           1
+## 4             septic         No              No         No         1           0
+## 5  public/commercial         No             Yes        Yes         0           0
+## 6             septic         No              No         No         1           1
+## 7             septic         No              No         No         1           1
+## 8             septic         No              No         No         1           1
+## 9             septic         No              No         No         0           1
+## 10              none         No              No         No         0           0
+## 11            septic         No              No         No         0           1
+## 12            septic         No              No         No         0           0
+## 13            septic         No              No         No         0           0
+## 14 public/commercial         No              No         No         0           0
+## 15            septic         No              No         No         0           1
+## 16 public/commercial         No              No         No         0           0
+## 17            septic         No              No         No         0           0
+## 18              none         No              No        Yes         1           1
+## 19            septic         No              No         No         0           0
+## 20            septic         No              No         No         0           0
+## 21            septic         No              No         No         0           0
+## 22 public/commercial         No              No         No         0           0
+## 23            septic         No             Yes        Yes         0           0
+## 24            septic         No              No         No         0           0
+## 25 public/commercial         No              No         No         0           0
+## 26            septic         No              No         No         0           1
+## 27            septic         No              No         No         0           0
+## 28            septic         No              No         No         0           0
+## 29 public/commercial        Yes              No         No         1           1
+## 30            septic         No              No        Yes         1           0
+## 31            septic         No              No         No         1           0
+## 32            septic         No              No         No         1           0
+## 33 public/commercial         No              No         No         1           1
+## 34            septic         No              No         No         0           0
+## 35            septic         No              No         No         1           0
+## 36            septic         No              No        Yes         1           1
+## 37              none         No              No         No         1           0
+## 38            septic         No              No         No         1           1
+## 39            septic         No              No         No         1           0
+## 40              none         No              No        Yes         1           0
+## 41            septic         No              No         No         1           0
+## 42            septic         No              No        Yes         0           1
+## 43            septic         No              No        Yes         1           0
+## 44 public/commercial         No              No        Yes         0           0
+## 45            septic         No              No         No         1           1
+## 46              none         No              No         No         1           1
+## 47            septic         No              No         No         0           0
+## 48            septic         No              No         No         0           0
+## 49            septic        Yes              No         No         0           1
+## 50            septic         No              No         No         1           0
+## 51 public/commercial         No              No        Yes         0           0
+## 52 public/commercial         No              No         No         1           0
+## 53            septic         No              No         No         1           0
+## 54            septic         No              No         No         0           0
+## 55 public/commercial         No              No        Yes         1           0
+##  [ reached &#39;max&#39; / getOption(&quot;max.print&quot;) -- omitted 1673 rows ]</code></pre>
+</div>
+<div id="loops" class="section level2 hasAnchor" number="5.3">
+<h2><span class="header-section-number">5.3</span> Loops<a href="lab-iv-loops-lists-conditional-statements.html#loops" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="what-is-a-loop" class="section level3 hasAnchor" number="5.3.1">
+<h3><span class="header-section-number">5.3.1</span> What is a Loop?<a href="lab-iv-loops-lists-conditional-statements.html#what-is-a-loop" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ul>
+<li>A central concept of programming that is found in most programming languages</li>
+<li>Loops are control statements that execute one or more statements for a desired number of times</li>
+<li>Loops can be used to iterate applying a function a certain number of times to a specified object(s)</li>
+</ul>
+</div>
+<div id="how-loops-work-in-r" class="section level3 hasAnchor" number="5.3.2">
+<h3><span class="header-section-number">5.3.2</span> How Loops Work in R<a href="lab-iv-loops-lists-conditional-statements.html#how-loops-work-in-r" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb237"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb237-1"><a href="lab-iv-loops-lists-conditional-statements.html#cb237-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Basic Loop</span></span>
+<span id="cb237-2"><a href="lab-iv-loops-lists-conditional-statements.html#cb237-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">15</span>) {</span>
+<span id="cb237-3"><a href="lab-iv-loops-lists-conditional-statements.html#cb237-3" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb237-4"><a href="lab-iv-loops-lists-conditional-statements.html#cb237-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(i)</span>
+<span id="cb237-5"><a href="lab-iv-loops-lists-conditional-statements.html#cb237-5" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb237-6"><a href="lab-iv-loops-lists-conditional-statements.html#cb237-6" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<pre><code>## [1] 1
+## [1] 2
+## [1] 3
+## [1] 4
+## [1] 5
+## [1] 6
+## [1] 7
+## [1] 8
+## [1] 9
+## [1] 10
+## [1] 11
+## [1] 12
+## [1] 13
+## [1] 14
+## [1] 15</code></pre>
+<ul>
+<li>Without <code>print()</code>
+<ul>
+<li>What happened?</li>
+</ul></li>
+</ul>
+<div class="sourceCode" id="cb239"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb239-1"><a href="lab-iv-loops-lists-conditional-statements.html#cb239-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Basic Loop</span></span>
+<span id="cb239-2"><a href="lab-iv-loops-lists-conditional-statements.html#cb239-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>) {</span>
+<span id="cb239-3"><a href="lab-iv-loops-lists-conditional-statements.html#cb239-3" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb239-4"><a href="lab-iv-loops-lists-conditional-statements.html#cb239-4" aria-hidden="true" tabindex="-1"></a>  i</span>
+<span id="cb239-5"><a href="lab-iv-loops-lists-conditional-statements.html#cb239-5" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb239-6"><a href="lab-iv-loops-lists-conditional-statements.html#cb239-6" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<ul>
+<li>Works for character and numeric vectors too</li>
+</ul>
+<div class="sourceCode" id="cb240"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb240-1"><a href="lab-iv-loops-lists-conditional-statements.html#cb240-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Character Vector</span></span>
+<span id="cb240-2"><a href="lab-iv-loops-lists-conditional-statements.html#cb240-2" aria-hidden="true" tabindex="-1"></a>parties <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Democratic&quot;</span>, <span class="st">&quot;Republican&quot;</span>, <span class="st">&quot;Libertarian&quot;</span>, <span class="st">&quot;Green&quot;</span>)</span>
+<span id="cb240-3"><a href="lab-iv-loops-lists-conditional-statements.html#cb240-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb240-4"><a href="lab-iv-loops-lists-conditional-statements.html#cb240-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> parties) {</span>
+<span id="cb240-5"><a href="lab-iv-loops-lists-conditional-statements.html#cb240-5" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb240-6"><a href="lab-iv-loops-lists-conditional-statements.html#cb240-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(i)</span>
+<span id="cb240-7"><a href="lab-iv-loops-lists-conditional-statements.html#cb240-7" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb240-8"><a href="lab-iv-loops-lists-conditional-statements.html#cb240-8" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<pre><code>## [1] &quot;Democratic&quot;
+## [1] &quot;Republican&quot;
+## [1] &quot;Libertarian&quot;
+## [1] &quot;Green&quot;</code></pre>
+<div class="sourceCode" id="cb242"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb242-1"><a href="lab-iv-loops-lists-conditional-statements.html#cb242-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Numeric Vector</span></span>
+<span id="cb242-2"><a href="lab-iv-loops-lists-conditional-statements.html#cb242-2" aria-hidden="true" tabindex="-1"></a>numbers <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>)</span>
+<span id="cb242-3"><a href="lab-iv-loops-lists-conditional-statements.html#cb242-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> numbers) {</span>
+<span id="cb242-4"><a href="lab-iv-loops-lists-conditional-statements.html#cb242-4" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb242-5"><a href="lab-iv-loops-lists-conditional-statements.html#cb242-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(i)</span>
+<span id="cb242-6"><a href="lab-iv-loops-lists-conditional-statements.html#cb242-6" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb242-7"><a href="lab-iv-loops-lists-conditional-statements.html#cb242-7" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<pre><code>## [1] 1
+## [1] 2
+## [1] 3
+## [1] 4
+## [1] 5</code></pre>
+<ul>
+<li>Let’s write a loop that applies the square root function to a vector of integers</li>
+</ul>
+<div class="sourceCode" id="cb244"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb244-1"><a href="lab-iv-loops-lists-conditional-statements.html#cb244-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Square Root Loop</span></span>
+<span id="cb244-2"><a href="lab-iv-loops-lists-conditional-statements.html#cb244-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(numbers)) {</span>
+<span id="cb244-3"><a href="lab-iv-loops-lists-conditional-statements.html#cb244-3" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb244-4"><a href="lab-iv-loops-lists-conditional-statements.html#cb244-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="fu">sqrt</span>(i))</span>
+<span id="cb244-5"><a href="lab-iv-loops-lists-conditional-statements.html#cb244-5" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb244-6"><a href="lab-iv-loops-lists-conditional-statements.html#cb244-6" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<pre><code>## [1] 1
+## [1] 1.414214
+## [1] 1.732051
+## [1] 2
+## [1] 2.236068</code></pre>
+</div>
+<div id="conditional-statements-stopping-loops" class="section level3 hasAnchor" number="5.3.3">
+<h3><span class="header-section-number">5.3.3</span> Conditional Statements &amp; Stopping Loops<a href="lab-iv-loops-lists-conditional-statements.html#conditional-statements-stopping-loops" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb246"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb246-1"><a href="lab-iv-loops-lists-conditional-statements.html#cb246-1" aria-hidden="true" tabindex="-1"></a><span class="do">## A Loop That Stops</span></span>
+<span id="cb246-2"><a href="lab-iv-loops-lists-conditional-statements.html#cb246-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> parties) {</span>
+<span id="cb246-3"><a href="lab-iv-loops-lists-conditional-statements.html#cb246-3" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb246-4"><a href="lab-iv-loops-lists-conditional-statements.html#cb246-4" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (i <span class="sc">==</span> <span class="st">&quot;Libertarian&quot;</span>) {</span>
+<span id="cb246-5"><a href="lab-iv-loops-lists-conditional-statements.html#cb246-5" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb246-6"><a href="lab-iv-loops-lists-conditional-statements.html#cb246-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">break</span></span>
+<span id="cb246-7"><a href="lab-iv-loops-lists-conditional-statements.html#cb246-7" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb246-8"><a href="lab-iv-loops-lists-conditional-statements.html#cb246-8" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb246-9"><a href="lab-iv-loops-lists-conditional-statements.html#cb246-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(i)</span>
+<span id="cb246-10"><a href="lab-iv-loops-lists-conditional-statements.html#cb246-10" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<pre><code>## [1] &quot;Democratic&quot;
+## [1] &quot;Republican&quot;</code></pre>
+</div>
+<div id="conditional-statements-skipping-iterations" class="section level3 hasAnchor" number="5.3.4">
+<h3><span class="header-section-number">5.3.4</span> Conditional Statements &amp; Skipping Iterations<a href="lab-iv-loops-lists-conditional-statements.html#conditional-statements-skipping-iterations" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb248"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb248-1"><a href="lab-iv-loops-lists-conditional-statements.html#cb248-1" aria-hidden="true" tabindex="-1"></a><span class="do">## A Loop That Skips An Iteration</span></span>
+<span id="cb248-2"><a href="lab-iv-loops-lists-conditional-statements.html#cb248-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> parties) {</span>
+<span id="cb248-3"><a href="lab-iv-loops-lists-conditional-statements.html#cb248-3" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb248-4"><a href="lab-iv-loops-lists-conditional-statements.html#cb248-4" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (i <span class="sc">==</span> <span class="st">&quot;Republican&quot;</span>) {</span>
+<span id="cb248-5"><a href="lab-iv-loops-lists-conditional-statements.html#cb248-5" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb248-6"><a href="lab-iv-loops-lists-conditional-statements.html#cb248-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">next</span></span>
+<span id="cb248-7"><a href="lab-iv-loops-lists-conditional-statements.html#cb248-7" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb248-8"><a href="lab-iv-loops-lists-conditional-statements.html#cb248-8" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb248-9"><a href="lab-iv-loops-lists-conditional-statements.html#cb248-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(i)</span>
+<span id="cb248-10"><a href="lab-iv-loops-lists-conditional-statements.html#cb248-10" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb248-11"><a href="lab-iv-loops-lists-conditional-statements.html#cb248-11" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<pre><code>## [1] &quot;Democratic&quot;
+## [1] &quot;Libertarian&quot;
+## [1] &quot;Green&quot;</code></pre>
+</div>
+<div id="if-else-statements" class="section level3 hasAnchor" number="5.3.5">
+<h3><span class="header-section-number">5.3.5</span> if else Statements<a href="lab-iv-loops-lists-conditional-statements.html#if-else-statements" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb250"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb250-1"><a href="lab-iv-loops-lists-conditional-statements.html#cb250-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Using if else</span></span>
+<span id="cb250-2"><a href="lab-iv-loops-lists-conditional-statements.html#cb250-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> numbers) {</span>
+<span id="cb250-3"><a href="lab-iv-loops-lists-conditional-statements.html#cb250-3" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb250-4"><a href="lab-iv-loops-lists-conditional-statements.html#cb250-4" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (i <span class="sc">&gt;</span> <span class="dv">3</span>) {</span>
+<span id="cb250-5"><a href="lab-iv-loops-lists-conditional-statements.html#cb250-5" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb250-6"><a href="lab-iv-loops-lists-conditional-statements.html#cb250-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(<span class="st">&quot;Number Greater Than 3&quot;</span>)</span>
+<span id="cb250-7"><a href="lab-iv-loops-lists-conditional-statements.html#cb250-7" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb250-8"><a href="lab-iv-loops-lists-conditional-statements.html#cb250-8" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb250-9"><a href="lab-iv-loops-lists-conditional-statements.html#cb250-9" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb250-10"><a href="lab-iv-loops-lists-conditional-statements.html#cb250-10" aria-hidden="true" tabindex="-1"></a>  <span class="cf">else</span> {</span>
+<span id="cb250-11"><a href="lab-iv-loops-lists-conditional-statements.html#cb250-11" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb250-12"><a href="lab-iv-loops-lists-conditional-statements.html#cb250-12" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(<span class="st">&quot;Number Less Than 4&quot;</span>)</span>
+<span id="cb250-13"><a href="lab-iv-loops-lists-conditional-statements.html#cb250-13" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb250-14"><a href="lab-iv-loops-lists-conditional-statements.html#cb250-14" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb250-15"><a href="lab-iv-loops-lists-conditional-statements.html#cb250-15" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb250-16"><a href="lab-iv-loops-lists-conditional-statements.html#cb250-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(i)</span>
+<span id="cb250-17"><a href="lab-iv-loops-lists-conditional-statements.html#cb250-17" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb250-18"><a href="lab-iv-loops-lists-conditional-statements.html#cb250-18" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<pre><code>## [1] &quot;Number Less Than 4&quot;
+## [1] 1
+## [1] &quot;Number Less Than 4&quot;
+## [1] 2
+## [1] &quot;Number Less Than 4&quot;
+## [1] 3
+## [1] &quot;Number Greater Than 3&quot;
+## [1] 4
+## [1] &quot;Number Greater Than 3&quot;
+## [1] 5</code></pre>
+</div>
+<div id="more-complicated-loops" class="section level3 hasAnchor" number="5.3.6">
+<h3><span class="header-section-number">5.3.6</span> More Complicated Loops<a href="lab-iv-loops-lists-conditional-statements.html#more-complicated-loops" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ul>
+<li>What is going on here?
+<ul>
+<li>page 146 in Imai &amp; Williams (2022)</li>
+</ul></li>
+</ul>
+<div class="sourceCode" id="cb252"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb252-1"><a href="lab-iv-loops-lists-conditional-statements.html#cb252-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Example from QSS</span></span>
+<span id="cb252-2"><a href="lab-iv-loops-lists-conditional-statements.html#cb252-2" aria-hidden="true" tabindex="-1"></a>values <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">6</span>)</span>
+<span id="cb252-3"><a href="lab-iv-loops-lists-conditional-statements.html#cb252-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb252-4"><a href="lab-iv-loops-lists-conditional-statements.html#cb252-4" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="fu">length</span>(values)</span>
+<span id="cb252-5"><a href="lab-iv-loops-lists-conditional-statements.html#cb252-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb252-6"><a href="lab-iv-loops-lists-conditional-statements.html#cb252-6" aria-hidden="true" tabindex="-1"></a>results <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="cn">NA</span>, n)</span>
+<span id="cb252-7"><a href="lab-iv-loops-lists-conditional-statements.html#cb252-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb252-8"><a href="lab-iv-loops-lists-conditional-statements.html#cb252-8" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="fu">seq_along</span>(values)) {</span>
+<span id="cb252-9"><a href="lab-iv-loops-lists-conditional-statements.html#cb252-9" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb252-10"><a href="lab-iv-loops-lists-conditional-statements.html#cb252-10" aria-hidden="true" tabindex="-1"></a>  results[i] <span class="ot">&lt;-</span> values[i] <span class="sc">*</span> <span class="dv">2</span></span>
+<span id="cb252-11"><a href="lab-iv-loops-lists-conditional-statements.html#cb252-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="fu">str_c</span>(values[i], <span class="st">&quot; times 2 is equal to &quot;</span>, results[i]))</span>
+<span id="cb252-12"><a href="lab-iv-loops-lists-conditional-statements.html#cb252-12" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb252-13"><a href="lab-iv-loops-lists-conditional-statements.html#cb252-13" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<pre><code>## [1] &quot;2 times 2 is equal to 4&quot;
+## [1] &quot;4 times 2 is equal to 8&quot;
+## [1] &quot;6 times 2 is equal to 12&quot;</code></pre>
+<ul>
+<li>What is going on here?</li>
+</ul>
+<div class="sourceCode" id="cb254"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb254-1"><a href="lab-iv-loops-lists-conditional-statements.html#cb254-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Loop to Calculate A Series of Means</span></span>
+<span id="cb254-2"><a href="lab-iv-loops-lists-conditional-statements.html#cb254-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(<span class="fu">unique</span>(SaratogaHouses<span class="sc">$</span>bedrooms))) {</span>
+<span id="cb254-3"><a href="lab-iv-loops-lists-conditional-statements.html#cb254-3" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb254-4"><a href="lab-iv-loops-lists-conditional-statements.html#cb254-4" aria-hidden="true" tabindex="-1"></a>  x <span class="ot">&lt;-</span> <span class="fu">mean</span>(SaratogaHouses<span class="sc">$</span>price[SaratogaHouses<span class="sc">$</span>bedrooms <span class="sc">==</span> i])</span>
+<span id="cb254-5"><a href="lab-iv-loops-lists-conditional-statements.html#cb254-5" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb254-6"><a href="lab-iv-loops-lists-conditional-statements.html#cb254-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">names</span>(x) <span class="ot">&lt;-</span> i</span>
+<span id="cb254-7"><a href="lab-iv-loops-lists-conditional-statements.html#cb254-7" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb254-8"><a href="lab-iv-loops-lists-conditional-statements.html#cb254-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(x)</span>
+<span id="cb254-9"><a href="lab-iv-loops-lists-conditional-statements.html#cb254-9" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb254-10"><a href="lab-iv-loops-lists-conditional-statements.html#cb254-10" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<pre><code>##        1 
+## 192771.4 
+##        2 
+## 152561.3 
+##      3 
+## 200678 
+##        4 
+## 265550.6 
+##        5 
+## 276577.5 
+##        6 
+## 277328.8 
+##        7 
+## 226666.7</code></pre>
+<ul>
+<li>Same thing with <code>library(tidyverse)</code></li>
+</ul>
+<div class="sourceCode" id="cb256"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb256-1"><a href="lab-iv-loops-lists-conditional-statements.html#cb256-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Using dplyr()</span></span>
+<span id="cb256-2"><a href="lab-iv-loops-lists-conditional-statements.html#cb256-2" aria-hidden="true" tabindex="-1"></a>SaratogaHouses <span class="sc">%&gt;%</span></span>
+<span id="cb256-3"><a href="lab-iv-loops-lists-conditional-statements.html#cb256-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">group_by</span>(bedrooms) <span class="sc">%&gt;%</span></span>
+<span id="cb256-4"><a href="lab-iv-loops-lists-conditional-statements.html#cb256-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarise</span>(<span class="at">avg_price =</span> <span class="fu">mean</span>(price))</span></code></pre></div>
+<pre><code>## # A tibble: 7 × 2
+##   bedrooms avg_price
+##      &lt;int&gt;     &lt;dbl&gt;
+## 1        1   192771.
+## 2        2   152561.
+## 3        3   200678.
+## 4        4   265551.
+## 5        5   276578.
+## 6        6   277329.
+## 7        7   226667.</code></pre>
+</div>
+<div id="conditional-means" class="section level3 hasAnchor" number="5.3.7">
+<h3><span class="header-section-number">5.3.7</span> Conditional Means<a href="lab-iv-loops-lists-conditional-statements.html#conditional-means" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ul>
+<li>A conditional mean is simply the mean of some variable given when a certain set of conditions are met. We do this in R by indexing and subsetting. As an example, assume that you may be interested in voter turnout by identity group. Thus, you are calculating the mean of voter turnout conditional on identity status. Remember this for regression to help intuitively understand what OLS is doing.</li>
+</ul>
+</div>
+<div id="factor-variables" class="section level3 hasAnchor" number="5.3.8">
+<h3><span class="header-section-number">5.3.8</span> Factor Variables<a href="lab-iv-loops-lists-conditional-statements.html#factor-variables" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ul>
+<li>A factor variable is a categorical variable that can only take a distinct set of values. An example is marital status which could take single, married, or divorced. A categorical variable like a people’s names is not a factor variable as it could essentially take an infinite number of possible values.</li>
+</ul>
+</div>
+</div>
+<div id="lab-questions" class="section level2 hasAnchor" number="5.4">
+<h2><span class="header-section-number">5.4</span> Lab Questions<a href="lab-iv-loops-lists-conditional-statements.html#lab-questions" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="use-a-loop-and-librarydplyr-to-calculate-the-maximum-price-of-a-house-conditional-on-the-number-of-rooms-that-a-house-has." class="section level3 hasAnchor" number="5.4.1">
+<h3><span class="header-section-number">5.4.1</span> Use a loop and <code>library(dplyr)</code> to calculate the maximum price of a house conditional on the number of rooms that a house has.<a href="lab-iv-loops-lists-conditional-statements.html#use-a-loop-and-librarydplyr-to-calculate-the-maximum-price-of-a-house-conditional-on-the-number-of-rooms-that-a-house-has." class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb258"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb258-1"><a href="lab-iv-loops-lists-conditional-statements.html#cb258-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Loop</span></span>
+<span id="cb258-2"><a href="lab-iv-loops-lists-conditional-statements.html#cb258-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(<span class="fu">unique</span>(SaratogaHouses<span class="sc">$</span>rooms))) {</span>
+<span id="cb258-3"><a href="lab-iv-loops-lists-conditional-statements.html#cb258-3" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb258-4"><a href="lab-iv-loops-lists-conditional-statements.html#cb258-4" aria-hidden="true" tabindex="-1"></a>  x <span class="ot">&lt;-</span> <span class="fu">mean</span>(SaratogaHouses<span class="sc">$</span>price[SaratogaHouses<span class="sc">$</span>rooms <span class="sc">==</span> i], <span class="at">na.rm =</span> T)</span>
+<span id="cb258-5"><a href="lab-iv-loops-lists-conditional-statements.html#cb258-5" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb258-6"><a href="lab-iv-loops-lists-conditional-statements.html#cb258-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">names</span>(x) <span class="ot">&lt;-</span> i</span>
+<span id="cb258-7"><a href="lab-iv-loops-lists-conditional-statements.html#cb258-7" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb258-8"><a href="lab-iv-loops-lists-conditional-statements.html#cb258-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(x)</span>
+<span id="cb258-9"><a href="lab-iv-loops-lists-conditional-statements.html#cb258-9" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb258-10"><a href="lab-iv-loops-lists-conditional-statements.html#cb258-10" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<pre><code>##   1 
+## NaN 
+##     2 
+## 94500 
+##        3 
+## 134156.2 
+##        4 
+## 168917.7 
+##        5 
+## 167297.6 
+##        6 
+## 185313.7 
+##      7 
+## 191829 
+##        8 
+## 220596.8 
+##        9 
+## 245278.8 
+##       10 
+## 288567.2 
+##       11 
+## 305913.7</code></pre>
+<div class="sourceCode" id="cb260"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb260-1"><a href="lab-iv-loops-lists-conditional-statements.html#cb260-1" aria-hidden="true" tabindex="-1"></a><span class="do">## With dplyr</span></span>
+<span id="cb260-2"><a href="lab-iv-loops-lists-conditional-statements.html#cb260-2" aria-hidden="true" tabindex="-1"></a>SaratogaHouses <span class="sc">%&gt;%</span></span>
+<span id="cb260-3"><a href="lab-iv-loops-lists-conditional-statements.html#cb260-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(rooms) <span class="sc">%&gt;%</span></span>
+<span id="cb260-4"><a href="lab-iv-loops-lists-conditional-statements.html#cb260-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">avg_price =</span> <span class="fu">mean</span>(price))</span></code></pre></div>
+<pre><code>## # A tibble: 11 × 2
+##    rooms avg_price
+##    &lt;int&gt;     &lt;dbl&gt;
+##  1     2    94500 
+##  2     3   134156.
+##  3     4   168918.
+##  4     5   167298.
+##  5     6   185314.
+##  6     7   191829.
+##  7     8   220597.
+##  8     9   245279.
+##  9    10   288567.
+## 10    11   305914.
+## 11    12   373219.</code></pre>
+</div>
+<div id="create-a-loop-that-calculates-the-maximum-and-minimum-house-prices-by-number-of-bedrooms.-replicate-with-librarydplyr" class="section level3 hasAnchor" number="5.4.2">
+<h3><span class="header-section-number">5.4.2</span> Create a loop that calculates the maximum and minimum house prices by number of bedrooms. Replicate with <code>library(dplyr)</code><a href="lab-iv-loops-lists-conditional-statements.html#create-a-loop-that-calculates-the-maximum-and-minimum-house-prices-by-number-of-bedrooms.-replicate-with-librarydplyr" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb262"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb262-1"><a href="lab-iv-loops-lists-conditional-statements.html#cb262-1" aria-hidden="true" tabindex="-1"></a><span class="do">## With Loop</span></span>
+<span id="cb262-2"><a href="lab-iv-loops-lists-conditional-statements.html#cb262-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(<span class="fu">unique</span>(SaratogaHouses<span class="sc">$</span>bedrooms))) {</span>
+<span id="cb262-3"><a href="lab-iv-loops-lists-conditional-statements.html#cb262-3" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb262-4"><a href="lab-iv-loops-lists-conditional-statements.html#cb262-4" aria-hidden="true" tabindex="-1"></a>  max_price <span class="ot">&lt;-</span> <span class="fu">max</span>(SaratogaHouses<span class="sc">$</span>price[SaratogaHouses<span class="sc">$</span>bedrooms <span class="sc">==</span> i], <span class="at">na.rm =</span> T)</span>
+<span id="cb262-5"><a href="lab-iv-loops-lists-conditional-statements.html#cb262-5" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb262-6"><a href="lab-iv-loops-lists-conditional-statements.html#cb262-6" aria-hidden="true" tabindex="-1"></a>  min_price <span class="ot">&lt;-</span> <span class="fu">min</span>(SaratogaHouses<span class="sc">$</span>price[SaratogaHouses<span class="sc">$</span>bedrooms <span class="sc">==</span> i], <span class="at">na.rm =</span> T)</span>
+<span id="cb262-7"><a href="lab-iv-loops-lists-conditional-statements.html#cb262-7" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb262-8"><a href="lab-iv-loops-lists-conditional-statements.html#cb262-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">names</span>(max_price) <span class="ot">&lt;-</span> i</span>
+<span id="cb262-9"><a href="lab-iv-loops-lists-conditional-statements.html#cb262-9" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb262-10"><a href="lab-iv-loops-lists-conditional-statements.html#cb262-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">names</span>(min_price) <span class="ot">&lt;-</span> i</span>
+<span id="cb262-11"><a href="lab-iv-loops-lists-conditional-statements.html#cb262-11" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb262-12"><a href="lab-iv-loops-lists-conditional-statements.html#cb262-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="fu">c</span>(max_price, min_price))</span>
+<span id="cb262-13"><a href="lab-iv-loops-lists-conditional-statements.html#cb262-13" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb262-14"><a href="lab-iv-loops-lists-conditional-statements.html#cb262-14" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<pre><code>##      1      1 
+## 315000  78000 
+##      2      2 
+## 655000  10300 
+##      3      3 
+## 775000   5000 
+##      4      4 
+## 725000  65000 
+##      5      5 
+## 775000 119900 
+##      6      6 
+## 422680  95000 
+##      7      7 
+## 325000 131000</code></pre>
+<div class="sourceCode" id="cb264"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb264-1"><a href="lab-iv-loops-lists-conditional-statements.html#cb264-1" aria-hidden="true" tabindex="-1"></a><span class="do">## With dplyr</span></span>
+<span id="cb264-2"><a href="lab-iv-loops-lists-conditional-statements.html#cb264-2" aria-hidden="true" tabindex="-1"></a>SaratogaHouses <span class="sc">%&gt;%</span></span>
+<span id="cb264-3"><a href="lab-iv-loops-lists-conditional-statements.html#cb264-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(bedrooms) <span class="sc">%&gt;%</span></span>
+<span id="cb264-4"><a href="lab-iv-loops-lists-conditional-statements.html#cb264-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">max_price =</span> <span class="fu">max</span>(price),</span>
+<span id="cb264-5"><a href="lab-iv-loops-lists-conditional-statements.html#cb264-5" aria-hidden="true" tabindex="-1"></a>            <span class="at">min_price =</span> <span class="fu">min</span>(price))</span></code></pre></div>
+<pre><code>## # A tibble: 7 × 3
+##   bedrooms max_price min_price
+##      &lt;int&gt;     &lt;int&gt;     &lt;int&gt;
+## 1        1    315000     78000
+## 2        2    655000     10300
+## 3        3    775000      5000
+## 4        4    725000     65000
+## 5        5    775000    119900
+## 6        6    422680     95000
+## 7        7    325000    131000</code></pre>
+</div>
+<div id="what-is-the-most-number-of-fireplaces-in-a-house-with-five-bedrooms" class="section level3 hasAnchor" number="5.4.3">
+<h3><span class="header-section-number">5.4.3</span> What is the most number of fireplaces in a house with five bedrooms?<a href="lab-iv-loops-lists-conditional-statements.html#what-is-the-most-number-of-fireplaces-in-a-house-with-five-bedrooms" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb266"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb266-1"><a href="lab-iv-loops-lists-conditional-statements.html#cb266-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Most Fireplace in 5 bedroom house</span></span>
+<span id="cb266-2"><a href="lab-iv-loops-lists-conditional-statements.html#cb266-2" aria-hidden="true" tabindex="-1"></a><span class="fu">max</span>(SaratogaHouses<span class="sc">$</span>fireplaces[SaratogaHouses<span class="sc">$</span>bedrooms <span class="sc">==</span> <span class="dv">5</span>])</span></code></pre></div>
+<pre><code>## [1] 4</code></pre>
+</div>
+</div>
+<div id="practice-creating-your-own-loops" class="section level2 hasAnchor" number="5.5">
+<h2><span class="header-section-number">5.5</span> Practice Creating Your Own Loops<a href="lab-iv-loops-lists-conditional-statements.html#practice-creating-your-own-loops" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<ul>
+<li>Use <code>SaratogaHouses</code> or use the <code>data()</code> command to bring in a dataset of your interest and write a loop to carry out an easy task.</li>
+</ul>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="lab-iii-univariate-visualizations.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

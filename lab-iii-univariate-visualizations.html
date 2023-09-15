@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>4 Lab III: Univariate Visualizations | GOVT 8001: Shared Working Book</title>
+  <meta name="description" content="4 Lab III: Univariate Visualizations | GOVT 8001: Shared Working Book" />
+  <meta name="generator" content="bookdown 0.35 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="4 Lab III: Univariate Visualizations | GOVT 8001: Shared Working Book" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="4 Lab III: Univariate Visualizations | GOVT 8001: Shared Working Book" />
+  
+  
+  
+
+<meta name="author" content="Benjamin Reese" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="lab-ii-introduction-to-librarytidyverse-r-markdown.html"/>
+<link rel="next" href="lab-iv-loops-lists-conditional-statements.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#purpose-of-this-site"><i class="fa fa-check"></i><b>1.1</b> Purpose of This Site</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#loading-data"><i class="fa fa-check"></i><b>1.2</b> Loading Data</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="lab-i-introduction-to-r-r-studio.html"><a href="lab-i-introduction-to-r-r-studio.html"><i class="fa fa-check"></i><b>2</b> Lab I: Introduction to R &amp; R Studio</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="lab-i-introduction-to-r-r-studio.html"><a href="lab-i-introduction-to-r-r-studio.html#intro-to-r"><i class="fa fa-check"></i><b>2.1</b> Intro to R</a></li>
+<li class="chapter" data-level="2.2" data-path="lab-i-introduction-to-r-r-studio.html"><a href="lab-i-introduction-to-r-r-studio.html#intro-to-librarytidyverse"><i class="fa fa-check"></i><b>2.2</b> Intro to <code>library(tidyverse)</code></a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="lab-ii-introduction-to-librarytidyverse-r-markdown.html"><a href="lab-ii-introduction-to-librarytidyverse-r-markdown.html"><i class="fa fa-check"></i><b>3</b> Lab II: Introduction to <code>library(tidyverse)</code> &amp; R Markdown</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="lab-ii-introduction-to-librarytidyverse-r-markdown.html"><a href="lab-ii-introduction-to-librarytidyverse-r-markdown.html#in-the-setup-chunk-above-load-the-tidyverse-packages-as-well-as-libraryreadr"><i class="fa fa-check"></i><b>3.1</b> In the setup chunk above, load the tidyverse packages as well as library(readr)</a></li>
+<li class="chapter" data-level="3.2" data-path="lab-ii-introduction-to-librarytidyverse-r-markdown.html"><a href="lab-ii-introduction-to-librarytidyverse-r-markdown.html#load-in-the-resume.rdata-file-and-use-head-tail-glimpse-dim-summary-and-view-to-examine-each-variable-in-the-dataset.-how-many-of-the-resumes-have-white-sounding-names-how-many-have-african-american-sounding-names."><i class="fa fa-check"></i><b>3.2</b> Load in the resume.RData file and use head(), tail(), glimpse(), dim(), summary(), and View() to examine each variable in the dataset. How many of the resumes have white sounding names? How many have African-American sounding names.</a></li>
+<li class="chapter" data-level="3.3" data-path="lab-ii-introduction-to-librarytidyverse-r-markdown.html"><a href="lab-ii-introduction-to-librarytidyverse-r-markdown.html#this-experiment-seeks-to-determine-whether-or-not-hiring-managers-discriminate-on-the-basis-of-racial-identity-by-sending-idential-resumes-with-african-american-and-white-sounding-names-to-job-postings.-the-basic-logic-is-that-resumes-are-identical-and-only-the-name-is-changing-so-any-differences-in-call-backs-for-jobs-can-be-attributed-to-racial-discrimination.-why-do-the-authors-want-to-randomize-and-do-you-think-this-is-an-effective-research-design"><i class="fa fa-check"></i><b>3.3</b> This experiment seeks to determine whether or not hiring managers discriminate on the basis of racial identity by sending idential resumes with African-American and white sounding names to job postings. The basic logic is that resumes are identical and only the name is changing, so any differences in call backs for jobs can be attributed to racial discrimination. Why do the authors want to randomize? And do you think this is an effective research design?</a></li>
+<li class="chapter" data-level="3.4" data-path="lab-ii-introduction-to-librarytidyverse-r-markdown.html"><a href="lab-ii-introduction-to-librarytidyverse-r-markdown.html#we-are-going-to-see-if-there-is-a-racial-discrepency-by-taking-the-difference-in-callback-rates-between-racial-groups.-calculate-the-callback-rate-for-white-sounding-name-applicants-and-african-american-sounding-name-applicants.-use-latex-commands-to-write-the-formula-for-this-calculation-and-display-the-result-in-text.-write-the-formula-between-s-like-y-mx-b-to-use-latex-commands."><i class="fa fa-check"></i><b>3.4</b> We are going to see if there is a racial discrepency by taking the difference in callback rates between racial groups. Calculate the callback rate for white sounding name applicants and African-American sounding name applicants. Use Latex commands to write the formula for this calculation and display the result in text. Write the formula between $’s like <span class="math inline">\(y = mx + b\)</span> to use Latex commands.</a></li>
+<li class="chapter" data-level="3.5" data-path="lab-ii-introduction-to-librarytidyverse-r-markdown.html"><a href="lab-ii-introduction-to-librarytidyverse-r-markdown.html#now-create-a-new-object-that-stores-the-difference-in-callback-rates-named-race_diff."><i class="fa fa-check"></i><b>3.5</b> Now, create a new object that stores the difference in callback rates named race_diff.</a></li>
+<li class="chapter" data-level="3.6" data-path="lab-ii-introduction-to-librarytidyverse-r-markdown.html"><a href="lab-ii-introduction-to-librarytidyverse-r-markdown.html#since-crenshaw-1989-manny-scholars-have-concerned-with-intersectionality-or-how-race-and-gender-interact-to-make-the-experiences-of-african-american-women-unique.-we-can-use-the-data-we-have-to-explore-the-effect-of-race-and-gender-specific-sounding-names-on-employment-prospects.-calculate-the-call-back-rate-by-each-race-and-gender-category."><i class="fa fa-check"></i><b>3.6</b> Since Crenshaw (1989), manny scholars have concerned with intersectionality, or how race and gender interact to make the experiences of African-American women unique. We can use the data we have to explore the effect of race and gender specific sounding names on employment prospects. Calculate the call back rate by each race and gender category.</a></li>
+<li class="chapter" data-level="3.7" data-path="lab-ii-introduction-to-librarytidyverse-r-markdown.html"><a href="lab-ii-introduction-to-librarytidyverse-r-markdown.html#what-is-the-difference-in-call-back-rates-for-each-racegender-group"><i class="fa fa-check"></i><b>3.7</b> What is the difference in call back rates for each race/gender group?</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="lab-iii-univariate-visualizations.html"><a href="lab-iii-univariate-visualizations.html"><i class="fa fa-check"></i><b>4</b> Lab III: Univariate Visualizations</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="lab-iii-univariate-visualizations.html"><a href="lab-iii-univariate-visualizations.html#histograms-with-libraryggplot2"><i class="fa fa-check"></i><b>4.1</b> Histograms with <code>library(ggplot2)</code></a>
+<ul>
+<li class="chapter" data-level="4.1.1" data-path="lab-iii-univariate-visualizations.html"><a href="lab-iii-univariate-visualizations.html#step-one"><i class="fa fa-check"></i><b>4.1.1</b> Step One</a></li>
+<li class="chapter" data-level="4.1.2" data-path="lab-iii-univariate-visualizations.html"><a href="lab-iii-univariate-visualizations.html#step-two"><i class="fa fa-check"></i><b>4.1.2</b> Step Two</a></li>
+<li class="chapter" data-level="4.1.3" data-path="lab-iii-univariate-visualizations.html"><a href="lab-iii-univariate-visualizations.html#step-3"><i class="fa fa-check"></i><b>4.1.3</b> Step 3</a></li>
+<li class="chapter" data-level="4.1.4" data-path="lab-iii-univariate-visualizations.html"><a href="lab-iii-univariate-visualizations.html#step-4"><i class="fa fa-check"></i><b>4.1.4</b> Step 4</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="lab-iii-univariate-visualizations.html"><a href="lab-iii-univariate-visualizations.html#barplots-with-libraryggplot2"><i class="fa fa-check"></i><b>4.2</b> Barplots with <code>library(ggplot2)</code></a>
+<ul>
+<li class="chapter" data-level="4.2.1" data-path="lab-iii-univariate-visualizations.html"><a href="lab-iii-univariate-visualizations.html#step-one-1"><i class="fa fa-check"></i><b>4.2.1</b> Step One</a></li>
+<li class="chapter" data-level="4.2.2" data-path="lab-iii-univariate-visualizations.html"><a href="lab-iii-univariate-visualizations.html#step-two-1"><i class="fa fa-check"></i><b>4.2.2</b> Step Two</a></li>
+<li class="chapter" data-level="4.2.3" data-path="lab-iii-univariate-visualizations.html"><a href="lab-iii-univariate-visualizations.html#step-3-1"><i class="fa fa-check"></i><b>4.2.3</b> Step 3</a></li>
+<li class="chapter" data-level="4.2.4" data-path="lab-iii-univariate-visualizations.html"><a href="lab-iii-univariate-visualizations.html#step-4-1"><i class="fa fa-check"></i><b>4.2.4</b> Step 4</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="lab-iii-univariate-visualizations.html"><a href="lab-iii-univariate-visualizations.html#now-make-your-own-histogram-or-barplot"><i class="fa fa-check"></i><b>4.3</b> Now Make Your Own Histogram or Barplot!</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="lab-iv-loops-lists-conditional-statements.html"><a href="lab-iv-loops-lists-conditional-statements.html"><i class="fa fa-check"></i><b>5</b> Lab IV: Loops, Lists, &amp; Conditional Statements</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="lab-iv-loops-lists-conditional-statements.html"><a href="lab-iv-loops-lists-conditional-statements.html#lists"><i class="fa fa-check"></i><b>5.1</b> Lists</a>
+<ul>
+<li class="chapter" data-level="5.1.1" data-path="lab-iv-loops-lists-conditional-statements.html"><a href="lab-iv-loops-lists-conditional-statements.html#what-is-a-list"><i class="fa fa-check"></i><b>5.1.1</b> What is a list?</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="lab-iv-loops-lists-conditional-statements.html"><a href="lab-iv-loops-lists-conditional-statements.html#indexing-conditional-statements-if_else"><i class="fa fa-check"></i><b>5.2</b> Indexing, Conditional Statements, &amp; <code>if_else()</code></a></li>
+<li class="chapter" data-level="5.3" data-path="lab-iv-loops-lists-conditional-statements.html"><a href="lab-iv-loops-lists-conditional-statements.html#loops"><i class="fa fa-check"></i><b>5.3</b> Loops</a>
+<ul>
+<li class="chapter" data-level="5.3.1" data-path="lab-iv-loops-lists-conditional-statements.html"><a href="lab-iv-loops-lists-conditional-statements.html#what-is-a-loop"><i class="fa fa-check"></i><b>5.3.1</b> What is a Loop?</a></li>
+<li class="chapter" data-level="5.3.2" data-path="lab-iv-loops-lists-conditional-statements.html"><a href="lab-iv-loops-lists-conditional-statements.html#how-loops-work-in-r"><i class="fa fa-check"></i><b>5.3.2</b> How Loops Work in R</a></li>
+<li class="chapter" data-level="5.3.3" data-path="lab-iv-loops-lists-conditional-statements.html"><a href="lab-iv-loops-lists-conditional-statements.html#conditional-statements-stopping-loops"><i class="fa fa-check"></i><b>5.3.3</b> Conditional Statements &amp; Stopping Loops</a></li>
+<li class="chapter" data-level="5.3.4" data-path="lab-iv-loops-lists-conditional-statements.html"><a href="lab-iv-loops-lists-conditional-statements.html#conditional-statements-skipping-iterations"><i class="fa fa-check"></i><b>5.3.4</b> Conditional Statements &amp; Skipping Iterations</a></li>
+<li class="chapter" data-level="5.3.5" data-path="lab-iv-loops-lists-conditional-statements.html"><a href="lab-iv-loops-lists-conditional-statements.html#if-else-statements"><i class="fa fa-check"></i><b>5.3.5</b> if else Statements</a></li>
+<li class="chapter" data-level="5.3.6" data-path="lab-iv-loops-lists-conditional-statements.html"><a href="lab-iv-loops-lists-conditional-statements.html#more-complicated-loops"><i class="fa fa-check"></i><b>5.3.6</b> More Complicated Loops</a></li>
+<li class="chapter" data-level="5.3.7" data-path="lab-iv-loops-lists-conditional-statements.html"><a href="lab-iv-loops-lists-conditional-statements.html#conditional-means"><i class="fa fa-check"></i><b>5.3.7</b> Conditional Means</a></li>
+<li class="chapter" data-level="5.3.8" data-path="lab-iv-loops-lists-conditional-statements.html"><a href="lab-iv-loops-lists-conditional-statements.html#factor-variables"><i class="fa fa-check"></i><b>5.3.8</b> Factor Variables</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="lab-iv-loops-lists-conditional-statements.html"><a href="lab-iv-loops-lists-conditional-statements.html#lab-questions"><i class="fa fa-check"></i><b>5.4</b> Lab Questions</a>
+<ul>
+<li class="chapter" data-level="5.4.1" data-path="lab-iv-loops-lists-conditional-statements.html"><a href="lab-iv-loops-lists-conditional-statements.html#use-a-loop-and-librarydplyr-to-calculate-the-maximum-price-of-a-house-conditional-on-the-number-of-rooms-that-a-house-has."><i class="fa fa-check"></i><b>5.4.1</b> Use a loop and <code>library(dplyr)</code> to calculate the maximum price of a house conditional on the number of rooms that a house has.</a></li>
+<li class="chapter" data-level="5.4.2" data-path="lab-iv-loops-lists-conditional-statements.html"><a href="lab-iv-loops-lists-conditional-statements.html#create-a-loop-that-calculates-the-maximum-and-minimum-house-prices-by-number-of-bedrooms.-replicate-with-librarydplyr"><i class="fa fa-check"></i><b>5.4.2</b> Create a loop that calculates the maximum and minimum house prices by number of bedrooms. Replicate with <code>library(dplyr)</code></a></li>
+<li class="chapter" data-level="5.4.3" data-path="lab-iv-loops-lists-conditional-statements.html"><a href="lab-iv-loops-lists-conditional-statements.html#what-is-the-most-number-of-fireplaces-in-a-house-with-five-bedrooms"><i class="fa fa-check"></i><b>5.4.3</b> What is the most number of fireplaces in a house with five bedrooms?</a></li>
+</ul></li>
+<li class="chapter" data-level="5.5" data-path="lab-iv-loops-lists-conditional-statements.html"><a href="lab-iv-loops-lists-conditional-statements.html#practice-creating-your-own-loops"><i class="fa fa-check"></i><b>5.5</b> Practice Creating Your Own Loops</a></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">GOVT 8001: Shared Working Book</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="lab-iii-univariate-visualizations" class="section level1 hasAnchor" number="4">
+<h1><span class="header-section-number">4</span> Lab III: Univariate Visualizations<a href="lab-iii-univariate-visualizations.html#lab-iii-univariate-visualizations" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p><img src="image_3.png" width="740" /></p>
+<div class="sourceCode" id="cb187"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb187-1"><a href="lab-iii-univariate-visualizations.html#cb187-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Packages</span></span>
+<span id="cb187-2"><a href="lab-iii-univariate-visualizations.html#cb187-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb187-3"><a href="lab-iii-univariate-visualizations.html#cb187-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggthemes)</span>
+<span id="cb187-4"><a href="lab-iii-univariate-visualizations.html#cb187-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb187-5"><a href="lab-iii-univariate-visualizations.html#cb187-5" aria-hidden="true" tabindex="-1"></a><span class="do">## Data Loading</span></span>
+<span id="cb187-6"><a href="lab-iii-univariate-visualizations.html#cb187-6" aria-hidden="true" tabindex="-1"></a><span class="do">## Replace this with your working directory</span></span>
+<span id="cb187-7"><a href="lab-iii-univariate-visualizations.html#cb187-7" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(<span class="st">&quot;~/GOVT8001/Lab 3/white_minwage.RData&quot;</span>) </span></code></pre></div>
+<p>This lab shows step-by-step how to build basic histograms and barplots with <code>library(ggplot2)</code></p>
+<div id="histograms-with-libraryggplot2" class="section level2 hasAnchor" number="4.1">
+<h2><span class="header-section-number">4.1</span> Histograms with <code>library(ggplot2)</code><a href="lab-iii-univariate-visualizations.html#histograms-with-libraryggplot2" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Histograms are good to visualize the distribution of one continuous variable.</p>
+<div id="step-one" class="section level3 hasAnchor" number="4.1.1">
+<h3><span class="header-section-number">4.1.1</span> Step One<a href="lab-iii-univariate-visualizations.html#step-one" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ul>
+<li>Specify the tibble to be piped into <code>ggplot()</code></li>
+</ul>
+<div class="sourceCode" id="cb188"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb188-1"><a href="lab-iii-univariate-visualizations.html#cb188-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Building A Basic Histogram </span></span>
+<span id="cb188-2"><a href="lab-iii-univariate-visualizations.html#cb188-2" aria-hidden="true" tabindex="-1"></a>df.county</span></code></pre></div>
+</div>
+<div id="step-two" class="section level3 hasAnchor" number="4.1.2">
+<h3><span class="header-section-number">4.1.2</span> Step Two<a href="lab-iii-univariate-visualizations.html#step-two" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ul>
+<li>Pipe the tibble into ggplot()</li>
+<li>Specify the variable of interest with <code>ggplot(aes(x = X))</code></li>
+</ul>
+<div class="sourceCode" id="cb189"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb189-1"><a href="lab-iii-univariate-visualizations.html#cb189-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Building A Basic Histogram </span></span>
+<span id="cb189-2"><a href="lab-iii-univariate-visualizations.html#cb189-2" aria-hidden="true" tabindex="-1"></a>df.county <span class="sc">%&gt;%</span></span>
+<span id="cb189-3"><a href="lab-iii-univariate-visualizations.html#cb189-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> minimum.wage))</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-17-1.png" width="672" /></p>
+</div>
+<div id="step-3" class="section level3 hasAnchor" number="4.1.3">
+<h3><span class="header-section-number">4.1.3</span> Step 3<a href="lab-iii-univariate-visualizations.html#step-3" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ul>
+<li>Use <code>+</code> instead of <code>%&gt;%</code> to move to next line in <code>ggplot()</code></li>
+<li><code>geom_histogram()</code> creates the histogram</li>
+</ul>
+<div class="sourceCode" id="cb190"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb190-1"><a href="lab-iii-univariate-visualizations.html#cb190-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Building A Basic Histogram </span></span>
+<span id="cb190-2"><a href="lab-iii-univariate-visualizations.html#cb190-2" aria-hidden="true" tabindex="-1"></a>df.county <span class="sc">%&gt;%</span></span>
+<span id="cb190-3"><a href="lab-iii-univariate-visualizations.html#cb190-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> minimum.wage)) <span class="sc">+</span> </span>
+<span id="cb190-4"><a href="lab-iii-univariate-visualizations.html#cb190-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="fu">aes</span>(<span class="at">y =</span> ..density..))</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-18-1.png" width="672" /></p>
+</div>
+<div id="step-4" class="section level3 hasAnchor" number="4.1.4">
+<h3><span class="header-section-number">4.1.4</span> Step 4<a href="lab-iii-univariate-visualizations.html#step-4" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ul>
+<li>Customization of theme, colors, and labels.</li>
+<li>You can also save the object above and customize it later as shown below
+<ul>
+<li>Use <code>col =</code> and <code>fill =</code> in <code>geom_histogram()</code> to set colors</li>
+</ul></li>
+</ul>
+<div class="sourceCode" id="cb191"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb191-1"><a href="lab-iii-univariate-visualizations.html#cb191-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Building A Basic Histogram </span></span>
+<span id="cb191-2"><a href="lab-iii-univariate-visualizations.html#cb191-2" aria-hidden="true" tabindex="-1"></a>df.county <span class="sc">%&gt;%</span></span>
+<span id="cb191-3"><a href="lab-iii-univariate-visualizations.html#cb191-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> minimum.wage)) <span class="sc">+</span> </span>
+<span id="cb191-4"><a href="lab-iii-univariate-visualizations.html#cb191-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="fu">aes</span>(<span class="at">y =</span> ..density..), <span class="at">col =</span> <span class="st">&quot;dark red&quot;</span>, <span class="at">fill =</span> <span class="st">&quot;tomato&quot;</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-19-1.png" width="672" /></p>
+<ul>
+<li>Use <code>+ theme()</code> to set the theme
+<ul>
+<li><code>library(ggtheme)</code> has themes from your favorite publications!</li>
+</ul></li>
+</ul>
+<div class="sourceCode" id="cb192"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb192-1"><a href="lab-iii-univariate-visualizations.html#cb192-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Building A Basic Histogram </span></span>
+<span id="cb192-2"><a href="lab-iii-univariate-visualizations.html#cb192-2" aria-hidden="true" tabindex="-1"></a>df.county <span class="sc">%&gt;%</span></span>
+<span id="cb192-3"><a href="lab-iii-univariate-visualizations.html#cb192-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> minimum.wage)) <span class="sc">+</span> </span>
+<span id="cb192-4"><a href="lab-iii-univariate-visualizations.html#cb192-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="fu">aes</span>(<span class="at">y =</span> ..density..), <span class="at">col =</span> <span class="st">&quot;dark red&quot;</span>, <span class="at">fill =</span> <span class="st">&quot;tomato&quot;</span>) <span class="sc">+</span> </span>
+<span id="cb192-5"><a href="lab-iii-univariate-visualizations.html#cb192-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-20-1.png" width="672" /></p>
+<ul>
+<li>Use <code>+ labs</code> to set labels
+<ul>
+<li><code>title =</code> for a title</li>
+<li><code>subtitle =</code> for a subtitle</li>
+<li><code>x =</code> for x axis label and <code>y =</code> for y axis label</li>
+<li><code>caption =</code> for caption to include data source or note</li>
+</ul></li>
+</ul>
+<div class="sourceCode" id="cb193"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb193-1"><a href="lab-iii-univariate-visualizations.html#cb193-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Building A Basic Histogram </span></span>
+<span id="cb193-2"><a href="lab-iii-univariate-visualizations.html#cb193-2" aria-hidden="true" tabindex="-1"></a>df.county <span class="sc">%&gt;%</span></span>
+<span id="cb193-3"><a href="lab-iii-univariate-visualizations.html#cb193-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> minimum.wage)) <span class="sc">+</span> </span>
+<span id="cb193-4"><a href="lab-iii-univariate-visualizations.html#cb193-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="fu">aes</span>(<span class="at">y =</span> ..density..), <span class="at">col =</span> <span class="st">&quot;dark red&quot;</span>, <span class="at">fill =</span> <span class="st">&quot;tomato&quot;</span>) <span class="sc">+</span> </span>
+<span id="cb193-5"><a href="lab-iii-univariate-visualizations.html#cb193-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb193-6"><a href="lab-iii-univariate-visualizations.html#cb193-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Distribution of Minimum Wage&quot;</span>, <span class="at">subtitle =</span> <span class="st">&quot;All US Counties 1996 - 2016&quot;</span>,</span>
+<span id="cb193-7"><a href="lab-iii-univariate-visualizations.html#cb193-7" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">&quot;Minimum Wage&quot;</span>, <span class="at">caption =</span> <span class="st">&quot;Data Source: Markovich &amp; White (2022)&quot;</span>,</span>
+<span id="cb193-8"><a href="lab-iii-univariate-visualizations.html#cb193-8" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">&quot;Density&quot;</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-21-1.png" width="672" /></p>
+<div class="sourceCode" id="cb194"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb194-1"><a href="lab-iii-univariate-visualizations.html#cb194-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Or You Can Save the Basic Plot and Experiment</span></span>
+<span id="cb194-2"><a href="lab-iii-univariate-visualizations.html#cb194-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb194-3"><a href="lab-iii-univariate-visualizations.html#cb194-3" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> df.county <span class="sc">%&gt;%</span></span>
+<span id="cb194-4"><a href="lab-iii-univariate-visualizations.html#cb194-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> minimum.wage)) <span class="sc">+</span> </span>
+<span id="cb194-5"><a href="lab-iii-univariate-visualizations.html#cb194-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="fu">aes</span>(<span class="at">y =</span> ..density..), <span class="at">col =</span> <span class="st">&quot;dark red&quot;</span>, <span class="at">fill =</span> <span class="st">&quot;tomato&quot;</span>)</span>
+<span id="cb194-6"><a href="lab-iii-univariate-visualizations.html#cb194-6" aria-hidden="true" tabindex="-1"></a>p</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-21-2.png" width="672" /></p>
+<div class="sourceCode" id="cb195"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb195-1"><a href="lab-iii-univariate-visualizations.html#cb195-1" aria-hidden="true" tabindex="-1"></a>p <span class="sc">+</span> </span>
+<span id="cb195-2"><a href="lab-iii-univariate-visualizations.html#cb195-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb195-3"><a href="lab-iii-univariate-visualizations.html#cb195-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Distribution of Minimum Wage&quot;</span>, <span class="at">subtitle =</span> <span class="st">&quot;All US Counties 1996 - 2016&quot;</span>,</span>
+<span id="cb195-4"><a href="lab-iii-univariate-visualizations.html#cb195-4" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">&quot;Minimum Wage&quot;</span>, <span class="at">caption =</span> <span class="st">&quot;Data Source: Markovich &amp; White (2022)&quot;</span>,</span>
+<span id="cb195-5"><a href="lab-iii-univariate-visualizations.html#cb195-5" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">&quot;Density&quot;</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-21-3.png" width="672" /></p>
+</div>
+</div>
+<div id="barplots-with-libraryggplot2" class="section level2 hasAnchor" number="4.2">
+<h2><span class="header-section-number">4.2</span> Barplots with <code>library(ggplot2)</code><a href="lab-iii-univariate-visualizations.html#barplots-with-libraryggplot2" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Barplots are good for visualizing distributions by groups. The steps here follow closely what we did for the histogram.</p>
+<div id="step-one-1" class="section level3 hasAnchor" number="4.2.1">
+<h3><span class="header-section-number">4.2.1</span> Step One<a href="lab-iii-univariate-visualizations.html#step-one-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ul>
+<li>We will be using simulated data for this example.</li>
+<li>First we need to format our simulated data into something we can use for the barplot with the skills we learned last week.</li>
+</ul>
+<div class="sourceCode" id="cb196"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb196-1"><a href="lab-iii-univariate-visualizations.html#cb196-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Simulated Data</span></span>
+<span id="cb196-2"><a href="lab-iii-univariate-visualizations.html#cb196-2" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="st">&quot;age&quot;</span> <span class="ot">=</span> <span class="fu">c</span>(<span class="st">&quot;18 to 29&quot;</span>, <span class="st">&quot;36 to 50&quot;</span>, <span class="st">&quot;51 to 64&quot;</span>, <span class="st">&quot;65+&quot;</span>),</span>
+<span id="cb196-3"><a href="lab-iii-univariate-visualizations.html#cb196-3" aria-hidden="true" tabindex="-1"></a>                <span class="st">&quot;popPct&quot;</span> <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">29</span>, <span class="dv">21</span>, <span class="dv">30</span>, <span class="dv">20</span>),</span>
+<span id="cb196-4"><a href="lab-iii-univariate-visualizations.html#cb196-4" aria-hidden="true" tabindex="-1"></a>                <span class="st">&quot;svyPct&quot;</span> <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">19</span>, <span class="dv">21</span>, <span class="dv">32</span>, <span class="dv">28</span>))</span>
+<span id="cb196-5"><a href="lab-iii-univariate-visualizations.html#cb196-5" aria-hidden="true" tabindex="-1"></a>df</span></code></pre></div>
+<pre><code>##        age popPct svyPct
+## 1 18 to 29     29     19
+## 2 36 to 50     21     21
+## 3 51 to 64     30     32
+## 4      65+     20     28</code></pre>
+<div class="sourceCode" id="cb198"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb198-1"><a href="lab-iii-univariate-visualizations.html#cb198-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Building A Basic Barplot</span></span>
+<span id="cb198-2"><a href="lab-iii-univariate-visualizations.html#cb198-2" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span> </span>
+<span id="cb198-3"><a href="lab-iii-univariate-visualizations.html#cb198-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">Population =</span> popPct, <span class="at">Survey =</span> svyPct) <span class="sc">%&gt;%</span></span>
+<span id="cb198-4"><a href="lab-iii-univariate-visualizations.html#cb198-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="sc">-</span>age, <span class="at">names_to =</span> <span class="st">&quot;Group&quot;</span>, <span class="at">values_to =</span> <span class="st">&quot;Percent&quot;</span>)</span></code></pre></div>
+<pre><code>## # A tibble: 8 × 3
+##   age      Group      Percent
+##   &lt;chr&gt;    &lt;chr&gt;        &lt;dbl&gt;
+## 1 18 to 29 Population      29
+## 2 18 to 29 Survey          19
+## 3 36 to 50 Population      21
+## 4 36 to 50 Survey          21
+## 5 51 to 64 Population      30
+## 6 51 to 64 Survey          32
+## 7 65+      Population      20
+## 8 65+      Survey          28</code></pre>
+</div>
+<div id="step-two-1" class="section level3 hasAnchor" number="4.2.2">
+<h3><span class="header-section-number">4.2.2</span> Step Two<a href="lab-iii-univariate-visualizations.html#step-two-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ul>
+<li>Pipe the tibble into ggplot()</li>
+<li>Specify the variable of interest with <code>ggplot(aes(x = X))</code></li>
+<li>Since we want to show the distribution of X by some group, we can use <code>fill =</code> to specify the group</li>
+</ul>
+<div class="sourceCode" id="cb200"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb200-1"><a href="lab-iii-univariate-visualizations.html#cb200-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Building A Basic Barplot</span></span>
+<span id="cb200-2"><a href="lab-iii-univariate-visualizations.html#cb200-2" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span> </span>
+<span id="cb200-3"><a href="lab-iii-univariate-visualizations.html#cb200-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">Population =</span> popPct, <span class="at">Survey =</span> svyPct) <span class="sc">%&gt;%</span></span>
+<span id="cb200-4"><a href="lab-iii-univariate-visualizations.html#cb200-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="sc">-</span>age, <span class="at">names_to =</span> <span class="st">&quot;Group&quot;</span>, <span class="at">values_to =</span> <span class="st">&quot;Percent&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb200-5"><a href="lab-iii-univariate-visualizations.html#cb200-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> age, <span class="at">y =</span> Percent, <span class="at">fill =</span> Group))</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-23-1.png" width="672" /></p>
+</div>
+<div id="step-3-1" class="section level3 hasAnchor" number="4.2.3">
+<h3><span class="header-section-number">4.2.3</span> Step 3<a href="lab-iii-univariate-visualizations.html#step-3-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ul>
+<li>Use <code>+</code> instead of <code>%&gt;%</code> to move to next line in <code>ggplot()</code></li>
+<li><code>geom_bar()</code> creates a barplot</li>
+</ul>
+<div class="sourceCode" id="cb201"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb201-1"><a href="lab-iii-univariate-visualizations.html#cb201-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Building A Basic Barplot</span></span>
+<span id="cb201-2"><a href="lab-iii-univariate-visualizations.html#cb201-2" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span> </span>
+<span id="cb201-3"><a href="lab-iii-univariate-visualizations.html#cb201-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">Population =</span> popPct, <span class="at">Survey =</span> svyPct) <span class="sc">%&gt;%</span></span>
+<span id="cb201-4"><a href="lab-iii-univariate-visualizations.html#cb201-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="sc">-</span>age, <span class="at">names_to =</span> <span class="st">&quot;Group&quot;</span>, <span class="at">values_to =</span> <span class="st">&quot;Percent&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb201-5"><a href="lab-iii-univariate-visualizations.html#cb201-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> age, <span class="at">y =</span> Percent, <span class="at">fill =</span> Group)) <span class="sc">+</span></span>
+<span id="cb201-6"><a href="lab-iii-univariate-visualizations.html#cb201-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">&quot;identity&quot;</span>, <span class="at">position =</span> <span class="st">&quot;dodge&quot;</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-24-1.png" width="672" /></p>
+</div>
+<div id="step-4-1" class="section level3 hasAnchor" number="4.2.4">
+<h3><span class="header-section-number">4.2.4</span> Step 4<a href="lab-iii-univariate-visualizations.html#step-4-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ul>
+<li>Now, we can customize just like above with the histogram.</li>
+<li><code>scale_fill_grey()</code> changes the color palette to greyscale</li>
+</ul>
+<div class="sourceCode" id="cb202"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb202-1"><a href="lab-iii-univariate-visualizations.html#cb202-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Building A Basic Barplot </span></span>
+<span id="cb202-2"><a href="lab-iii-univariate-visualizations.html#cb202-2" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span> </span>
+<span id="cb202-3"><a href="lab-iii-univariate-visualizations.html#cb202-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">Population =</span> popPct, <span class="at">Survey =</span> svyPct) <span class="sc">%&gt;%</span></span>
+<span id="cb202-4"><a href="lab-iii-univariate-visualizations.html#cb202-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="sc">-</span>age, <span class="at">names_to =</span> <span class="st">&quot;Group&quot;</span>, <span class="at">values_to =</span> <span class="st">&quot;Percent&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb202-5"><a href="lab-iii-univariate-visualizations.html#cb202-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> age, <span class="at">y =</span> Percent, <span class="at">fill =</span> Group)) <span class="sc">+</span></span>
+<span id="cb202-6"><a href="lab-iii-univariate-visualizations.html#cb202-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">&quot;identity&quot;</span>, <span class="at">position =</span> <span class="st">&quot;dodge&quot;</span>) <span class="sc">+</span></span>
+<span id="cb202-7"><a href="lab-iii-univariate-visualizations.html#cb202-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_grey</span>() <span class="sc">+</span> </span>
+<span id="cb202-8"><a href="lab-iii-univariate-visualizations.html#cb202-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb202-9"><a href="lab-iii-univariate-visualizations.html#cb202-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;Age Group&quot;</span>, <span class="at">y =</span> <span class="st">&quot;Percent&quot;</span>,</span>
+<span id="cb202-10"><a href="lab-iii-univariate-visualizations.html#cb202-10" aria-hidden="true" tabindex="-1"></a>       <span class="at">title =</span> <span class="st">&quot;Population and Survey Sample Proportions by Age Group&quot;</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-25-1.png" width="672" /></p>
+</div>
+</div>
+<div id="now-make-your-own-histogram-or-barplot" class="section level2 hasAnchor" number="4.3">
+<h2><span class="header-section-number">4.3</span> Now Make Your Own Histogram or Barplot!<a href="lab-iii-univariate-visualizations.html#now-make-your-own-histogram-or-barplot" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="sourceCode" id="cb203"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb203-1"><a href="lab-iii-univariate-visualizations.html#cb203-1" aria-hidden="true" tabindex="-1"></a>df.county <span class="sc">%&gt;%</span></span>
+<span id="cb203-2"><a href="lab-iii-univariate-visualizations.html#cb203-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> minimum.wage)) <span class="sc">+</span> </span>
+<span id="cb203-3"><a href="lab-iii-univariate-visualizations.html#cb203-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="fu">aes</span>(<span class="at">y =</span> ..density..), <span class="at">col =</span> <span class="st">&quot;pink&quot;</span>, <span class="at">fill =</span> <span class="st">&quot;black&quot;</span>) <span class="sc">+</span></span>
+<span id="cb203-4"><a href="lab-iii-univariate-visualizations.html#cb203-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_economist</span>() <span class="sc">+</span></span>
+<span id="cb203-5"><a href="lab-iii-univariate-visualizations.html#cb203-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Our Beautiful Plot&quot;</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-26-1.png" width="672" /></p>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="lab-ii-introduction-to-librarytidyverse-r-markdown.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="lab-iv-loops-lists-conditional-statements.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
