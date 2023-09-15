@@ -714,13 +714,10 @@ df <- data.frame(presidents, chief_justices)
 
 list_1 <- list(presidents, chief_justices, ages, SaratogaHouses)
 
-## Displaying List
-list_1
-
 ## Accessing specific objects in the list
 list_1[[3]]
 
-list_1[[4]]
+list_1[[1]]
 
 ```
 
@@ -791,11 +788,13 @@ SaratogaHouses %>%
 
 ```{r}
 ## Showing if_else()
-SaratogaHouses <- SaratogaHouses %>%
-  mutate(fireplace = if_else(fireplaces > 0, 1, 0))
+SaratogaHouses %>%
+  mutate(fireplace = if_else(fireplaces > 0, 1, 0)) %>%
+  select(fireplace)
 
 SaratogaHouses %>%
-  mutate(large_house = if_else(rooms > mean(rooms), 1, 0))
+  mutate(large_house = if_else(rooms > mean(rooms), 1, 0)) %>%
+  select(large_house)
 
 ```
 
@@ -810,7 +809,7 @@ SaratogaHouses %>%
 
 ```{r}
 ## Basic Loop
-for (i in 1:15) {
+for (i in 1:5) {
   
   print(i)
   
