@@ -1039,4 +1039,310 @@ max(SaratogaHouses$fireplaces[SaratogaHouses$bedrooms == 5])
 ## Practice Creating Your Own Loops
 - Use `SaratogaHouses` or use the `data()` command to bring in a dataset of your interest and write a loop to carry out an easy task.
 
+# Lab V: Introduction to Regression
+
+```{r, echo=FALSE}
+knitr::include_graphics("image_5.png")
+
+```
+
+```{r,results = 'hide', warning = FALSE, message = FALSE, echo = FALSE}
+## Packages & Data
+library(mosaic)
+library(ggpubr)
+library(tidyverse)
+data("Galton")
+force(Galton)
+data("Mustangs")
+force(Mustangs)
+```
+
+## Correlation
+- Statistical technique that tells use the extent that two variables are linearly related
+$$r=\frac{\sum_{i=1}^{n}(x_{i}-\bar{x})(y_{i}-\bar{y})}{\sqrt{\sum_{n}^{i=1}(x_{i}-\bar{x})^2\sum_{n}^{i=1}(y_{i}-\bar{y})^2}}$$
+$$r = \frac{Cov(X,Y)}{SD(X)SD(Y)}$$
+- Bounded between $-1,1$
+- In *R*, `cor(x,y)`
+- Scatterplot in *R*
+  - `geom_point()`
+
+### Correlation & Scatterplots
+```{r, echo = FALSE, warning = FALSE, message = FALSE}
+Galton %>%
+  ggplot(aes(father, height)) +
+  geom_point(col = "black", size = 3) +
+  theme_bw() +
+  xlab("Father's Height") +
+  ylab("Child's Height") +
+ ## geom_smooth(method = "lm", se=F, col="blue", lwd=2) +
+  ggtitle("Correlation Between Father's and Child's Height")
+
+Galton %>%
+  ggplot(aes(father, height)) +
+  geom_point(col = "black", size = 3) +
+  theme_bw() +
+  xlab("Father's Height") +
+  ylab("Child's Height") +
+ ## geom_smooth(method = "lm", se=F, col="blue", lwd=2) +
+  ggtitle("Correlation Between Father's and Child's Height")+
+  stat_cor(method = "pearson", aes(label = ..r.label..), size = 10, col = "red")
+
+Mustangs %>%
+  ggplot(aes(Miles, Price)) +
+  geom_point(col = "black", size = 3) +
+  theme_bw() +
+  ggtitle("Used Car Price by Mileage") +
+  stat_cor(method = "pearson", aes(label = ..r.label..), size = 10, col = "red")
+```
+
+## Introduction to Regression
+- Why Regression?
+- Basic Model
+- Conditional Mean
+- Estimation
+- Coefficients & Intercepts
+
+### Why Regression?
+- Regression is the work-horse of quantitative social science
+- We use regression when we want to know the relationship between $x$ and $y$
+  - Specifically, we want to know what a one unit increase in $x$ means for $y$
+- Real Data vs Hats
+  - Hats are expected values
+    - $y$ vs $\hat{y}$
+- Identify a variable of interest, we call this $y$
+  - Ex: vote share, approval rating, gdp, etc.
+- Take its mean, $\bar{y}$
+  - We have variation in our $y$ variable, though, e.g., some values are high and others are low
+- Next find a variable that we think explains this variation, we call this $x$
+- Then estimate the relationship between $x$ and $y$
+- We call $x$ the treatment variable, causal variable, independent variable, predictor variable, explanatory variable
+- We call $y$ the dependent variable, outcome variable, response variable
+
+### Correlation vs Regression
+- Similarities
+  - Both show the direction and strength of the relationship between two variables
+  - When correlation is negative, $r<0$, then the regression slope will be negative, $\beta_{1}<0$
+  - When correlation is positive, the regression slope will be positive
+- Differences
+  - Regression is for causation (with additional steps) while correlation is for, well, correlation
+  - $X$ and $Y$ are interchangeable in correlation, but results will change if you swap $X$ and $Y$ in regression
+  - Correlation is a single statistic while regression gives us an equation
+
+### Basic Model
+$$\hat{y_{i}} = \hat{\beta_{0}} + \hat{\beta_{1}}x_{i}$$
+
+analogous to 
+
+$$y = mx + b$$
+
+- Where:
+
+  - $\hat{y_{i}} = y$, $\hat{\beta_{0}} = b$, $\hat{\beta_{1}}$ = m, and $x_{i}=x$
+  - $\beta_{1}$ is the slope
+  - $\beta_{0}$ is the y-intercept
+  
+Example of a model you may (will) see in the comparative politics literature:
+
+$$GDPGrowth_{i} = \beta_{0} + \beta_{1}Democracy_{i} + \epsilon_{i}$$
+
+- Why no hats?
+
+### Conditional Mean
+- Regression tells us the conditional mean of $y$ given $x$
+  - $E[Y|X] = \beta_{0} + \beta_{1}X$
+
+
+```{r, warning = FALSE, message = FALSE}
+## Mean of All Children's Heights
+mean(Galton$height)
+
+## Mean of Female Children's Heights
+mean(Galton$height[Galton$sex == "F"])
+
+## Mean of Male Children's Heights
+mean(Galton$height[Galton$sex == "M"])
+
+## Conditional Mean with Regression
+lm(height ~ sex, data = Galton)
+```
+
+### Estimation
+$$\hat{\beta}=\frac{\sum_{i=1}^{n}(x_{i}-\bar{x})(y_{i}-\bar{y})}{\sum_{n}^{i=1}(x_{i}-\bar{x})^2}$$
+$$\hat{\beta}= \frac{Cov(x,y)}{Var(x)}$$
+
+- Intuitively, $\hat{\beta}$ is the variance of $x$ and $y$ together divided by the variance of $x$
+  - Thus, you are left only with the variation in $y$ caused by $x$
+- The main result of estimation is the **coefficient** and **intercept**
+- In *R*, `lm(y ~ x)`
+
+### Coefficients & Intercepts
+- Coefficient
+  - A one unit increase in $x$ is associated with a $\hat{\beta_{1}}$ increase in $y$
+  - Be very careful about the units of $x$
+    - For example, an $x$ that takes the values 0-1, a one unit increase is the full range of $x$
+  
+- Intercept
+  - The fitted value of $y$ when $x=0$
+  
+  - We multiply any given value of x by the constant $\hat{\beta_{1}}$ and add the intercept to get $\hat{y}$, the fitted value of y
+
+### Scatterplots & Regression Lines
+
+```{r, echo = FALSE, warning = FALSE, message = FALSE}
+Galton %>%
+  ggplot(aes(father, height)) +
+  geom_point(col = "black", size = 3) +
+  theme_bw() +
+  xlab("Father's Height") +
+  ylab("Child's Height") +
+  geom_smooth(method = "lm", se = F, lwd = 2) +
+  ggtitle("Father's and Child's Height")+
+  stat_regline_equation(size = 10, col = "red")
+```
+- How do we interpret $\hat{\beta}$ and $\hat{\alpha}$?
+- What do you expect a child's height will be if their father's height is 70 inches?
+
+```{r}
+## Mean when father is 70 inches tall
+mean(Galton$height[Galton$father == 70])
+```
+
+```{r, echo = FALSE, warning = FALSE, message = FALSE}
+fit <- lm(Mustangs$Price ~ Mustangs$Miles)
+
+Mustangs$predicted <- predict(fit)
+Mustangs$residuals <- residuals(fit)
+
+
+Mustangs %>%
+  ggplot(aes(Miles, Price)) +
+  geom_point(col = "black", size = 3) +
+  theme_bw() +
+  geom_smooth(method = "lm", se = F) +
+  ggtitle("Used Car Price by Mileage") +
+  stat_regline_equation(size = 10, col = "red")
+```
+
+- How would we find the residuals?
+
+```{r, echo = FALSE, warning = FALSE, message = FALSE}
+Mustangs %>%
+  ggplot(aes(Miles, Price)) +
+  geom_point(col = "black", size = 3) +
+  geom_point(aes(y = predicted), shape = 1, size = 3) +
+  geom_segment(aes(xend = Miles, yend = predicted)) +
+  theme_bw() +
+  geom_smooth(method = "lm", se = F) +
+  ggtitle("Used Car Price by Mileage")
+```
+
+- $\hat{\epsilon} = y_i - \hat{y_i}$
+
+## Lab Questions
+
+- Download the *Correlates of War* dataset from Canvas.
+- We are going to learn how to make scatterplots, find correlations, and run simple regressions.
+- Sarkees, Meredith Reid and Frank Wayman (2010). Resort to War: 1816 – 2007. Washington DC: CQ Press.
+
+### Question I - Load in the Data.
+
+```{r, warning = FALSE, message = FALSE}
+## Loading in Data
+library(readr)
+cow <- read_csv("~/GOVT8001/Lab 5/Intra-StateWarData_v4.1.csv")
+
+```
+
+### Question II - Create a scatterplot to show the joint distribution of war deaths by each side. Experiment with subsetting the data to different values of war deaths and visualization styles. Also, be careful about missing data and unknown values. Add a regression line.
+
+
+```{r, warning = FALSE, message = FALSE}
+## Scatterplot
+cow %>%
+  filter(SideADeaths < 20000 & SideADeaths > 0,
+         SideBDeaths < 20000 & SideBDeaths > 0,
+         EndYear1 >= 0) %>%
+  ggplot(aes(x = SideADeaths, y = SideBDeaths)) + 
+  geom_point() +
+  geom_abline(method = "lm", col = "dark blue") +
+  theme_bw() +
+  labs(title = "Joint Distribution of War Deaths")
+
+```
+
+### Question III - What is the correlation coefficient for the relationship you depicted in Question II. What is the regression coefficient? How do we interpret each? Only filter out the less than zero observations for this question.
+
+```{r, warning = FALSE, message = FALSE}
+## Filtering Data
+cow_filtered <- cow %>%
+  filter(SideADeaths > 0,
+         SideBDeaths > 0)
+
+## Correlation
+cor(cow_filtered$SideADeaths, cow_filtered$SideBDeaths)
+
+## Regression
+cow %>%
+  filter(SideADeaths > 0,
+         SideBDeaths > 0) %>%
+  lm(SideBDeaths ~ SideADeaths, data = .) %>%
+  summary()
+
+```
+
+### Question IV - Use both regression - the `lm()` function and the `mean()` function to show the difference between total war deaths depending on if a war was internationalized or not. Create a total deaths variable for this question.
+
+```{r, warning = FALSE, message = FALSE}
+## Difference in Means Based on Internationalization with Regression
+cow_filtered %>%
+  mutate(total_deaths = SideADeaths + SideBDeaths) %>%
+  lm(total_deaths ~ Intnl, data = .) %>%
+  summary()
+
+## With Mean
+cow_filtered %>%
+  mutate(total_deaths = SideADeaths + SideBDeaths) %>%
+  group_by(Intnl) %>%
+  summarize(avg_deaths = mean(total_deaths))
+
+## Differences
+## With Mean
+cow_filtered %>%
+  mutate(total_deaths = SideADeaths + SideBDeaths) %>%
+  filter(Intnl == 1) %>%
+  summarize(non_int_deaths = mean(total_deaths)) %>%
+  pull(non_int_deaths) -
+  
+  cow_filtered %>%
+  mutate(total_deaths = SideADeaths + SideBDeaths) %>%
+  filter(Intnl == 0) %>%
+  summarize(non_int_deaths = mean(total_deaths)) %>%
+  pull(non_int_deaths)
+```
+
+### Question V - Write a loop to find the average total deaths based on the month the war started in. Do the same with dplyr.
+
+```{r, warning = FALSE, message = FALSE}
+## Wrangling Data
+cow_filtered <- cow_filtered %>%
+  filter(StartMonth1 > 0) %>%
+  mutate(total_deaths = SideADeaths + SideBDeaths)
+
+## Loop
+for (i in unique(cow_filtered$StartMonth1)) {
+  
+ x <- mean(cow_filtered$total_deaths[cow_filtered$StartMonth1 == i])
+ 
+ names(x) <- i
+ 
+ print(x)
+  
+}
+
+## With dplyr
+cow_filtered %>%
+  group_by(StartMonth1) %>%
+  summarise(avg_death_by_month = mean(total_deaths))
+  
+```
 
