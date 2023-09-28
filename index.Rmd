@@ -1346,3 +1346,294 @@ cow_filtered %>%
   
 ```
 
+# Lab VI: Goodness of Fit & Multiple Regression
+
+```{r, echo=FALSE}
+knitr::include_graphics("image_2_.png")
+```
+
+```{r}
+## Packages
+library(tidyverse)
+library(tidymodels)
+library(mosaic)
+
+## Data
+load("~/GOVT5001/Lab VI/sh.RData")
+house <- SaratogaHouses
+
+## Model
+model1 <- lm(price~bedrooms, data=house)
+```
+
+## $R^2$
+$$1-\frac{SSR}{TSS} = \frac{\sum\epsilon^2}{\sum(y_{i}-\bar{y})^2}=\frac{MSS}{TSS}=\frac{\sum(\hat{y_{i}}-\bar{y})^2}{\sum(y_{i}-\bar{y})^2}$$
+
+- Coefficient of Determination
+- Proportion of the Variance in $Y_{i}$ explained by $X_{i}$
+- "Goodness of Fit"
+
+## $R^2$ (cont.)
+
+$$1-\frac{SSR}{TSS} = \frac{\sum\epsilon^2}{\sum(y_{i}-\bar{y})^2}=\frac{MSS}{TSS}=\frac{\sum(\hat{y_{i}}-\bar{y})^2}{\sum(y_{i}-\bar{y})^2}$$
+
+```{r, echo=TRUE}
+##1-SSR/TSS
+1-sum((model1$residuals)^2)/
+sum((house$price-mean(house$price))^2)
+
+## MSS/TSS
+sum((model1$fitted.values-mean(house$price))^2)/
+  sum((house$price-mean(house$price))^2)
+
+summary(model1)$r.squared
+```
+
+## $R^2$ (cont.)
+
+$$R^2=Cor(Y_i,\hat{Y_i})$$
+
+- Squared Correlation Between Observed Y and Fitted Y
+
+```{r, echo=TRUE}
+mod_aug <- augment(model1)
+
+(cor(mod_aug$.fitted, mod_aug$price)^2)
+```
+
+## $R^2$ (cont.)
+
+- $R^2$ as proportional reduction in error
+
+```{r}
+## Constant Only model
+null_model <- lm(house$price~1)
+
+## The intercept is just the mean of Y
+summary(null_model)$coefficient
+
+mean(house$price)
+
+## R Squared is 0
+summary(null_model)$r.squared
+
+## Squared of Model 1
+summary(model1)$r.squared
+
+```
+
+- The number of bedrooms that a house has explains 16% of the variation in the price of a house
+
+## Mean Squared Error & Root Mean Squared Error
+$$\hat{MSE} = \frac{1}{n}\sum^{n}_{i=1}(Y_{i}-\hat{Y_{i}})^2$$
+
+- Average distance from the line-of-best-fit
+
+- The root mean square error, or RMSE, is calculated by taking the square root of the MSE. Here is the formula:
+$$\hat{RMSE} = \sqrt{\frac{1}{n}\sum^{n}_{i=1}(Y_{i}-\hat{Y_{i}})^2}$$
+
+- The average prediction error in units of Y
+
+## Mean Squared Error & Root Mean Squared Error
+
+```{r}
+fit <- lm(Mustangs$Price ~ Mustangs$Miles)
+
+Mustangs$predicted <- predict(fit)
+Mustangs$residuals <- residuals(fit)
+
+Mustangs %>%
+  ggplot(aes(Miles, Price)) +
+  geom_point(col = "black", size = 3) +
+  geom_point(aes(y = predicted), shape = 1, size = 3) +
+  geom_segment(aes(xend = Miles, yend = predicted)) +
+  theme_bw() +
+  geom_smooth(method = "lm", se = F) +
+  labs(x = "X", y = "Y")
+
+```
+
+- Take the square root of the mean of the distance of the solid black lines for RMSE
+
+## Mean Squared Error & Root Mean Squared Error
+
+```{r, echo=TRUE}
+## MAE of Model 1
+summary(model1)$sigma
+
+## Manually
+sqrt(mean((mod_aug$.fitted - mod_aug$price)^2))
+
+```
+
+## Multiple Regression (cont.)
+
+$$Price_{i}=\beta_{0} + \beta_{1}Bedrooms_{i} + \beta_{2}Bathrooms_{i} + \epsilon_{i}$$
+
+```{r, echo=TRUE}
+lm(price~bedrooms + bathrooms, data=house)
+```
+
+## Adjusted $R^2$
+
+$$Adjusted\space R^2 = 1- \frac{(1-R^2)(N-1)}{(N-k-1)}$$
+
+- $R^2$ is just $R^2$
+- $N$ is the sample size
+- $k$ is the number of independent variables
+- Penalizes us for just throwing more variables at the model
+- Proportion of variation in $Y_{i}$ explained by the model
+
+## Adjusted $R^2$ (cont.)
+
+$$Adjusted\space R^2 = 1-\frac{(1-R^2)(N-1)}{(N-k-1)}$$
+
+```{r, echo=TRUE}
+model2 <- lm(price~bedrooms + bathrooms, data=house)
+
+1-(1-summary(model2)$r.squared)*(length(house$price)-1)/
+((length(house$price)-2-1))
+
+summary(model2)$adj.r.squared
+```
+
+## Lab Questions: Congratulations! You've been hired as an analyst by the [insert your favorite baseball team name here]. Your first job is to make a few predictions about what your teams' future will look like. 
+
+- Download lab_vi.Rmd from Canvas
+- Download bbData.RData from Canvas
+- Try the lab questions!
+
+### Load in the bbDta.RData file.
+
+```{r}
+load("~/GOVT5001/Lab VI/bbData.RData")
+
+```
+
+### Run a regression model with attendance as the DV and wins as the IV. Save as model1.
+
+```{r}
+## Simple Regression Model
+model1 <- lm(home_attend ~ wins, data = bbData)
+model1
+
+```
+
+### Does winning increase attendance? If so, by how much?
+
+```{r}
+## Pulling out coefficient
+model1$coefficients[2]
+
+```
+
+### Create a scatterplot to illustrate your results from A and B.
+
+```{r}
+## Hint: Run the line of code below to remove scientific notation.
+options(scipen = 999999)
+
+## Creating Plot
+ggplot(bbData, aes(x = wins, y = home_attend/1000000)) +
+  geom_point() +
+  geom_smooth(method = "lm", se = F) + 
+  theme_bw() +
+  labs(title = "Baseball Attendance by Wins", x = "Wins", 
+       y = "Attendance At Home Games in Millions")
+
+```
+
+### Does a higher number of wins increase attendance when you include runs_scored and runs_allowed into your model? What is wins' new effect. Save the results as model2.
+
+```{r}
+## Multiple Regression Model
+model2 <- lm(home_attend~wins + runs_scored + runs_allowed, data=bbData)
+model2
+
+```
+
+Wins increase attendance by 3,261 while holding all other factors equal.
+
+### Assess fit. What is the change in R^2 from model1 to model2?
+
+```{r}
+## Examining R Squared
+summary(model2)$adj.r.squared
+summary(model2)$adj.r.squared - summary(model1)$r.squared
+
+```
+
+Model 2 explains  29% of the variation in home_attendance. The change is about * percentage points.
+
+### Which model do you think is best?
+
+For our purposes, model 2 has the highest r squared, so model 2 is the best.
+
+### Use your preferred model to predict attendance based on 100 wins, 500 runs scored, and 360 runs allowed.
+
+```{r}
+## Making Predictions
+-270324 + (3261*100) + (4260*500) + (-1683*360)
+
+## With Code
+model2$coefficients[1] + (model2$coefficients[2]*100) + (model2$coefficients[3]*500) + 
+  (model2$coefficients[4]*360)
+```
+
+### Based on your models, how can teams increase their attendance?
+
+Answer: Teams should win more games, score more runs, and allow less runs scored against them. Easy!
+
+### Your colleague argues that runs have been increasing over time. Create a scatterplot, with a line of best fit, to evaluate their claim.
+
+```{r}
+## Plot
+ggplot(bbData, aes(x = season, y = runs_scored)) +
+  geom_point() +
+  geom_smooth(method = "lm", se = F) + 
+  theme_bw() +
+  labs(title = "Runs Scored Over Time", x = "Season Year", 
+       y = "Runs Scored")
+
+```
+
+### The analysis above is for the full MLB. Rerun your models and scatterplots for one team.
+
+```{r}
+## Subset the data
+phiData <- subset(bbData, team == "PHI")
+
+
+## Models
+model1b <- lm(home_attend~wins, data = phiData)
+model1b
+model1
+
+model2b <- lm(home_attend~wins + runs_scored + runs_allowed, data = phiData)
+model2b
+model2
+
+## Wins and Attendance
+ggplot(bbData, aes(x = wins, y = home_attend/1000000)) +
+  geom_point() +
+  geom_smooth(method = "lm", se = F) + 
+  theme_bw() +
+  labs(title = "Baseball Attendance by Wins", x = "Wins", 
+       y = "Attendance At Home Games in Millions", subtitle = "Philadelphia Phillies")
+
+## Runs Scored by Season
+ggplot(phiData, aes(x = season, y = runs_scored)) +
+  geom_line() +
+  theme_bw() +
+  labs(title = "Runs Scored Over Time", x = "Season Year", 
+       y = "Runs Scored", subtitle = "Philadelphia Phillies")
+
+## Line Plot
+ggplot(phiData, aes(x = season, y = runs_scored)) +
+  geom_point() +
+  geom_smooth(method = "lm", se = F) + 
+  theme_bw() +
+  labs(title = "Runs Scored Over Time", x = "Season Year", 
+       y = "Runs Scored", subtitle = "Philadelphia Phillies")
+
+```
