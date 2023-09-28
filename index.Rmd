@@ -1373,7 +1373,7 @@ $$1-\frac{SSR}{TSS} = \frac{\sum\epsilon^2}{\sum(y_{i}-\bar{y})^2}=\frac{MSS}{TS
 - Proportion of the Variance in $Y_{i}$ explained by $X_{i}$
 - "Goodness of Fit"
 
-## $R^2$ (cont.)
+### $R^2$ (cont.)
 
 $$1-\frac{SSR}{TSS} = \frac{\sum\epsilon^2}{\sum(y_{i}-\bar{y})^2}=\frac{MSS}{TSS}=\frac{\sum(\hat{y_{i}}-\bar{y})^2}{\sum(y_{i}-\bar{y})^2}$$
 
@@ -1389,7 +1389,7 @@ sum((model1$fitted.values-mean(house$price))^2)/
 summary(model1)$r.squared
 ```
 
-## $R^2$ (cont.)
+### $R^2$ (cont.)
 
 $$R^2=Cor(Y_i,\hat{Y_i})$$
 
@@ -1401,7 +1401,7 @@ mod_aug <- augment(model1)
 (cor(mod_aug$.fitted, mod_aug$price)^2)
 ```
 
-## $R^2$ (cont.)
+### $R^2$ (cont.)
 
 - $R^2$ as proportional reduction in error
 
@@ -1434,7 +1434,7 @@ $$\hat{RMSE} = \sqrt{\frac{1}{n}\sum^{n}_{i=1}(Y_{i}-\hat{Y_{i}})^2}$$
 
 - The average prediction error in units of Y
 
-## Mean Squared Error & Root Mean Squared Error
+### Mean Squared Error & Root Mean Squared Error
 
 ```{r}
 fit <- lm(Mustangs$Price ~ Mustangs$Miles)
@@ -1455,7 +1455,7 @@ Mustangs %>%
 
 - Take the square root of the mean of the distance of the solid black lines for RMSE
 
-## Mean Squared Error & Root Mean Squared Error
+### Mean Squared Error & Root Mean Squared Error
 
 ```{r, echo=TRUE}
 ## MAE of Model 1
@@ -1466,7 +1466,7 @@ sqrt(mean((mod_aug$.fitted - mod_aug$price)^2))
 
 ```
 
-## Multiple Regression (cont.)
+## Multiple Regression
 
 $$Price_{i}=\beta_{0} + \beta_{1}Bedrooms_{i} + \beta_{2}Bathrooms_{i} + \epsilon_{i}$$
 
@@ -1484,7 +1484,7 @@ $$Adjusted\space R^2 = 1- \frac{(1-R^2)(N-1)}{(N-k-1)}$$
 - Penalizes us for just throwing more variables at the model
 - Proportion of variation in $Y_{i}$ explained by the model
 
-## Adjusted $R^2$ (cont.)
+### Adjusted $R^2$ (cont.)
 
 $$Adjusted\space R^2 = 1-\frac{(1-R^2)(N-1)}{(N-k-1)}$$
 

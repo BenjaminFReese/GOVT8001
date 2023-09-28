@@ -67,7 +67,7 @@ r2-cont.-2
 mean-squared-error-root-mean-squared-error
 mean-squared-error-root-mean-squared-error-1
 mean-squared-error-root-mean-squared-error-2
-multiple-regression-cont.
+multiple-regression
 adjusted-r2
 adjusted-r2-cont.
 lab-questions-congratulations-youve-been-hired-as-an-analyst-by-the-insert-your-favorite-baseball-team-name-here.-your-first-job-is-to-make-a-few-predictions-about-what-your-teams-future-will-look-like.
