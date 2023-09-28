@@ -61,15 +61,9 @@ question-iv---use-both-regression---the-lm-function-and-the-mean-function-to-sho
 question-v---write-a-loop-to-find-the-average-total-deaths-based-on-the-month-the-war-started-in.-do-the-same-with-dplyr.
 lab-vi-goodness-of-fit-multiple-regression
 r2
-r2-cont.
-r2-cont.-1
-r2-cont.-2
 mean-squared-error-root-mean-squared-error
-mean-squared-error-root-mean-squared-error-1
-mean-squared-error-root-mean-squared-error-2
 multiple-regression
 adjusted-r2
-adjusted-r2-cont.
 lab-questions-congratulations-youve-been-hired-as-an-analyst-by-the-insert-your-favorite-baseball-team-name-here.-your-first-job-is-to-make-a-few-predictions-about-what-your-teams-future-will-look-like.
 load-in-the-bbdta.rdata-file.
 run-a-regression-model-with-attendance-as-the-dv-and-wins-as-the-iv.-save-as-model1.
