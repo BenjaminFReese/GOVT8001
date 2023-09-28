@@ -1349,7 +1349,7 @@ cow_filtered %>%
 # Lab VI: Goodness of Fit & Multiple Regression
 
 ```{r, echo=FALSE}
-knitr::include_graphics("image_2_.png")
+knitr::include_graphics("image_6.png")
 ```
 
 ```{r}
