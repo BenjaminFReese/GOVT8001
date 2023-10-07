@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>3 Lab II: Introduction to library(tidyverse) &amp; R Markdown | GOVT 8001: Shared Working Book</title>
-  <meta name="description" content="3 Lab II: Introduction to library(tidyverse) &amp; R Markdown | GOVT 8001: Shared Working Book" />
+  <title>6 Lab V: Introduction to Regression | GOVT 8001: Shared Working Book</title>
+  <meta name="description" content="6 Lab V: Introduction to Regression | GOVT 8001: Shared Working Book" />
   <meta name="generator" content="bookdown 0.35 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="3 Lab II: Introduction to library(tidyverse) &amp; R Markdown | GOVT 8001: Shared Working Book" />
+  <meta property="og:title" content="6 Lab V: Introduction to Regression | GOVT 8001: Shared Working Book" />
   <meta property="og:type" content="book" />
   
   
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="3 Lab II: Introduction to library(tidyverse) &amp; R Markdown | GOVT 8001: Shared Working Book" />
+  <meta name="twitter:title" content="6 Lab V: Introduction to Regression | GOVT 8001: Shared Working Book" />
   
   
   
@@ -29,8 +29,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="lab-i-introduction-to-r-r-studio.html"/>
-<link rel="next" href="lab-iii-univariate-visualizations.html"/>
+<link rel="prev" href="lab-iv-loops-lists-conditional-statements.html"/>
+<link rel="next" href="lab-vi-goodness-of-fit-multiple-regression.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -253,6 +253,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="8.1.2" data-path="lab-vii-interactions-categorical-variables.html"><a href="lab-vii-interactions-categorical-variables.html#the-four-categories-of-the-treatment-variable"><i class="fa fa-check"></i><b>8.1.2</b> The Four Categories of the Treatment Variable</a></li>
 <li class="chapter" data-level="8.1.3" data-path="lab-vii-interactions-categorical-variables.html"><a href="lab-vii-interactions-categorical-variables.html#estimating-the-model"><i class="fa fa-check"></i><b>8.1.3</b> Estimating the Model</a></li>
 <li class="chapter" data-level="8.1.4" data-path="lab-vii-interactions-categorical-variables.html"><a href="lab-vii-interactions-categorical-variables.html#difference-in-means-between-categories"><i class="fa fa-check"></i><b>8.1.4</b> Difference in Means Between Categories</a></li>
+<li class="chapter" data-level="8.1.5" data-path="lab-vii-interactions-categorical-variables.html"><a href="lab-vii-interactions-categorical-variables.html#changing-the-reference-category"><i class="fa fa-check"></i><b>8.1.5</b> Changing the Reference Category</a></li>
 </ul></li>
 <li class="chapter" data-level="8.2" data-path="lab-vii-interactions-categorical-variables.html"><a href="lab-vii-interactions-categorical-variables.html#interactions"><i class="fa fa-check"></i><b>8.2</b> Interactions</a>
 <ul>
@@ -286,170 +287,350 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="lab-ii-introduction-to-librarytidyverse-r-markdown" class="section level1 hasAnchor" number="3">
-<h1><span class="header-section-number">3</span> Lab II: Introduction to <code>library(tidyverse)</code> &amp; R Markdown<a href="lab-ii-introduction-to-librarytidyverse-r-markdown.html#lab-ii-introduction-to-librarytidyverse-r-markdown" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<p><img src="image_2_.png" width="944" /></p>
-<p>We can use R Markdown to create well-formatted PDFs or .html files that can easily display the results of our analyses. R Markdown, through Latex, also allows to write mathematical formulas with ease. Go ahead and knit - found in the top left corner - this file now and see what it looks like.</p>
-<div id="in-the-setup-chunk-above-load-the-tidyverse-packages-as-well-as-libraryreadr" class="section level2 hasAnchor" number="3.1">
-<h2><span class="header-section-number">3.1</span> In the setup chunk above, load the tidyverse packages as well as library(readr)<a href="lab-ii-introduction-to-librarytidyverse-r-markdown.html#in-the-setup-chunk-above-load-the-tidyverse-packages-as-well-as-libraryreadr" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div class="sourceCode" id="cb166"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb166-1"><a href="lab-ii-introduction-to-librarytidyverse-r-markdown.html#cb166-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Example Setup Chunk</span></span>
-<span id="cb166-2"><a href="lab-ii-introduction-to-librarytidyverse-r-markdown.html#cb166-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb166-3"><a href="lab-ii-introduction-to-librarytidyverse-r-markdown.html#cb166-3" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span>opts_chunk<span class="sc">$</span><span class="fu">set</span>(<span class="at">echo =</span> <span class="cn">TRUE</span>, <span class="at">message =</span> <span class="cn">FALSE</span>, <span class="at">warning =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb166-4"><a href="lab-ii-introduction-to-librarytidyverse-r-markdown.html#cb166-4" aria-hidden="true" tabindex="-1"></a><span class="do">## Packages</span></span>
-<span id="cb166-5"><a href="lab-ii-introduction-to-librarytidyverse-r-markdown.html#cb166-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
-<span id="cb166-6"><a href="lab-ii-introduction-to-librarytidyverse-r-markdown.html#cb166-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code></pre></div>
+<div id="lab-v-introduction-to-regression" class="section level1 hasAnchor" number="6">
+<h1><span class="header-section-number">6</span> Lab V: Introduction to Regression<a href="lab-v-introduction-to-regression.html#lab-v-introduction-to-regression" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p><img src="image_5.png" width="718" /></p>
+<div id="correlation" class="section level2 hasAnchor" number="6.1">
+<h2><span class="header-section-number">6.1</span> Correlation<a href="lab-v-introduction-to-regression.html#correlation" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<ul>
+<li>Statistical technique that tells use the extent that two variables are linearly related
+<span class="math display">\[r=\frac{\sum_{i=1}^{n}(x_{i}-\bar{x})(y_{i}-\bar{y})}{\sqrt{\sum_{n}^{i=1}(x_{i}-\bar{x})^2\sum_{n}^{i=1}(y_{i}-\bar{y})^2}}\]</span>
+<span class="math display">\[r = \frac{Cov(X,Y)}{SD(X)SD(Y)}\]</span></li>
+<li>Bounded between <span class="math inline">\(-1,1\)</span></li>
+<li>In <em>R</em>, <code>cor(x,y)</code></li>
+<li>Scatterplot in <em>R</em>
+<ul>
+<li><code>geom_point()</code></li>
+</ul></li>
+</ul>
+<div id="correlation-scatterplots" class="section level3 hasAnchor" number="6.1.1">
+<h3><span class="header-section-number">6.1.1</span> Correlation &amp; Scatterplots<a href="lab-v-introduction-to-regression.html#correlation-scatterplots" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><img src="_main_files/figure-html/unnamed-chunk-49-1.png" width="672" /><img src="_main_files/figure-html/unnamed-chunk-49-2.png" width="672" /><img src="_main_files/figure-html/unnamed-chunk-49-3.png" width="672" /></p>
 </div>
-<div id="load-in-the-resume.rdata-file-and-use-head-tail-glimpse-dim-summary-and-view-to-examine-each-variable-in-the-dataset.-how-many-of-the-resumes-have-white-sounding-names-how-many-have-african-american-sounding-names." class="section level2 hasAnchor" number="3.2">
-<h2><span class="header-section-number">3.2</span> Load in the resume.RData file and use head(), tail(), glimpse(), dim(), summary(), and View() to examine each variable in the dataset. How many of the resumes have white sounding names? How many have African-American sounding names.<a href="lab-ii-introduction-to-librarytidyverse-r-markdown.html#load-in-the-resume.rdata-file-and-use-head-tail-glimpse-dim-summary-and-view-to-examine-each-variable-in-the-dataset.-how-many-of-the-resumes-have-white-sounding-names-how-many-have-african-american-sounding-names." class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div class="sourceCode" id="cb167"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb167-1"><a href="lab-ii-introduction-to-librarytidyverse-r-markdown.html#cb167-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Loading Data</span></span>
-<span id="cb167-2"><a href="lab-ii-introduction-to-librarytidyverse-r-markdown.html#cb167-2" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(resume, <span class="at">package =</span> <span class="st">&quot;qss&quot;</span>)</span>
-<span id="cb167-3"><a href="lab-ii-introduction-to-librarytidyverse-r-markdown.html#cb167-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb167-4"><a href="lab-ii-introduction-to-librarytidyverse-r-markdown.html#cb167-4" aria-hidden="true" tabindex="-1"></a><span class="do">## Learning About the Dataset</span></span>
-<span id="cb167-5"><a href="lab-ii-introduction-to-librarytidyverse-r-markdown.html#cb167-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb167-6"><a href="lab-ii-introduction-to-librarytidyverse-r-markdown.html#cb167-6" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(resume)</span></code></pre></div>
-<pre><code>##   firstname    sex  race call
-## 1   Allison female white    0
-## 2   Kristen female white    0
-## 3   Lakisha female black    0
-## 4   Latonya female black    0
-## 5    Carrie female white    0
-## 6       Jay   male white    0</code></pre>
-<div class="sourceCode" id="cb169"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb169-1"><a href="lab-ii-introduction-to-librarytidyverse-r-markdown.html#cb169-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tail</span>(resume)</span></code></pre></div>
-<pre><code>##      firstname    sex  race call
-## 4865   Lakisha female black    0
-## 4866    Tamika female black    0
-## 4867     Ebony female black    0
-## 4868       Jay   male white    0
-## 4869   Latonya female black    0
-## 4870    Laurie female white    0</code></pre>
-<div class="sourceCode" id="cb171"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb171-1"><a href="lab-ii-introduction-to-librarytidyverse-r-markdown.html#cb171-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(resume)</span></code></pre></div>
-<pre><code>## Rows: 4,870
-## Columns: 4
-## $ firstname &lt;chr&gt; &quot;Allison&quot;, &quot;Kristen&quot;, &quot;Lakisha&quot;, &quot;Latonya&quot;, &quot;Carrie&quot;, &quot;Jay&quot;, &quot;Jill&quot;, &quot;Kenya&quot;, &quot;Latonya&quot;, &quot;Tyrone&quot;, …
-## $ sex       &lt;chr&gt; &quot;female&quot;, &quot;female&quot;, &quot;female&quot;, &quot;female&quot;, &quot;female&quot;, &quot;male&quot;, &quot;female&quot;, &quot;female&quot;, &quot;female&quot;, &quot;male&quot;, &quot;fe…
-## $ race      &lt;chr&gt; &quot;white&quot;, &quot;white&quot;, &quot;black&quot;, &quot;black&quot;, &quot;white&quot;, &quot;white&quot;, &quot;white&quot;, &quot;black&quot;, &quot;black&quot;, &quot;black&quot;, &quot;black&quot;, …
-## $ call      &lt;int&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, …</code></pre>
-<div class="sourceCode" id="cb173"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb173-1"><a href="lab-ii-introduction-to-librarytidyverse-r-markdown.html#cb173-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(resume)</span></code></pre></div>
-<pre><code>## [1] 4870    4</code></pre>
-<div class="sourceCode" id="cb175"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb175-1"><a href="lab-ii-introduction-to-librarytidyverse-r-markdown.html#cb175-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(resume)</span></code></pre></div>
-<pre><code>##   firstname             sex                race                call        
-##  Length:4870        Length:4870        Length:4870        Min.   :0.00000  
-##  Class :character   Class :character   Class :character   1st Qu.:0.00000  
-##  Mode  :character   Mode  :character   Mode  :character   Median :0.00000  
-##                                                           Mean   :0.08049  
-##                                                           3rd Qu.:0.00000  
-##                                                           Max.   :1.00000</code></pre>
-<div class="sourceCode" id="cb177"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb177-1"><a href="lab-ii-introduction-to-librarytidyverse-r-markdown.html#cb177-1" aria-hidden="true" tabindex="-1"></a><span class="fu">View</span>(resume) <span class="do">## Comment this out when knitting.</span></span>
-<span id="cb177-2"><a href="lab-ii-introduction-to-librarytidyverse-r-markdown.html#cb177-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb177-3"><a href="lab-ii-introduction-to-librarytidyverse-r-markdown.html#cb177-3" aria-hidden="true" tabindex="-1"></a><span class="do">## Number of observations by race</span></span>
-<span id="cb177-4"><a href="lab-ii-introduction-to-librarytidyverse-r-markdown.html#cb177-4" aria-hidden="true" tabindex="-1"></a>resume <span class="sc">%&gt;%</span></span>
-<span id="cb177-5"><a href="lab-ii-introduction-to-librarytidyverse-r-markdown.html#cb177-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(race) <span class="sc">%&gt;%</span></span>
-<span id="cb177-6"><a href="lab-ii-introduction-to-librarytidyverse-r-markdown.html#cb177-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>()</span></code></pre></div>
+</div>
+<div id="introduction-to-regression" class="section level2 hasAnchor" number="6.2">
+<h2><span class="header-section-number">6.2</span> Introduction to Regression<a href="lab-v-introduction-to-regression.html#introduction-to-regression" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<ul>
+<li>Why Regression?</li>
+<li>Basic Model</li>
+<li>Conditional Mean</li>
+<li>Estimation</li>
+<li>Coefficients &amp; Intercepts</li>
+</ul>
+<div id="why-regression" class="section level3 hasAnchor" number="6.2.1">
+<h3><span class="header-section-number">6.2.1</span> Why Regression?<a href="lab-v-introduction-to-regression.html#why-regression" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ul>
+<li>Regression is the work-horse of quantitative social science</li>
+<li>We use regression when we want to know the relationship between <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span>
+<ul>
+<li>Specifically, we want to know what a one unit increase in <span class="math inline">\(x\)</span> means for <span class="math inline">\(y\)</span></li>
+</ul></li>
+<li>Real Data vs Hats
+<ul>
+<li>Hats are expected values
+<ul>
+<li><span class="math inline">\(y\)</span> vs <span class="math inline">\(\hat{y}\)</span></li>
+</ul></li>
+</ul></li>
+<li>Identify a variable of interest, we call this <span class="math inline">\(y\)</span>
+<ul>
+<li>Ex: vote share, approval rating, gdp, etc.</li>
+</ul></li>
+<li>Take its mean, <span class="math inline">\(\bar{y}\)</span>
+<ul>
+<li>We have variation in our <span class="math inline">\(y\)</span> variable, though, e.g., some values are high and others are low</li>
+</ul></li>
+<li>Next find a variable that we think explains this variation, we call this <span class="math inline">\(x\)</span></li>
+<li>Then estimate the relationship between <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span></li>
+<li>We call <span class="math inline">\(x\)</span> the treatment variable, causal variable, independent variable, predictor variable, explanatory variable</li>
+<li>We call <span class="math inline">\(y\)</span> the dependent variable, outcome variable, response variable</li>
+</ul>
+</div>
+<div id="correlation-vs-regression" class="section level3 hasAnchor" number="6.2.2">
+<h3><span class="header-section-number">6.2.2</span> Correlation vs Regression<a href="lab-v-introduction-to-regression.html#correlation-vs-regression" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ul>
+<li>Similarities
+<ul>
+<li>Both show the direction and strength of the relationship between two variables</li>
+<li>When correlation is negative, <span class="math inline">\(r&lt;0\)</span>, then the regression slope will be negative, <span class="math inline">\(\beta_{1}&lt;0\)</span></li>
+<li>When correlation is positive, the regression slope will be positive</li>
+</ul></li>
+<li>Differences
+<ul>
+<li>Regression is for causation (with additional steps) while correlation is for, well, correlation</li>
+<li><span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> are interchangeable in correlation, but results will change if you swap <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> in regression</li>
+<li>Correlation is a single statistic while regression gives us an equation</li>
+</ul></li>
+</ul>
+</div>
+<div id="basic-model" class="section level3 hasAnchor" number="6.2.3">
+<h3><span class="header-section-number">6.2.3</span> Basic Model<a href="lab-v-introduction-to-regression.html#basic-model" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><span class="math display">\[\hat{y_{i}} = \hat{\beta_{0}} + \hat{\beta_{1}}x_{i}\]</span></p>
+<p>analogous to</p>
+<p><span class="math display">\[y = mx + b\]</span></p>
+<ul>
+<li><p>Where:</p>
+<ul>
+<li><span class="math inline">\(\hat{y_{i}} = y\)</span>, <span class="math inline">\(\hat{\beta_{0}} = b\)</span>, <span class="math inline">\(\hat{\beta_{1}}\)</span> = m, and <span class="math inline">\(x_{i}=x\)</span></li>
+<li><span class="math inline">\(\beta_{1}\)</span> is the slope</li>
+<li><span class="math inline">\(\beta_{0}\)</span> is the y-intercept</li>
+</ul></li>
+</ul>
+<p>Example of a model you may (will) see in the comparative politics literature:</p>
+<p><span class="math display">\[GDPGrowth_{i} = \beta_{0} + \beta_{1}Democracy_{i} + \epsilon_{i}\]</span></p>
+<ul>
+<li>Why no hats?</li>
+</ul>
+</div>
+<div id="conditional-mean" class="section level3 hasAnchor" number="6.2.4">
+<h3><span class="header-section-number">6.2.4</span> Conditional Mean<a href="lab-v-introduction-to-regression.html#conditional-mean" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ul>
+<li>Regression tells us the conditional mean of <span class="math inline">\(y\)</span> given <span class="math inline">\(x\)</span>
+<ul>
+<li><span class="math inline">\(E[Y|X] = \beta_{0} + \beta_{1}X\)</span></li>
+</ul></li>
+</ul>
+<div class="sourceCode" id="cb268"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb268-1"><a href="lab-v-introduction-to-regression.html#cb268-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Mean of All Children&#39;s Heights</span></span>
+<span id="cb268-2"><a href="lab-v-introduction-to-regression.html#cb268-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(Galton<span class="sc">$</span>height)</span></code></pre></div>
+<pre><code>## [1] 66.76069</code></pre>
+<div class="sourceCode" id="cb270"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb270-1"><a href="lab-v-introduction-to-regression.html#cb270-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Mean of Female Children&#39;s Heights</span></span>
+<span id="cb270-2"><a href="lab-v-introduction-to-regression.html#cb270-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(Galton<span class="sc">$</span>height[Galton<span class="sc">$</span>sex <span class="sc">==</span> <span class="st">&quot;F&quot;</span>])</span></code></pre></div>
+<pre><code>## [1] 64.11016</code></pre>
+<div class="sourceCode" id="cb272"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb272-1"><a href="lab-v-introduction-to-regression.html#cb272-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Mean of Male Children&#39;s Heights</span></span>
+<span id="cb272-2"><a href="lab-v-introduction-to-regression.html#cb272-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(Galton<span class="sc">$</span>height[Galton<span class="sc">$</span>sex <span class="sc">==</span> <span class="st">&quot;M&quot;</span>])</span></code></pre></div>
+<pre><code>## [1] 69.22882</code></pre>
+<div class="sourceCode" id="cb274"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb274-1"><a href="lab-v-introduction-to-regression.html#cb274-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Conditional Mean with Regression</span></span>
+<span id="cb274-2"><a href="lab-v-introduction-to-regression.html#cb274-2" aria-hidden="true" tabindex="-1"></a><span class="fu">lm</span>(height <span class="sc">~</span> sex, <span class="at">data =</span> Galton)</span></code></pre></div>
+<pre><code>## 
+## Call:
+## lm(formula = height ~ sex, data = Galton)
+## 
+## Coefficients:
+## (Intercept)         sexM  
+##      64.110        5.119</code></pre>
+</div>
+<div id="estimation" class="section level3 hasAnchor" number="6.2.5">
+<h3><span class="header-section-number">6.2.5</span> Estimation<a href="lab-v-introduction-to-regression.html#estimation" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><span class="math display">\[\hat{\beta}=\frac{\sum_{i=1}^{n}(x_{i}-\bar{x})(y_{i}-\bar{y})}{\sum_{n}^{i=1}(x_{i}-\bar{x})^2}\]</span>
+<span class="math display">\[\hat{\beta}= \frac{Cov(x,y)}{Var(x)}\]</span></p>
+<ul>
+<li>Intuitively, <span class="math inline">\(\hat{\beta}\)</span> is the variance of <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span> together divided by the variance of <span class="math inline">\(x\)</span>
+<ul>
+<li>Thus, you are left only with the variation in <span class="math inline">\(y\)</span> caused by <span class="math inline">\(x\)</span></li>
+</ul></li>
+<li>The main result of estimation is the <strong>coefficient</strong> and <strong>intercept</strong></li>
+<li>In <em>R</em>, <code>lm(y ~ x)</code></li>
+</ul>
+</div>
+<div id="coefficients-intercepts" class="section level3 hasAnchor" number="6.2.6">
+<h3><span class="header-section-number">6.2.6</span> Coefficients &amp; Intercepts<a href="lab-v-introduction-to-regression.html#coefficients-intercepts" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ul>
+<li>Coefficient
+<ul>
+<li>A one unit increase in <span class="math inline">\(x\)</span> is associated with a <span class="math inline">\(\hat{\beta_{1}}\)</span> increase in <span class="math inline">\(y\)</span></li>
+<li>Be very careful about the units of <span class="math inline">\(x\)</span>
+<ul>
+<li>For example, an <span class="math inline">\(x\)</span> that takes the values 0-1, a one unit increase is the full range of <span class="math inline">\(x\)</span></li>
+</ul></li>
+</ul></li>
+<li>Intercept
+<ul>
+<li><p>The fitted value of <span class="math inline">\(y\)</span> when <span class="math inline">\(x=0\)</span></p></li>
+<li><p>We multiply any given value of x by the constant <span class="math inline">\(\hat{\beta_{1}}\)</span> and add the intercept to get <span class="math inline">\(\hat{y}\)</span>, the fitted value of y</p></li>
+</ul></li>
+</ul>
+</div>
+<div id="scatterplots-regression-lines" class="section level3 hasAnchor" number="6.2.7">
+<h3><span class="header-section-number">6.2.7</span> Scatterplots &amp; Regression Lines<a href="lab-v-introduction-to-regression.html#scatterplots-regression-lines" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><img src="_main_files/figure-html/unnamed-chunk-51-1.png" width="672" />
+- How do we interpret <span class="math inline">\(\hat{\beta}\)</span> and <span class="math inline">\(\hat{\alpha}\)</span>?
+- What do you expect a child’s height will be if their father’s height is 70 inches?</p>
+<div class="sourceCode" id="cb276"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb276-1"><a href="lab-v-introduction-to-regression.html#cb276-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Mean when father is 70 inches tall</span></span>
+<span id="cb276-2"><a href="lab-v-introduction-to-regression.html#cb276-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(Galton<span class="sc">$</span>height[Galton<span class="sc">$</span>father <span class="sc">==</span> <span class="dv">70</span>])</span></code></pre></div>
+<pre><code>## [1] 66.94885</code></pre>
+<p><img src="_main_files/figure-html/unnamed-chunk-53-1.png" width="672" /></p>
+<ul>
+<li>How would we find the residuals?</li>
+</ul>
+<p><img src="_main_files/figure-html/unnamed-chunk-54-1.png" width="672" /></p>
+<ul>
+<li><span class="math inline">\(\hat{\epsilon} = y_i - \hat{y_i}\)</span></li>
+</ul>
+</div>
+</div>
+<div id="lab-questions-1" class="section level2 hasAnchor" number="6.3">
+<h2><span class="header-section-number">6.3</span> Lab Questions<a href="lab-v-introduction-to-regression.html#lab-questions-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<ul>
+<li>Download the <em>Correlates of War</em> dataset from Canvas.</li>
+<li>We are going to learn how to make scatterplots, find correlations, and run simple regressions.</li>
+<li>Sarkees, Meredith Reid and Frank Wayman (2010). Resort to War: 1816 – 2007. Washington DC: CQ Press.</li>
+</ul>
+<div id="question-i---load-in-the-data." class="section level3 hasAnchor" number="6.3.1">
+<h3><span class="header-section-number">6.3.1</span> Question I - Load in the Data.<a href="lab-v-introduction-to-regression.html#question-i---load-in-the-data." class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb278"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb278-1"><a href="lab-v-introduction-to-regression.html#cb278-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Loading in Data</span></span>
+<span id="cb278-2"><a href="lab-v-introduction-to-regression.html#cb278-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
+<span id="cb278-3"><a href="lab-v-introduction-to-regression.html#cb278-3" aria-hidden="true" tabindex="-1"></a>cow <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;~/GOVT8001/Lab 5/Intra-StateWarData_v4.1.csv&quot;</span>)</span></code></pre></div>
+</div>
+<div id="question-ii---create-a-scatterplot-to-show-the-joint-distribution-of-war-deaths-by-each-side.-experiment-with-subsetting-the-data-to-different-values-of-war-deaths-and-visualization-styles.-also-be-careful-about-missing-data-and-unknown-values.-add-a-regression-line." class="section level3 hasAnchor" number="6.3.2">
+<h3><span class="header-section-number">6.3.2</span> Question II - Create a scatterplot to show the joint distribution of war deaths by each side. Experiment with subsetting the data to different values of war deaths and visualization styles. Also, be careful about missing data and unknown values. Add a regression line.<a href="lab-v-introduction-to-regression.html#question-ii---create-a-scatterplot-to-show-the-joint-distribution-of-war-deaths-by-each-side.-experiment-with-subsetting-the-data-to-different-values-of-war-deaths-and-visualization-styles.-also-be-careful-about-missing-data-and-unknown-values.-add-a-regression-line." class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb279"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb279-1"><a href="lab-v-introduction-to-regression.html#cb279-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Scatterplot</span></span>
+<span id="cb279-2"><a href="lab-v-introduction-to-regression.html#cb279-2" aria-hidden="true" tabindex="-1"></a>cow <span class="sc">%&gt;%</span></span>
+<span id="cb279-3"><a href="lab-v-introduction-to-regression.html#cb279-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(SideADeaths <span class="sc">&lt;</span> <span class="dv">20000</span> <span class="sc">&amp;</span> SideADeaths <span class="sc">&gt;</span> <span class="dv">0</span>,</span>
+<span id="cb279-4"><a href="lab-v-introduction-to-regression.html#cb279-4" aria-hidden="true" tabindex="-1"></a>         SideBDeaths <span class="sc">&lt;</span> <span class="dv">20000</span> <span class="sc">&amp;</span> SideBDeaths <span class="sc">&gt;</span> <span class="dv">0</span>,</span>
+<span id="cb279-5"><a href="lab-v-introduction-to-regression.html#cb279-5" aria-hidden="true" tabindex="-1"></a>         EndYear1 <span class="sc">&gt;=</span> <span class="dv">0</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb279-6"><a href="lab-v-introduction-to-regression.html#cb279-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> SideADeaths, <span class="at">y =</span> SideBDeaths)) <span class="sc">+</span> </span>
+<span id="cb279-7"><a href="lab-v-introduction-to-regression.html#cb279-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb279-8"><a href="lab-v-introduction-to-regression.html#cb279-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_abline</span>(<span class="at">method =</span> <span class="st">&quot;lm&quot;</span>, <span class="at">col =</span> <span class="st">&quot;dark blue&quot;</span>) <span class="sc">+</span></span>
+<span id="cb279-9"><a href="lab-v-introduction-to-regression.html#cb279-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span></span>
+<span id="cb279-10"><a href="lab-v-introduction-to-regression.html#cb279-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Joint Distribution of War Deaths&quot;</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-56-1.png" width="672" /></p>
+</div>
+<div id="question-iii---what-is-the-correlation-coefficient-for-the-relationship-you-depicted-in-question-ii.-what-is-the-regression-coefficient-how-do-we-interpret-each-only-filter-out-the-less-than-zero-observations-for-this-question." class="section level3 hasAnchor" number="6.3.3">
+<h3><span class="header-section-number">6.3.3</span> Question III - What is the correlation coefficient for the relationship you depicted in Question II. What is the regression coefficient? How do we interpret each? Only filter out the less than zero observations for this question.<a href="lab-v-introduction-to-regression.html#question-iii---what-is-the-correlation-coefficient-for-the-relationship-you-depicted-in-question-ii.-what-is-the-regression-coefficient-how-do-we-interpret-each-only-filter-out-the-less-than-zero-observations-for-this-question." class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb280"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb280-1"><a href="lab-v-introduction-to-regression.html#cb280-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Filtering Data</span></span>
+<span id="cb280-2"><a href="lab-v-introduction-to-regression.html#cb280-2" aria-hidden="true" tabindex="-1"></a>cow_filtered <span class="ot">&lt;-</span> cow <span class="sc">%&gt;%</span></span>
+<span id="cb280-3"><a href="lab-v-introduction-to-regression.html#cb280-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(SideADeaths <span class="sc">&gt;</span> <span class="dv">0</span>,</span>
+<span id="cb280-4"><a href="lab-v-introduction-to-regression.html#cb280-4" aria-hidden="true" tabindex="-1"></a>         SideBDeaths <span class="sc">&gt;</span> <span class="dv">0</span>)</span>
+<span id="cb280-5"><a href="lab-v-introduction-to-regression.html#cb280-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb280-6"><a href="lab-v-introduction-to-regression.html#cb280-6" aria-hidden="true" tabindex="-1"></a><span class="do">## Correlation</span></span>
+<span id="cb280-7"><a href="lab-v-introduction-to-regression.html#cb280-7" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(cow_filtered<span class="sc">$</span>SideADeaths, cow_filtered<span class="sc">$</span>SideBDeaths)</span></code></pre></div>
+<pre><code>## [1] 0.8043606</code></pre>
+<div class="sourceCode" id="cb282"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb282-1"><a href="lab-v-introduction-to-regression.html#cb282-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Regression</span></span>
+<span id="cb282-2"><a href="lab-v-introduction-to-regression.html#cb282-2" aria-hidden="true" tabindex="-1"></a>cow <span class="sc">%&gt;%</span></span>
+<span id="cb282-3"><a href="lab-v-introduction-to-regression.html#cb282-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(SideADeaths <span class="sc">&gt;</span> <span class="dv">0</span>,</span>
+<span id="cb282-4"><a href="lab-v-introduction-to-regression.html#cb282-4" aria-hidden="true" tabindex="-1"></a>         SideBDeaths <span class="sc">&gt;</span> <span class="dv">0</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb282-5"><a href="lab-v-introduction-to-regression.html#cb282-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">lm</span>(SideBDeaths <span class="sc">~</span> SideADeaths, <span class="at">data =</span> .) <span class="sc">%&gt;%</span></span>
+<span id="cb282-6"><a href="lab-v-introduction-to-regression.html#cb282-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summary</span>()</span></code></pre></div>
+<pre><code>## 
+## Call:
+## lm(formula = SideBDeaths ~ SideADeaths, data = .)
+## 
+## Residuals:
+##     Min      1Q  Median      3Q     Max 
+## -191383   -3771   -2030     -10  515351 
+## 
+## Coefficients:
+##               Estimate Std. Error t value            Pr(&gt;|t|)    
+## (Intercept) 2924.15036 3652.12170   0.801               0.424    
+## SideADeaths    1.08097    0.06124  17.652 &lt;0.0000000000000002 ***
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 46330 on 170 degrees of freedom
+## Multiple R-squared:  0.647,  Adjusted R-squared:  0.6449 
+## F-statistic: 311.6 on 1 and 170 DF,  p-value: &lt; 0.00000000000000022</code></pre>
+</div>
+<div id="question-iv---use-both-regression---the-lm-function-and-the-mean-function-to-show-the-difference-between-total-war-deaths-depending-on-if-a-war-was-internationalized-or-not.-create-a-total-deaths-variable-for-this-question." class="section level3 hasAnchor" number="6.3.4">
+<h3><span class="header-section-number">6.3.4</span> Question IV - Use both regression - the <code>lm()</code> function and the <code>mean()</code> function to show the difference between total war deaths depending on if a war was internationalized or not. Create a total deaths variable for this question.<a href="lab-v-introduction-to-regression.html#question-iv---use-both-regression---the-lm-function-and-the-mean-function-to-show-the-difference-between-total-war-deaths-depending-on-if-a-war-was-internationalized-or-not.-create-a-total-deaths-variable-for-this-question." class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb284"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb284-1"><a href="lab-v-introduction-to-regression.html#cb284-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Difference in Means Based on Internationalization with Regression</span></span>
+<span id="cb284-2"><a href="lab-v-introduction-to-regression.html#cb284-2" aria-hidden="true" tabindex="-1"></a>cow_filtered <span class="sc">%&gt;%</span></span>
+<span id="cb284-3"><a href="lab-v-introduction-to-regression.html#cb284-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">total_deaths =</span> SideADeaths <span class="sc">+</span> SideBDeaths) <span class="sc">%&gt;%</span></span>
+<span id="cb284-4"><a href="lab-v-introduction-to-regression.html#cb284-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">lm</span>(total_deaths <span class="sc">~</span> Intnl, <span class="at">data =</span> .) <span class="sc">%&gt;%</span></span>
+<span id="cb284-5"><a href="lab-v-introduction-to-regression.html#cb284-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summary</span>()</span></code></pre></div>
+<pre><code>## 
+## Call:
+## lm(formula = total_deaths ~ Intnl, data = .)
+## 
+## Residuals:
+##     Min      1Q  Median      3Q     Max 
+##  -60572  -25549  -23574  -16024 1173351 
+## 
+## Coefficients:
+##             Estimate Std. Error t value Pr(&gt;|t|)  
+## (Intercept)    26649      11102   2.400   0.0175 *
+## Intnl          34922      23621   1.478   0.1411  
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 128500 on 170 degrees of freedom
+## Multiple R-squared:  0.01269,    Adjusted R-squared:  0.006887 
+## F-statistic: 2.186 on 1 and 170 DF,  p-value: 0.1411</code></pre>
+<div class="sourceCode" id="cb286"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb286-1"><a href="lab-v-introduction-to-regression.html#cb286-1" aria-hidden="true" tabindex="-1"></a><span class="do">## With Mean</span></span>
+<span id="cb286-2"><a href="lab-v-introduction-to-regression.html#cb286-2" aria-hidden="true" tabindex="-1"></a>cow_filtered <span class="sc">%&gt;%</span></span>
+<span id="cb286-3"><a href="lab-v-introduction-to-regression.html#cb286-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">total_deaths =</span> SideADeaths <span class="sc">+</span> SideBDeaths) <span class="sc">%&gt;%</span></span>
+<span id="cb286-4"><a href="lab-v-introduction-to-regression.html#cb286-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Intnl) <span class="sc">%&gt;%</span></span>
+<span id="cb286-5"><a href="lab-v-introduction-to-regression.html#cb286-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">avg_deaths =</span> <span class="fu">mean</span>(total_deaths))</span></code></pre></div>
 <pre><code>## # A tibble: 2 × 2
-## # Groups:   race [2]
-##   race      n
-##   &lt;chr&gt; &lt;int&gt;
-## 1 black  2435
-## 2 white  2435</code></pre>
+##   Intnl avg_deaths
+##   &lt;dbl&gt;      &lt;dbl&gt;
+## 1     0     26649.
+## 2     1     61572.</code></pre>
+<div class="sourceCode" id="cb288"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb288-1"><a href="lab-v-introduction-to-regression.html#cb288-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Differences</span></span>
+<span id="cb288-2"><a href="lab-v-introduction-to-regression.html#cb288-2" aria-hidden="true" tabindex="-1"></a><span class="do">## With Mean</span></span>
+<span id="cb288-3"><a href="lab-v-introduction-to-regression.html#cb288-3" aria-hidden="true" tabindex="-1"></a>cow_filtered <span class="sc">%&gt;%</span></span>
+<span id="cb288-4"><a href="lab-v-introduction-to-regression.html#cb288-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">total_deaths =</span> SideADeaths <span class="sc">+</span> SideBDeaths) <span class="sc">%&gt;%</span></span>
+<span id="cb288-5"><a href="lab-v-introduction-to-regression.html#cb288-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Intnl <span class="sc">==</span> <span class="dv">1</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb288-6"><a href="lab-v-introduction-to-regression.html#cb288-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">non_int_deaths =</span> <span class="fu">mean</span>(total_deaths)) <span class="sc">%&gt;%</span></span>
+<span id="cb288-7"><a href="lab-v-introduction-to-regression.html#cb288-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pull</span>(non_int_deaths) <span class="sc">-</span></span>
+<span id="cb288-8"><a href="lab-v-introduction-to-regression.html#cb288-8" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb288-9"><a href="lab-v-introduction-to-regression.html#cb288-9" aria-hidden="true" tabindex="-1"></a>  cow_filtered <span class="sc">%&gt;%</span></span>
+<span id="cb288-10"><a href="lab-v-introduction-to-regression.html#cb288-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">total_deaths =</span> SideADeaths <span class="sc">+</span> SideBDeaths) <span class="sc">%&gt;%</span></span>
+<span id="cb288-11"><a href="lab-v-introduction-to-regression.html#cb288-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Intnl <span class="sc">==</span> <span class="dv">0</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb288-12"><a href="lab-v-introduction-to-regression.html#cb288-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">non_int_deaths =</span> <span class="fu">mean</span>(total_deaths)) <span class="sc">%&gt;%</span></span>
+<span id="cb288-13"><a href="lab-v-introduction-to-regression.html#cb288-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pull</span>(non_int_deaths)</span></code></pre></div>
+<pre><code>## [1] 34922.34</code></pre>
 </div>
-<div id="this-experiment-seeks-to-determine-whether-or-not-hiring-managers-discriminate-on-the-basis-of-racial-identity-by-sending-idential-resumes-with-african-american-and-white-sounding-names-to-job-postings.-the-basic-logic-is-that-resumes-are-identical-and-only-the-name-is-changing-so-any-differences-in-call-backs-for-jobs-can-be-attributed-to-racial-discrimination.-why-do-the-authors-want-to-randomize-and-do-you-think-this-is-an-effective-research-design" class="section level2 hasAnchor" number="3.3">
-<h2><span class="header-section-number">3.3</span> This experiment seeks to determine whether or not hiring managers discriminate on the basis of racial identity by sending idential resumes with African-American and white sounding names to job postings. The basic logic is that resumes are identical and only the name is changing, so any differences in call backs for jobs can be attributed to racial discrimination. Why do the authors want to randomize? And do you think this is an effective research design?<a href="lab-ii-introduction-to-librarytidyverse-r-markdown.html#this-experiment-seeks-to-determine-whether-or-not-hiring-managers-discriminate-on-the-basis-of-racial-identity-by-sending-idential-resumes-with-african-american-and-white-sounding-names-to-job-postings.-the-basic-logic-is-that-resumes-are-identical-and-only-the-name-is-changing-so-any-differences-in-call-backs-for-jobs-can-be-attributed-to-racial-discrimination.-why-do-the-authors-want-to-randomize-and-do-you-think-this-is-an-effective-research-design" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>The concerns of examining race and the number of callbacks without randomization is that there could be confounders like workplace connections, amount of education, and employment history that could be correlated with race. It is possible that African-American applicants did not have the same employment and educational opportunities as white Americans, and, therefore, their resumes may look significantly different. This raises issues of counfounding and makes it impossible to differentiate if an employer made their decision based on race or based on the substance of the resume. The authors, though, randomized race, reducing this risk of confounding. Employers in this study are seeing nearly identical resumes, with only the race of the applicant being different, as indicated by a name.</p>
-<p>The field experiment presented here relies on racial connotations of different names, not explicit racial cues. Therefore, hiring managers are determining an applicant’s race largely based on what scholars of identity politics would call “perceived race” or “street race” (<a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5800755/">Lopez et al. 2017</a>), which is how others perceive an individual’s race. This fact means that the selection of names is integral to the internal validity of the research design.</p>
+<div id="question-v---write-a-loop-to-find-the-average-total-deaths-based-on-the-month-the-war-started-in.-do-the-same-with-dplyr." class="section level3 hasAnchor" number="6.3.5">
+<h3><span class="header-section-number">6.3.5</span> Question V - Write a loop to find the average total deaths based on the month the war started in. Do the same with dplyr.<a href="lab-v-introduction-to-regression.html#question-v---write-a-loop-to-find-the-average-total-deaths-based-on-the-month-the-war-started-in.-do-the-same-with-dplyr." class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb290"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb290-1"><a href="lab-v-introduction-to-regression.html#cb290-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Wrangling Data</span></span>
+<span id="cb290-2"><a href="lab-v-introduction-to-regression.html#cb290-2" aria-hidden="true" tabindex="-1"></a>cow_filtered <span class="ot">&lt;-</span> cow_filtered <span class="sc">%&gt;%</span></span>
+<span id="cb290-3"><a href="lab-v-introduction-to-regression.html#cb290-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(StartMonth1 <span class="sc">&gt;</span> <span class="dv">0</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb290-4"><a href="lab-v-introduction-to-regression.html#cb290-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">total_deaths =</span> SideADeaths <span class="sc">+</span> SideBDeaths)</span>
+<span id="cb290-5"><a href="lab-v-introduction-to-regression.html#cb290-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb290-6"><a href="lab-v-introduction-to-regression.html#cb290-6" aria-hidden="true" tabindex="-1"></a><span class="do">## Loop</span></span>
+<span id="cb290-7"><a href="lab-v-introduction-to-regression.html#cb290-7" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="fu">unique</span>(cow_filtered<span class="sc">$</span>StartMonth1)) {</span>
+<span id="cb290-8"><a href="lab-v-introduction-to-regression.html#cb290-8" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb290-9"><a href="lab-v-introduction-to-regression.html#cb290-9" aria-hidden="true" tabindex="-1"></a> x <span class="ot">&lt;-</span> <span class="fu">mean</span>(cow_filtered<span class="sc">$</span>total_deaths[cow_filtered<span class="sc">$</span>StartMonth1 <span class="sc">==</span> i])</span>
+<span id="cb290-10"><a href="lab-v-introduction-to-regression.html#cb290-10" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb290-11"><a href="lab-v-introduction-to-regression.html#cb290-11" aria-hidden="true" tabindex="-1"></a> <span class="fu">names</span>(x) <span class="ot">&lt;-</span> i</span>
+<span id="cb290-12"><a href="lab-v-introduction-to-regression.html#cb290-12" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb290-13"><a href="lab-v-introduction-to-regression.html#cb290-13" aria-hidden="true" tabindex="-1"></a> <span class="fu">print</span>(x)</span>
+<span id="cb290-14"><a href="lab-v-introduction-to-regression.html#cb290-14" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb290-15"><a href="lab-v-introduction-to-regression.html#cb290-15" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<pre><code>##        6 
+## 12310.33 
+##       3 
+## 62869.5 
+##        7 
+## 64465.71 
+##        2 
+## 7942.857 
+##        8 
+## 8314.538 
+##       10 
+## 21915.77 
+##        4 
+## 62369.33 
+##       11 
+## 48016.43 
+##    5 
+## 6795 
+##        9 
+## 14526.15 
+##        1 
+## 15822.15 
+##       12 
+## 75963.08</code></pre>
+<div class="sourceCode" id="cb292"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb292-1"><a href="lab-v-introduction-to-regression.html#cb292-1" aria-hidden="true" tabindex="-1"></a><span class="do">## With dplyr</span></span>
+<span id="cb292-2"><a href="lab-v-introduction-to-regression.html#cb292-2" aria-hidden="true" tabindex="-1"></a>cow_filtered <span class="sc">%&gt;%</span></span>
+<span id="cb292-3"><a href="lab-v-introduction-to-regression.html#cb292-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(StartMonth1) <span class="sc">%&gt;%</span></span>
+<span id="cb292-4"><a href="lab-v-introduction-to-regression.html#cb292-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">avg_death_by_month =</span> <span class="fu">mean</span>(total_deaths))</span></code></pre></div>
+<pre><code>## # A tibble: 12 × 2
+##    StartMonth1 avg_death_by_month
+##          &lt;dbl&gt;              &lt;dbl&gt;
+##  1           1             15822.
+##  2           2              7943.
+##  3           3             62870.
+##  4           4             62369.
+##  5           5              6795 
+##  6           6             12310.
+##  7           7             64466.
+##  8           8              8315.
+##  9           9             14526.
+## 10          10             21916.
+## 11          11             48016.
+## 12          12             75963.</code></pre>
 </div>
-<div id="we-are-going-to-see-if-there-is-a-racial-discrepency-by-taking-the-difference-in-callback-rates-between-racial-groups.-calculate-the-callback-rate-for-white-sounding-name-applicants-and-african-american-sounding-name-applicants.-use-latex-commands-to-write-the-formula-for-this-calculation-and-display-the-result-in-text.-write-the-formula-between-s-like-y-mx-b-to-use-latex-commands." class="section level2 hasAnchor" number="3.4">
-<h2><span class="header-section-number">3.4</span> We are going to see if there is a racial discrepency by taking the difference in callback rates between racial groups. Calculate the callback rate for white sounding name applicants and African-American sounding name applicants. Use Latex commands to write the formula for this calculation and display the result in text. Write the formula between $’s like <span class="math inline">\(y = mx + b\)</span> to use Latex commands.<a href="lab-ii-introduction-to-librarytidyverse-r-markdown.html#we-are-going-to-see-if-there-is-a-racial-discrepency-by-taking-the-difference-in-callback-rates-between-racial-groups.-calculate-the-callback-rate-for-white-sounding-name-applicants-and-african-american-sounding-name-applicants.-use-latex-commands-to-write-the-formula-for-this-calculation-and-display-the-result-in-text.-write-the-formula-between-s-like-y-mx-b-to-use-latex-commands." class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div class="sourceCode" id="cb179"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb179-1"><a href="lab-ii-introduction-to-librarytidyverse-r-markdown.html#cb179-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Call Back for white Sounding Name Applicants</span></span>
-<span id="cb179-2"><a href="lab-ii-introduction-to-librarytidyverse-r-markdown.html#cb179-2" aria-hidden="true" tabindex="-1"></a>resume <span class="sc">%&gt;%</span></span>
-<span id="cb179-3"><a href="lab-ii-introduction-to-librarytidyverse-r-markdown.html#cb179-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(race) <span class="sc">%&gt;%</span></span>
-<span id="cb179-4"><a href="lab-ii-introduction-to-librarytidyverse-r-markdown.html#cb179-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">callback_rates =</span> <span class="fu">mean</span>(call))</span></code></pre></div>
-<pre><code>## # A tibble: 2 × 2
-##   race  callback_rates
-##   &lt;chr&gt;          &lt;dbl&gt;
-## 1 black         0.0645
-## 2 white         0.0965</code></pre>
-<p>The callback rate for whites is .096. We take the mean of the binary callback variable, <span class="math inline">\(\overline{x} = \frac{1}{n}\Sigma^{n}_{i=1}x_i\)</span></p>
-<p>The callback rate for African-American sounding name applicants is .064.</p>
-</div>
-<div id="now-create-a-new-object-that-stores-the-difference-in-callback-rates-named-race_diff." class="section level2 hasAnchor" number="3.5">
-<h2><span class="header-section-number">3.5</span> Now, create a new object that stores the difference in callback rates named race_diff.<a href="lab-ii-introduction-to-librarytidyverse-r-markdown.html#now-create-a-new-object-that-stores-the-difference-in-callback-rates-named-race_diff." class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div class="sourceCode" id="cb181"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb181-1"><a href="lab-ii-introduction-to-librarytidyverse-r-markdown.html#cb181-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Calculating Callback Proportions</span></span>
-<span id="cb181-2"><a href="lab-ii-introduction-to-librarytidyverse-r-markdown.html#cb181-2" aria-hidden="true" tabindex="-1"></a>race_call <span class="ot">&lt;-</span> resume <span class="sc">%&gt;%</span></span>
-<span id="cb181-3"><a href="lab-ii-introduction-to-librarytidyverse-r-markdown.html#cb181-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(race, call) <span class="sc">%&gt;%</span></span>
-<span id="cb181-4"><a href="lab-ii-introduction-to-librarytidyverse-r-markdown.html#cb181-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb181-5"><a href="lab-ii-introduction-to-librarytidyverse-r-markdown.html#cb181-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> call,</span>
-<span id="cb181-6"><a href="lab-ii-introduction-to-librarytidyverse-r-markdown.html#cb181-6" aria-hidden="true" tabindex="-1"></a>              <span class="at">values_from =</span> n) <span class="sc">%&gt;%</span></span>
-<span id="cb181-7"><a href="lab-ii-introduction-to-librarytidyverse-r-markdown.html#cb181-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">no_call =</span> <span class="st">`</span><span class="at">0</span><span class="st">`</span>,</span>
-<span id="cb181-8"><a href="lab-ii-introduction-to-librarytidyverse-r-markdown.html#cb181-8" aria-hidden="true" tabindex="-1"></a>         <span class="at">call =</span> <span class="st">`</span><span class="at">1</span><span class="st">`</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb181-9"><a href="lab-ii-introduction-to-librarytidyverse-r-markdown.html#cb181-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">total_resumes =</span> no_call <span class="sc">+</span> call,</span>
-<span id="cb181-10"><a href="lab-ii-introduction-to-librarytidyverse-r-markdown.html#cb181-10" aria-hidden="true" tabindex="-1"></a>         <span class="at">call_prop =</span> call <span class="sc">/</span> total_resumes)</span>
-<span id="cb181-11"><a href="lab-ii-introduction-to-librarytidyverse-r-markdown.html#cb181-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb181-12"><a href="lab-ii-introduction-to-librarytidyverse-r-markdown.html#cb181-12" aria-hidden="true" tabindex="-1"></a><span class="do">## Difference in call back rates</span></span>
-<span id="cb181-13"><a href="lab-ii-introduction-to-librarytidyverse-r-markdown.html#cb181-13" aria-hidden="true" tabindex="-1"></a>race_diff <span class="ot">&lt;-</span> race_call <span class="sc">%&gt;%</span> </span>
-<span id="cb181-14"><a href="lab-ii-introduction-to-librarytidyverse-r-markdown.html#cb181-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(race, call_prop) <span class="sc">%&gt;%</span></span>
-<span id="cb181-15"><a href="lab-ii-introduction-to-librarytidyverse-r-markdown.html#cb181-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> <span class="fu">c</span>(race),</span>
-<span id="cb181-16"><a href="lab-ii-introduction-to-librarytidyverse-r-markdown.html#cb181-16" aria-hidden="true" tabindex="-1"></a>              <span class="at">values_from =</span> call_prop) <span class="sc">%&gt;%</span></span>
-<span id="cb181-17"><a href="lab-ii-introduction-to-librarytidyverse-r-markdown.html#cb181-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">race_diff =</span> white <span class="sc">-</span> black) <span class="sc">%&gt;%</span></span>
-<span id="cb181-18"><a href="lab-ii-introduction-to-librarytidyverse-r-markdown.html#cb181-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(race_diff)</span>
-<span id="cb181-19"><a href="lab-ii-introduction-to-librarytidyverse-r-markdown.html#cb181-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb181-20"><a href="lab-ii-introduction-to-librarytidyverse-r-markdown.html#cb181-20" aria-hidden="true" tabindex="-1"></a><span class="do">## Printing</span></span>
-<span id="cb181-21"><a href="lab-ii-introduction-to-librarytidyverse-r-markdown.html#cb181-21" aria-hidden="true" tabindex="-1"></a>race_diff</span></code></pre></div>
-<pre><code>## # A tibble: 1 × 1
-##   race_diff
-##       &lt;dbl&gt;
-## 1    0.0320</code></pre>
-</div>
-<div id="since-crenshaw-1989-manny-scholars-have-concerned-with-intersectionality-or-how-race-and-gender-interact-to-make-the-experiences-of-african-american-women-unique.-we-can-use-the-data-we-have-to-explore-the-effect-of-race-and-gender-specific-sounding-names-on-employment-prospects.-calculate-the-call-back-rate-by-each-race-and-gender-category." class="section level2 hasAnchor" number="3.6">
-<h2><span class="header-section-number">3.6</span> Since Crenshaw (1989), manny scholars have concerned with intersectionality, or how race and gender interact to make the experiences of African-American women unique. We can use the data we have to explore the effect of race and gender specific sounding names on employment prospects. Calculate the call back rate by each race and gender category.<a href="lab-ii-introduction-to-librarytidyverse-r-markdown.html#since-crenshaw-1989-manny-scholars-have-concerned-with-intersectionality-or-how-race-and-gender-interact-to-make-the-experiences-of-african-american-women-unique.-we-can-use-the-data-we-have-to-explore-the-effect-of-race-and-gender-specific-sounding-names-on-employment-prospects.-calculate-the-call-back-rate-by-each-race-and-gender-category." class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div class="sourceCode" id="cb183"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb183-1"><a href="lab-ii-introduction-to-librarytidyverse-r-markdown.html#cb183-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Callbacks by race and gender</span></span>
-<span id="cb183-2"><a href="lab-ii-introduction-to-librarytidyverse-r-markdown.html#cb183-2" aria-hidden="true" tabindex="-1"></a>resume <span class="sc">%&gt;%</span></span>
-<span id="cb183-3"><a href="lab-ii-introduction-to-librarytidyverse-r-markdown.html#cb183-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(race, call, sex) <span class="sc">%&gt;%</span></span>
-<span id="cb183-4"><a href="lab-ii-introduction-to-librarytidyverse-r-markdown.html#cb183-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb183-5"><a href="lab-ii-introduction-to-librarytidyverse-r-markdown.html#cb183-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> call,</span>
-<span id="cb183-6"><a href="lab-ii-introduction-to-librarytidyverse-r-markdown.html#cb183-6" aria-hidden="true" tabindex="-1"></a>              <span class="at">values_from =</span> n) <span class="sc">%&gt;%</span></span>
-<span id="cb183-7"><a href="lab-ii-introduction-to-librarytidyverse-r-markdown.html#cb183-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">no_call =</span> <span class="st">`</span><span class="at">0</span><span class="st">`</span>,</span>
-<span id="cb183-8"><a href="lab-ii-introduction-to-librarytidyverse-r-markdown.html#cb183-8" aria-hidden="true" tabindex="-1"></a>         <span class="at">call =</span> <span class="st">`</span><span class="at">1</span><span class="st">`</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb183-9"><a href="lab-ii-introduction-to-librarytidyverse-r-markdown.html#cb183-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">total_resumes =</span> no_call <span class="sc">+</span> call,</span>
-<span id="cb183-10"><a href="lab-ii-introduction-to-librarytidyverse-r-markdown.html#cb183-10" aria-hidden="true" tabindex="-1"></a>         <span class="at">call_prop =</span> call <span class="sc">/</span> total_resumes)</span></code></pre></div>
-<pre><code>## # A tibble: 4 × 6
-## # Groups:   race, sex [4]
-##   race  sex    no_call  call total_resumes call_prop
-##   &lt;chr&gt; &lt;chr&gt;    &lt;int&gt; &lt;int&gt;         &lt;int&gt;     &lt;dbl&gt;
-## 1 black female    1761   125          1886    0.0663
-## 2 black male       517    32           549    0.0583
-## 3 white female    1676   184          1860    0.0989
-## 4 white male       524    51           575    0.0887</code></pre>
-</div>
-<div id="what-is-the-difference-in-call-back-rates-for-each-racegender-group" class="section level2 hasAnchor" number="3.7">
-<h2><span class="header-section-number">3.7</span> What is the difference in call back rates for each race/gender group?<a href="lab-ii-introduction-to-librarytidyverse-r-markdown.html#what-is-the-difference-in-call-back-rates-for-each-racegender-group" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div class="sourceCode" id="cb185"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb185-1"><a href="lab-ii-introduction-to-librarytidyverse-r-markdown.html#cb185-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Saving tibble from 8</span></span>
-<span id="cb185-2"><a href="lab-ii-introduction-to-librarytidyverse-r-markdown.html#cb185-2" aria-hidden="true" tabindex="-1"></a>dta <span class="ot">&lt;-</span> resume <span class="sc">%&gt;%</span></span>
-<span id="cb185-3"><a href="lab-ii-introduction-to-librarytidyverse-r-markdown.html#cb185-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(race, call, sex) <span class="sc">%&gt;%</span></span>
-<span id="cb185-4"><a href="lab-ii-introduction-to-librarytidyverse-r-markdown.html#cb185-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb185-5"><a href="lab-ii-introduction-to-librarytidyverse-r-markdown.html#cb185-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> call,</span>
-<span id="cb185-6"><a href="lab-ii-introduction-to-librarytidyverse-r-markdown.html#cb185-6" aria-hidden="true" tabindex="-1"></a>              <span class="at">values_from =</span> n) <span class="sc">%&gt;%</span></span>
-<span id="cb185-7"><a href="lab-ii-introduction-to-librarytidyverse-r-markdown.html#cb185-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">no_call =</span> <span class="st">`</span><span class="at">0</span><span class="st">`</span>,</span>
-<span id="cb185-8"><a href="lab-ii-introduction-to-librarytidyverse-r-markdown.html#cb185-8" aria-hidden="true" tabindex="-1"></a>         <span class="at">call =</span> <span class="st">`</span><span class="at">1</span><span class="st">`</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb185-9"><a href="lab-ii-introduction-to-librarytidyverse-r-markdown.html#cb185-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">total_resumes =</span> no_call <span class="sc">+</span> call,</span>
-<span id="cb185-10"><a href="lab-ii-introduction-to-librarytidyverse-r-markdown.html#cb185-10" aria-hidden="true" tabindex="-1"></a>         <span class="at">call_prop =</span> call <span class="sc">/</span> total_resumes)</span>
-<span id="cb185-11"><a href="lab-ii-introduction-to-librarytidyverse-r-markdown.html#cb185-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb185-12"><a href="lab-ii-introduction-to-librarytidyverse-r-markdown.html#cb185-12" aria-hidden="true" tabindex="-1"></a><span class="do">## Calculating Differences</span></span>
-<span id="cb185-13"><a href="lab-ii-introduction-to-librarytidyverse-r-markdown.html#cb185-13" aria-hidden="true" tabindex="-1"></a>call_backs <span class="ot">&lt;-</span> dta <span class="sc">%&gt;%</span> </span>
-<span id="cb185-14"><a href="lab-ii-introduction-to-librarytidyverse-r-markdown.html#cb185-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(race, sex, call_prop) <span class="sc">%&gt;%</span></span>
-<span id="cb185-15"><a href="lab-ii-introduction-to-librarytidyverse-r-markdown.html#cb185-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> <span class="fu">c</span>(sex, race),</span>
-<span id="cb185-16"><a href="lab-ii-introduction-to-librarytidyverse-r-markdown.html#cb185-16" aria-hidden="true" tabindex="-1"></a>              <span class="at">values_from =</span> call_prop) <span class="sc">%&gt;%</span></span>
-<span id="cb185-17"><a href="lab-ii-introduction-to-librarytidyverse-r-markdown.html#cb185-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">white_sex_diff =</span> female_white <span class="sc">-</span> male_white,</span>
-<span id="cb185-18"><a href="lab-ii-introduction-to-librarytidyverse-r-markdown.html#cb185-18" aria-hidden="true" tabindex="-1"></a>         <span class="at">black_sex_diff =</span> female_black <span class="sc">-</span> male_black,</span>
-<span id="cb185-19"><a href="lab-ii-introduction-to-librarytidyverse-r-markdown.html#cb185-19" aria-hidden="true" tabindex="-1"></a>         <span class="at">male_race_diff =</span> male_white <span class="sc">-</span> male_black,</span>
-<span id="cb185-20"><a href="lab-ii-introduction-to-librarytidyverse-r-markdown.html#cb185-20" aria-hidden="true" tabindex="-1"></a>         <span class="at">female_race_diff =</span> female_white <span class="sc">-</span> female_black) <span class="sc">%&gt;%</span></span>
-<span id="cb185-21"><a href="lab-ii-introduction-to-librarytidyverse-r-markdown.html#cb185-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(white_sex_diff, black_sex_diff, male_race_diff, female_race_diff)</span>
-<span id="cb185-22"><a href="lab-ii-introduction-to-librarytidyverse-r-markdown.html#cb185-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb185-23"><a href="lab-ii-introduction-to-librarytidyverse-r-markdown.html#cb185-23" aria-hidden="true" tabindex="-1"></a><span class="do">## Printing</span></span>
-<span id="cb185-24"><a href="lab-ii-introduction-to-librarytidyverse-r-markdown.html#cb185-24" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(call_backs) <span class="do">## print() is optional</span></span></code></pre></div>
-<pre><code>## # A tibble: 1 × 4
-##   white_sex_diff black_sex_diff male_race_diff female_race_diff
-##            &lt;dbl&gt;          &lt;dbl&gt;          &lt;dbl&gt;            &lt;dbl&gt;
-## 1         0.0102        0.00799         0.0304           0.0326</code></pre>
 </div>
 </div>
             </section>
@@ -457,8 +638,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           </div>
         </div>
       </div>
-<a href="lab-i-introduction-to-r-r-studio.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="lab-iii-univariate-visualizations.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="lab-iv-loops-lists-conditional-statements.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="lab-vi-goodness-of-fit-multiple-regression.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

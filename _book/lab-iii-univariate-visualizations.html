@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>6 Lab V: Introduction to Regression | GOVT 8001: Shared Working Book</title>
-  <meta name="description" content="6 Lab V: Introduction to Regression | GOVT 8001: Shared Working Book" />
+  <title>4 Lab III: Univariate Visualizations | GOVT 8001: Shared Working Book</title>
+  <meta name="description" content="4 Lab III: Univariate Visualizations | GOVT 8001: Shared Working Book" />
   <meta name="generator" content="bookdown 0.35 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="6 Lab V: Introduction to Regression | GOVT 8001: Shared Working Book" />
+  <meta property="og:title" content="4 Lab III: Univariate Visualizations | GOVT 8001: Shared Working Book" />
   <meta property="og:type" content="book" />
   
   
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="6 Lab V: Introduction to Regression | GOVT 8001: Shared Working Book" />
+  <meta name="twitter:title" content="4 Lab III: Univariate Visualizations | GOVT 8001: Shared Working Book" />
   
   
   
@@ -29,8 +29,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="lab-iv-loops-lists-conditional-statements.html"/>
-<link rel="next" href="lab-vi-goodness-of-fit-multiple-regression.html"/>
+<link rel="prev" href="lab-ii-introduction-to-librarytidyverse-r-markdown.html"/>
+<link rel="next" href="lab-iv-loops-lists-conditional-statements.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -253,6 +253,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="8.1.2" data-path="lab-vii-interactions-categorical-variables.html"><a href="lab-vii-interactions-categorical-variables.html#the-four-categories-of-the-treatment-variable"><i class="fa fa-check"></i><b>8.1.2</b> The Four Categories of the Treatment Variable</a></li>
 <li class="chapter" data-level="8.1.3" data-path="lab-vii-interactions-categorical-variables.html"><a href="lab-vii-interactions-categorical-variables.html#estimating-the-model"><i class="fa fa-check"></i><b>8.1.3</b> Estimating the Model</a></li>
 <li class="chapter" data-level="8.1.4" data-path="lab-vii-interactions-categorical-variables.html"><a href="lab-vii-interactions-categorical-variables.html#difference-in-means-between-categories"><i class="fa fa-check"></i><b>8.1.4</b> Difference in Means Between Categories</a></li>
+<li class="chapter" data-level="8.1.5" data-path="lab-vii-interactions-categorical-variables.html"><a href="lab-vii-interactions-categorical-variables.html#changing-the-reference-category"><i class="fa fa-check"></i><b>8.1.5</b> Changing the Reference Category</a></li>
 </ul></li>
 <li class="chapter" data-level="8.2" data-path="lab-vii-interactions-categorical-variables.html"><a href="lab-vii-interactions-categorical-variables.html#interactions"><i class="fa fa-check"></i><b>8.2</b> Interactions</a>
 <ul>
@@ -286,350 +287,200 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="lab-v-introduction-to-regression" class="section level1 hasAnchor" number="6">
-<h1><span class="header-section-number">6</span> Lab V: Introduction to Regression<a href="lab-v-introduction-to-regression.html#lab-v-introduction-to-regression" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<p><img src="image_5.png" width="718" /></p>
-<div id="correlation" class="section level2 hasAnchor" number="6.1">
-<h2><span class="header-section-number">6.1</span> Correlation<a href="lab-v-introduction-to-regression.html#correlation" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="lab-iii-univariate-visualizations" class="section level1 hasAnchor" number="4">
+<h1><span class="header-section-number">4</span> Lab III: Univariate Visualizations<a href="lab-iii-univariate-visualizations.html#lab-iii-univariate-visualizations" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p><img src="image_3.png" width="740" /></p>
+<div class="sourceCode" id="cb187"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb187-1"><a href="lab-iii-univariate-visualizations.html#cb187-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Packages</span></span>
+<span id="cb187-2"><a href="lab-iii-univariate-visualizations.html#cb187-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb187-3"><a href="lab-iii-univariate-visualizations.html#cb187-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggthemes)</span>
+<span id="cb187-4"><a href="lab-iii-univariate-visualizations.html#cb187-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb187-5"><a href="lab-iii-univariate-visualizations.html#cb187-5" aria-hidden="true" tabindex="-1"></a><span class="do">## Data Loading</span></span>
+<span id="cb187-6"><a href="lab-iii-univariate-visualizations.html#cb187-6" aria-hidden="true" tabindex="-1"></a><span class="do">## Replace this with your working directory</span></span>
+<span id="cb187-7"><a href="lab-iii-univariate-visualizations.html#cb187-7" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(<span class="st">&quot;~/GOVT8001/Lab 3/white_minwage.RData&quot;</span>) </span></code></pre></div>
+<p>This lab shows step-by-step how to build basic histograms and barplots with <code>library(ggplot2)</code></p>
+<div id="histograms-with-libraryggplot2" class="section level2 hasAnchor" number="4.1">
+<h2><span class="header-section-number">4.1</span> Histograms with <code>library(ggplot2)</code><a href="lab-iii-univariate-visualizations.html#histograms-with-libraryggplot2" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Histograms are good to visualize the distribution of one continuous variable.</p>
+<div id="step-one" class="section level3 hasAnchor" number="4.1.1">
+<h3><span class="header-section-number">4.1.1</span> Step One<a href="lab-iii-univariate-visualizations.html#step-one" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <ul>
-<li>Statistical technique that tells use the extent that two variables are linearly related
-<span class="math display">\[r=\frac{\sum_{i=1}^{n}(x_{i}-\bar{x})(y_{i}-\bar{y})}{\sqrt{\sum_{n}^{i=1}(x_{i}-\bar{x})^2\sum_{n}^{i=1}(y_{i}-\bar{y})^2}}\]</span>
-<span class="math display">\[r = \frac{Cov(X,Y)}{SD(X)SD(Y)}\]</span></li>
-<li>Bounded between <span class="math inline">\(-1,1\)</span></li>
-<li>In <em>R</em>, <code>cor(x,y)</code></li>
-<li>Scatterplot in <em>R</em>
+<li>Specify the tibble to be piped into <code>ggplot()</code></li>
+</ul>
+<div class="sourceCode" id="cb188"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb188-1"><a href="lab-iii-univariate-visualizations.html#cb188-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Building A Basic Histogram </span></span>
+<span id="cb188-2"><a href="lab-iii-univariate-visualizations.html#cb188-2" aria-hidden="true" tabindex="-1"></a>df.county</span></code></pre></div>
+</div>
+<div id="step-two" class="section level3 hasAnchor" number="4.1.2">
+<h3><span class="header-section-number">4.1.2</span> Step Two<a href="lab-iii-univariate-visualizations.html#step-two" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <ul>
-<li><code>geom_point()</code></li>
+<li>Pipe the tibble into ggplot()</li>
+<li>Specify the variable of interest with <code>ggplot(aes(x = X))</code></li>
+</ul>
+<div class="sourceCode" id="cb189"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb189-1"><a href="lab-iii-univariate-visualizations.html#cb189-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Building A Basic Histogram </span></span>
+<span id="cb189-2"><a href="lab-iii-univariate-visualizations.html#cb189-2" aria-hidden="true" tabindex="-1"></a>df.county <span class="sc">%&gt;%</span></span>
+<span id="cb189-3"><a href="lab-iii-univariate-visualizations.html#cb189-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> minimum.wage))</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-17-1.png" width="672" /></p>
+</div>
+<div id="step-3" class="section level3 hasAnchor" number="4.1.3">
+<h3><span class="header-section-number">4.1.3</span> Step 3<a href="lab-iii-univariate-visualizations.html#step-3" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ul>
+<li>Use <code>+</code> instead of <code>%&gt;%</code> to move to next line in <code>ggplot()</code></li>
+<li><code>geom_histogram()</code> creates the histogram</li>
+</ul>
+<div class="sourceCode" id="cb190"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb190-1"><a href="lab-iii-univariate-visualizations.html#cb190-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Building A Basic Histogram </span></span>
+<span id="cb190-2"><a href="lab-iii-univariate-visualizations.html#cb190-2" aria-hidden="true" tabindex="-1"></a>df.county <span class="sc">%&gt;%</span></span>
+<span id="cb190-3"><a href="lab-iii-univariate-visualizations.html#cb190-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> minimum.wage)) <span class="sc">+</span> </span>
+<span id="cb190-4"><a href="lab-iii-univariate-visualizations.html#cb190-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="fu">aes</span>(<span class="at">y =</span> ..density..))</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-18-1.png" width="672" /></p>
+</div>
+<div id="step-4" class="section level3 hasAnchor" number="4.1.4">
+<h3><span class="header-section-number">4.1.4</span> Step 4<a href="lab-iii-univariate-visualizations.html#step-4" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<ul>
+<li>Customization of theme, colors, and labels.</li>
+<li>You can also save the object above and customize it later as shown below
+<ul>
+<li>Use <code>col =</code> and <code>fill =</code> in <code>geom_histogram()</code> to set colors</li>
 </ul></li>
 </ul>
-<div id="correlation-scatterplots" class="section level3 hasAnchor" number="6.1.1">
-<h3><span class="header-section-number">6.1.1</span> Correlation &amp; Scatterplots<a href="lab-v-introduction-to-regression.html#correlation-scatterplots" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p><img src="_main_files/figure-html/unnamed-chunk-49-1.png" width="672" /><img src="_main_files/figure-html/unnamed-chunk-49-2.png" width="672" /><img src="_main_files/figure-html/unnamed-chunk-49-3.png" width="672" /></p>
-</div>
-</div>
-<div id="introduction-to-regression" class="section level2 hasAnchor" number="6.2">
-<h2><span class="header-section-number">6.2</span> Introduction to Regression<a href="lab-v-introduction-to-regression.html#introduction-to-regression" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="sourceCode" id="cb191"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb191-1"><a href="lab-iii-univariate-visualizations.html#cb191-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Building A Basic Histogram </span></span>
+<span id="cb191-2"><a href="lab-iii-univariate-visualizations.html#cb191-2" aria-hidden="true" tabindex="-1"></a>df.county <span class="sc">%&gt;%</span></span>
+<span id="cb191-3"><a href="lab-iii-univariate-visualizations.html#cb191-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> minimum.wage)) <span class="sc">+</span> </span>
+<span id="cb191-4"><a href="lab-iii-univariate-visualizations.html#cb191-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="fu">aes</span>(<span class="at">y =</span> ..density..), <span class="at">col =</span> <span class="st">&quot;dark red&quot;</span>, <span class="at">fill =</span> <span class="st">&quot;tomato&quot;</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-19-1.png" width="672" /></p>
 <ul>
-<li>Why Regression?</li>
-<li>Basic Model</li>
-<li>Conditional Mean</li>
-<li>Estimation</li>
-<li>Coefficients &amp; Intercepts</li>
-</ul>
-<div id="why-regression" class="section level3 hasAnchor" number="6.2.1">
-<h3><span class="header-section-number">6.2.1</span> Why Regression?<a href="lab-v-introduction-to-regression.html#why-regression" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<li>Use <code>+ theme()</code> to set the theme
 <ul>
-<li>Regression is the work-horse of quantitative social science</li>
-<li>We use regression when we want to know the relationship between <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span>
-<ul>
-<li>Specifically, we want to know what a one unit increase in <span class="math inline">\(x\)</span> means for <span class="math inline">\(y\)</span></li>
-</ul></li>
-<li>Real Data vs Hats
-<ul>
-<li>Hats are expected values
-<ul>
-<li><span class="math inline">\(y\)</span> vs <span class="math inline">\(\hat{y}\)</span></li>
-</ul></li>
-</ul></li>
-<li>Identify a variable of interest, we call this <span class="math inline">\(y\)</span>
-<ul>
-<li>Ex: vote share, approval rating, gdp, etc.</li>
-</ul></li>
-<li>Take its mean, <span class="math inline">\(\bar{y}\)</span>
-<ul>
-<li>We have variation in our <span class="math inline">\(y\)</span> variable, though, e.g., some values are high and others are low</li>
-</ul></li>
-<li>Next find a variable that we think explains this variation, we call this <span class="math inline">\(x\)</span></li>
-<li>Then estimate the relationship between <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span></li>
-<li>We call <span class="math inline">\(x\)</span> the treatment variable, causal variable, independent variable, predictor variable, explanatory variable</li>
-<li>We call <span class="math inline">\(y\)</span> the dependent variable, outcome variable, response variable</li>
-</ul>
-</div>
-<div id="correlation-vs-regression" class="section level3 hasAnchor" number="6.2.2">
-<h3><span class="header-section-number">6.2.2</span> Correlation vs Regression<a href="lab-v-introduction-to-regression.html#correlation-vs-regression" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<ul>
-<li>Similarities
-<ul>
-<li>Both show the direction and strength of the relationship between two variables</li>
-<li>When correlation is negative, <span class="math inline">\(r&lt;0\)</span>, then the regression slope will be negative, <span class="math inline">\(\beta_{1}&lt;0\)</span></li>
-<li>When correlation is positive, the regression slope will be positive</li>
-</ul></li>
-<li>Differences
-<ul>
-<li>Regression is for causation (with additional steps) while correlation is for, well, correlation</li>
-<li><span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> are interchangeable in correlation, but results will change if you swap <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> in regression</li>
-<li>Correlation is a single statistic while regression gives us an equation</li>
+<li><code>library(ggtheme)</code> has themes from your favorite publications!</li>
 </ul></li>
 </ul>
-</div>
-<div id="basic-model" class="section level3 hasAnchor" number="6.2.3">
-<h3><span class="header-section-number">6.2.3</span> Basic Model<a href="lab-v-introduction-to-regression.html#basic-model" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p><span class="math display">\[\hat{y_{i}} = \hat{\beta_{0}} + \hat{\beta_{1}}x_{i}\]</span></p>
-<p>analogous to</p>
-<p><span class="math display">\[y = mx + b\]</span></p>
+<div class="sourceCode" id="cb192"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb192-1"><a href="lab-iii-univariate-visualizations.html#cb192-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Building A Basic Histogram </span></span>
+<span id="cb192-2"><a href="lab-iii-univariate-visualizations.html#cb192-2" aria-hidden="true" tabindex="-1"></a>df.county <span class="sc">%&gt;%</span></span>
+<span id="cb192-3"><a href="lab-iii-univariate-visualizations.html#cb192-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> minimum.wage)) <span class="sc">+</span> </span>
+<span id="cb192-4"><a href="lab-iii-univariate-visualizations.html#cb192-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="fu">aes</span>(<span class="at">y =</span> ..density..), <span class="at">col =</span> <span class="st">&quot;dark red&quot;</span>, <span class="at">fill =</span> <span class="st">&quot;tomato&quot;</span>) <span class="sc">+</span> </span>
+<span id="cb192-5"><a href="lab-iii-univariate-visualizations.html#cb192-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-20-1.png" width="672" /></p>
 <ul>
-<li><p>Where:</p>
+<li>Use <code>+ labs</code> to set labels
 <ul>
-<li><span class="math inline">\(\hat{y_{i}} = y\)</span>, <span class="math inline">\(\hat{\beta_{0}} = b\)</span>, <span class="math inline">\(\hat{\beta_{1}}\)</span> = m, and <span class="math inline">\(x_{i}=x\)</span></li>
-<li><span class="math inline">\(\beta_{1}\)</span> is the slope</li>
-<li><span class="math inline">\(\beta_{0}\)</span> is the y-intercept</li>
+<li><code>title =</code> for a title</li>
+<li><code>subtitle =</code> for a subtitle</li>
+<li><code>x =</code> for x axis label and <code>y =</code> for y axis label</li>
+<li><code>caption =</code> for caption to include data source or note</li>
 </ul></li>
 </ul>
-<p>Example of a model you may (will) see in the comparative politics literature:</p>
-<p><span class="math display">\[GDPGrowth_{i} = \beta_{0} + \beta_{1}Democracy_{i} + \epsilon_{i}\]</span></p>
+<div class="sourceCode" id="cb193"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb193-1"><a href="lab-iii-univariate-visualizations.html#cb193-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Building A Basic Histogram </span></span>
+<span id="cb193-2"><a href="lab-iii-univariate-visualizations.html#cb193-2" aria-hidden="true" tabindex="-1"></a>df.county <span class="sc">%&gt;%</span></span>
+<span id="cb193-3"><a href="lab-iii-univariate-visualizations.html#cb193-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> minimum.wage)) <span class="sc">+</span> </span>
+<span id="cb193-4"><a href="lab-iii-univariate-visualizations.html#cb193-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="fu">aes</span>(<span class="at">y =</span> ..density..), <span class="at">col =</span> <span class="st">&quot;dark red&quot;</span>, <span class="at">fill =</span> <span class="st">&quot;tomato&quot;</span>) <span class="sc">+</span> </span>
+<span id="cb193-5"><a href="lab-iii-univariate-visualizations.html#cb193-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb193-6"><a href="lab-iii-univariate-visualizations.html#cb193-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Distribution of Minimum Wage&quot;</span>, <span class="at">subtitle =</span> <span class="st">&quot;All US Counties 1996 - 2016&quot;</span>,</span>
+<span id="cb193-7"><a href="lab-iii-univariate-visualizations.html#cb193-7" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">&quot;Minimum Wage&quot;</span>, <span class="at">caption =</span> <span class="st">&quot;Data Source: Markovich &amp; White (2022)&quot;</span>,</span>
+<span id="cb193-8"><a href="lab-iii-univariate-visualizations.html#cb193-8" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">&quot;Density&quot;</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-21-1.png" width="672" /></p>
+<div class="sourceCode" id="cb194"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb194-1"><a href="lab-iii-univariate-visualizations.html#cb194-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Or You Can Save the Basic Plot and Experiment</span></span>
+<span id="cb194-2"><a href="lab-iii-univariate-visualizations.html#cb194-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb194-3"><a href="lab-iii-univariate-visualizations.html#cb194-3" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> df.county <span class="sc">%&gt;%</span></span>
+<span id="cb194-4"><a href="lab-iii-univariate-visualizations.html#cb194-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> minimum.wage)) <span class="sc">+</span> </span>
+<span id="cb194-5"><a href="lab-iii-univariate-visualizations.html#cb194-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="fu">aes</span>(<span class="at">y =</span> ..density..), <span class="at">col =</span> <span class="st">&quot;dark red&quot;</span>, <span class="at">fill =</span> <span class="st">&quot;tomato&quot;</span>)</span>
+<span id="cb194-6"><a href="lab-iii-univariate-visualizations.html#cb194-6" aria-hidden="true" tabindex="-1"></a>p</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-21-2.png" width="672" /></p>
+<div class="sourceCode" id="cb195"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb195-1"><a href="lab-iii-univariate-visualizations.html#cb195-1" aria-hidden="true" tabindex="-1"></a>p <span class="sc">+</span> </span>
+<span id="cb195-2"><a href="lab-iii-univariate-visualizations.html#cb195-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb195-3"><a href="lab-iii-univariate-visualizations.html#cb195-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Distribution of Minimum Wage&quot;</span>, <span class="at">subtitle =</span> <span class="st">&quot;All US Counties 1996 - 2016&quot;</span>,</span>
+<span id="cb195-4"><a href="lab-iii-univariate-visualizations.html#cb195-4" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">&quot;Minimum Wage&quot;</span>, <span class="at">caption =</span> <span class="st">&quot;Data Source: Markovich &amp; White (2022)&quot;</span>,</span>
+<span id="cb195-5"><a href="lab-iii-univariate-visualizations.html#cb195-5" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">&quot;Density&quot;</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-21-3.png" width="672" /></p>
+</div>
+</div>
+<div id="barplots-with-libraryggplot2" class="section level2 hasAnchor" number="4.2">
+<h2><span class="header-section-number">4.2</span> Barplots with <code>library(ggplot2)</code><a href="lab-iii-univariate-visualizations.html#barplots-with-libraryggplot2" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Barplots are good for visualizing distributions by groups. The steps here follow closely what we did for the histogram.</p>
+<div id="step-one-1" class="section level3 hasAnchor" number="4.2.1">
+<h3><span class="header-section-number">4.2.1</span> Step One<a href="lab-iii-univariate-visualizations.html#step-one-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <ul>
-<li>Why no hats?</li>
+<li>We will be using simulated data for this example.</li>
+<li>First we need to format our simulated data into something we can use for the barplot with the skills we learned last week.</li>
 </ul>
+<div class="sourceCode" id="cb196"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb196-1"><a href="lab-iii-univariate-visualizations.html#cb196-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Simulated Data</span></span>
+<span id="cb196-2"><a href="lab-iii-univariate-visualizations.html#cb196-2" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="st">&quot;age&quot;</span> <span class="ot">=</span> <span class="fu">c</span>(<span class="st">&quot;18 to 29&quot;</span>, <span class="st">&quot;36 to 50&quot;</span>, <span class="st">&quot;51 to 64&quot;</span>, <span class="st">&quot;65+&quot;</span>),</span>
+<span id="cb196-3"><a href="lab-iii-univariate-visualizations.html#cb196-3" aria-hidden="true" tabindex="-1"></a>                <span class="st">&quot;popPct&quot;</span> <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">29</span>, <span class="dv">21</span>, <span class="dv">30</span>, <span class="dv">20</span>),</span>
+<span id="cb196-4"><a href="lab-iii-univariate-visualizations.html#cb196-4" aria-hidden="true" tabindex="-1"></a>                <span class="st">&quot;svyPct&quot;</span> <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">19</span>, <span class="dv">21</span>, <span class="dv">32</span>, <span class="dv">28</span>))</span>
+<span id="cb196-5"><a href="lab-iii-univariate-visualizations.html#cb196-5" aria-hidden="true" tabindex="-1"></a>df</span></code></pre></div>
+<pre><code>##        age popPct svyPct
+## 1 18 to 29     29     19
+## 2 36 to 50     21     21
+## 3 51 to 64     30     32
+## 4      65+     20     28</code></pre>
+<div class="sourceCode" id="cb198"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb198-1"><a href="lab-iii-univariate-visualizations.html#cb198-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Building A Basic Barplot</span></span>
+<span id="cb198-2"><a href="lab-iii-univariate-visualizations.html#cb198-2" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span> </span>
+<span id="cb198-3"><a href="lab-iii-univariate-visualizations.html#cb198-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">Population =</span> popPct, <span class="at">Survey =</span> svyPct) <span class="sc">%&gt;%</span></span>
+<span id="cb198-4"><a href="lab-iii-univariate-visualizations.html#cb198-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="sc">-</span>age, <span class="at">names_to =</span> <span class="st">&quot;Group&quot;</span>, <span class="at">values_to =</span> <span class="st">&quot;Percent&quot;</span>)</span></code></pre></div>
+<pre><code>## # A tibble: 8 × 3
+##   age      Group      Percent
+##   &lt;chr&gt;    &lt;chr&gt;        &lt;dbl&gt;
+## 1 18 to 29 Population      29
+## 2 18 to 29 Survey          19
+## 3 36 to 50 Population      21
+## 4 36 to 50 Survey          21
+## 5 51 to 64 Population      30
+## 6 51 to 64 Survey          32
+## 7 65+      Population      20
+## 8 65+      Survey          28</code></pre>
 </div>
-<div id="conditional-mean" class="section level3 hasAnchor" number="6.2.4">
-<h3><span class="header-section-number">6.2.4</span> Conditional Mean<a href="lab-v-introduction-to-regression.html#conditional-mean" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="step-two-1" class="section level3 hasAnchor" number="4.2.2">
+<h3><span class="header-section-number">4.2.2</span> Step Two<a href="lab-iii-univariate-visualizations.html#step-two-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <ul>
-<li>Regression tells us the conditional mean of <span class="math inline">\(y\)</span> given <span class="math inline">\(x\)</span>
-<ul>
-<li><span class="math inline">\(E[Y|X] = \beta_{0} + \beta_{1}X\)</span></li>
-</ul></li>
+<li>Pipe the tibble into ggplot()</li>
+<li>Specify the variable of interest with <code>ggplot(aes(x = X))</code></li>
+<li>Since we want to show the distribution of X by some group, we can use <code>fill =</code> to specify the group</li>
 </ul>
-<div class="sourceCode" id="cb268"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb268-1"><a href="lab-v-introduction-to-regression.html#cb268-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Mean of All Children&#39;s Heights</span></span>
-<span id="cb268-2"><a href="lab-v-introduction-to-regression.html#cb268-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(Galton<span class="sc">$</span>height)</span></code></pre></div>
-<pre><code>## [1] 66.76069</code></pre>
-<div class="sourceCode" id="cb270"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb270-1"><a href="lab-v-introduction-to-regression.html#cb270-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Mean of Female Children&#39;s Heights</span></span>
-<span id="cb270-2"><a href="lab-v-introduction-to-regression.html#cb270-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(Galton<span class="sc">$</span>height[Galton<span class="sc">$</span>sex <span class="sc">==</span> <span class="st">&quot;F&quot;</span>])</span></code></pre></div>
-<pre><code>## [1] 64.11016</code></pre>
-<div class="sourceCode" id="cb272"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb272-1"><a href="lab-v-introduction-to-regression.html#cb272-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Mean of Male Children&#39;s Heights</span></span>
-<span id="cb272-2"><a href="lab-v-introduction-to-regression.html#cb272-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(Galton<span class="sc">$</span>height[Galton<span class="sc">$</span>sex <span class="sc">==</span> <span class="st">&quot;M&quot;</span>])</span></code></pre></div>
-<pre><code>## [1] 69.22882</code></pre>
-<div class="sourceCode" id="cb274"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb274-1"><a href="lab-v-introduction-to-regression.html#cb274-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Conditional Mean with Regression</span></span>
-<span id="cb274-2"><a href="lab-v-introduction-to-regression.html#cb274-2" aria-hidden="true" tabindex="-1"></a><span class="fu">lm</span>(height <span class="sc">~</span> sex, <span class="at">data =</span> Galton)</span></code></pre></div>
-<pre><code>## 
-## Call:
-## lm(formula = height ~ sex, data = Galton)
-## 
-## Coefficients:
-## (Intercept)         sexM  
-##      64.110        5.119</code></pre>
+<div class="sourceCode" id="cb200"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb200-1"><a href="lab-iii-univariate-visualizations.html#cb200-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Building A Basic Barplot</span></span>
+<span id="cb200-2"><a href="lab-iii-univariate-visualizations.html#cb200-2" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span> </span>
+<span id="cb200-3"><a href="lab-iii-univariate-visualizations.html#cb200-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">Population =</span> popPct, <span class="at">Survey =</span> svyPct) <span class="sc">%&gt;%</span></span>
+<span id="cb200-4"><a href="lab-iii-univariate-visualizations.html#cb200-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="sc">-</span>age, <span class="at">names_to =</span> <span class="st">&quot;Group&quot;</span>, <span class="at">values_to =</span> <span class="st">&quot;Percent&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb200-5"><a href="lab-iii-univariate-visualizations.html#cb200-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> age, <span class="at">y =</span> Percent, <span class="at">fill =</span> Group))</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-23-1.png" width="672" /></p>
 </div>
-<div id="estimation" class="section level3 hasAnchor" number="6.2.5">
-<h3><span class="header-section-number">6.2.5</span> Estimation<a href="lab-v-introduction-to-regression.html#estimation" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p><span class="math display">\[\hat{\beta}=\frac{\sum_{i=1}^{n}(x_{i}-\bar{x})(y_{i}-\bar{y})}{\sum_{n}^{i=1}(x_{i}-\bar{x})^2}\]</span>
-<span class="math display">\[\hat{\beta}= \frac{Cov(x,y)}{Var(x)}\]</span></p>
+<div id="step-3-1" class="section level3 hasAnchor" number="4.2.3">
+<h3><span class="header-section-number">4.2.3</span> Step 3<a href="lab-iii-univariate-visualizations.html#step-3-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <ul>
-<li>Intuitively, <span class="math inline">\(\hat{\beta}\)</span> is the variance of <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span> together divided by the variance of <span class="math inline">\(x\)</span>
-<ul>
-<li>Thus, you are left only with the variation in <span class="math inline">\(y\)</span> caused by <span class="math inline">\(x\)</span></li>
-</ul></li>
-<li>The main result of estimation is the <strong>coefficient</strong> and <strong>intercept</strong></li>
-<li>In <em>R</em>, <code>lm(y ~ x)</code></li>
+<li>Use <code>+</code> instead of <code>%&gt;%</code> to move to next line in <code>ggplot()</code></li>
+<li><code>geom_bar()</code> creates a barplot</li>
 </ul>
+<div class="sourceCode" id="cb201"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb201-1"><a href="lab-iii-univariate-visualizations.html#cb201-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Building A Basic Barplot</span></span>
+<span id="cb201-2"><a href="lab-iii-univariate-visualizations.html#cb201-2" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span> </span>
+<span id="cb201-3"><a href="lab-iii-univariate-visualizations.html#cb201-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">Population =</span> popPct, <span class="at">Survey =</span> svyPct) <span class="sc">%&gt;%</span></span>
+<span id="cb201-4"><a href="lab-iii-univariate-visualizations.html#cb201-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="sc">-</span>age, <span class="at">names_to =</span> <span class="st">&quot;Group&quot;</span>, <span class="at">values_to =</span> <span class="st">&quot;Percent&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb201-5"><a href="lab-iii-univariate-visualizations.html#cb201-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> age, <span class="at">y =</span> Percent, <span class="at">fill =</span> Group)) <span class="sc">+</span></span>
+<span id="cb201-6"><a href="lab-iii-univariate-visualizations.html#cb201-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">&quot;identity&quot;</span>, <span class="at">position =</span> <span class="st">&quot;dodge&quot;</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-24-1.png" width="672" /></p>
 </div>
-<div id="coefficients-intercepts" class="section level3 hasAnchor" number="6.2.6">
-<h3><span class="header-section-number">6.2.6</span> Coefficients &amp; Intercepts<a href="lab-v-introduction-to-regression.html#coefficients-intercepts" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="step-4-1" class="section level3 hasAnchor" number="4.2.4">
+<h3><span class="header-section-number">4.2.4</span> Step 4<a href="lab-iii-univariate-visualizations.html#step-4-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <ul>
-<li>Coefficient
-<ul>
-<li>A one unit increase in <span class="math inline">\(x\)</span> is associated with a <span class="math inline">\(\hat{\beta_{1}}\)</span> increase in <span class="math inline">\(y\)</span></li>
-<li>Be very careful about the units of <span class="math inline">\(x\)</span>
-<ul>
-<li>For example, an <span class="math inline">\(x\)</span> that takes the values 0-1, a one unit increase is the full range of <span class="math inline">\(x\)</span></li>
-</ul></li>
-</ul></li>
-<li>Intercept
-<ul>
-<li><p>The fitted value of <span class="math inline">\(y\)</span> when <span class="math inline">\(x=0\)</span></p></li>
-<li><p>We multiply any given value of x by the constant <span class="math inline">\(\hat{\beta_{1}}\)</span> and add the intercept to get <span class="math inline">\(\hat{y}\)</span>, the fitted value of y</p></li>
-</ul></li>
+<li>Now, we can customize just like above with the histogram.</li>
+<li><code>scale_fill_grey()</code> changes the color palette to greyscale</li>
 </ul>
-</div>
-<div id="scatterplots-regression-lines" class="section level3 hasAnchor" number="6.2.7">
-<h3><span class="header-section-number">6.2.7</span> Scatterplots &amp; Regression Lines<a href="lab-v-introduction-to-regression.html#scatterplots-regression-lines" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p><img src="_main_files/figure-html/unnamed-chunk-51-1.png" width="672" />
-- How do we interpret <span class="math inline">\(\hat{\beta}\)</span> and <span class="math inline">\(\hat{\alpha}\)</span>?
-- What do you expect a child’s height will be if their father’s height is 70 inches?</p>
-<div class="sourceCode" id="cb276"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb276-1"><a href="lab-v-introduction-to-regression.html#cb276-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Mean when father is 70 inches tall</span></span>
-<span id="cb276-2"><a href="lab-v-introduction-to-regression.html#cb276-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(Galton<span class="sc">$</span>height[Galton<span class="sc">$</span>father <span class="sc">==</span> <span class="dv">70</span>])</span></code></pre></div>
-<pre><code>## [1] 66.94885</code></pre>
-<p><img src="_main_files/figure-html/unnamed-chunk-53-1.png" width="672" /></p>
-<ul>
-<li>How would we find the residuals?</li>
-</ul>
-<p><img src="_main_files/figure-html/unnamed-chunk-54-1.png" width="672" /></p>
-<ul>
-<li><span class="math inline">\(\hat{\epsilon} = y_i - \hat{y_i}\)</span></li>
-</ul>
+<div class="sourceCode" id="cb202"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb202-1"><a href="lab-iii-univariate-visualizations.html#cb202-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Building A Basic Barplot </span></span>
+<span id="cb202-2"><a href="lab-iii-univariate-visualizations.html#cb202-2" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span> </span>
+<span id="cb202-3"><a href="lab-iii-univariate-visualizations.html#cb202-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">Population =</span> popPct, <span class="at">Survey =</span> svyPct) <span class="sc">%&gt;%</span></span>
+<span id="cb202-4"><a href="lab-iii-univariate-visualizations.html#cb202-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="sc">-</span>age, <span class="at">names_to =</span> <span class="st">&quot;Group&quot;</span>, <span class="at">values_to =</span> <span class="st">&quot;Percent&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb202-5"><a href="lab-iii-univariate-visualizations.html#cb202-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> age, <span class="at">y =</span> Percent, <span class="at">fill =</span> Group)) <span class="sc">+</span></span>
+<span id="cb202-6"><a href="lab-iii-univariate-visualizations.html#cb202-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">&quot;identity&quot;</span>, <span class="at">position =</span> <span class="st">&quot;dodge&quot;</span>) <span class="sc">+</span></span>
+<span id="cb202-7"><a href="lab-iii-univariate-visualizations.html#cb202-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_grey</span>() <span class="sc">+</span> </span>
+<span id="cb202-8"><a href="lab-iii-univariate-visualizations.html#cb202-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb202-9"><a href="lab-iii-univariate-visualizations.html#cb202-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;Age Group&quot;</span>, <span class="at">y =</span> <span class="st">&quot;Percent&quot;</span>,</span>
+<span id="cb202-10"><a href="lab-iii-univariate-visualizations.html#cb202-10" aria-hidden="true" tabindex="-1"></a>       <span class="at">title =</span> <span class="st">&quot;Population and Survey Sample Proportions by Age Group&quot;</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-25-1.png" width="672" /></p>
 </div>
 </div>
-<div id="lab-questions-1" class="section level2 hasAnchor" number="6.3">
-<h2><span class="header-section-number">6.3</span> Lab Questions<a href="lab-v-introduction-to-regression.html#lab-questions-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<ul>
-<li>Download the <em>Correlates of War</em> dataset from Canvas.</li>
-<li>We are going to learn how to make scatterplots, find correlations, and run simple regressions.</li>
-<li>Sarkees, Meredith Reid and Frank Wayman (2010). Resort to War: 1816 – 2007. Washington DC: CQ Press.</li>
-</ul>
-<div id="question-i---load-in-the-data." class="section level3 hasAnchor" number="6.3.1">
-<h3><span class="header-section-number">6.3.1</span> Question I - Load in the Data.<a href="lab-v-introduction-to-regression.html#question-i---load-in-the-data." class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb278"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb278-1"><a href="lab-v-introduction-to-regression.html#cb278-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Loading in Data</span></span>
-<span id="cb278-2"><a href="lab-v-introduction-to-regression.html#cb278-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
-<span id="cb278-3"><a href="lab-v-introduction-to-regression.html#cb278-3" aria-hidden="true" tabindex="-1"></a>cow <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;~/GOVT8001/Lab 5/Intra-StateWarData_v4.1.csv&quot;</span>)</span></code></pre></div>
-</div>
-<div id="question-ii---create-a-scatterplot-to-show-the-joint-distribution-of-war-deaths-by-each-side.-experiment-with-subsetting-the-data-to-different-values-of-war-deaths-and-visualization-styles.-also-be-careful-about-missing-data-and-unknown-values.-add-a-regression-line." class="section level3 hasAnchor" number="6.3.2">
-<h3><span class="header-section-number">6.3.2</span> Question II - Create a scatterplot to show the joint distribution of war deaths by each side. Experiment with subsetting the data to different values of war deaths and visualization styles. Also, be careful about missing data and unknown values. Add a regression line.<a href="lab-v-introduction-to-regression.html#question-ii---create-a-scatterplot-to-show-the-joint-distribution-of-war-deaths-by-each-side.-experiment-with-subsetting-the-data-to-different-values-of-war-deaths-and-visualization-styles.-also-be-careful-about-missing-data-and-unknown-values.-add-a-regression-line." class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb279"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb279-1"><a href="lab-v-introduction-to-regression.html#cb279-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Scatterplot</span></span>
-<span id="cb279-2"><a href="lab-v-introduction-to-regression.html#cb279-2" aria-hidden="true" tabindex="-1"></a>cow <span class="sc">%&gt;%</span></span>
-<span id="cb279-3"><a href="lab-v-introduction-to-regression.html#cb279-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(SideADeaths <span class="sc">&lt;</span> <span class="dv">20000</span> <span class="sc">&amp;</span> SideADeaths <span class="sc">&gt;</span> <span class="dv">0</span>,</span>
-<span id="cb279-4"><a href="lab-v-introduction-to-regression.html#cb279-4" aria-hidden="true" tabindex="-1"></a>         SideBDeaths <span class="sc">&lt;</span> <span class="dv">20000</span> <span class="sc">&amp;</span> SideBDeaths <span class="sc">&gt;</span> <span class="dv">0</span>,</span>
-<span id="cb279-5"><a href="lab-v-introduction-to-regression.html#cb279-5" aria-hidden="true" tabindex="-1"></a>         EndYear1 <span class="sc">&gt;=</span> <span class="dv">0</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb279-6"><a href="lab-v-introduction-to-regression.html#cb279-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> SideADeaths, <span class="at">y =</span> SideBDeaths)) <span class="sc">+</span> </span>
-<span id="cb279-7"><a href="lab-v-introduction-to-regression.html#cb279-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb279-8"><a href="lab-v-introduction-to-regression.html#cb279-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_abline</span>(<span class="at">method =</span> <span class="st">&quot;lm&quot;</span>, <span class="at">col =</span> <span class="st">&quot;dark blue&quot;</span>) <span class="sc">+</span></span>
-<span id="cb279-9"><a href="lab-v-introduction-to-regression.html#cb279-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span></span>
-<span id="cb279-10"><a href="lab-v-introduction-to-regression.html#cb279-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Joint Distribution of War Deaths&quot;</span>)</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-56-1.png" width="672" /></p>
-</div>
-<div id="question-iii---what-is-the-correlation-coefficient-for-the-relationship-you-depicted-in-question-ii.-what-is-the-regression-coefficient-how-do-we-interpret-each-only-filter-out-the-less-than-zero-observations-for-this-question." class="section level3 hasAnchor" number="6.3.3">
-<h3><span class="header-section-number">6.3.3</span> Question III - What is the correlation coefficient for the relationship you depicted in Question II. What is the regression coefficient? How do we interpret each? Only filter out the less than zero observations for this question.<a href="lab-v-introduction-to-regression.html#question-iii---what-is-the-correlation-coefficient-for-the-relationship-you-depicted-in-question-ii.-what-is-the-regression-coefficient-how-do-we-interpret-each-only-filter-out-the-less-than-zero-observations-for-this-question." class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb280"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb280-1"><a href="lab-v-introduction-to-regression.html#cb280-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Filtering Data</span></span>
-<span id="cb280-2"><a href="lab-v-introduction-to-regression.html#cb280-2" aria-hidden="true" tabindex="-1"></a>cow_filtered <span class="ot">&lt;-</span> cow <span class="sc">%&gt;%</span></span>
-<span id="cb280-3"><a href="lab-v-introduction-to-regression.html#cb280-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(SideADeaths <span class="sc">&gt;</span> <span class="dv">0</span>,</span>
-<span id="cb280-4"><a href="lab-v-introduction-to-regression.html#cb280-4" aria-hidden="true" tabindex="-1"></a>         SideBDeaths <span class="sc">&gt;</span> <span class="dv">0</span>)</span>
-<span id="cb280-5"><a href="lab-v-introduction-to-regression.html#cb280-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb280-6"><a href="lab-v-introduction-to-regression.html#cb280-6" aria-hidden="true" tabindex="-1"></a><span class="do">## Correlation</span></span>
-<span id="cb280-7"><a href="lab-v-introduction-to-regression.html#cb280-7" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(cow_filtered<span class="sc">$</span>SideADeaths, cow_filtered<span class="sc">$</span>SideBDeaths)</span></code></pre></div>
-<pre><code>## [1] 0.8043606</code></pre>
-<div class="sourceCode" id="cb282"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb282-1"><a href="lab-v-introduction-to-regression.html#cb282-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Regression</span></span>
-<span id="cb282-2"><a href="lab-v-introduction-to-regression.html#cb282-2" aria-hidden="true" tabindex="-1"></a>cow <span class="sc">%&gt;%</span></span>
-<span id="cb282-3"><a href="lab-v-introduction-to-regression.html#cb282-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(SideADeaths <span class="sc">&gt;</span> <span class="dv">0</span>,</span>
-<span id="cb282-4"><a href="lab-v-introduction-to-regression.html#cb282-4" aria-hidden="true" tabindex="-1"></a>         SideBDeaths <span class="sc">&gt;</span> <span class="dv">0</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb282-5"><a href="lab-v-introduction-to-regression.html#cb282-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">lm</span>(SideBDeaths <span class="sc">~</span> SideADeaths, <span class="at">data =</span> .) <span class="sc">%&gt;%</span></span>
-<span id="cb282-6"><a href="lab-v-introduction-to-regression.html#cb282-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summary</span>()</span></code></pre></div>
-<pre><code>## 
-## Call:
-## lm(formula = SideBDeaths ~ SideADeaths, data = .)
-## 
-## Residuals:
-##     Min      1Q  Median      3Q     Max 
-## -191383   -3771   -2030     -10  515351 
-## 
-## Coefficients:
-##               Estimate Std. Error t value            Pr(&gt;|t|)    
-## (Intercept) 2924.15036 3652.12170   0.801               0.424    
-## SideADeaths    1.08097    0.06124  17.652 &lt;0.0000000000000002 ***
-## ---
-## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
-## 
-## Residual standard error: 46330 on 170 degrees of freedom
-## Multiple R-squared:  0.647,  Adjusted R-squared:  0.6449 
-## F-statistic: 311.6 on 1 and 170 DF,  p-value: &lt; 0.00000000000000022</code></pre>
-</div>
-<div id="question-iv---use-both-regression---the-lm-function-and-the-mean-function-to-show-the-difference-between-total-war-deaths-depending-on-if-a-war-was-internationalized-or-not.-create-a-total-deaths-variable-for-this-question." class="section level3 hasAnchor" number="6.3.4">
-<h3><span class="header-section-number">6.3.4</span> Question IV - Use both regression - the <code>lm()</code> function and the <code>mean()</code> function to show the difference between total war deaths depending on if a war was internationalized or not. Create a total deaths variable for this question.<a href="lab-v-introduction-to-regression.html#question-iv---use-both-regression---the-lm-function-and-the-mean-function-to-show-the-difference-between-total-war-deaths-depending-on-if-a-war-was-internationalized-or-not.-create-a-total-deaths-variable-for-this-question." class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb284"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb284-1"><a href="lab-v-introduction-to-regression.html#cb284-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Difference in Means Based on Internationalization with Regression</span></span>
-<span id="cb284-2"><a href="lab-v-introduction-to-regression.html#cb284-2" aria-hidden="true" tabindex="-1"></a>cow_filtered <span class="sc">%&gt;%</span></span>
-<span id="cb284-3"><a href="lab-v-introduction-to-regression.html#cb284-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">total_deaths =</span> SideADeaths <span class="sc">+</span> SideBDeaths) <span class="sc">%&gt;%</span></span>
-<span id="cb284-4"><a href="lab-v-introduction-to-regression.html#cb284-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">lm</span>(total_deaths <span class="sc">~</span> Intnl, <span class="at">data =</span> .) <span class="sc">%&gt;%</span></span>
-<span id="cb284-5"><a href="lab-v-introduction-to-regression.html#cb284-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summary</span>()</span></code></pre></div>
-<pre><code>## 
-## Call:
-## lm(formula = total_deaths ~ Intnl, data = .)
-## 
-## Residuals:
-##     Min      1Q  Median      3Q     Max 
-##  -60572  -25549  -23574  -16024 1173351 
-## 
-## Coefficients:
-##             Estimate Std. Error t value Pr(&gt;|t|)  
-## (Intercept)    26649      11102   2.400   0.0175 *
-## Intnl          34922      23621   1.478   0.1411  
-## ---
-## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
-## 
-## Residual standard error: 128500 on 170 degrees of freedom
-## Multiple R-squared:  0.01269,    Adjusted R-squared:  0.006887 
-## F-statistic: 2.186 on 1 and 170 DF,  p-value: 0.1411</code></pre>
-<div class="sourceCode" id="cb286"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb286-1"><a href="lab-v-introduction-to-regression.html#cb286-1" aria-hidden="true" tabindex="-1"></a><span class="do">## With Mean</span></span>
-<span id="cb286-2"><a href="lab-v-introduction-to-regression.html#cb286-2" aria-hidden="true" tabindex="-1"></a>cow_filtered <span class="sc">%&gt;%</span></span>
-<span id="cb286-3"><a href="lab-v-introduction-to-regression.html#cb286-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">total_deaths =</span> SideADeaths <span class="sc">+</span> SideBDeaths) <span class="sc">%&gt;%</span></span>
-<span id="cb286-4"><a href="lab-v-introduction-to-regression.html#cb286-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Intnl) <span class="sc">%&gt;%</span></span>
-<span id="cb286-5"><a href="lab-v-introduction-to-regression.html#cb286-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">avg_deaths =</span> <span class="fu">mean</span>(total_deaths))</span></code></pre></div>
-<pre><code>## # A tibble: 2 × 2
-##   Intnl avg_deaths
-##   &lt;dbl&gt;      &lt;dbl&gt;
-## 1     0     26649.
-## 2     1     61572.</code></pre>
-<div class="sourceCode" id="cb288"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb288-1"><a href="lab-v-introduction-to-regression.html#cb288-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Differences</span></span>
-<span id="cb288-2"><a href="lab-v-introduction-to-regression.html#cb288-2" aria-hidden="true" tabindex="-1"></a><span class="do">## With Mean</span></span>
-<span id="cb288-3"><a href="lab-v-introduction-to-regression.html#cb288-3" aria-hidden="true" tabindex="-1"></a>cow_filtered <span class="sc">%&gt;%</span></span>
-<span id="cb288-4"><a href="lab-v-introduction-to-regression.html#cb288-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">total_deaths =</span> SideADeaths <span class="sc">+</span> SideBDeaths) <span class="sc">%&gt;%</span></span>
-<span id="cb288-5"><a href="lab-v-introduction-to-regression.html#cb288-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Intnl <span class="sc">==</span> <span class="dv">1</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb288-6"><a href="lab-v-introduction-to-regression.html#cb288-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">non_int_deaths =</span> <span class="fu">mean</span>(total_deaths)) <span class="sc">%&gt;%</span></span>
-<span id="cb288-7"><a href="lab-v-introduction-to-regression.html#cb288-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pull</span>(non_int_deaths) <span class="sc">-</span></span>
-<span id="cb288-8"><a href="lab-v-introduction-to-regression.html#cb288-8" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb288-9"><a href="lab-v-introduction-to-regression.html#cb288-9" aria-hidden="true" tabindex="-1"></a>  cow_filtered <span class="sc">%&gt;%</span></span>
-<span id="cb288-10"><a href="lab-v-introduction-to-regression.html#cb288-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">total_deaths =</span> SideADeaths <span class="sc">+</span> SideBDeaths) <span class="sc">%&gt;%</span></span>
-<span id="cb288-11"><a href="lab-v-introduction-to-regression.html#cb288-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Intnl <span class="sc">==</span> <span class="dv">0</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb288-12"><a href="lab-v-introduction-to-regression.html#cb288-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">non_int_deaths =</span> <span class="fu">mean</span>(total_deaths)) <span class="sc">%&gt;%</span></span>
-<span id="cb288-13"><a href="lab-v-introduction-to-regression.html#cb288-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pull</span>(non_int_deaths)</span></code></pre></div>
-<pre><code>## [1] 34922.34</code></pre>
-</div>
-<div id="question-v---write-a-loop-to-find-the-average-total-deaths-based-on-the-month-the-war-started-in.-do-the-same-with-dplyr." class="section level3 hasAnchor" number="6.3.5">
-<h3><span class="header-section-number">6.3.5</span> Question V - Write a loop to find the average total deaths based on the month the war started in. Do the same with dplyr.<a href="lab-v-introduction-to-regression.html#question-v---write-a-loop-to-find-the-average-total-deaths-based-on-the-month-the-war-started-in.-do-the-same-with-dplyr." class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb290"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb290-1"><a href="lab-v-introduction-to-regression.html#cb290-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Wrangling Data</span></span>
-<span id="cb290-2"><a href="lab-v-introduction-to-regression.html#cb290-2" aria-hidden="true" tabindex="-1"></a>cow_filtered <span class="ot">&lt;-</span> cow_filtered <span class="sc">%&gt;%</span></span>
-<span id="cb290-3"><a href="lab-v-introduction-to-regression.html#cb290-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(StartMonth1 <span class="sc">&gt;</span> <span class="dv">0</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb290-4"><a href="lab-v-introduction-to-regression.html#cb290-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">total_deaths =</span> SideADeaths <span class="sc">+</span> SideBDeaths)</span>
-<span id="cb290-5"><a href="lab-v-introduction-to-regression.html#cb290-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb290-6"><a href="lab-v-introduction-to-regression.html#cb290-6" aria-hidden="true" tabindex="-1"></a><span class="do">## Loop</span></span>
-<span id="cb290-7"><a href="lab-v-introduction-to-regression.html#cb290-7" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="fu">unique</span>(cow_filtered<span class="sc">$</span>StartMonth1)) {</span>
-<span id="cb290-8"><a href="lab-v-introduction-to-regression.html#cb290-8" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb290-9"><a href="lab-v-introduction-to-regression.html#cb290-9" aria-hidden="true" tabindex="-1"></a> x <span class="ot">&lt;-</span> <span class="fu">mean</span>(cow_filtered<span class="sc">$</span>total_deaths[cow_filtered<span class="sc">$</span>StartMonth1 <span class="sc">==</span> i])</span>
-<span id="cb290-10"><a href="lab-v-introduction-to-regression.html#cb290-10" aria-hidden="true" tabindex="-1"></a> </span>
-<span id="cb290-11"><a href="lab-v-introduction-to-regression.html#cb290-11" aria-hidden="true" tabindex="-1"></a> <span class="fu">names</span>(x) <span class="ot">&lt;-</span> i</span>
-<span id="cb290-12"><a href="lab-v-introduction-to-regression.html#cb290-12" aria-hidden="true" tabindex="-1"></a> </span>
-<span id="cb290-13"><a href="lab-v-introduction-to-regression.html#cb290-13" aria-hidden="true" tabindex="-1"></a> <span class="fu">print</span>(x)</span>
-<span id="cb290-14"><a href="lab-v-introduction-to-regression.html#cb290-14" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb290-15"><a href="lab-v-introduction-to-regression.html#cb290-15" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
-<pre><code>##        6 
-## 12310.33 
-##       3 
-## 62869.5 
-##        7 
-## 64465.71 
-##        2 
-## 7942.857 
-##        8 
-## 8314.538 
-##       10 
-## 21915.77 
-##        4 
-## 62369.33 
-##       11 
-## 48016.43 
-##    5 
-## 6795 
-##        9 
-## 14526.15 
-##        1 
-## 15822.15 
-##       12 
-## 75963.08</code></pre>
-<div class="sourceCode" id="cb292"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb292-1"><a href="lab-v-introduction-to-regression.html#cb292-1" aria-hidden="true" tabindex="-1"></a><span class="do">## With dplyr</span></span>
-<span id="cb292-2"><a href="lab-v-introduction-to-regression.html#cb292-2" aria-hidden="true" tabindex="-1"></a>cow_filtered <span class="sc">%&gt;%</span></span>
-<span id="cb292-3"><a href="lab-v-introduction-to-regression.html#cb292-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(StartMonth1) <span class="sc">%&gt;%</span></span>
-<span id="cb292-4"><a href="lab-v-introduction-to-regression.html#cb292-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">avg_death_by_month =</span> <span class="fu">mean</span>(total_deaths))</span></code></pre></div>
-<pre><code>## # A tibble: 12 × 2
-##    StartMonth1 avg_death_by_month
-##          &lt;dbl&gt;              &lt;dbl&gt;
-##  1           1             15822.
-##  2           2              7943.
-##  3           3             62870.
-##  4           4             62369.
-##  5           5              6795 
-##  6           6             12310.
-##  7           7             64466.
-##  8           8              8315.
-##  9           9             14526.
-## 10          10             21916.
-## 11          11             48016.
-## 12          12             75963.</code></pre>
-</div>
+<div id="now-make-your-own-histogram-or-barplot" class="section level2 hasAnchor" number="4.3">
+<h2><span class="header-section-number">4.3</span> Now Make Your Own Histogram or Barplot!<a href="lab-iii-univariate-visualizations.html#now-make-your-own-histogram-or-barplot" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="sourceCode" id="cb203"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb203-1"><a href="lab-iii-univariate-visualizations.html#cb203-1" aria-hidden="true" tabindex="-1"></a>df.county <span class="sc">%&gt;%</span></span>
+<span id="cb203-2"><a href="lab-iii-univariate-visualizations.html#cb203-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> minimum.wage)) <span class="sc">+</span> </span>
+<span id="cb203-3"><a href="lab-iii-univariate-visualizations.html#cb203-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="fu">aes</span>(<span class="at">y =</span> ..density..), <span class="at">col =</span> <span class="st">&quot;pink&quot;</span>, <span class="at">fill =</span> <span class="st">&quot;black&quot;</span>) <span class="sc">+</span></span>
+<span id="cb203-4"><a href="lab-iii-univariate-visualizations.html#cb203-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_economist</span>() <span class="sc">+</span></span>
+<span id="cb203-5"><a href="lab-iii-univariate-visualizations.html#cb203-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Our Beautiful Plot&quot;</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-26-1.png" width="672" /></p>
 </div>
 </div>
             </section>
@@ -637,8 +488,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           </div>
         </div>
       </div>
-<a href="lab-iv-loops-lists-conditional-statements.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="lab-vi-goodness-of-fit-multiple-regression.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="lab-ii-introduction-to-librarytidyverse-r-markdown.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="lab-iv-loops-lists-conditional-statements.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

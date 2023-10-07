@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>8 Lab VII: Interactions &amp; Categorical Variables | GOVT 8001: Shared Working Book</title>
-  <meta name="description" content="8 Lab VII: Interactions &amp; Categorical Variables | GOVT 8001: Shared Working Book" />
+  <title>3 Lab II: Introduction to library(tidyverse) &amp; R Markdown | GOVT 8001: Shared Working Book</title>
+  <meta name="description" content="3 Lab II: Introduction to library(tidyverse) &amp; R Markdown | GOVT 8001: Shared Working Book" />
   <meta name="generator" content="bookdown 0.35 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="8 Lab VII: Interactions &amp; Categorical Variables | GOVT 8001: Shared Working Book" />
+  <meta property="og:title" content="3 Lab II: Introduction to library(tidyverse) &amp; R Markdown | GOVT 8001: Shared Working Book" />
   <meta property="og:type" content="book" />
   
   
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="8 Lab VII: Interactions &amp; Categorical Variables | GOVT 8001: Shared Working Book" />
+  <meta name="twitter:title" content="3 Lab II: Introduction to library(tidyverse) &amp; R Markdown | GOVT 8001: Shared Working Book" />
   
   
   
@@ -29,8 +29,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="lab-vi-goodness-of-fit-multiple-regression.html"/>
-
+<link rel="prev" href="lab-i-introduction-to-r-r-studio.html"/>
+<link rel="next" href="lab-iii-univariate-visualizations.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -253,6 +253,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="8.1.2" data-path="lab-vii-interactions-categorical-variables.html"><a href="lab-vii-interactions-categorical-variables.html#the-four-categories-of-the-treatment-variable"><i class="fa fa-check"></i><b>8.1.2</b> The Four Categories of the Treatment Variable</a></li>
 <li class="chapter" data-level="8.1.3" data-path="lab-vii-interactions-categorical-variables.html"><a href="lab-vii-interactions-categorical-variables.html#estimating-the-model"><i class="fa fa-check"></i><b>8.1.3</b> Estimating the Model</a></li>
 <li class="chapter" data-level="8.1.4" data-path="lab-vii-interactions-categorical-variables.html"><a href="lab-vii-interactions-categorical-variables.html#difference-in-means-between-categories"><i class="fa fa-check"></i><b>8.1.4</b> Difference in Means Between Categories</a></li>
+<li class="chapter" data-level="8.1.5" data-path="lab-vii-interactions-categorical-variables.html"><a href="lab-vii-interactions-categorical-variables.html#changing-the-reference-category"><i class="fa fa-check"></i><b>8.1.5</b> Changing the Reference Category</a></li>
 </ul></li>
 <li class="chapter" data-level="8.2" data-path="lab-vii-interactions-categorical-variables.html"><a href="lab-vii-interactions-categorical-variables.html#interactions"><i class="fa fa-check"></i><b>8.2</b> Interactions</a>
 <ul>
@@ -286,185 +287,170 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="lab-vii-interactions-categorical-variables" class="section level1 hasAnchor" number="8">
-<h1><span class="header-section-number">8</span> Lab VII: Interactions &amp; Categorical Variables<a href="lab-vii-interactions-categorical-variables.html#lab-vii-interactions-categorical-variables" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<p><img src="image_7.png" width="400" /></p>
-<div id="categorical-variables-and-reference-categories" class="section level2 hasAnchor" number="8.1">
-<h2><span class="header-section-number">8.1</span> Categorical Variables and Reference Categories<a href="lab-vii-interactions-categorical-variables.html#categorical-variables-and-reference-categories" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div id="loading-data-1" class="section level3 hasAnchor" number="8.1.1">
-<h3><span class="header-section-number">8.1.1</span> Loading Data<a href="lab-vii-interactions-categorical-variables.html#loading-data-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb350"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb350-1"><a href="lab-vii-interactions-categorical-variables.html#cb350-1" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(<span class="st">&quot;~/GOVT5001/Lab VII/social.RData&quot;</span>)</span></code></pre></div>
+<div id="lab-ii-introduction-to-librarytidyverse-r-markdown" class="section level1 hasAnchor" number="3">
+<h1><span class="header-section-number">3</span> Lab II: Introduction to <code>library(tidyverse)</code> &amp; R Markdown<a href="lab-ii-introduction-to-librarytidyverse-r-markdown.html#lab-ii-introduction-to-librarytidyverse-r-markdown" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p><img src="image_2_.png" width="944" /></p>
+<p>We can use R Markdown to create well-formatted PDFs or .html files that can easily display the results of our analyses. R Markdown, through Latex, also allows to write mathematical formulas with ease. Go ahead and knit - found in the top left corner - this file now and see what it looks like.</p>
+<div id="in-the-setup-chunk-above-load-the-tidyverse-packages-as-well-as-libraryreadr" class="section level2 hasAnchor" number="3.1">
+<h2><span class="header-section-number">3.1</span> In the setup chunk above, load the tidyverse packages as well as library(readr)<a href="lab-ii-introduction-to-librarytidyverse-r-markdown.html#in-the-setup-chunk-above-load-the-tidyverse-packages-as-well-as-libraryreadr" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="sourceCode" id="cb166"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb166-1"><a href="lab-ii-introduction-to-librarytidyverse-r-markdown.html#cb166-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Example Setup Chunk</span></span>
+<span id="cb166-2"><a href="lab-ii-introduction-to-librarytidyverse-r-markdown.html#cb166-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb166-3"><a href="lab-ii-introduction-to-librarytidyverse-r-markdown.html#cb166-3" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span>opts_chunk<span class="sc">$</span><span class="fu">set</span>(<span class="at">echo =</span> <span class="cn">TRUE</span>, <span class="at">message =</span> <span class="cn">FALSE</span>, <span class="at">warning =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb166-4"><a href="lab-ii-introduction-to-librarytidyverse-r-markdown.html#cb166-4" aria-hidden="true" tabindex="-1"></a><span class="do">## Packages</span></span>
+<span id="cb166-5"><a href="lab-ii-introduction-to-librarytidyverse-r-markdown.html#cb166-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
+<span id="cb166-6"><a href="lab-ii-introduction-to-librarytidyverse-r-markdown.html#cb166-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code></pre></div>
 </div>
-<div id="the-four-categories-of-the-treatment-variable" class="section level3 hasAnchor" number="8.1.2">
-<h3><span class="header-section-number">8.1.2</span> The Four Categories of the Treatment Variable<a href="lab-vii-interactions-categorical-variables.html#the-four-categories-of-the-treatment-variable" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb351"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb351-1"><a href="lab-vii-interactions-categorical-variables.html#cb351-1" aria-hidden="true" tabindex="-1"></a><span class="fu">unique</span>(social<span class="sc">$</span>messages)</span></code></pre></div>
-<pre><code>## [1] &quot;Civic Duty&quot; &quot;Hawthorne&quot;  &quot;Control&quot;    &quot;Neighbors&quot;</code></pre>
+<div id="load-in-the-resume.rdata-file-and-use-head-tail-glimpse-dim-summary-and-view-to-examine-each-variable-in-the-dataset.-how-many-of-the-resumes-have-white-sounding-names-how-many-have-african-american-sounding-names." class="section level2 hasAnchor" number="3.2">
+<h2><span class="header-section-number">3.2</span> Load in the resume.RData file and use head(), tail(), glimpse(), dim(), summary(), and View() to examine each variable in the dataset. How many of the resumes have white sounding names? How many have African-American sounding names.<a href="lab-ii-introduction-to-librarytidyverse-r-markdown.html#load-in-the-resume.rdata-file-and-use-head-tail-glimpse-dim-summary-and-view-to-examine-each-variable-in-the-dataset.-how-many-of-the-resumes-have-white-sounding-names-how-many-have-african-american-sounding-names." class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="sourceCode" id="cb167"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb167-1"><a href="lab-ii-introduction-to-librarytidyverse-r-markdown.html#cb167-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Loading Data</span></span>
+<span id="cb167-2"><a href="lab-ii-introduction-to-librarytidyverse-r-markdown.html#cb167-2" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(resume, <span class="at">package =</span> <span class="st">&quot;qss&quot;</span>)</span>
+<span id="cb167-3"><a href="lab-ii-introduction-to-librarytidyverse-r-markdown.html#cb167-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb167-4"><a href="lab-ii-introduction-to-librarytidyverse-r-markdown.html#cb167-4" aria-hidden="true" tabindex="-1"></a><span class="do">## Learning About the Dataset</span></span>
+<span id="cb167-5"><a href="lab-ii-introduction-to-librarytidyverse-r-markdown.html#cb167-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb167-6"><a href="lab-ii-introduction-to-librarytidyverse-r-markdown.html#cb167-6" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(resume)</span></code></pre></div>
+<pre><code>##   firstname    sex  race call
+## 1   Allison female white    0
+## 2   Kristen female white    0
+## 3   Lakisha female black    0
+## 4   Latonya female black    0
+## 5    Carrie female white    0
+## 6       Jay   male white    0</code></pre>
+<div class="sourceCode" id="cb169"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb169-1"><a href="lab-ii-introduction-to-librarytidyverse-r-markdown.html#cb169-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tail</span>(resume)</span></code></pre></div>
+<pre><code>##      firstname    sex  race call
+## 4865   Lakisha female black    0
+## 4866    Tamika female black    0
+## 4867     Ebony female black    0
+## 4868       Jay   male white    0
+## 4869   Latonya female black    0
+## 4870    Laurie female white    0</code></pre>
+<div class="sourceCode" id="cb171"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb171-1"><a href="lab-ii-introduction-to-librarytidyverse-r-markdown.html#cb171-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(resume)</span></code></pre></div>
+<pre><code>## Rows: 4,870
+## Columns: 4
+## $ firstname &lt;chr&gt; &quot;Allison&quot;, &quot;Kristen&quot;, &quot;Lakisha&quot;, &quot;Latonya&quot;, &quot;Carrie&quot;, &quot;Jay&quot;, &quot;Jill&quot;, &quot;Kenya&quot;, &quot;Latonya&quot;, &quot;Tyrone&quot;, …
+## $ sex       &lt;chr&gt; &quot;female&quot;, &quot;female&quot;, &quot;female&quot;, &quot;female&quot;, &quot;female&quot;, &quot;male&quot;, &quot;female&quot;, &quot;female&quot;, &quot;female&quot;, &quot;male&quot;, &quot;fe…
+## $ race      &lt;chr&gt; &quot;white&quot;, &quot;white&quot;, &quot;black&quot;, &quot;black&quot;, &quot;white&quot;, &quot;white&quot;, &quot;white&quot;, &quot;black&quot;, &quot;black&quot;, &quot;black&quot;, &quot;black&quot;, …
+## $ call      &lt;int&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, …</code></pre>
+<div class="sourceCode" id="cb173"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb173-1"><a href="lab-ii-introduction-to-librarytidyverse-r-markdown.html#cb173-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(resume)</span></code></pre></div>
+<pre><code>## [1] 4870    4</code></pre>
+<div class="sourceCode" id="cb175"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb175-1"><a href="lab-ii-introduction-to-librarytidyverse-r-markdown.html#cb175-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(resume)</span></code></pre></div>
+<pre><code>##   firstname             sex                race                call        
+##  Length:4870        Length:4870        Length:4870        Min.   :0.00000  
+##  Class :character   Class :character   Class :character   1st Qu.:0.00000  
+##  Mode  :character   Mode  :character   Mode  :character   Median :0.00000  
+##                                                           Mean   :0.08049  
+##                                                           3rd Qu.:0.00000  
+##                                                           Max.   :1.00000</code></pre>
+<div class="sourceCode" id="cb177"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb177-1"><a href="lab-ii-introduction-to-librarytidyverse-r-markdown.html#cb177-1" aria-hidden="true" tabindex="-1"></a><span class="fu">View</span>(resume) <span class="do">## Comment this out when knitting.</span></span>
+<span id="cb177-2"><a href="lab-ii-introduction-to-librarytidyverse-r-markdown.html#cb177-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb177-3"><a href="lab-ii-introduction-to-librarytidyverse-r-markdown.html#cb177-3" aria-hidden="true" tabindex="-1"></a><span class="do">## Number of observations by race</span></span>
+<span id="cb177-4"><a href="lab-ii-introduction-to-librarytidyverse-r-markdown.html#cb177-4" aria-hidden="true" tabindex="-1"></a>resume <span class="sc">%&gt;%</span></span>
+<span id="cb177-5"><a href="lab-ii-introduction-to-librarytidyverse-r-markdown.html#cb177-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(race) <span class="sc">%&gt;%</span></span>
+<span id="cb177-6"><a href="lab-ii-introduction-to-librarytidyverse-r-markdown.html#cb177-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>()</span></code></pre></div>
+<pre><code>## # A tibble: 2 × 2
+## # Groups:   race [2]
+##   race      n
+##   &lt;chr&gt; &lt;int&gt;
+## 1 black  2435
+## 2 white  2435</code></pre>
 </div>
-<div id="estimating-the-model" class="section level3 hasAnchor" number="8.1.3">
-<h3><span class="header-section-number">8.1.3</span> Estimating the Model<a href="lab-vii-interactions-categorical-variables.html#estimating-the-model" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb353"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb353-1"><a href="lab-vii-interactions-categorical-variables.html#cb353-1" aria-hidden="true" tabindex="-1"></a>reg1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(primary2006<span class="sc">~</span>messages, <span class="at">data=</span>social)</span></code></pre></div>
+<div id="this-experiment-seeks-to-determine-whether-or-not-hiring-managers-discriminate-on-the-basis-of-racial-identity-by-sending-idential-resumes-with-african-american-and-white-sounding-names-to-job-postings.-the-basic-logic-is-that-resumes-are-identical-and-only-the-name-is-changing-so-any-differences-in-call-backs-for-jobs-can-be-attributed-to-racial-discrimination.-why-do-the-authors-want-to-randomize-and-do-you-think-this-is-an-effective-research-design" class="section level2 hasAnchor" number="3.3">
+<h2><span class="header-section-number">3.3</span> This experiment seeks to determine whether or not hiring managers discriminate on the basis of racial identity by sending idential resumes with African-American and white sounding names to job postings. The basic logic is that resumes are identical and only the name is changing, so any differences in call backs for jobs can be attributed to racial discrimination. Why do the authors want to randomize? And do you think this is an effective research design?<a href="lab-ii-introduction-to-librarytidyverse-r-markdown.html#this-experiment-seeks-to-determine-whether-or-not-hiring-managers-discriminate-on-the-basis-of-racial-identity-by-sending-idential-resumes-with-african-american-and-white-sounding-names-to-job-postings.-the-basic-logic-is-that-resumes-are-identical-and-only-the-name-is-changing-so-any-differences-in-call-backs-for-jobs-can-be-attributed-to-racial-discrimination.-why-do-the-authors-want-to-randomize-and-do-you-think-this-is-an-effective-research-design" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>The concerns of examining race and the number of callbacks without randomization is that there could be confounders like workplace connections, amount of education, and employment history that could be correlated with race. It is possible that African-American applicants did not have the same employment and educational opportunities as white Americans, and, therefore, their resumes may look significantly different. This raises issues of counfounding and makes it impossible to differentiate if an employer made their decision based on race or based on the substance of the resume. The authors, though, randomized race, reducing this risk of confounding. Employers in this study are seeing nearly identical resumes, with only the race of the applicant being different, as indicated by a name.</p>
+<p>The field experiment presented here relies on racial connotations of different names, not explicit racial cues. Therefore, hiring managers are determining an applicant’s race largely based on what scholars of identity politics would call “perceived race” or “street race” (<a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5800755/">Lopez et al. 2017</a>), which is how others perceive an individual’s race. This fact means that the selection of names is integral to the internal validity of the research design.</p>
 </div>
-<div id="difference-in-means-between-categories" class="section level3 hasAnchor" number="8.1.4">
-<h3><span class="header-section-number">8.1.4</span> Difference in Means Between Categories<a href="lab-vii-interactions-categorical-variables.html#difference-in-means-between-categories" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb354"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb354-1"><a href="lab-vii-interactions-categorical-variables.html#cb354-1" aria-hidden="true" tabindex="-1"></a>reg1<span class="sc">$</span>coefficients[<span class="dv">1</span>]</span></code></pre></div>
-<pre><code>## (Intercept) 
-##   0.3145377</code></pre>
-<div class="sourceCode" id="cb356"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb356-1"><a href="lab-vii-interactions-categorical-variables.html#cb356-1" aria-hidden="true" tabindex="-1"></a>reg1<span class="sc">$</span>coefficients[<span class="dv">2</span>]</span></code></pre></div>
-<pre><code>## messagesControl 
-##     -0.01789934</code></pre>
-<div class="sourceCode" id="cb358"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb358-1"><a href="lab-vii-interactions-categorical-variables.html#cb358-1" aria-hidden="true" tabindex="-1"></a>reg1<span class="sc">$</span>coefficients[<span class="dv">3</span>]</span></code></pre></div>
-<pre><code>## messagesHawthorne 
-##       0.007836968</code></pre>
-<div class="sourceCode" id="cb360"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb360-1"><a href="lab-vii-interactions-categorical-variables.html#cb360-1" aria-hidden="true" tabindex="-1"></a>reg1<span class="sc">$</span>coefficients[<span class="dv">4</span>]</span></code></pre></div>
-<pre><code>## messagesNeighbors 
-##        0.06341057</code></pre>
-<div class="sourceCode" id="cb362"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb362-1"><a href="lab-vii-interactions-categorical-variables.html#cb362-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Changing Reference Category</span></span>
-<span id="cb362-2"><a href="lab-vii-interactions-categorical-variables.html#cb362-2" aria-hidden="true" tabindex="-1"></a>social<span class="sc">$</span>messages <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(social<span class="sc">$</span>messages)</span>
-<span id="cb362-3"><a href="lab-vii-interactions-categorical-variables.html#cb362-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb362-4"><a href="lab-vii-interactions-categorical-variables.html#cb362-4" aria-hidden="true" tabindex="-1"></a>reg2 <span class="ot">&lt;-</span> <span class="fu">lm</span>(primary2006<span class="sc">~</span><span class="fu">relevel</span>(messages, <span class="st">&quot;Control&quot;</span>), </span>
-<span id="cb362-5"><a href="lab-vii-interactions-categorical-variables.html#cb362-5" aria-hidden="true" tabindex="-1"></a>           <span class="at">data=</span>social)</span>
-<span id="cb362-6"><a href="lab-vii-interactions-categorical-variables.html#cb362-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb362-7"><a href="lab-vii-interactions-categorical-variables.html#cb362-7" aria-hidden="true" tabindex="-1"></a>reg2<span class="sc">$</span>coefficients[<span class="dv">1</span>]</span></code></pre></div>
-<pre><code>## (Intercept) 
-##   0.2966383</code></pre>
-<div class="sourceCode" id="cb364"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb364-1"><a href="lab-vii-interactions-categorical-variables.html#cb364-1" aria-hidden="true" tabindex="-1"></a>reg2<span class="sc">$</span>coefficients[<span class="dv">2</span>]</span></code></pre></div>
-<pre><code>## relevel(messages, &quot;Control&quot;)Civic Duty 
-##                             0.01789934</code></pre>
-<div class="sourceCode" id="cb366"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb366-1"><a href="lab-vii-interactions-categorical-variables.html#cb366-1" aria-hidden="true" tabindex="-1"></a>reg2<span class="sc">$</span>coefficients[<span class="dv">3</span>]</span></code></pre></div>
-<pre><code>## relevel(messages, &quot;Control&quot;)Hawthorne 
-##                            0.02573631</code></pre>
-<div class="sourceCode" id="cb368"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb368-1"><a href="lab-vii-interactions-categorical-variables.html#cb368-1" aria-hidden="true" tabindex="-1"></a>reg2<span class="sc">$</span>coefficients[<span class="dv">4</span>]</span></code></pre></div>
-<pre><code>## relevel(messages, &quot;Control&quot;)Neighbors 
-##                            0.08130991</code></pre>
+<div id="we-are-going-to-see-if-there-is-a-racial-discrepency-by-taking-the-difference-in-callback-rates-between-racial-groups.-calculate-the-callback-rate-for-white-sounding-name-applicants-and-african-american-sounding-name-applicants.-use-latex-commands-to-write-the-formula-for-this-calculation-and-display-the-result-in-text.-write-the-formula-between-s-like-y-mx-b-to-use-latex-commands." class="section level2 hasAnchor" number="3.4">
+<h2><span class="header-section-number">3.4</span> We are going to see if there is a racial discrepency by taking the difference in callback rates between racial groups. Calculate the callback rate for white sounding name applicants and African-American sounding name applicants. Use Latex commands to write the formula for this calculation and display the result in text. Write the formula between $’s like <span class="math inline">\(y = mx + b\)</span> to use Latex commands.<a href="lab-ii-introduction-to-librarytidyverse-r-markdown.html#we-are-going-to-see-if-there-is-a-racial-discrepency-by-taking-the-difference-in-callback-rates-between-racial-groups.-calculate-the-callback-rate-for-white-sounding-name-applicants-and-african-american-sounding-name-applicants.-use-latex-commands-to-write-the-formula-for-this-calculation-and-display-the-result-in-text.-write-the-formula-between-s-like-y-mx-b-to-use-latex-commands." class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="sourceCode" id="cb179"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb179-1"><a href="lab-ii-introduction-to-librarytidyverse-r-markdown.html#cb179-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Call Back for white Sounding Name Applicants</span></span>
+<span id="cb179-2"><a href="lab-ii-introduction-to-librarytidyverse-r-markdown.html#cb179-2" aria-hidden="true" tabindex="-1"></a>resume <span class="sc">%&gt;%</span></span>
+<span id="cb179-3"><a href="lab-ii-introduction-to-librarytidyverse-r-markdown.html#cb179-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(race) <span class="sc">%&gt;%</span></span>
+<span id="cb179-4"><a href="lab-ii-introduction-to-librarytidyverse-r-markdown.html#cb179-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">callback_rates =</span> <span class="fu">mean</span>(call))</span></code></pre></div>
+<pre><code>## # A tibble: 2 × 2
+##   race  callback_rates
+##   &lt;chr&gt;          &lt;dbl&gt;
+## 1 black         0.0645
+## 2 white         0.0965</code></pre>
+<p>The callback rate for whites is .096. We take the mean of the binary callback variable, <span class="math inline">\(\overline{x} = \frac{1}{n}\Sigma^{n}_{i=1}x_i\)</span></p>
+<p>The callback rate for African-American sounding name applicants is .064.</p>
 </div>
+<div id="now-create-a-new-object-that-stores-the-difference-in-callback-rates-named-race_diff." class="section level2 hasAnchor" number="3.5">
+<h2><span class="header-section-number">3.5</span> Now, create a new object that stores the difference in callback rates named race_diff.<a href="lab-ii-introduction-to-librarytidyverse-r-markdown.html#now-create-a-new-object-that-stores-the-difference-in-callback-rates-named-race_diff." class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="sourceCode" id="cb181"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb181-1"><a href="lab-ii-introduction-to-librarytidyverse-r-markdown.html#cb181-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Calculating Callback Proportions</span></span>
+<span id="cb181-2"><a href="lab-ii-introduction-to-librarytidyverse-r-markdown.html#cb181-2" aria-hidden="true" tabindex="-1"></a>race_call <span class="ot">&lt;-</span> resume <span class="sc">%&gt;%</span></span>
+<span id="cb181-3"><a href="lab-ii-introduction-to-librarytidyverse-r-markdown.html#cb181-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(race, call) <span class="sc">%&gt;%</span></span>
+<span id="cb181-4"><a href="lab-ii-introduction-to-librarytidyverse-r-markdown.html#cb181-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb181-5"><a href="lab-ii-introduction-to-librarytidyverse-r-markdown.html#cb181-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> call,</span>
+<span id="cb181-6"><a href="lab-ii-introduction-to-librarytidyverse-r-markdown.html#cb181-6" aria-hidden="true" tabindex="-1"></a>              <span class="at">values_from =</span> n) <span class="sc">%&gt;%</span></span>
+<span id="cb181-7"><a href="lab-ii-introduction-to-librarytidyverse-r-markdown.html#cb181-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">no_call =</span> <span class="st">`</span><span class="at">0</span><span class="st">`</span>,</span>
+<span id="cb181-8"><a href="lab-ii-introduction-to-librarytidyverse-r-markdown.html#cb181-8" aria-hidden="true" tabindex="-1"></a>         <span class="at">call =</span> <span class="st">`</span><span class="at">1</span><span class="st">`</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb181-9"><a href="lab-ii-introduction-to-librarytidyverse-r-markdown.html#cb181-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">total_resumes =</span> no_call <span class="sc">+</span> call,</span>
+<span id="cb181-10"><a href="lab-ii-introduction-to-librarytidyverse-r-markdown.html#cb181-10" aria-hidden="true" tabindex="-1"></a>         <span class="at">call_prop =</span> call <span class="sc">/</span> total_resumes)</span>
+<span id="cb181-11"><a href="lab-ii-introduction-to-librarytidyverse-r-markdown.html#cb181-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb181-12"><a href="lab-ii-introduction-to-librarytidyverse-r-markdown.html#cb181-12" aria-hidden="true" tabindex="-1"></a><span class="do">## Difference in call back rates</span></span>
+<span id="cb181-13"><a href="lab-ii-introduction-to-librarytidyverse-r-markdown.html#cb181-13" aria-hidden="true" tabindex="-1"></a>race_diff <span class="ot">&lt;-</span> race_call <span class="sc">%&gt;%</span> </span>
+<span id="cb181-14"><a href="lab-ii-introduction-to-librarytidyverse-r-markdown.html#cb181-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(race, call_prop) <span class="sc">%&gt;%</span></span>
+<span id="cb181-15"><a href="lab-ii-introduction-to-librarytidyverse-r-markdown.html#cb181-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> <span class="fu">c</span>(race),</span>
+<span id="cb181-16"><a href="lab-ii-introduction-to-librarytidyverse-r-markdown.html#cb181-16" aria-hidden="true" tabindex="-1"></a>              <span class="at">values_from =</span> call_prop) <span class="sc">%&gt;%</span></span>
+<span id="cb181-17"><a href="lab-ii-introduction-to-librarytidyverse-r-markdown.html#cb181-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">race_diff =</span> white <span class="sc">-</span> black) <span class="sc">%&gt;%</span></span>
+<span id="cb181-18"><a href="lab-ii-introduction-to-librarytidyverse-r-markdown.html#cb181-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(race_diff)</span>
+<span id="cb181-19"><a href="lab-ii-introduction-to-librarytidyverse-r-markdown.html#cb181-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb181-20"><a href="lab-ii-introduction-to-librarytidyverse-r-markdown.html#cb181-20" aria-hidden="true" tabindex="-1"></a><span class="do">## Printing</span></span>
+<span id="cb181-21"><a href="lab-ii-introduction-to-librarytidyverse-r-markdown.html#cb181-21" aria-hidden="true" tabindex="-1"></a>race_diff</span></code></pre></div>
+<pre><code>## # A tibble: 1 × 1
+##   race_diff
+##       &lt;dbl&gt;
+## 1    0.0320</code></pre>
 </div>
-<div id="interactions" class="section level2 hasAnchor" number="8.2">
-<h2><span class="header-section-number">8.2</span> Interactions<a href="lab-vii-interactions-categorical-variables.html#interactions" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<ul>
-<li>How to use interactions
-<ul>
-<li>In <em>R</em>
-<ul>
-<li><code>lm(y~x*z, data=data)</code> or <code>lm(y~x + z + x:z, data=data)</code></li>
-</ul></li>
-</ul></li>
-<li>We write a model with an interaction term as:</li>
-</ul>
-<p><span class="math display">\[\hat{Y_i}=\hat{\beta_0} + \hat{\beta_1}X_i + \hat{\beta_2}Z_i + \hat{\beta_3}(X_i*Z_i)\]</span></p>
-<div id="interpreting-interactions" class="section level3 hasAnchor" number="8.2.1">
-<h3><span class="header-section-number">8.2.1</span> Interpreting Interactions<a href="lab-vii-interactions-categorical-variables.html#interpreting-interactions" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p><span class="math display">\[\hat{Wage_i}=\hat{\beta_0} + \hat{\beta_1}Experience_i + \hat{\beta_2}Male_i + \hat{\beta_3}Experience_i*Male_i\]</span></p>
-<ul>
-<li><p><span class="math inline">\(\beta_0\)</span> - Predicted wage for women with no experience</p></li>
-<li><p><span class="math inline">\(\beta_0 + \beta_1\)</span> - Relationship between experience and earnings for women</p></li>
-<li><p><span class="math inline">\(\beta_0 + \beta_1 + \beta_2 + \beta_3\)</span> - Predicted Wage for men with experience</p></li>
-<li><p><span class="math inline">\(\beta_1\)</span> - The effect of experience for women</p></li>
-<li><p><span class="math inline">\(\beta_0 + \beta_2\)</span> - Predicted earnings for men when experience is zero</p></li>
-<li><p><span class="math inline">\(\beta_1 + \beta_3\)</span> - Relationship between experience and earnings for men</p></li>
-</ul>
+<div id="since-crenshaw-1989-manny-scholars-have-concerned-with-intersectionality-or-how-race-and-gender-interact-to-make-the-experiences-of-african-american-women-unique.-we-can-use-the-data-we-have-to-explore-the-effect-of-race-and-gender-specific-sounding-names-on-employment-prospects.-calculate-the-call-back-rate-by-each-race-and-gender-category." class="section level2 hasAnchor" number="3.6">
+<h2><span class="header-section-number">3.6</span> Since Crenshaw (1989), manny scholars have concerned with intersectionality, or how race and gender interact to make the experiences of African-American women unique. We can use the data we have to explore the effect of race and gender specific sounding names on employment prospects. Calculate the call back rate by each race and gender category.<a href="lab-ii-introduction-to-librarytidyverse-r-markdown.html#since-crenshaw-1989-manny-scholars-have-concerned-with-intersectionality-or-how-race-and-gender-interact-to-make-the-experiences-of-african-american-women-unique.-we-can-use-the-data-we-have-to-explore-the-effect-of-race-and-gender-specific-sounding-names-on-employment-prospects.-calculate-the-call-back-rate-by-each-race-and-gender-category." class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="sourceCode" id="cb183"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb183-1"><a href="lab-ii-introduction-to-librarytidyverse-r-markdown.html#cb183-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Callbacks by race and gender</span></span>
+<span id="cb183-2"><a href="lab-ii-introduction-to-librarytidyverse-r-markdown.html#cb183-2" aria-hidden="true" tabindex="-1"></a>resume <span class="sc">%&gt;%</span></span>
+<span id="cb183-3"><a href="lab-ii-introduction-to-librarytidyverse-r-markdown.html#cb183-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(race, call, sex) <span class="sc">%&gt;%</span></span>
+<span id="cb183-4"><a href="lab-ii-introduction-to-librarytidyverse-r-markdown.html#cb183-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb183-5"><a href="lab-ii-introduction-to-librarytidyverse-r-markdown.html#cb183-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> call,</span>
+<span id="cb183-6"><a href="lab-ii-introduction-to-librarytidyverse-r-markdown.html#cb183-6" aria-hidden="true" tabindex="-1"></a>              <span class="at">values_from =</span> n) <span class="sc">%&gt;%</span></span>
+<span id="cb183-7"><a href="lab-ii-introduction-to-librarytidyverse-r-markdown.html#cb183-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">no_call =</span> <span class="st">`</span><span class="at">0</span><span class="st">`</span>,</span>
+<span id="cb183-8"><a href="lab-ii-introduction-to-librarytidyverse-r-markdown.html#cb183-8" aria-hidden="true" tabindex="-1"></a>         <span class="at">call =</span> <span class="st">`</span><span class="at">1</span><span class="st">`</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb183-9"><a href="lab-ii-introduction-to-librarytidyverse-r-markdown.html#cb183-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">total_resumes =</span> no_call <span class="sc">+</span> call,</span>
+<span id="cb183-10"><a href="lab-ii-introduction-to-librarytidyverse-r-markdown.html#cb183-10" aria-hidden="true" tabindex="-1"></a>         <span class="at">call_prop =</span> call <span class="sc">/</span> total_resumes)</span></code></pre></div>
+<pre><code>## # A tibble: 4 × 6
+## # Groups:   race, sex [4]
+##   race  sex    no_call  call total_resumes call_prop
+##   &lt;chr&gt; &lt;chr&gt;    &lt;int&gt; &lt;int&gt;         &lt;int&gt;     &lt;dbl&gt;
+## 1 black female    1761   125          1886    0.0663
+## 2 black male       517    32           549    0.0583
+## 3 white female    1676   184          1860    0.0989
+## 4 white male       524    51           575    0.0887</code></pre>
 </div>
-</div>
-<div id="lab-questions-2" class="section level2 hasAnchor" number="8.3">
-<h2><span class="header-section-number">8.3</span> Lab Questions<a href="lab-vii-interactions-categorical-variables.html#lab-questions-2" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div id="what-is-the-effect-of-age-on-support-for-trump-conditional-on-being-a-republican-do-this-with-both-the-colon-and-the-." class="section level3 hasAnchor" number="8.3.1">
-<h3><span class="header-section-number">8.3.1</span> What is the effect of age on support for Trump, conditional on being a Republican? Do this with both the colon, “:”, and the “*“.<a href="lab-vii-interactions-categorical-variables.html#what-is-the-effect-of-age-on-support-for-trump-conditional-on-being-a-republican-do-this-with-both-the-colon-and-the-." class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb370"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb370-1"><a href="lab-vii-interactions-categorical-variables.html#cb370-1" aria-hidden="true" tabindex="-1"></a>model1a <span class="ot">&lt;-</span> <span class="fu">lm</span>(TrumpFT<span class="sc">~</span>Rep<span class="sc">*</span>Age, <span class="at">data=</span>dta)</span>
-<span id="cb370-2"><a href="lab-vii-interactions-categorical-variables.html#cb370-2" aria-hidden="true" tabindex="-1"></a>model1a</span></code></pre></div>
-<pre><code>## 
-## Call:
-## lm(formula = TrumpFT ~ Rep * Age, data = dta)
-## 
-## Coefficients:
-## (Intercept)      RepTRUE          Age  RepTRUE:Age  
-##     13.1949      21.1904       0.0509       0.3780</code></pre>
-<div class="sourceCode" id="cb372"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb372-1"><a href="lab-vii-interactions-categorical-variables.html#cb372-1" aria-hidden="true" tabindex="-1"></a>model1b <span class="ot">&lt;-</span> <span class="fu">lm</span>(TrumpFT<span class="sc">~</span>Rep <span class="sc">+</span> Age <span class="sc">+</span> Rep<span class="sc">:</span>Age, <span class="at">data=</span>dta)</span>
-<span id="cb372-2"><a href="lab-vii-interactions-categorical-variables.html#cb372-2" aria-hidden="true" tabindex="-1"></a>model1b</span></code></pre></div>
-<pre><code>## 
-## Call:
-## lm(formula = TrumpFT ~ Rep + Age + Rep:Age, data = dta)
-## 
-## Coefficients:
-## (Intercept)      RepTRUE          Age  RepTRUE:Age  
-##     13.1949      21.1904       0.0509       0.3780</code></pre>
-</div>
-<div id="what-is-the-effect-of-age-on-support-for-trump-conditional-on-being-a-democrat" class="section level3 hasAnchor" number="8.3.2">
-<h3><span class="header-section-number">8.3.2</span> What is the effect of age on support for Trump, conditional on being a Democrat?<a href="lab-vii-interactions-categorical-variables.html#what-is-the-effect-of-age-on-support-for-trump-conditional-on-being-a-democrat" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb374"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb374-1"><a href="lab-vii-interactions-categorical-variables.html#cb374-1" aria-hidden="true" tabindex="-1"></a>model2a <span class="ot">&lt;-</span> <span class="fu">lm</span>(TrumpFT<span class="sc">~</span>Dem<span class="sc">*</span>Age, <span class="at">data=</span>dta)</span>
-<span id="cb374-2"><a href="lab-vii-interactions-categorical-variables.html#cb374-2" aria-hidden="true" tabindex="-1"></a>model2a</span></code></pre></div>
-<pre><code>## 
-## Call:
-## lm(formula = TrumpFT ~ Dem * Age, data = dta)
-## 
-## Coefficients:
-## (Intercept)      DemTRUE          Age  DemTRUE:Age  
-##     22.5503      -9.3525       0.5281      -0.5749</code></pre>
-<div class="sourceCode" id="cb376"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb376-1"><a href="lab-vii-interactions-categorical-variables.html#cb376-1" aria-hidden="true" tabindex="-1"></a>model2b <span class="ot">&lt;-</span> <span class="fu">lm</span>(TrumpFT<span class="sc">~</span>Dem <span class="sc">+</span> Age <span class="sc">+</span> Dem<span class="sc">:</span>Age, <span class="at">data=</span>dta)</span>
-<span id="cb376-2"><a href="lab-vii-interactions-categorical-variables.html#cb376-2" aria-hidden="true" tabindex="-1"></a>model2b</span></code></pre></div>
-<pre><code>## 
-## Call:
-## lm(formula = TrumpFT ~ Dem + Age + Dem:Age, data = dta)
-## 
-## Coefficients:
-## (Intercept)      DemTRUE          Age  DemTRUE:Age  
-##     22.5503      -9.3525       0.5281      -0.5749</code></pre>
-</div>
-<div id="interpret-the-following-plot." class="section level3 hasAnchor" number="8.3.3">
-<h3><span class="header-section-number">8.3.3</span> Interpret the following plot.<a href="lab-vii-interactions-categorical-variables.html#interpret-the-following-plot." class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb378"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb378-1"><a href="lab-vii-interactions-categorical-variables.html#cb378-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(dta<span class="sc">$</span>Age, dta<span class="sc">$</span>TrumpFT, <span class="at">color=</span>dta<span class="sc">$</span>Rep, <span class="at">col=</span><span class="fu">c</span>(<span class="st">&quot;red&quot;</span>, <span class="st">&quot;blue&quot;</span>), </span>
-<span id="cb378-2"><a href="lab-vii-interactions-categorical-variables.html#cb378-2" aria-hidden="true" tabindex="-1"></a>     <span class="at">main=</span><span class="st">&quot;The Effect of Age on Support for Trump Conditional on Party ID&quot;</span>,</span>
-<span id="cb378-3"><a href="lab-vii-interactions-categorical-variables.html#cb378-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">&quot;Age&quot;</span>, <span class="at">ylab =</span> <span class="st">&quot;Trump FT&quot;</span>, <span class="at">las=</span><span class="dv">1</span>, <span class="at">xlim=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">100</span>), <span class="at">pch=</span><span class="st">&quot;&quot;</span>)</span>
-<span id="cb378-4"><a href="lab-vii-interactions-categorical-variables.html#cb378-4" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="fu">lm</span>(TrumpFT<span class="sc">~</span>Age, <span class="at">data =</span> <span class="fu">subset</span>(dta, Rep<span class="sc">==</span><span class="cn">TRUE</span>)), <span class="at">col=</span><span class="st">&quot;dark red&quot;</span>, <span class="at">lwd=</span><span class="dv">3</span>)</span>
-<span id="cb378-5"><a href="lab-vii-interactions-categorical-variables.html#cb378-5" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="fu">lm</span>(TrumpFT<span class="sc">~</span>Age, <span class="at">data =</span> <span class="fu">subset</span>(dta, Dem<span class="sc">==</span><span class="cn">TRUE</span>)), <span class="at">col=</span><span class="st">&quot;dark blue&quot;</span>, <span class="at">lwd=</span><span class="dv">3</span>)</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-85-1.png" width="672" /></p>
-</div>
-<div id="what-are-your-predictions-for-how-women-may-feel-about-clinton-how-democrats-may-feel-about-clinton-and-how-democratic-women-may-feel-about-clinton-then-estimate-the-model." class="section level3 hasAnchor" number="8.3.4">
-<h3><span class="header-section-number">8.3.4</span> What are your predictions for how women may feel about Clinton, how Democrats may feel about Clinton, and how Democratic women may feel about Clinton? Then estimate the model.<a href="lab-vii-interactions-categorical-variables.html#what-are-your-predictions-for-how-women-may-feel-about-clinton-how-democrats-may-feel-about-clinton-and-how-democratic-women-may-feel-about-clinton-then-estimate-the-model." class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Most answers will be good here. The idea is just to think about conditional effects. For example, women may approve more of Clinton because she could have been the first woman president. Democrats probably approve of Clinton because she was the Democratic nominee for president. Democratic women, then, may support Clinton EVEN more than Republican women and Democratic men. The conditional effect of being a Democrat for women will be positive.</p>
-<div class="sourceCode" id="cb379"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb379-1"><a href="lab-vii-interactions-categorical-variables.html#cb379-1" aria-hidden="true" tabindex="-1"></a>model3 <span class="ot">&lt;-</span> <span class="fu">lm</span>(ClintonFT<span class="sc">~</span>Female<span class="sc">*</span>Dem, <span class="at">data=</span>dta)</span>
-<span id="cb379-2"><a href="lab-vii-interactions-categorical-variables.html#cb379-2" aria-hidden="true" tabindex="-1"></a>model3</span></code></pre></div>
-<pre><code>## 
-## Call:
-## lm(formula = ClintonFT ~ Female * Dem, data = dta)
-## 
-## Coefficients:
-##    (Intercept)          Female         DemTRUE  Female:DemTRUE  
-##         17.690           1.114          27.621           6.882</code></pre>
-</div>
-<div id="how-do-we-interpret-the-following" class="section level3 hasAnchor" number="8.3.5">
-<h3><span class="header-section-number">8.3.5</span> How do we interpret the following:<a href="lab-vii-interactions-categorical-variables.html#how-do-we-interpret-the-following" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<ul>
-<li><p>Intercept = Clinton Feelings for Male Republicans</p></li>
-<li><p>Intercept + Beta 1 = Clinton Feelings for Female Republicans</p></li>
-<li><p>Intercept + Beta 2 = Clinton Feelings for Male Democrats</p></li>
-<li><p>Intercept + Beta 1 + Beta 2 + Beta 3 = Clinton Feelings for Female Democrats</p></li>
-<li><p>Beta 1 - The Effect of Sex for Republicans</p></li>
-<li><p>Beta 2 - The Effect of Party for Men</p></li>
-<li><p>Beta 2 + Beta 3 - The Effect of Party for Women</p></li>
-<li><p>Beta 1 + Beta 3 - The Effect of Sex for Democrats</p></li>
-</ul>
-</div>
-<div id="estimate-the-the-same-model-as-above-but-for-trump-and-republicans." class="section level3 hasAnchor" number="8.3.6">
-<h3><span class="header-section-number">8.3.6</span> Estimate the the same model as above, but for Trump and Republicans.<a href="lab-vii-interactions-categorical-variables.html#estimate-the-the-same-model-as-above-but-for-trump-and-republicans." class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb381"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb381-1"><a href="lab-vii-interactions-categorical-variables.html#cb381-1" aria-hidden="true" tabindex="-1"></a>model4 <span class="ot">&lt;-</span> <span class="fu">lm</span>(TrumpFT<span class="sc">~</span>Female<span class="sc">*</span>Rep, <span class="at">data=</span>dta)</span>
-<span id="cb381-2"><a href="lab-vii-interactions-categorical-variables.html#cb381-2" aria-hidden="true" tabindex="-1"></a>model4</span></code></pre></div>
-<pre><code>## 
-## Call:
-## lm(formula = TrumpFT ~ Female * Rep, data = dta)
-## 
-## Coefficients:
-##    (Intercept)          Female         RepTRUE  Female:RepTRUE  
-##         19.134          -8.887          33.196           5.965</code></pre>
-</div>
-<div id="calculate-the-following" class="section level3 hasAnchor" number="8.3.7">
-<h3><span class="header-section-number">8.3.7</span> Calculate the following:<a href="lab-vii-interactions-categorical-variables.html#calculate-the-following" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<ul>
-<li><p>What is Trump’s average feeling for male Democrats? - 19.134</p></li>
-<li><p>What is Trump’s average feeling for female Democrats? - 10.247</p></li>
-<li><p>What is Trump’s average feeling for male Republicans? - 52.33</p></li>
-<li><p>What is Trump’s average feeling for female Republicans? - 49.408</p></li>
-</ul>
-
-</div>
+<div id="what-is-the-difference-in-call-back-rates-for-each-racegender-group" class="section level2 hasAnchor" number="3.7">
+<h2><span class="header-section-number">3.7</span> What is the difference in call back rates for each race/gender group?<a href="lab-ii-introduction-to-librarytidyverse-r-markdown.html#what-is-the-difference-in-call-back-rates-for-each-racegender-group" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="sourceCode" id="cb185"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb185-1"><a href="lab-ii-introduction-to-librarytidyverse-r-markdown.html#cb185-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Saving tibble from 8</span></span>
+<span id="cb185-2"><a href="lab-ii-introduction-to-librarytidyverse-r-markdown.html#cb185-2" aria-hidden="true" tabindex="-1"></a>dta <span class="ot">&lt;-</span> resume <span class="sc">%&gt;%</span></span>
+<span id="cb185-3"><a href="lab-ii-introduction-to-librarytidyverse-r-markdown.html#cb185-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(race, call, sex) <span class="sc">%&gt;%</span></span>
+<span id="cb185-4"><a href="lab-ii-introduction-to-librarytidyverse-r-markdown.html#cb185-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb185-5"><a href="lab-ii-introduction-to-librarytidyverse-r-markdown.html#cb185-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> call,</span>
+<span id="cb185-6"><a href="lab-ii-introduction-to-librarytidyverse-r-markdown.html#cb185-6" aria-hidden="true" tabindex="-1"></a>              <span class="at">values_from =</span> n) <span class="sc">%&gt;%</span></span>
+<span id="cb185-7"><a href="lab-ii-introduction-to-librarytidyverse-r-markdown.html#cb185-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">no_call =</span> <span class="st">`</span><span class="at">0</span><span class="st">`</span>,</span>
+<span id="cb185-8"><a href="lab-ii-introduction-to-librarytidyverse-r-markdown.html#cb185-8" aria-hidden="true" tabindex="-1"></a>         <span class="at">call =</span> <span class="st">`</span><span class="at">1</span><span class="st">`</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb185-9"><a href="lab-ii-introduction-to-librarytidyverse-r-markdown.html#cb185-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">total_resumes =</span> no_call <span class="sc">+</span> call,</span>
+<span id="cb185-10"><a href="lab-ii-introduction-to-librarytidyverse-r-markdown.html#cb185-10" aria-hidden="true" tabindex="-1"></a>         <span class="at">call_prop =</span> call <span class="sc">/</span> total_resumes)</span>
+<span id="cb185-11"><a href="lab-ii-introduction-to-librarytidyverse-r-markdown.html#cb185-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb185-12"><a href="lab-ii-introduction-to-librarytidyverse-r-markdown.html#cb185-12" aria-hidden="true" tabindex="-1"></a><span class="do">## Calculating Differences</span></span>
+<span id="cb185-13"><a href="lab-ii-introduction-to-librarytidyverse-r-markdown.html#cb185-13" aria-hidden="true" tabindex="-1"></a>call_backs <span class="ot">&lt;-</span> dta <span class="sc">%&gt;%</span> </span>
+<span id="cb185-14"><a href="lab-ii-introduction-to-librarytidyverse-r-markdown.html#cb185-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(race, sex, call_prop) <span class="sc">%&gt;%</span></span>
+<span id="cb185-15"><a href="lab-ii-introduction-to-librarytidyverse-r-markdown.html#cb185-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> <span class="fu">c</span>(sex, race),</span>
+<span id="cb185-16"><a href="lab-ii-introduction-to-librarytidyverse-r-markdown.html#cb185-16" aria-hidden="true" tabindex="-1"></a>              <span class="at">values_from =</span> call_prop) <span class="sc">%&gt;%</span></span>
+<span id="cb185-17"><a href="lab-ii-introduction-to-librarytidyverse-r-markdown.html#cb185-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">white_sex_diff =</span> female_white <span class="sc">-</span> male_white,</span>
+<span id="cb185-18"><a href="lab-ii-introduction-to-librarytidyverse-r-markdown.html#cb185-18" aria-hidden="true" tabindex="-1"></a>         <span class="at">black_sex_diff =</span> female_black <span class="sc">-</span> male_black,</span>
+<span id="cb185-19"><a href="lab-ii-introduction-to-librarytidyverse-r-markdown.html#cb185-19" aria-hidden="true" tabindex="-1"></a>         <span class="at">male_race_diff =</span> male_white <span class="sc">-</span> male_black,</span>
+<span id="cb185-20"><a href="lab-ii-introduction-to-librarytidyverse-r-markdown.html#cb185-20" aria-hidden="true" tabindex="-1"></a>         <span class="at">female_race_diff =</span> female_white <span class="sc">-</span> female_black) <span class="sc">%&gt;%</span></span>
+<span id="cb185-21"><a href="lab-ii-introduction-to-librarytidyverse-r-markdown.html#cb185-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(white_sex_diff, black_sex_diff, male_race_diff, female_race_diff)</span>
+<span id="cb185-22"><a href="lab-ii-introduction-to-librarytidyverse-r-markdown.html#cb185-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb185-23"><a href="lab-ii-introduction-to-librarytidyverse-r-markdown.html#cb185-23" aria-hidden="true" tabindex="-1"></a><span class="do">## Printing</span></span>
+<span id="cb185-24"><a href="lab-ii-introduction-to-librarytidyverse-r-markdown.html#cb185-24" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(call_backs) <span class="do">## print() is optional</span></span></code></pre></div>
+<pre><code>## # A tibble: 1 × 4
+##   white_sex_diff black_sex_diff male_race_diff female_race_diff
+##            &lt;dbl&gt;          &lt;dbl&gt;          &lt;dbl&gt;            &lt;dbl&gt;
+## 1         0.0102        0.00799         0.0304           0.0326</code></pre>
 </div>
 </div>
             </section>
@@ -472,8 +458,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           </div>
         </div>
       </div>
-<a href="lab-vi-goodness-of-fit-multiple-regression.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-
+<a href="lab-i-introduction-to-r-r-studio.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="lab-iii-univariate-visualizations.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

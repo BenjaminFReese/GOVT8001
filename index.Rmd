@@ -1655,8 +1655,11 @@ reg1$coefficients[1]
 reg1$coefficients[2]
 reg1$coefficients[3]
 reg1$coefficients[4]
+```
 
-## Changing Reference Category
+### Changing the Reference Category
+
+```{r, echo=TRUE}
 social$messages <- as.factor(social$messages)
 
 reg2 <- lm(primary2006~relevel(messages, "Control"), 

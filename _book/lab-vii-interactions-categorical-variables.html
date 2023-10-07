@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>4 Lab III: Univariate Visualizations | GOVT 8001: Shared Working Book</title>
-  <meta name="description" content="4 Lab III: Univariate Visualizations | GOVT 8001: Shared Working Book" />
+  <title>8 Lab VII: Interactions &amp; Categorical Variables | GOVT 8001: Shared Working Book</title>
+  <meta name="description" content="8 Lab VII: Interactions &amp; Categorical Variables | GOVT 8001: Shared Working Book" />
   <meta name="generator" content="bookdown 0.35 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="4 Lab III: Univariate Visualizations | GOVT 8001: Shared Working Book" />
+  <meta property="og:title" content="8 Lab VII: Interactions &amp; Categorical Variables | GOVT 8001: Shared Working Book" />
   <meta property="og:type" content="book" />
   
   
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="4 Lab III: Univariate Visualizations | GOVT 8001: Shared Working Book" />
+  <meta name="twitter:title" content="8 Lab VII: Interactions &amp; Categorical Variables | GOVT 8001: Shared Working Book" />
   
   
   
@@ -29,8 +29,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="lab-ii-introduction-to-librarytidyverse-r-markdown.html"/>
-<link rel="next" href="lab-iv-loops-lists-conditional-statements.html"/>
+<link rel="prev" href="lab-vi-goodness-of-fit-multiple-regression.html"/>
+
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -253,6 +253,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="8.1.2" data-path="lab-vii-interactions-categorical-variables.html"><a href="lab-vii-interactions-categorical-variables.html#the-four-categories-of-the-treatment-variable"><i class="fa fa-check"></i><b>8.1.2</b> The Four Categories of the Treatment Variable</a></li>
 <li class="chapter" data-level="8.1.3" data-path="lab-vii-interactions-categorical-variables.html"><a href="lab-vii-interactions-categorical-variables.html#estimating-the-model"><i class="fa fa-check"></i><b>8.1.3</b> Estimating the Model</a></li>
 <li class="chapter" data-level="8.1.4" data-path="lab-vii-interactions-categorical-variables.html"><a href="lab-vii-interactions-categorical-variables.html#difference-in-means-between-categories"><i class="fa fa-check"></i><b>8.1.4</b> Difference in Means Between Categories</a></li>
+<li class="chapter" data-level="8.1.5" data-path="lab-vii-interactions-categorical-variables.html"><a href="lab-vii-interactions-categorical-variables.html#changing-the-reference-category"><i class="fa fa-check"></i><b>8.1.5</b> Changing the Reference Category</a></li>
 </ul></li>
 <li class="chapter" data-level="8.2" data-path="lab-vii-interactions-categorical-variables.html"><a href="lab-vii-interactions-categorical-variables.html#interactions"><i class="fa fa-check"></i><b>8.2</b> Interactions</a>
 <ul>
@@ -286,200 +287,187 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="lab-iii-univariate-visualizations" class="section level1 hasAnchor" number="4">
-<h1><span class="header-section-number">4</span> Lab III: Univariate Visualizations<a href="lab-iii-univariate-visualizations.html#lab-iii-univariate-visualizations" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<p><img src="image_3.png" width="740" /></p>
-<div class="sourceCode" id="cb187"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb187-1"><a href="lab-iii-univariate-visualizations.html#cb187-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Packages</span></span>
-<span id="cb187-2"><a href="lab-iii-univariate-visualizations.html#cb187-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb187-3"><a href="lab-iii-univariate-visualizations.html#cb187-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggthemes)</span>
-<span id="cb187-4"><a href="lab-iii-univariate-visualizations.html#cb187-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb187-5"><a href="lab-iii-univariate-visualizations.html#cb187-5" aria-hidden="true" tabindex="-1"></a><span class="do">## Data Loading</span></span>
-<span id="cb187-6"><a href="lab-iii-univariate-visualizations.html#cb187-6" aria-hidden="true" tabindex="-1"></a><span class="do">## Replace this with your working directory</span></span>
-<span id="cb187-7"><a href="lab-iii-univariate-visualizations.html#cb187-7" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(<span class="st">&quot;~/GOVT8001/Lab 3/white_minwage.RData&quot;</span>) </span></code></pre></div>
-<p>This lab shows step-by-step how to build basic histograms and barplots with <code>library(ggplot2)</code></p>
-<div id="histograms-with-libraryggplot2" class="section level2 hasAnchor" number="4.1">
-<h2><span class="header-section-number">4.1</span> Histograms with <code>library(ggplot2)</code><a href="lab-iii-univariate-visualizations.html#histograms-with-libraryggplot2" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Histograms are good to visualize the distribution of one continuous variable.</p>
-<div id="step-one" class="section level3 hasAnchor" number="4.1.1">
-<h3><span class="header-section-number">4.1.1</span> Step One<a href="lab-iii-univariate-visualizations.html#step-one" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<ul>
-<li>Specify the tibble to be piped into <code>ggplot()</code></li>
-</ul>
-<div class="sourceCode" id="cb188"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb188-1"><a href="lab-iii-univariate-visualizations.html#cb188-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Building A Basic Histogram </span></span>
-<span id="cb188-2"><a href="lab-iii-univariate-visualizations.html#cb188-2" aria-hidden="true" tabindex="-1"></a>df.county</span></code></pre></div>
+<div id="lab-vii-interactions-categorical-variables" class="section level1 hasAnchor" number="8">
+<h1><span class="header-section-number">8</span> Lab VII: Interactions &amp; Categorical Variables<a href="lab-vii-interactions-categorical-variables.html#lab-vii-interactions-categorical-variables" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p><img src="image_7.png" width="400" /></p>
+<div id="categorical-variables-and-reference-categories" class="section level2 hasAnchor" number="8.1">
+<h2><span class="header-section-number">8.1</span> Categorical Variables and Reference Categories<a href="lab-vii-interactions-categorical-variables.html#categorical-variables-and-reference-categories" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="loading-data-1" class="section level3 hasAnchor" number="8.1.1">
+<h3><span class="header-section-number">8.1.1</span> Loading Data<a href="lab-vii-interactions-categorical-variables.html#loading-data-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb350"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb350-1"><a href="lab-vii-interactions-categorical-variables.html#cb350-1" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(<span class="st">&quot;~/GOVT5001/Lab VII/social.RData&quot;</span>)</span></code></pre></div>
 </div>
-<div id="step-two" class="section level3 hasAnchor" number="4.1.2">
-<h3><span class="header-section-number">4.1.2</span> Step Two<a href="lab-iii-univariate-visualizations.html#step-two" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<ul>
-<li>Pipe the tibble into ggplot()</li>
-<li>Specify the variable of interest with <code>ggplot(aes(x = X))</code></li>
-</ul>
-<div class="sourceCode" id="cb189"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb189-1"><a href="lab-iii-univariate-visualizations.html#cb189-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Building A Basic Histogram </span></span>
-<span id="cb189-2"><a href="lab-iii-univariate-visualizations.html#cb189-2" aria-hidden="true" tabindex="-1"></a>df.county <span class="sc">%&gt;%</span></span>
-<span id="cb189-3"><a href="lab-iii-univariate-visualizations.html#cb189-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> minimum.wage))</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-17-1.png" width="672" /></p>
+<div id="the-four-categories-of-the-treatment-variable" class="section level3 hasAnchor" number="8.1.2">
+<h3><span class="header-section-number">8.1.2</span> The Four Categories of the Treatment Variable<a href="lab-vii-interactions-categorical-variables.html#the-four-categories-of-the-treatment-variable" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb351"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb351-1"><a href="lab-vii-interactions-categorical-variables.html#cb351-1" aria-hidden="true" tabindex="-1"></a><span class="fu">unique</span>(social<span class="sc">$</span>messages)</span></code></pre></div>
+<pre><code>## [1] &quot;Civic Duty&quot; &quot;Hawthorne&quot;  &quot;Control&quot;    &quot;Neighbors&quot;</code></pre>
 </div>
-<div id="step-3" class="section level3 hasAnchor" number="4.1.3">
-<h3><span class="header-section-number">4.1.3</span> Step 3<a href="lab-iii-univariate-visualizations.html#step-3" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<ul>
-<li>Use <code>+</code> instead of <code>%&gt;%</code> to move to next line in <code>ggplot()</code></li>
-<li><code>geom_histogram()</code> creates the histogram</li>
-</ul>
-<div class="sourceCode" id="cb190"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb190-1"><a href="lab-iii-univariate-visualizations.html#cb190-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Building A Basic Histogram </span></span>
-<span id="cb190-2"><a href="lab-iii-univariate-visualizations.html#cb190-2" aria-hidden="true" tabindex="-1"></a>df.county <span class="sc">%&gt;%</span></span>
-<span id="cb190-3"><a href="lab-iii-univariate-visualizations.html#cb190-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> minimum.wage)) <span class="sc">+</span> </span>
-<span id="cb190-4"><a href="lab-iii-univariate-visualizations.html#cb190-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="fu">aes</span>(<span class="at">y =</span> ..density..))</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-18-1.png" width="672" /></p>
+<div id="estimating-the-model" class="section level3 hasAnchor" number="8.1.3">
+<h3><span class="header-section-number">8.1.3</span> Estimating the Model<a href="lab-vii-interactions-categorical-variables.html#estimating-the-model" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb353"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb353-1"><a href="lab-vii-interactions-categorical-variables.html#cb353-1" aria-hidden="true" tabindex="-1"></a>reg1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(primary2006<span class="sc">~</span>messages, <span class="at">data=</span>social)</span></code></pre></div>
 </div>
-<div id="step-4" class="section level3 hasAnchor" number="4.1.4">
-<h3><span class="header-section-number">4.1.4</span> Step 4<a href="lab-iii-univariate-visualizations.html#step-4" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="difference-in-means-between-categories" class="section level3 hasAnchor" number="8.1.4">
+<h3><span class="header-section-number">8.1.4</span> Difference in Means Between Categories<a href="lab-vii-interactions-categorical-variables.html#difference-in-means-between-categories" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb354"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb354-1"><a href="lab-vii-interactions-categorical-variables.html#cb354-1" aria-hidden="true" tabindex="-1"></a>reg1<span class="sc">$</span>coefficients[<span class="dv">1</span>]</span></code></pre></div>
+<pre><code>## (Intercept) 
+##   0.3145377</code></pre>
+<div class="sourceCode" id="cb356"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb356-1"><a href="lab-vii-interactions-categorical-variables.html#cb356-1" aria-hidden="true" tabindex="-1"></a>reg1<span class="sc">$</span>coefficients[<span class="dv">2</span>]</span></code></pre></div>
+<pre><code>## messagesControl 
+##     -0.01789934</code></pre>
+<div class="sourceCode" id="cb358"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb358-1"><a href="lab-vii-interactions-categorical-variables.html#cb358-1" aria-hidden="true" tabindex="-1"></a>reg1<span class="sc">$</span>coefficients[<span class="dv">3</span>]</span></code></pre></div>
+<pre><code>## messagesHawthorne 
+##       0.007836968</code></pre>
+<div class="sourceCode" id="cb360"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb360-1"><a href="lab-vii-interactions-categorical-variables.html#cb360-1" aria-hidden="true" tabindex="-1"></a>reg1<span class="sc">$</span>coefficients[<span class="dv">4</span>]</span></code></pre></div>
+<pre><code>## messagesNeighbors 
+##        0.06341057</code></pre>
+</div>
+<div id="changing-the-reference-category" class="section level3 hasAnchor" number="8.1.5">
+<h3><span class="header-section-number">8.1.5</span> Changing the Reference Category<a href="lab-vii-interactions-categorical-variables.html#changing-the-reference-category" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb362"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb362-1"><a href="lab-vii-interactions-categorical-variables.html#cb362-1" aria-hidden="true" tabindex="-1"></a>social<span class="sc">$</span>messages <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(social<span class="sc">$</span>messages)</span>
+<span id="cb362-2"><a href="lab-vii-interactions-categorical-variables.html#cb362-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb362-3"><a href="lab-vii-interactions-categorical-variables.html#cb362-3" aria-hidden="true" tabindex="-1"></a>reg2 <span class="ot">&lt;-</span> <span class="fu">lm</span>(primary2006<span class="sc">~</span><span class="fu">relevel</span>(messages, <span class="st">&quot;Control&quot;</span>), </span>
+<span id="cb362-4"><a href="lab-vii-interactions-categorical-variables.html#cb362-4" aria-hidden="true" tabindex="-1"></a>           <span class="at">data=</span>social)</span>
+<span id="cb362-5"><a href="lab-vii-interactions-categorical-variables.html#cb362-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb362-6"><a href="lab-vii-interactions-categorical-variables.html#cb362-6" aria-hidden="true" tabindex="-1"></a>reg2<span class="sc">$</span>coefficients[<span class="dv">1</span>]</span></code></pre></div>
+<pre><code>## (Intercept) 
+##   0.2966383</code></pre>
+<div class="sourceCode" id="cb364"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb364-1"><a href="lab-vii-interactions-categorical-variables.html#cb364-1" aria-hidden="true" tabindex="-1"></a>reg2<span class="sc">$</span>coefficients[<span class="dv">2</span>]</span></code></pre></div>
+<pre><code>## relevel(messages, &quot;Control&quot;)Civic Duty 
+##                             0.01789934</code></pre>
+<div class="sourceCode" id="cb366"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb366-1"><a href="lab-vii-interactions-categorical-variables.html#cb366-1" aria-hidden="true" tabindex="-1"></a>reg2<span class="sc">$</span>coefficients[<span class="dv">3</span>]</span></code></pre></div>
+<pre><code>## relevel(messages, &quot;Control&quot;)Hawthorne 
+##                            0.02573631</code></pre>
+<div class="sourceCode" id="cb368"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb368-1"><a href="lab-vii-interactions-categorical-variables.html#cb368-1" aria-hidden="true" tabindex="-1"></a>reg2<span class="sc">$</span>coefficients[<span class="dv">4</span>]</span></code></pre></div>
+<pre><code>## relevel(messages, &quot;Control&quot;)Neighbors 
+##                            0.08130991</code></pre>
+</div>
+</div>
+<div id="interactions" class="section level2 hasAnchor" number="8.2">
+<h2><span class="header-section-number">8.2</span> Interactions<a href="lab-vii-interactions-categorical-variables.html#interactions" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <ul>
-<li>Customization of theme, colors, and labels.</li>
-<li>You can also save the object above and customize it later as shown below
+<li>How to use interactions
 <ul>
-<li>Use <code>col =</code> and <code>fill =</code> in <code>geom_histogram()</code> to set colors</li>
+<li>In <em>R</em>
+<ul>
+<li><code>lm(y~x*z, data=data)</code> or <code>lm(y~x + z + x:z, data=data)</code></li>
 </ul></li>
-</ul>
-<div class="sourceCode" id="cb191"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb191-1"><a href="lab-iii-univariate-visualizations.html#cb191-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Building A Basic Histogram </span></span>
-<span id="cb191-2"><a href="lab-iii-univariate-visualizations.html#cb191-2" aria-hidden="true" tabindex="-1"></a>df.county <span class="sc">%&gt;%</span></span>
-<span id="cb191-3"><a href="lab-iii-univariate-visualizations.html#cb191-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> minimum.wage)) <span class="sc">+</span> </span>
-<span id="cb191-4"><a href="lab-iii-univariate-visualizations.html#cb191-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="fu">aes</span>(<span class="at">y =</span> ..density..), <span class="at">col =</span> <span class="st">&quot;dark red&quot;</span>, <span class="at">fill =</span> <span class="st">&quot;tomato&quot;</span>)</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-19-1.png" width="672" /></p>
-<ul>
-<li>Use <code>+ theme()</code> to set the theme
-<ul>
-<li><code>library(ggtheme)</code> has themes from your favorite publications!</li>
 </ul></li>
+<li>We write a model with an interaction term as:</li>
 </ul>
-<div class="sourceCode" id="cb192"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb192-1"><a href="lab-iii-univariate-visualizations.html#cb192-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Building A Basic Histogram </span></span>
-<span id="cb192-2"><a href="lab-iii-univariate-visualizations.html#cb192-2" aria-hidden="true" tabindex="-1"></a>df.county <span class="sc">%&gt;%</span></span>
-<span id="cb192-3"><a href="lab-iii-univariate-visualizations.html#cb192-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> minimum.wage)) <span class="sc">+</span> </span>
-<span id="cb192-4"><a href="lab-iii-univariate-visualizations.html#cb192-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="fu">aes</span>(<span class="at">y =</span> ..density..), <span class="at">col =</span> <span class="st">&quot;dark red&quot;</span>, <span class="at">fill =</span> <span class="st">&quot;tomato&quot;</span>) <span class="sc">+</span> </span>
-<span id="cb192-5"><a href="lab-iii-univariate-visualizations.html#cb192-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-20-1.png" width="672" /></p>
+<p><span class="math display">\[\hat{Y_i}=\hat{\beta_0} + \hat{\beta_1}X_i + \hat{\beta_2}Z_i + \hat{\beta_3}(X_i*Z_i)\]</span></p>
+<div id="interpreting-interactions" class="section level3 hasAnchor" number="8.2.1">
+<h3><span class="header-section-number">8.2.1</span> Interpreting Interactions<a href="lab-vii-interactions-categorical-variables.html#interpreting-interactions" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p><span class="math display">\[\hat{Wage_i}=\hat{\beta_0} + \hat{\beta_1}Experience_i + \hat{\beta_2}Male_i + \hat{\beta_3}Experience_i*Male_i\]</span></p>
 <ul>
-<li>Use <code>+ labs</code> to set labels
-<ul>
-<li><code>title =</code> for a title</li>
-<li><code>subtitle =</code> for a subtitle</li>
-<li><code>x =</code> for x axis label and <code>y =</code> for y axis label</li>
-<li><code>caption =</code> for caption to include data source or note</li>
-</ul></li>
+<li><p><span class="math inline">\(\beta_0\)</span> - Predicted wage for women with no experience</p></li>
+<li><p><span class="math inline">\(\beta_0 + \beta_1\)</span> - Relationship between experience and earnings for women</p></li>
+<li><p><span class="math inline">\(\beta_0 + \beta_1 + \beta_2 + \beta_3\)</span> - Predicted Wage for men with experience</p></li>
+<li><p><span class="math inline">\(\beta_1\)</span> - The effect of experience for women</p></li>
+<li><p><span class="math inline">\(\beta_0 + \beta_2\)</span> - Predicted earnings for men when experience is zero</p></li>
+<li><p><span class="math inline">\(\beta_1 + \beta_3\)</span> - Relationship between experience and earnings for men</p></li>
 </ul>
-<div class="sourceCode" id="cb193"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb193-1"><a href="lab-iii-univariate-visualizations.html#cb193-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Building A Basic Histogram </span></span>
-<span id="cb193-2"><a href="lab-iii-univariate-visualizations.html#cb193-2" aria-hidden="true" tabindex="-1"></a>df.county <span class="sc">%&gt;%</span></span>
-<span id="cb193-3"><a href="lab-iii-univariate-visualizations.html#cb193-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> minimum.wage)) <span class="sc">+</span> </span>
-<span id="cb193-4"><a href="lab-iii-univariate-visualizations.html#cb193-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="fu">aes</span>(<span class="at">y =</span> ..density..), <span class="at">col =</span> <span class="st">&quot;dark red&quot;</span>, <span class="at">fill =</span> <span class="st">&quot;tomato&quot;</span>) <span class="sc">+</span> </span>
-<span id="cb193-5"><a href="lab-iii-univariate-visualizations.html#cb193-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
-<span id="cb193-6"><a href="lab-iii-univariate-visualizations.html#cb193-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Distribution of Minimum Wage&quot;</span>, <span class="at">subtitle =</span> <span class="st">&quot;All US Counties 1996 - 2016&quot;</span>,</span>
-<span id="cb193-7"><a href="lab-iii-univariate-visualizations.html#cb193-7" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">&quot;Minimum Wage&quot;</span>, <span class="at">caption =</span> <span class="st">&quot;Data Source: Markovich &amp; White (2022)&quot;</span>,</span>
-<span id="cb193-8"><a href="lab-iii-univariate-visualizations.html#cb193-8" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">&quot;Density&quot;</span>)</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-21-1.png" width="672" /></p>
-<div class="sourceCode" id="cb194"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb194-1"><a href="lab-iii-univariate-visualizations.html#cb194-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Or You Can Save the Basic Plot and Experiment</span></span>
-<span id="cb194-2"><a href="lab-iii-univariate-visualizations.html#cb194-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb194-3"><a href="lab-iii-univariate-visualizations.html#cb194-3" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> df.county <span class="sc">%&gt;%</span></span>
-<span id="cb194-4"><a href="lab-iii-univariate-visualizations.html#cb194-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> minimum.wage)) <span class="sc">+</span> </span>
-<span id="cb194-5"><a href="lab-iii-univariate-visualizations.html#cb194-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="fu">aes</span>(<span class="at">y =</span> ..density..), <span class="at">col =</span> <span class="st">&quot;dark red&quot;</span>, <span class="at">fill =</span> <span class="st">&quot;tomato&quot;</span>)</span>
-<span id="cb194-6"><a href="lab-iii-univariate-visualizations.html#cb194-6" aria-hidden="true" tabindex="-1"></a>p</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-21-2.png" width="672" /></p>
-<div class="sourceCode" id="cb195"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb195-1"><a href="lab-iii-univariate-visualizations.html#cb195-1" aria-hidden="true" tabindex="-1"></a>p <span class="sc">+</span> </span>
-<span id="cb195-2"><a href="lab-iii-univariate-visualizations.html#cb195-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
-<span id="cb195-3"><a href="lab-iii-univariate-visualizations.html#cb195-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Distribution of Minimum Wage&quot;</span>, <span class="at">subtitle =</span> <span class="st">&quot;All US Counties 1996 - 2016&quot;</span>,</span>
-<span id="cb195-4"><a href="lab-iii-univariate-visualizations.html#cb195-4" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">&quot;Minimum Wage&quot;</span>, <span class="at">caption =</span> <span class="st">&quot;Data Source: Markovich &amp; White (2022)&quot;</span>,</span>
-<span id="cb195-5"><a href="lab-iii-univariate-visualizations.html#cb195-5" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">&quot;Density&quot;</span>)</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-21-3.png" width="672" /></p>
 </div>
 </div>
-<div id="barplots-with-libraryggplot2" class="section level2 hasAnchor" number="4.2">
-<h2><span class="header-section-number">4.2</span> Barplots with <code>library(ggplot2)</code><a href="lab-iii-univariate-visualizations.html#barplots-with-libraryggplot2" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Barplots are good for visualizing distributions by groups. The steps here follow closely what we did for the histogram.</p>
-<div id="step-one-1" class="section level3 hasAnchor" number="4.2.1">
-<h3><span class="header-section-number">4.2.1</span> Step One<a href="lab-iii-univariate-visualizations.html#step-one-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="lab-questions-2" class="section level2 hasAnchor" number="8.3">
+<h2><span class="header-section-number">8.3</span> Lab Questions<a href="lab-vii-interactions-categorical-variables.html#lab-questions-2" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="what-is-the-effect-of-age-on-support-for-trump-conditional-on-being-a-republican-do-this-with-both-the-colon-and-the-." class="section level3 hasAnchor" number="8.3.1">
+<h3><span class="header-section-number">8.3.1</span> What is the effect of age on support for Trump, conditional on being a Republican? Do this with both the colon, “:”, and the “*“.<a href="lab-vii-interactions-categorical-variables.html#what-is-the-effect-of-age-on-support-for-trump-conditional-on-being-a-republican-do-this-with-both-the-colon-and-the-." class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb370"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb370-1"><a href="lab-vii-interactions-categorical-variables.html#cb370-1" aria-hidden="true" tabindex="-1"></a>model1a <span class="ot">&lt;-</span> <span class="fu">lm</span>(TrumpFT<span class="sc">~</span>Rep<span class="sc">*</span>Age, <span class="at">data=</span>dta)</span>
+<span id="cb370-2"><a href="lab-vii-interactions-categorical-variables.html#cb370-2" aria-hidden="true" tabindex="-1"></a>model1a</span></code></pre></div>
+<pre><code>## 
+## Call:
+## lm(formula = TrumpFT ~ Rep * Age, data = dta)
+## 
+## Coefficients:
+## (Intercept)      RepTRUE          Age  RepTRUE:Age  
+##     13.1949      21.1904       0.0509       0.3780</code></pre>
+<div class="sourceCode" id="cb372"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb372-1"><a href="lab-vii-interactions-categorical-variables.html#cb372-1" aria-hidden="true" tabindex="-1"></a>model1b <span class="ot">&lt;-</span> <span class="fu">lm</span>(TrumpFT<span class="sc">~</span>Rep <span class="sc">+</span> Age <span class="sc">+</span> Rep<span class="sc">:</span>Age, <span class="at">data=</span>dta)</span>
+<span id="cb372-2"><a href="lab-vii-interactions-categorical-variables.html#cb372-2" aria-hidden="true" tabindex="-1"></a>model1b</span></code></pre></div>
+<pre><code>## 
+## Call:
+## lm(formula = TrumpFT ~ Rep + Age + Rep:Age, data = dta)
+## 
+## Coefficients:
+## (Intercept)      RepTRUE          Age  RepTRUE:Age  
+##     13.1949      21.1904       0.0509       0.3780</code></pre>
+</div>
+<div id="what-is-the-effect-of-age-on-support-for-trump-conditional-on-being-a-democrat" class="section level3 hasAnchor" number="8.3.2">
+<h3><span class="header-section-number">8.3.2</span> What is the effect of age on support for Trump, conditional on being a Democrat?<a href="lab-vii-interactions-categorical-variables.html#what-is-the-effect-of-age-on-support-for-trump-conditional-on-being-a-democrat" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb374"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb374-1"><a href="lab-vii-interactions-categorical-variables.html#cb374-1" aria-hidden="true" tabindex="-1"></a>model2a <span class="ot">&lt;-</span> <span class="fu">lm</span>(TrumpFT<span class="sc">~</span>Dem<span class="sc">*</span>Age, <span class="at">data=</span>dta)</span>
+<span id="cb374-2"><a href="lab-vii-interactions-categorical-variables.html#cb374-2" aria-hidden="true" tabindex="-1"></a>model2a</span></code></pre></div>
+<pre><code>## 
+## Call:
+## lm(formula = TrumpFT ~ Dem * Age, data = dta)
+## 
+## Coefficients:
+## (Intercept)      DemTRUE          Age  DemTRUE:Age  
+##     22.5503      -9.3525       0.5281      -0.5749</code></pre>
+<div class="sourceCode" id="cb376"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb376-1"><a href="lab-vii-interactions-categorical-variables.html#cb376-1" aria-hidden="true" tabindex="-1"></a>model2b <span class="ot">&lt;-</span> <span class="fu">lm</span>(TrumpFT<span class="sc">~</span>Dem <span class="sc">+</span> Age <span class="sc">+</span> Dem<span class="sc">:</span>Age, <span class="at">data=</span>dta)</span>
+<span id="cb376-2"><a href="lab-vii-interactions-categorical-variables.html#cb376-2" aria-hidden="true" tabindex="-1"></a>model2b</span></code></pre></div>
+<pre><code>## 
+## Call:
+## lm(formula = TrumpFT ~ Dem + Age + Dem:Age, data = dta)
+## 
+## Coefficients:
+## (Intercept)      DemTRUE          Age  DemTRUE:Age  
+##     22.5503      -9.3525       0.5281      -0.5749</code></pre>
+</div>
+<div id="interpret-the-following-plot." class="section level3 hasAnchor" number="8.3.3">
+<h3><span class="header-section-number">8.3.3</span> Interpret the following plot.<a href="lab-vii-interactions-categorical-variables.html#interpret-the-following-plot." class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb378"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb378-1"><a href="lab-vii-interactions-categorical-variables.html#cb378-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(dta<span class="sc">$</span>Age, dta<span class="sc">$</span>TrumpFT, <span class="at">color=</span>dta<span class="sc">$</span>Rep, <span class="at">col=</span><span class="fu">c</span>(<span class="st">&quot;red&quot;</span>, <span class="st">&quot;blue&quot;</span>), </span>
+<span id="cb378-2"><a href="lab-vii-interactions-categorical-variables.html#cb378-2" aria-hidden="true" tabindex="-1"></a>     <span class="at">main=</span><span class="st">&quot;The Effect of Age on Support for Trump Conditional on Party ID&quot;</span>,</span>
+<span id="cb378-3"><a href="lab-vii-interactions-categorical-variables.html#cb378-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">&quot;Age&quot;</span>, <span class="at">ylab =</span> <span class="st">&quot;Trump FT&quot;</span>, <span class="at">las=</span><span class="dv">1</span>, <span class="at">xlim=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">100</span>), <span class="at">pch=</span><span class="st">&quot;&quot;</span>)</span>
+<span id="cb378-4"><a href="lab-vii-interactions-categorical-variables.html#cb378-4" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="fu">lm</span>(TrumpFT<span class="sc">~</span>Age, <span class="at">data =</span> <span class="fu">subset</span>(dta, Rep<span class="sc">==</span><span class="cn">TRUE</span>)), <span class="at">col=</span><span class="st">&quot;dark red&quot;</span>, <span class="at">lwd=</span><span class="dv">3</span>)</span>
+<span id="cb378-5"><a href="lab-vii-interactions-categorical-variables.html#cb378-5" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="fu">lm</span>(TrumpFT<span class="sc">~</span>Age, <span class="at">data =</span> <span class="fu">subset</span>(dta, Dem<span class="sc">==</span><span class="cn">TRUE</span>)), <span class="at">col=</span><span class="st">&quot;dark blue&quot;</span>, <span class="at">lwd=</span><span class="dv">3</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-86-1.png" width="672" /></p>
+</div>
+<div id="what-are-your-predictions-for-how-women-may-feel-about-clinton-how-democrats-may-feel-about-clinton-and-how-democratic-women-may-feel-about-clinton-then-estimate-the-model." class="section level3 hasAnchor" number="8.3.4">
+<h3><span class="header-section-number">8.3.4</span> What are your predictions for how women may feel about Clinton, how Democrats may feel about Clinton, and how Democratic women may feel about Clinton? Then estimate the model.<a href="lab-vii-interactions-categorical-variables.html#what-are-your-predictions-for-how-women-may-feel-about-clinton-how-democrats-may-feel-about-clinton-and-how-democratic-women-may-feel-about-clinton-then-estimate-the-model." class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Most answers will be good here. The idea is just to think about conditional effects. For example, women may approve more of Clinton because she could have been the first woman president. Democrats probably approve of Clinton because she was the Democratic nominee for president. Democratic women, then, may support Clinton EVEN more than Republican women and Democratic men. The conditional effect of being a Democrat for women will be positive.</p>
+<div class="sourceCode" id="cb379"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb379-1"><a href="lab-vii-interactions-categorical-variables.html#cb379-1" aria-hidden="true" tabindex="-1"></a>model3 <span class="ot">&lt;-</span> <span class="fu">lm</span>(ClintonFT<span class="sc">~</span>Female<span class="sc">*</span>Dem, <span class="at">data=</span>dta)</span>
+<span id="cb379-2"><a href="lab-vii-interactions-categorical-variables.html#cb379-2" aria-hidden="true" tabindex="-1"></a>model3</span></code></pre></div>
+<pre><code>## 
+## Call:
+## lm(formula = ClintonFT ~ Female * Dem, data = dta)
+## 
+## Coefficients:
+##    (Intercept)          Female         DemTRUE  Female:DemTRUE  
+##         17.690           1.114          27.621           6.882</code></pre>
+</div>
+<div id="how-do-we-interpret-the-following" class="section level3 hasAnchor" number="8.3.5">
+<h3><span class="header-section-number">8.3.5</span> How do we interpret the following:<a href="lab-vii-interactions-categorical-variables.html#how-do-we-interpret-the-following" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <ul>
-<li>We will be using simulated data for this example.</li>
-<li>First we need to format our simulated data into something we can use for the barplot with the skills we learned last week.</li>
+<li><p>Intercept = Clinton Feelings for Male Republicans</p></li>
+<li><p>Intercept + Beta 1 = Clinton Feelings for Female Republicans</p></li>
+<li><p>Intercept + Beta 2 = Clinton Feelings for Male Democrats</p></li>
+<li><p>Intercept + Beta 1 + Beta 2 + Beta 3 = Clinton Feelings for Female Democrats</p></li>
+<li><p>Beta 1 - The Effect of Sex for Republicans</p></li>
+<li><p>Beta 2 - The Effect of Party for Men</p></li>
+<li><p>Beta 2 + Beta 3 - The Effect of Party for Women</p></li>
+<li><p>Beta 1 + Beta 3 - The Effect of Sex for Democrats</p></li>
 </ul>
-<div class="sourceCode" id="cb196"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb196-1"><a href="lab-iii-univariate-visualizations.html#cb196-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Simulated Data</span></span>
-<span id="cb196-2"><a href="lab-iii-univariate-visualizations.html#cb196-2" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="st">&quot;age&quot;</span> <span class="ot">=</span> <span class="fu">c</span>(<span class="st">&quot;18 to 29&quot;</span>, <span class="st">&quot;36 to 50&quot;</span>, <span class="st">&quot;51 to 64&quot;</span>, <span class="st">&quot;65+&quot;</span>),</span>
-<span id="cb196-3"><a href="lab-iii-univariate-visualizations.html#cb196-3" aria-hidden="true" tabindex="-1"></a>                <span class="st">&quot;popPct&quot;</span> <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">29</span>, <span class="dv">21</span>, <span class="dv">30</span>, <span class="dv">20</span>),</span>
-<span id="cb196-4"><a href="lab-iii-univariate-visualizations.html#cb196-4" aria-hidden="true" tabindex="-1"></a>                <span class="st">&quot;svyPct&quot;</span> <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">19</span>, <span class="dv">21</span>, <span class="dv">32</span>, <span class="dv">28</span>))</span>
-<span id="cb196-5"><a href="lab-iii-univariate-visualizations.html#cb196-5" aria-hidden="true" tabindex="-1"></a>df</span></code></pre></div>
-<pre><code>##        age popPct svyPct
-## 1 18 to 29     29     19
-## 2 36 to 50     21     21
-## 3 51 to 64     30     32
-## 4      65+     20     28</code></pre>
-<div class="sourceCode" id="cb198"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb198-1"><a href="lab-iii-univariate-visualizations.html#cb198-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Building A Basic Barplot</span></span>
-<span id="cb198-2"><a href="lab-iii-univariate-visualizations.html#cb198-2" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span> </span>
-<span id="cb198-3"><a href="lab-iii-univariate-visualizations.html#cb198-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">Population =</span> popPct, <span class="at">Survey =</span> svyPct) <span class="sc">%&gt;%</span></span>
-<span id="cb198-4"><a href="lab-iii-univariate-visualizations.html#cb198-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="sc">-</span>age, <span class="at">names_to =</span> <span class="st">&quot;Group&quot;</span>, <span class="at">values_to =</span> <span class="st">&quot;Percent&quot;</span>)</span></code></pre></div>
-<pre><code>## # A tibble: 8 × 3
-##   age      Group      Percent
-##   &lt;chr&gt;    &lt;chr&gt;        &lt;dbl&gt;
-## 1 18 to 29 Population      29
-## 2 18 to 29 Survey          19
-## 3 36 to 50 Population      21
-## 4 36 to 50 Survey          21
-## 5 51 to 64 Population      30
-## 6 51 to 64 Survey          32
-## 7 65+      Population      20
-## 8 65+      Survey          28</code></pre>
 </div>
-<div id="step-two-1" class="section level3 hasAnchor" number="4.2.2">
-<h3><span class="header-section-number">4.2.2</span> Step Two<a href="lab-iii-univariate-visualizations.html#step-two-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="estimate-the-the-same-model-as-above-but-for-trump-and-republicans." class="section level3 hasAnchor" number="8.3.6">
+<h3><span class="header-section-number">8.3.6</span> Estimate the the same model as above, but for Trump and Republicans.<a href="lab-vii-interactions-categorical-variables.html#estimate-the-the-same-model-as-above-but-for-trump-and-republicans." class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb381"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb381-1"><a href="lab-vii-interactions-categorical-variables.html#cb381-1" aria-hidden="true" tabindex="-1"></a>model4 <span class="ot">&lt;-</span> <span class="fu">lm</span>(TrumpFT<span class="sc">~</span>Female<span class="sc">*</span>Rep, <span class="at">data=</span>dta)</span>
+<span id="cb381-2"><a href="lab-vii-interactions-categorical-variables.html#cb381-2" aria-hidden="true" tabindex="-1"></a>model4</span></code></pre></div>
+<pre><code>## 
+## Call:
+## lm(formula = TrumpFT ~ Female * Rep, data = dta)
+## 
+## Coefficients:
+##    (Intercept)          Female         RepTRUE  Female:RepTRUE  
+##         19.134          -8.887          33.196           5.965</code></pre>
+</div>
+<div id="calculate-the-following" class="section level3 hasAnchor" number="8.3.7">
+<h3><span class="header-section-number">8.3.7</span> Calculate the following:<a href="lab-vii-interactions-categorical-variables.html#calculate-the-following" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <ul>
-<li>Pipe the tibble into ggplot()</li>
-<li>Specify the variable of interest with <code>ggplot(aes(x = X))</code></li>
-<li>Since we want to show the distribution of X by some group, we can use <code>fill =</code> to specify the group</li>
+<li><p>What is Trump’s average feeling for male Democrats? - 19.134</p></li>
+<li><p>What is Trump’s average feeling for female Democrats? - 10.247</p></li>
+<li><p>What is Trump’s average feeling for male Republicans? - 52.33</p></li>
+<li><p>What is Trump’s average feeling for female Republicans? - 49.408</p></li>
 </ul>
-<div class="sourceCode" id="cb200"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb200-1"><a href="lab-iii-univariate-visualizations.html#cb200-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Building A Basic Barplot</span></span>
-<span id="cb200-2"><a href="lab-iii-univariate-visualizations.html#cb200-2" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span> </span>
-<span id="cb200-3"><a href="lab-iii-univariate-visualizations.html#cb200-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">Population =</span> popPct, <span class="at">Survey =</span> svyPct) <span class="sc">%&gt;%</span></span>
-<span id="cb200-4"><a href="lab-iii-univariate-visualizations.html#cb200-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="sc">-</span>age, <span class="at">names_to =</span> <span class="st">&quot;Group&quot;</span>, <span class="at">values_to =</span> <span class="st">&quot;Percent&quot;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb200-5"><a href="lab-iii-univariate-visualizations.html#cb200-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> age, <span class="at">y =</span> Percent, <span class="at">fill =</span> Group))</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-23-1.png" width="672" /></p>
+
 </div>
-<div id="step-3-1" class="section level3 hasAnchor" number="4.2.3">
-<h3><span class="header-section-number">4.2.3</span> Step 3<a href="lab-iii-univariate-visualizations.html#step-3-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<ul>
-<li>Use <code>+</code> instead of <code>%&gt;%</code> to move to next line in <code>ggplot()</code></li>
-<li><code>geom_bar()</code> creates a barplot</li>
-</ul>
-<div class="sourceCode" id="cb201"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb201-1"><a href="lab-iii-univariate-visualizations.html#cb201-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Building A Basic Barplot</span></span>
-<span id="cb201-2"><a href="lab-iii-univariate-visualizations.html#cb201-2" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span> </span>
-<span id="cb201-3"><a href="lab-iii-univariate-visualizations.html#cb201-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">Population =</span> popPct, <span class="at">Survey =</span> svyPct) <span class="sc">%&gt;%</span></span>
-<span id="cb201-4"><a href="lab-iii-univariate-visualizations.html#cb201-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="sc">-</span>age, <span class="at">names_to =</span> <span class="st">&quot;Group&quot;</span>, <span class="at">values_to =</span> <span class="st">&quot;Percent&quot;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb201-5"><a href="lab-iii-univariate-visualizations.html#cb201-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> age, <span class="at">y =</span> Percent, <span class="at">fill =</span> Group)) <span class="sc">+</span></span>
-<span id="cb201-6"><a href="lab-iii-univariate-visualizations.html#cb201-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">&quot;identity&quot;</span>, <span class="at">position =</span> <span class="st">&quot;dodge&quot;</span>)</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-24-1.png" width="672" /></p>
-</div>
-<div id="step-4-1" class="section level3 hasAnchor" number="4.2.4">
-<h3><span class="header-section-number">4.2.4</span> Step 4<a href="lab-iii-univariate-visualizations.html#step-4-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<ul>
-<li>Now, we can customize just like above with the histogram.</li>
-<li><code>scale_fill_grey()</code> changes the color palette to greyscale</li>
-</ul>
-<div class="sourceCode" id="cb202"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb202-1"><a href="lab-iii-univariate-visualizations.html#cb202-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Building A Basic Barplot </span></span>
-<span id="cb202-2"><a href="lab-iii-univariate-visualizations.html#cb202-2" aria-hidden="true" tabindex="-1"></a>df <span class="sc">%&gt;%</span> </span>
-<span id="cb202-3"><a href="lab-iii-univariate-visualizations.html#cb202-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">Population =</span> popPct, <span class="at">Survey =</span> svyPct) <span class="sc">%&gt;%</span></span>
-<span id="cb202-4"><a href="lab-iii-univariate-visualizations.html#cb202-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="sc">-</span>age, <span class="at">names_to =</span> <span class="st">&quot;Group&quot;</span>, <span class="at">values_to =</span> <span class="st">&quot;Percent&quot;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb202-5"><a href="lab-iii-univariate-visualizations.html#cb202-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> age, <span class="at">y =</span> Percent, <span class="at">fill =</span> Group)) <span class="sc">+</span></span>
-<span id="cb202-6"><a href="lab-iii-univariate-visualizations.html#cb202-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">&quot;identity&quot;</span>, <span class="at">position =</span> <span class="st">&quot;dodge&quot;</span>) <span class="sc">+</span></span>
-<span id="cb202-7"><a href="lab-iii-univariate-visualizations.html#cb202-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_grey</span>() <span class="sc">+</span> </span>
-<span id="cb202-8"><a href="lab-iii-univariate-visualizations.html#cb202-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
-<span id="cb202-9"><a href="lab-iii-univariate-visualizations.html#cb202-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;Age Group&quot;</span>, <span class="at">y =</span> <span class="st">&quot;Percent&quot;</span>,</span>
-<span id="cb202-10"><a href="lab-iii-univariate-visualizations.html#cb202-10" aria-hidden="true" tabindex="-1"></a>       <span class="at">title =</span> <span class="st">&quot;Population and Survey Sample Proportions by Age Group&quot;</span>)</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-25-1.png" width="672" /></p>
-</div>
-</div>
-<div id="now-make-your-own-histogram-or-barplot" class="section level2 hasAnchor" number="4.3">
-<h2><span class="header-section-number">4.3</span> Now Make Your Own Histogram or Barplot!<a href="lab-iii-univariate-visualizations.html#now-make-your-own-histogram-or-barplot" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div class="sourceCode" id="cb203"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb203-1"><a href="lab-iii-univariate-visualizations.html#cb203-1" aria-hidden="true" tabindex="-1"></a>df.county <span class="sc">%&gt;%</span></span>
-<span id="cb203-2"><a href="lab-iii-univariate-visualizations.html#cb203-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> minimum.wage)) <span class="sc">+</span> </span>
-<span id="cb203-3"><a href="lab-iii-univariate-visualizations.html#cb203-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="fu">aes</span>(<span class="at">y =</span> ..density..), <span class="at">col =</span> <span class="st">&quot;pink&quot;</span>, <span class="at">fill =</span> <span class="st">&quot;black&quot;</span>) <span class="sc">+</span></span>
-<span id="cb203-4"><a href="lab-iii-univariate-visualizations.html#cb203-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_economist</span>() <span class="sc">+</span></span>
-<span id="cb203-5"><a href="lab-iii-univariate-visualizations.html#cb203-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Our Beautiful Plot&quot;</span>)</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-26-1.png" width="672" /></p>
 </div>
 </div>
             </section>
@@ -487,8 +475,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           </div>
         </div>
       </div>
-<a href="lab-ii-introduction-to-librarytidyverse-r-markdown.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="lab-iv-loops-lists-conditional-statements.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="lab-vi-goodness-of-fit-multiple-regression.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
