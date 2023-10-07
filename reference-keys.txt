@@ -82,6 +82,7 @@ loading-data-1
 the-four-categories-of-the-treatment-variable
 estimating-the-model
 difference-in-means-between-categories
+changing-the-reference-category
 interactions
 interpreting-interactions
 lab-questions-2
