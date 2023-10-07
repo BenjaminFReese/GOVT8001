@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>6 Lab V: Introduction to Regression | GOVT 8001: Shared Working Book</title>
-  <meta name="description" content="6 Lab V: Introduction to Regression | GOVT 8001: Shared Working Book" />
+  <title>8 Lab VII: Interactions &amp; Categorical Variables | GOVT 8001: Shared Working Book</title>
+  <meta name="description" content="8 Lab VII: Interactions &amp; Categorical Variables | GOVT 8001: Shared Working Book" />
   <meta name="generator" content="bookdown 0.35 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="6 Lab V: Introduction to Regression | GOVT 8001: Shared Working Book" />
+  <meta property="og:title" content="8 Lab VII: Interactions &amp; Categorical Variables | GOVT 8001: Shared Working Book" />
   <meta property="og:type" content="book" />
   
   
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="6 Lab V: Introduction to Regression | GOVT 8001: Shared Working Book" />
+  <meta name="twitter:title" content="8 Lab VII: Interactions &amp; Categorical Variables | GOVT 8001: Shared Working Book" />
   
   
   
@@ -29,8 +29,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="lab-iv-loops-lists-conditional-statements.html"/>
-<link rel="next" href="lab-vi-goodness-of-fit-multiple-regression.html"/>
+<link rel="prev" href="lab-vi-goodness-of-fit-multiple-regression.html"/>
+
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -275,350 +275,171 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="lab-v-introduction-to-regression" class="section level1 hasAnchor" number="6">
-<h1><span class="header-section-number">6</span> Lab V: Introduction to Regression<a href="lab-v-introduction-to-regression.html#lab-v-introduction-to-regression" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<p><img src="image_5.png" width="718" /></p>
-<div id="correlation" class="section level2 hasAnchor" number="6.1">
-<h2><span class="header-section-number">6.1</span> Correlation<a href="lab-v-introduction-to-regression.html#correlation" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<ul>
-<li>Statistical technique that tells use the extent that two variables are linearly related
-<span class="math display">\[r=\frac{\sum_{i=1}^{n}(x_{i}-\bar{x})(y_{i}-\bar{y})}{\sqrt{\sum_{n}^{i=1}(x_{i}-\bar{x})^2\sum_{n}^{i=1}(y_{i}-\bar{y})^2}}\]</span>
-<span class="math display">\[r = \frac{Cov(X,Y)}{SD(X)SD(Y)}\]</span></li>
-<li>Bounded between <span class="math inline">\(-1,1\)</span></li>
-<li>In <em>R</em>, <code>cor(x,y)</code></li>
-<li>Scatterplot in <em>R</em>
-<ul>
-<li><code>geom_point()</code></li>
-</ul></li>
-</ul>
-<div id="correlation-scatterplots" class="section level3 hasAnchor" number="6.1.1">
-<h3><span class="header-section-number">6.1.1</span> Correlation &amp; Scatterplots<a href="lab-v-introduction-to-regression.html#correlation-scatterplots" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p><img src="_main_files/figure-html/unnamed-chunk-49-1.png" width="672" /><img src="_main_files/figure-html/unnamed-chunk-49-2.png" width="672" /><img src="_main_files/figure-html/unnamed-chunk-49-3.png" width="672" /></p>
+<div id="lab-vii-interactions-categorical-variables" class="section level1 hasAnchor" number="8">
+<h1><span class="header-section-number">8</span> Lab VII: Interactions &amp; Categorical Variables<a href="lab-vii-interactions-categorical-variables.html#lab-vii-interactions-categorical-variables" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p><img src="image_7.png" width="400" /></p>
+<div id="categorical-variables-and-reference-categories" class="section level2 hasAnchor" number="8.1">
+<h2><span class="header-section-number">8.1</span> Categorical Variables and Reference Categories<a href="lab-vii-interactions-categorical-variables.html#categorical-variables-and-reference-categories" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="sourceCode" id="cb350"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb350-1"><a href="lab-vii-interactions-categorical-variables.html#cb350-1" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(<span class="st">&quot;~/GOVT5001/Lab VII/social.RData&quot;</span>)</span>
+<span id="cb350-2"><a href="lab-vii-interactions-categorical-variables.html#cb350-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb350-3"><a href="lab-vii-interactions-categorical-variables.html#cb350-3" aria-hidden="true" tabindex="-1"></a><span class="do">## My Four Categories</span></span>
+<span id="cb350-4"><a href="lab-vii-interactions-categorical-variables.html#cb350-4" aria-hidden="true" tabindex="-1"></a><span class="fu">unique</span>(social<span class="sc">$</span>messages)</span></code></pre></div>
+<pre><code>## [1] &quot;Civic Duty&quot; &quot;Hawthorne&quot;  &quot;Control&quot;    &quot;Neighbors&quot;</code></pre>
+<div class="sourceCode" id="cb352"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb352-1"><a href="lab-vii-interactions-categorical-variables.html#cb352-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Regression Model</span></span>
+<span id="cb352-2"><a href="lab-vii-interactions-categorical-variables.html#cb352-2" aria-hidden="true" tabindex="-1"></a>reg1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(primary2006<span class="sc">~</span>messages, <span class="at">data=</span>social)</span>
+<span id="cb352-3"><a href="lab-vii-interactions-categorical-variables.html#cb352-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb352-4"><a href="lab-vii-interactions-categorical-variables.html#cb352-4" aria-hidden="true" tabindex="-1"></a>reg1<span class="sc">$</span>coefficients[<span class="dv">1</span>]</span></code></pre></div>
+<pre><code>## (Intercept) 
+##   0.3145377</code></pre>
+<div class="sourceCode" id="cb354"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb354-1"><a href="lab-vii-interactions-categorical-variables.html#cb354-1" aria-hidden="true" tabindex="-1"></a>reg1<span class="sc">$</span>coefficients[<span class="dv">2</span>]</span></code></pre></div>
+<pre><code>## messagesControl 
+##     -0.01789934</code></pre>
+<div class="sourceCode" id="cb356"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb356-1"><a href="lab-vii-interactions-categorical-variables.html#cb356-1" aria-hidden="true" tabindex="-1"></a>reg1<span class="sc">$</span>coefficients[<span class="dv">3</span>]</span></code></pre></div>
+<pre><code>## messagesHawthorne 
+##       0.007836968</code></pre>
+<div class="sourceCode" id="cb358"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb358-1"><a href="lab-vii-interactions-categorical-variables.html#cb358-1" aria-hidden="true" tabindex="-1"></a>reg1<span class="sc">$</span>coefficients[<span class="dv">4</span>]</span></code></pre></div>
+<pre><code>## messagesNeighbors 
+##        0.06341057</code></pre>
+<div class="sourceCode" id="cb360"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb360-1"><a href="lab-vii-interactions-categorical-variables.html#cb360-1" aria-hidden="true" tabindex="-1"></a>social<span class="sc">$</span>messages <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(social<span class="sc">$</span>messages)</span>
+<span id="cb360-2"><a href="lab-vii-interactions-categorical-variables.html#cb360-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb360-3"><a href="lab-vii-interactions-categorical-variables.html#cb360-3" aria-hidden="true" tabindex="-1"></a>reg2 <span class="ot">&lt;-</span> <span class="fu">lm</span>(primary2006<span class="sc">~</span><span class="fu">relevel</span>(messages, <span class="st">&quot;Control&quot;</span>), </span>
+<span id="cb360-4"><a href="lab-vii-interactions-categorical-variables.html#cb360-4" aria-hidden="true" tabindex="-1"></a>           <span class="at">data=</span>social)</span>
+<span id="cb360-5"><a href="lab-vii-interactions-categorical-variables.html#cb360-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb360-6"><a href="lab-vii-interactions-categorical-variables.html#cb360-6" aria-hidden="true" tabindex="-1"></a>reg2<span class="sc">$</span>coefficients[<span class="dv">1</span>]</span></code></pre></div>
+<pre><code>## (Intercept) 
+##   0.2966383</code></pre>
+<div class="sourceCode" id="cb362"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb362-1"><a href="lab-vii-interactions-categorical-variables.html#cb362-1" aria-hidden="true" tabindex="-1"></a>reg2<span class="sc">$</span>coefficients[<span class="dv">2</span>]</span></code></pre></div>
+<pre><code>## relevel(messages, &quot;Control&quot;)Civic Duty 
+##                             0.01789934</code></pre>
+<div class="sourceCode" id="cb364"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb364-1"><a href="lab-vii-interactions-categorical-variables.html#cb364-1" aria-hidden="true" tabindex="-1"></a>reg2<span class="sc">$</span>coefficients[<span class="dv">3</span>]</span></code></pre></div>
+<pre><code>## relevel(messages, &quot;Control&quot;)Hawthorne 
+##                            0.02573631</code></pre>
+<div class="sourceCode" id="cb366"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb366-1"><a href="lab-vii-interactions-categorical-variables.html#cb366-1" aria-hidden="true" tabindex="-1"></a>reg2<span class="sc">$</span>coefficients[<span class="dv">4</span>]</span></code></pre></div>
+<pre><code>## relevel(messages, &quot;Control&quot;)Neighbors 
+##                            0.08130991</code></pre>
 </div>
+<div id="interactions" class="section level2 hasAnchor" number="8.2">
+<h2><span class="header-section-number">8.2</span> Interactions<a href="lab-vii-interactions-categorical-variables.html#interactions" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<ul>
+<li>How to use interactions
+<ul>
+<li>In <em>R</em>
+<ul>
+<li><code>lm(y~x*z, data=data)</code> or <code>lm(y~x + z + x:z, data=data)</code></li>
+</ul></li>
+</ul></li>
+<li>We write a model with an interaction term as:</li>
+</ul>
+<p><span class="math display">\[\hat{Y_i}=\hat{\beta_0} + \hat{\beta_1}X_i + \hat{\beta_2}Z_i + \hat{\beta_3}(X_i*Z_i)\]</span></p>
 </div>
-<div id="introduction-to-regression" class="section level2 hasAnchor" number="6.2">
-<h2><span class="header-section-number">6.2</span> Introduction to Regression<a href="lab-v-introduction-to-regression.html#introduction-to-regression" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<ul>
-<li>Why Regression?</li>
-<li>Basic Model</li>
-<li>Conditional Mean</li>
-<li>Estimation</li>
-<li>Coefficients &amp; Intercepts</li>
-</ul>
-<div id="why-regression" class="section level3 hasAnchor" number="6.2.1">
-<h3><span class="header-section-number">6.2.1</span> Why Regression?<a href="lab-v-introduction-to-regression.html#why-regression" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<ul>
-<li>Regression is the work-horse of quantitative social science</li>
-<li>We use regression when we want to know the relationship between <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span>
-<ul>
-<li>Specifically, we want to know what a one unit increase in <span class="math inline">\(x\)</span> means for <span class="math inline">\(y\)</span></li>
-</ul></li>
-<li>Real Data vs Hats
-<ul>
-<li>Hats are expected values
-<ul>
-<li><span class="math inline">\(y\)</span> vs <span class="math inline">\(\hat{y}\)</span></li>
-</ul></li>
-</ul></li>
-<li>Identify a variable of interest, we call this <span class="math inline">\(y\)</span>
-<ul>
-<li>Ex: vote share, approval rating, gdp, etc.</li>
-</ul></li>
-<li>Take its mean, <span class="math inline">\(\bar{y}\)</span>
-<ul>
-<li>We have variation in our <span class="math inline">\(y\)</span> variable, though, e.g., some values are high and others are low</li>
-</ul></li>
-<li>Next find a variable that we think explains this variation, we call this <span class="math inline">\(x\)</span></li>
-<li>Then estimate the relationship between <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span></li>
-<li>We call <span class="math inline">\(x\)</span> the treatment variable, causal variable, independent variable, predictor variable, explanatory variable</li>
-<li>We call <span class="math inline">\(y\)</span> the dependent variable, outcome variable, response variable</li>
-</ul>
+<div id="interpreting-interactions" class="section level2 hasAnchor" number="8.3">
+<h2><span class="header-section-number">8.3</span> Interpreting Interactions<a href="lab-vii-interactions-categorical-variables.html#interpreting-interactions" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p><span class="math display">\[\hat{Wage_i}=\hat{\beta_0} + \hat{\beta_1}Experience_i + \hat{\beta_2}Male_i + \hat{\beta_3}Experience_i*Male_i\]</span>
+- <span class="math inline">\(\beta_0\)</span> - Predicted wage for women with no experience
+- <span class="math inline">\(\beta_0 + \beta_1\)</span> - Relationship between experience and earnings for women
+- <span class="math inline">\(\beta_0 + \beta_1 + \beta_2 + \beta_3\)</span> - Predicted Wage for men with experience
+- <span class="math inline">\(\beta_1\)</span> - The effect of experience for women
+- <span class="math inline">\(\beta_0 + \beta_2\)</span> - Predicted earnings for men when experience is zero
+- <span class="math inline">\(\beta_1 + \beta_3\)</span> - Relationship between experience and earnings for men</p>
 </div>
-<div id="correlation-vs-regression" class="section level3 hasAnchor" number="6.2.2">
-<h3><span class="header-section-number">6.2.2</span> Correlation vs Regression<a href="lab-v-introduction-to-regression.html#correlation-vs-regression" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<ul>
-<li>Similarities
-<ul>
-<li>Both show the direction and strength of the relationship between two variables</li>
-<li>When correlation is negative, <span class="math inline">\(r&lt;0\)</span>, then the regression slope will be negative, <span class="math inline">\(\beta_{1}&lt;0\)</span></li>
-<li>When correlation is positive, the regression slope will be positive</li>
-</ul></li>
-<li>Differences
-<ul>
-<li>Regression is for causation (with additional steps) while correlation is for, well, correlation</li>
-<li><span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> are interchangeable in correlation, but results will change if you swap <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> in regression</li>
-<li>Correlation is a single statistic while regression gives us an equation</li>
-</ul></li>
-</ul>
-</div>
-<div id="basic-model" class="section level3 hasAnchor" number="6.2.3">
-<h3><span class="header-section-number">6.2.3</span> Basic Model<a href="lab-v-introduction-to-regression.html#basic-model" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p><span class="math display">\[\hat{y_{i}} = \hat{\beta_{0}} + \hat{\beta_{1}}x_{i}\]</span></p>
-<p>analogous to</p>
-<p><span class="math display">\[y = mx + b\]</span></p>
-<ul>
-<li><p>Where:</p>
-<ul>
-<li><span class="math inline">\(\hat{y_{i}} = y\)</span>, <span class="math inline">\(\hat{\beta_{0}} = b\)</span>, <span class="math inline">\(\hat{\beta_{1}}\)</span> = m, and <span class="math inline">\(x_{i}=x\)</span></li>
-<li><span class="math inline">\(\beta_{1}\)</span> is the slope</li>
-<li><span class="math inline">\(\beta_{0}\)</span> is the y-intercept</li>
-</ul></li>
-</ul>
-<p>Example of a model you may (will) see in the comparative politics literature:</p>
-<p><span class="math display">\[GDPGrowth_{i} = \beta_{0} + \beta_{1}Democracy_{i} + \epsilon_{i}\]</span></p>
-<ul>
-<li>Why no hats?</li>
-</ul>
-</div>
-<div id="conditional-mean" class="section level3 hasAnchor" number="6.2.4">
-<h3><span class="header-section-number">6.2.4</span> Conditional Mean<a href="lab-v-introduction-to-regression.html#conditional-mean" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<ul>
-<li>Regression tells us the conditional mean of <span class="math inline">\(y\)</span> given <span class="math inline">\(x\)</span>
-<ul>
-<li><span class="math inline">\(E[Y|X] = \beta_{0} + \beta_{1}X\)</span></li>
-</ul></li>
-</ul>
-<div class="sourceCode" id="cb268"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb268-1"><a href="lab-v-introduction-to-regression.html#cb268-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Mean of All Children&#39;s Heights</span></span>
-<span id="cb268-2"><a href="lab-v-introduction-to-regression.html#cb268-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(Galton<span class="sc">$</span>height)</span></code></pre></div>
-<pre><code>## [1] 66.76069</code></pre>
-<div class="sourceCode" id="cb270"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb270-1"><a href="lab-v-introduction-to-regression.html#cb270-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Mean of Female Children&#39;s Heights</span></span>
-<span id="cb270-2"><a href="lab-v-introduction-to-regression.html#cb270-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(Galton<span class="sc">$</span>height[Galton<span class="sc">$</span>sex <span class="sc">==</span> <span class="st">&quot;F&quot;</span>])</span></code></pre></div>
-<pre><code>## [1] 64.11016</code></pre>
-<div class="sourceCode" id="cb272"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb272-1"><a href="lab-v-introduction-to-regression.html#cb272-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Mean of Male Children&#39;s Heights</span></span>
-<span id="cb272-2"><a href="lab-v-introduction-to-regression.html#cb272-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(Galton<span class="sc">$</span>height[Galton<span class="sc">$</span>sex <span class="sc">==</span> <span class="st">&quot;M&quot;</span>])</span></code></pre></div>
-<pre><code>## [1] 69.22882</code></pre>
-<div class="sourceCode" id="cb274"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb274-1"><a href="lab-v-introduction-to-regression.html#cb274-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Conditional Mean with Regression</span></span>
-<span id="cb274-2"><a href="lab-v-introduction-to-regression.html#cb274-2" aria-hidden="true" tabindex="-1"></a><span class="fu">lm</span>(height <span class="sc">~</span> sex, <span class="at">data =</span> Galton)</span></code></pre></div>
+<div id="what-is-the-effect-of-age-on-support-for-trump-conditional-on-being-a-republican-do-this-with-both-the-colon-and-the-." class="section level2 hasAnchor" number="8.4">
+<h2><span class="header-section-number">8.4</span> What is the effect of age on support for Trump, conditional on being a Republican? Do this with both the colon, “:”, and the “*“.<a href="lab-vii-interactions-categorical-variables.html#what-is-the-effect-of-age-on-support-for-trump-conditional-on-being-a-republican-do-this-with-both-the-colon-and-the-." class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="sourceCode" id="cb368"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb368-1"><a href="lab-vii-interactions-categorical-variables.html#cb368-1" aria-hidden="true" tabindex="-1"></a>model1a <span class="ot">&lt;-</span> <span class="fu">lm</span>(TrumpFT<span class="sc">~</span>Rep<span class="sc">*</span>Age, <span class="at">data=</span>dta)</span>
+<span id="cb368-2"><a href="lab-vii-interactions-categorical-variables.html#cb368-2" aria-hidden="true" tabindex="-1"></a>model1a</span></code></pre></div>
 <pre><code>## 
 ## Call:
-## lm(formula = height ~ sex, data = Galton)
+## lm(formula = TrumpFT ~ Rep * Age, data = dta)
 ## 
 ## Coefficients:
-## (Intercept)         sexM  
-##      64.110        5.119</code></pre>
-</div>
-<div id="estimation" class="section level3 hasAnchor" number="6.2.5">
-<h3><span class="header-section-number">6.2.5</span> Estimation<a href="lab-v-introduction-to-regression.html#estimation" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p><span class="math display">\[\hat{\beta}=\frac{\sum_{i=1}^{n}(x_{i}-\bar{x})(y_{i}-\bar{y})}{\sum_{n}^{i=1}(x_{i}-\bar{x})^2}\]</span>
-<span class="math display">\[\hat{\beta}= \frac{Cov(x,y)}{Var(x)}\]</span></p>
-<ul>
-<li>Intuitively, <span class="math inline">\(\hat{\beta}\)</span> is the variance of <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span> together divided by the variance of <span class="math inline">\(x\)</span>
-<ul>
-<li>Thus, you are left only with the variation in <span class="math inline">\(y\)</span> caused by <span class="math inline">\(x\)</span></li>
-</ul></li>
-<li>The main result of estimation is the <strong>coefficient</strong> and <strong>intercept</strong></li>
-<li>In <em>R</em>, <code>lm(y ~ x)</code></li>
-</ul>
-</div>
-<div id="coefficients-intercepts" class="section level3 hasAnchor" number="6.2.6">
-<h3><span class="header-section-number">6.2.6</span> Coefficients &amp; Intercepts<a href="lab-v-introduction-to-regression.html#coefficients-intercepts" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<ul>
-<li>Coefficient
-<ul>
-<li>A one unit increase in <span class="math inline">\(x\)</span> is associated with a <span class="math inline">\(\hat{\beta_{1}}\)</span> increase in <span class="math inline">\(y\)</span></li>
-<li>Be very careful about the units of <span class="math inline">\(x\)</span>
-<ul>
-<li>For example, an <span class="math inline">\(x\)</span> that takes the values 0-1, a one unit increase is the full range of <span class="math inline">\(x\)</span></li>
-</ul></li>
-</ul></li>
-<li>Intercept
-<ul>
-<li><p>The fitted value of <span class="math inline">\(y\)</span> when <span class="math inline">\(x=0\)</span></p></li>
-<li><p>We multiply any given value of x by the constant <span class="math inline">\(\hat{\beta_{1}}\)</span> and add the intercept to get <span class="math inline">\(\hat{y}\)</span>, the fitted value of y</p></li>
-</ul></li>
-</ul>
-</div>
-<div id="scatterplots-regression-lines" class="section level3 hasAnchor" number="6.2.7">
-<h3><span class="header-section-number">6.2.7</span> Scatterplots &amp; Regression Lines<a href="lab-v-introduction-to-regression.html#scatterplots-regression-lines" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p><img src="_main_files/figure-html/unnamed-chunk-51-1.png" width="672" />
-- How do we interpret <span class="math inline">\(\hat{\beta}\)</span> and <span class="math inline">\(\hat{\alpha}\)</span>?
-- What do you expect a child’s height will be if their father’s height is 70 inches?</p>
-<div class="sourceCode" id="cb276"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb276-1"><a href="lab-v-introduction-to-regression.html#cb276-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Mean when father is 70 inches tall</span></span>
-<span id="cb276-2"><a href="lab-v-introduction-to-regression.html#cb276-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(Galton<span class="sc">$</span>height[Galton<span class="sc">$</span>father <span class="sc">==</span> <span class="dv">70</span>])</span></code></pre></div>
-<pre><code>## [1] 66.94885</code></pre>
-<p><img src="_main_files/figure-html/unnamed-chunk-53-1.png" width="672" /></p>
-<ul>
-<li>How would we find the residuals?</li>
-</ul>
-<p><img src="_main_files/figure-html/unnamed-chunk-54-1.png" width="672" /></p>
-<ul>
-<li><span class="math inline">\(\hat{\epsilon} = y_i - \hat{y_i}\)</span></li>
-</ul>
-</div>
-</div>
-<div id="lab-questions-1" class="section level2 hasAnchor" number="6.3">
-<h2><span class="header-section-number">6.3</span> Lab Questions<a href="lab-v-introduction-to-regression.html#lab-questions-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<ul>
-<li>Download the <em>Correlates of War</em> dataset from Canvas.</li>
-<li>We are going to learn how to make scatterplots, find correlations, and run simple regressions.</li>
-<li>Sarkees, Meredith Reid and Frank Wayman (2010). Resort to War: 1816 – 2007. Washington DC: CQ Press.</li>
-</ul>
-<div id="question-i---load-in-the-data." class="section level3 hasAnchor" number="6.3.1">
-<h3><span class="header-section-number">6.3.1</span> Question I - Load in the Data.<a href="lab-v-introduction-to-regression.html#question-i---load-in-the-data." class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb278"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb278-1"><a href="lab-v-introduction-to-regression.html#cb278-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Loading in Data</span></span>
-<span id="cb278-2"><a href="lab-v-introduction-to-regression.html#cb278-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
-<span id="cb278-3"><a href="lab-v-introduction-to-regression.html#cb278-3" aria-hidden="true" tabindex="-1"></a>cow <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;~/GOVT8001/Lab 5/Intra-StateWarData_v4.1.csv&quot;</span>)</span></code></pre></div>
-</div>
-<div id="question-ii---create-a-scatterplot-to-show-the-joint-distribution-of-war-deaths-by-each-side.-experiment-with-subsetting-the-data-to-different-values-of-war-deaths-and-visualization-styles.-also-be-careful-about-missing-data-and-unknown-values.-add-a-regression-line." class="section level3 hasAnchor" number="6.3.2">
-<h3><span class="header-section-number">6.3.2</span> Question II - Create a scatterplot to show the joint distribution of war deaths by each side. Experiment with subsetting the data to different values of war deaths and visualization styles. Also, be careful about missing data and unknown values. Add a regression line.<a href="lab-v-introduction-to-regression.html#question-ii---create-a-scatterplot-to-show-the-joint-distribution-of-war-deaths-by-each-side.-experiment-with-subsetting-the-data-to-different-values-of-war-deaths-and-visualization-styles.-also-be-careful-about-missing-data-and-unknown-values.-add-a-regression-line." class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb279"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb279-1"><a href="lab-v-introduction-to-regression.html#cb279-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Scatterplot</span></span>
-<span id="cb279-2"><a href="lab-v-introduction-to-regression.html#cb279-2" aria-hidden="true" tabindex="-1"></a>cow <span class="sc">%&gt;%</span></span>
-<span id="cb279-3"><a href="lab-v-introduction-to-regression.html#cb279-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(SideADeaths <span class="sc">&lt;</span> <span class="dv">20000</span> <span class="sc">&amp;</span> SideADeaths <span class="sc">&gt;</span> <span class="dv">0</span>,</span>
-<span id="cb279-4"><a href="lab-v-introduction-to-regression.html#cb279-4" aria-hidden="true" tabindex="-1"></a>         SideBDeaths <span class="sc">&lt;</span> <span class="dv">20000</span> <span class="sc">&amp;</span> SideBDeaths <span class="sc">&gt;</span> <span class="dv">0</span>,</span>
-<span id="cb279-5"><a href="lab-v-introduction-to-regression.html#cb279-5" aria-hidden="true" tabindex="-1"></a>         EndYear1 <span class="sc">&gt;=</span> <span class="dv">0</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb279-6"><a href="lab-v-introduction-to-regression.html#cb279-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> SideADeaths, <span class="at">y =</span> SideBDeaths)) <span class="sc">+</span> </span>
-<span id="cb279-7"><a href="lab-v-introduction-to-regression.html#cb279-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb279-8"><a href="lab-v-introduction-to-regression.html#cb279-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_abline</span>(<span class="at">method =</span> <span class="st">&quot;lm&quot;</span>, <span class="at">col =</span> <span class="st">&quot;dark blue&quot;</span>) <span class="sc">+</span></span>
-<span id="cb279-9"><a href="lab-v-introduction-to-regression.html#cb279-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span></span>
-<span id="cb279-10"><a href="lab-v-introduction-to-regression.html#cb279-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Joint Distribution of War Deaths&quot;</span>)</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-56-1.png" width="672" /></p>
-</div>
-<div id="question-iii---what-is-the-correlation-coefficient-for-the-relationship-you-depicted-in-question-ii.-what-is-the-regression-coefficient-how-do-we-interpret-each-only-filter-out-the-less-than-zero-observations-for-this-question." class="section level3 hasAnchor" number="6.3.3">
-<h3><span class="header-section-number">6.3.3</span> Question III - What is the correlation coefficient for the relationship you depicted in Question II. What is the regression coefficient? How do we interpret each? Only filter out the less than zero observations for this question.<a href="lab-v-introduction-to-regression.html#question-iii---what-is-the-correlation-coefficient-for-the-relationship-you-depicted-in-question-ii.-what-is-the-regression-coefficient-how-do-we-interpret-each-only-filter-out-the-less-than-zero-observations-for-this-question." class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb280"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb280-1"><a href="lab-v-introduction-to-regression.html#cb280-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Filtering Data</span></span>
-<span id="cb280-2"><a href="lab-v-introduction-to-regression.html#cb280-2" aria-hidden="true" tabindex="-1"></a>cow_filtered <span class="ot">&lt;-</span> cow <span class="sc">%&gt;%</span></span>
-<span id="cb280-3"><a href="lab-v-introduction-to-regression.html#cb280-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(SideADeaths <span class="sc">&gt;</span> <span class="dv">0</span>,</span>
-<span id="cb280-4"><a href="lab-v-introduction-to-regression.html#cb280-4" aria-hidden="true" tabindex="-1"></a>         SideBDeaths <span class="sc">&gt;</span> <span class="dv">0</span>)</span>
-<span id="cb280-5"><a href="lab-v-introduction-to-regression.html#cb280-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb280-6"><a href="lab-v-introduction-to-regression.html#cb280-6" aria-hidden="true" tabindex="-1"></a><span class="do">## Correlation</span></span>
-<span id="cb280-7"><a href="lab-v-introduction-to-regression.html#cb280-7" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(cow_filtered<span class="sc">$</span>SideADeaths, cow_filtered<span class="sc">$</span>SideBDeaths)</span></code></pre></div>
-<pre><code>## [1] 0.8043606</code></pre>
-<div class="sourceCode" id="cb282"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb282-1"><a href="lab-v-introduction-to-regression.html#cb282-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Regression</span></span>
-<span id="cb282-2"><a href="lab-v-introduction-to-regression.html#cb282-2" aria-hidden="true" tabindex="-1"></a>cow <span class="sc">%&gt;%</span></span>
-<span id="cb282-3"><a href="lab-v-introduction-to-regression.html#cb282-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(SideADeaths <span class="sc">&gt;</span> <span class="dv">0</span>,</span>
-<span id="cb282-4"><a href="lab-v-introduction-to-regression.html#cb282-4" aria-hidden="true" tabindex="-1"></a>         SideBDeaths <span class="sc">&gt;</span> <span class="dv">0</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb282-5"><a href="lab-v-introduction-to-regression.html#cb282-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">lm</span>(SideBDeaths <span class="sc">~</span> SideADeaths, <span class="at">data =</span> .) <span class="sc">%&gt;%</span></span>
-<span id="cb282-6"><a href="lab-v-introduction-to-regression.html#cb282-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summary</span>()</span></code></pre></div>
+## (Intercept)      RepTRUE          Age  RepTRUE:Age  
+##     13.1949      21.1904       0.0509       0.3780</code></pre>
+<div class="sourceCode" id="cb370"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb370-1"><a href="lab-vii-interactions-categorical-variables.html#cb370-1" aria-hidden="true" tabindex="-1"></a>model1b <span class="ot">&lt;-</span> <span class="fu">lm</span>(TrumpFT<span class="sc">~</span>Rep <span class="sc">+</span> Age <span class="sc">+</span> Rep<span class="sc">:</span>Age, <span class="at">data=</span>dta)</span>
+<span id="cb370-2"><a href="lab-vii-interactions-categorical-variables.html#cb370-2" aria-hidden="true" tabindex="-1"></a>model1b</span></code></pre></div>
 <pre><code>## 
 ## Call:
-## lm(formula = SideBDeaths ~ SideADeaths, data = .)
-## 
-## Residuals:
-##     Min      1Q  Median      3Q     Max 
-## -191383   -3771   -2030     -10  515351 
+## lm(formula = TrumpFT ~ Rep + Age + Rep:Age, data = dta)
 ## 
 ## Coefficients:
-##               Estimate Std. Error t value            Pr(&gt;|t|)    
-## (Intercept) 2924.15036 3652.12170   0.801               0.424    
-## SideADeaths    1.08097    0.06124  17.652 &lt;0.0000000000000002 ***
-## ---
-## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
-## 
-## Residual standard error: 46330 on 170 degrees of freedom
-## Multiple R-squared:  0.647,  Adjusted R-squared:  0.6449 
-## F-statistic: 311.6 on 1 and 170 DF,  p-value: &lt; 0.00000000000000022</code></pre>
+## (Intercept)      RepTRUE          Age  RepTRUE:Age  
+##     13.1949      21.1904       0.0509       0.3780</code></pre>
 </div>
-<div id="question-iv---use-both-regression---the-lm-function-and-the-mean-function-to-show-the-difference-between-total-war-deaths-depending-on-if-a-war-was-internationalized-or-not.-create-a-total-deaths-variable-for-this-question." class="section level3 hasAnchor" number="6.3.4">
-<h3><span class="header-section-number">6.3.4</span> Question IV - Use both regression - the <code>lm()</code> function and the <code>mean()</code> function to show the difference between total war deaths depending on if a war was internationalized or not. Create a total deaths variable for this question.<a href="lab-v-introduction-to-regression.html#question-iv---use-both-regression---the-lm-function-and-the-mean-function-to-show-the-difference-between-total-war-deaths-depending-on-if-a-war-was-internationalized-or-not.-create-a-total-deaths-variable-for-this-question." class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb284"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb284-1"><a href="lab-v-introduction-to-regression.html#cb284-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Difference in Means Based on Internationalization with Regression</span></span>
-<span id="cb284-2"><a href="lab-v-introduction-to-regression.html#cb284-2" aria-hidden="true" tabindex="-1"></a>cow_filtered <span class="sc">%&gt;%</span></span>
-<span id="cb284-3"><a href="lab-v-introduction-to-regression.html#cb284-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">total_deaths =</span> SideADeaths <span class="sc">+</span> SideBDeaths) <span class="sc">%&gt;%</span></span>
-<span id="cb284-4"><a href="lab-v-introduction-to-regression.html#cb284-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">lm</span>(total_deaths <span class="sc">~</span> Intnl, <span class="at">data =</span> .) <span class="sc">%&gt;%</span></span>
-<span id="cb284-5"><a href="lab-v-introduction-to-regression.html#cb284-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summary</span>()</span></code></pre></div>
+<div id="what-is-the-effect-of-age-on-support-for-trump-conditional-on-being-a-democrat" class="section level2 hasAnchor" number="8.5">
+<h2><span class="header-section-number">8.5</span> What is the effect of age on support for Trump, conditional on being a Democrat?<a href="lab-vii-interactions-categorical-variables.html#what-is-the-effect-of-age-on-support-for-trump-conditional-on-being-a-democrat" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="sourceCode" id="cb372"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb372-1"><a href="lab-vii-interactions-categorical-variables.html#cb372-1" aria-hidden="true" tabindex="-1"></a>model2a <span class="ot">&lt;-</span> <span class="fu">lm</span>(TrumpFT<span class="sc">~</span>Dem<span class="sc">*</span>Age, <span class="at">data=</span>dta)</span>
+<span id="cb372-2"><a href="lab-vii-interactions-categorical-variables.html#cb372-2" aria-hidden="true" tabindex="-1"></a>model2a</span></code></pre></div>
 <pre><code>## 
 ## Call:
-## lm(formula = total_deaths ~ Intnl, data = .)
-## 
-## Residuals:
-##     Min      1Q  Median      3Q     Max 
-##  -60572  -25549  -23574  -16024 1173351 
+## lm(formula = TrumpFT ~ Dem * Age, data = dta)
 ## 
 ## Coefficients:
-##             Estimate Std. Error t value Pr(&gt;|t|)  
-## (Intercept)    26649      11102   2.400   0.0175 *
-## Intnl          34922      23621   1.478   0.1411  
-## ---
-## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## (Intercept)      DemTRUE          Age  DemTRUE:Age  
+##     22.5503      -9.3525       0.5281      -0.5749</code></pre>
+<div class="sourceCode" id="cb374"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb374-1"><a href="lab-vii-interactions-categorical-variables.html#cb374-1" aria-hidden="true" tabindex="-1"></a>model2b <span class="ot">&lt;-</span> <span class="fu">lm</span>(TrumpFT<span class="sc">~</span>Dem <span class="sc">+</span> Age <span class="sc">+</span> Dem<span class="sc">:</span>Age, <span class="at">data=</span>dta)</span>
+<span id="cb374-2"><a href="lab-vii-interactions-categorical-variables.html#cb374-2" aria-hidden="true" tabindex="-1"></a>model2b</span></code></pre></div>
+<pre><code>## 
+## Call:
+## lm(formula = TrumpFT ~ Dem + Age + Dem:Age, data = dta)
 ## 
-## Residual standard error: 128500 on 170 degrees of freedom
-## Multiple R-squared:  0.01269,    Adjusted R-squared:  0.006887 
-## F-statistic: 2.186 on 1 and 170 DF,  p-value: 0.1411</code></pre>
-<div class="sourceCode" id="cb286"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb286-1"><a href="lab-v-introduction-to-regression.html#cb286-1" aria-hidden="true" tabindex="-1"></a><span class="do">## With Mean</span></span>
-<span id="cb286-2"><a href="lab-v-introduction-to-regression.html#cb286-2" aria-hidden="true" tabindex="-1"></a>cow_filtered <span class="sc">%&gt;%</span></span>
-<span id="cb286-3"><a href="lab-v-introduction-to-regression.html#cb286-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">total_deaths =</span> SideADeaths <span class="sc">+</span> SideBDeaths) <span class="sc">%&gt;%</span></span>
-<span id="cb286-4"><a href="lab-v-introduction-to-regression.html#cb286-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Intnl) <span class="sc">%&gt;%</span></span>
-<span id="cb286-5"><a href="lab-v-introduction-to-regression.html#cb286-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">avg_deaths =</span> <span class="fu">mean</span>(total_deaths))</span></code></pre></div>
-<pre><code>## # A tibble: 2 × 2
-##   Intnl avg_deaths
-##   &lt;dbl&gt;      &lt;dbl&gt;
-## 1     0     26649.
-## 2     1     61572.</code></pre>
-<div class="sourceCode" id="cb288"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb288-1"><a href="lab-v-introduction-to-regression.html#cb288-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Differences</span></span>
-<span id="cb288-2"><a href="lab-v-introduction-to-regression.html#cb288-2" aria-hidden="true" tabindex="-1"></a><span class="do">## With Mean</span></span>
-<span id="cb288-3"><a href="lab-v-introduction-to-regression.html#cb288-3" aria-hidden="true" tabindex="-1"></a>cow_filtered <span class="sc">%&gt;%</span></span>
-<span id="cb288-4"><a href="lab-v-introduction-to-regression.html#cb288-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">total_deaths =</span> SideADeaths <span class="sc">+</span> SideBDeaths) <span class="sc">%&gt;%</span></span>
-<span id="cb288-5"><a href="lab-v-introduction-to-regression.html#cb288-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Intnl <span class="sc">==</span> <span class="dv">1</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb288-6"><a href="lab-v-introduction-to-regression.html#cb288-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">non_int_deaths =</span> <span class="fu">mean</span>(total_deaths)) <span class="sc">%&gt;%</span></span>
-<span id="cb288-7"><a href="lab-v-introduction-to-regression.html#cb288-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pull</span>(non_int_deaths) <span class="sc">-</span></span>
-<span id="cb288-8"><a href="lab-v-introduction-to-regression.html#cb288-8" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb288-9"><a href="lab-v-introduction-to-regression.html#cb288-9" aria-hidden="true" tabindex="-1"></a>  cow_filtered <span class="sc">%&gt;%</span></span>
-<span id="cb288-10"><a href="lab-v-introduction-to-regression.html#cb288-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">total_deaths =</span> SideADeaths <span class="sc">+</span> SideBDeaths) <span class="sc">%&gt;%</span></span>
-<span id="cb288-11"><a href="lab-v-introduction-to-regression.html#cb288-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Intnl <span class="sc">==</span> <span class="dv">0</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb288-12"><a href="lab-v-introduction-to-regression.html#cb288-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">non_int_deaths =</span> <span class="fu">mean</span>(total_deaths)) <span class="sc">%&gt;%</span></span>
-<span id="cb288-13"><a href="lab-v-introduction-to-regression.html#cb288-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pull</span>(non_int_deaths)</span></code></pre></div>
-<pre><code>## [1] 34922.34</code></pre>
+## Coefficients:
+## (Intercept)      DemTRUE          Age  DemTRUE:Age  
+##     22.5503      -9.3525       0.5281      -0.5749</code></pre>
 </div>
-<div id="question-v---write-a-loop-to-find-the-average-total-deaths-based-on-the-month-the-war-started-in.-do-the-same-with-dplyr." class="section level3 hasAnchor" number="6.3.5">
-<h3><span class="header-section-number">6.3.5</span> Question V - Write a loop to find the average total deaths based on the month the war started in. Do the same with dplyr.<a href="lab-v-introduction-to-regression.html#question-v---write-a-loop-to-find-the-average-total-deaths-based-on-the-month-the-war-started-in.-do-the-same-with-dplyr." class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb290"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb290-1"><a href="lab-v-introduction-to-regression.html#cb290-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Wrangling Data</span></span>
-<span id="cb290-2"><a href="lab-v-introduction-to-regression.html#cb290-2" aria-hidden="true" tabindex="-1"></a>cow_filtered <span class="ot">&lt;-</span> cow_filtered <span class="sc">%&gt;%</span></span>
-<span id="cb290-3"><a href="lab-v-introduction-to-regression.html#cb290-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(StartMonth1 <span class="sc">&gt;</span> <span class="dv">0</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb290-4"><a href="lab-v-introduction-to-regression.html#cb290-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">total_deaths =</span> SideADeaths <span class="sc">+</span> SideBDeaths)</span>
-<span id="cb290-5"><a href="lab-v-introduction-to-regression.html#cb290-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb290-6"><a href="lab-v-introduction-to-regression.html#cb290-6" aria-hidden="true" tabindex="-1"></a><span class="do">## Loop</span></span>
-<span id="cb290-7"><a href="lab-v-introduction-to-regression.html#cb290-7" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="fu">unique</span>(cow_filtered<span class="sc">$</span>StartMonth1)) {</span>
-<span id="cb290-8"><a href="lab-v-introduction-to-regression.html#cb290-8" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb290-9"><a href="lab-v-introduction-to-regression.html#cb290-9" aria-hidden="true" tabindex="-1"></a> x <span class="ot">&lt;-</span> <span class="fu">mean</span>(cow_filtered<span class="sc">$</span>total_deaths[cow_filtered<span class="sc">$</span>StartMonth1 <span class="sc">==</span> i])</span>
-<span id="cb290-10"><a href="lab-v-introduction-to-regression.html#cb290-10" aria-hidden="true" tabindex="-1"></a> </span>
-<span id="cb290-11"><a href="lab-v-introduction-to-regression.html#cb290-11" aria-hidden="true" tabindex="-1"></a> <span class="fu">names</span>(x) <span class="ot">&lt;-</span> i</span>
-<span id="cb290-12"><a href="lab-v-introduction-to-regression.html#cb290-12" aria-hidden="true" tabindex="-1"></a> </span>
-<span id="cb290-13"><a href="lab-v-introduction-to-regression.html#cb290-13" aria-hidden="true" tabindex="-1"></a> <span class="fu">print</span>(x)</span>
-<span id="cb290-14"><a href="lab-v-introduction-to-regression.html#cb290-14" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb290-15"><a href="lab-v-introduction-to-regression.html#cb290-15" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
-<pre><code>##        6 
-## 12310.33 
-##       3 
-## 62869.5 
-##        7 
-## 64465.71 
-##        2 
-## 7942.857 
-##        8 
-## 8314.538 
-##       10 
-## 21915.77 
-##        4 
-## 62369.33 
-##       11 
-## 48016.43 
-##    5 
-## 6795 
-##        9 
-## 14526.15 
-##        1 
-## 15822.15 
-##       12 
-## 75963.08</code></pre>
-<div class="sourceCode" id="cb292"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb292-1"><a href="lab-v-introduction-to-regression.html#cb292-1" aria-hidden="true" tabindex="-1"></a><span class="do">## With dplyr</span></span>
-<span id="cb292-2"><a href="lab-v-introduction-to-regression.html#cb292-2" aria-hidden="true" tabindex="-1"></a>cow_filtered <span class="sc">%&gt;%</span></span>
-<span id="cb292-3"><a href="lab-v-introduction-to-regression.html#cb292-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(StartMonth1) <span class="sc">%&gt;%</span></span>
-<span id="cb292-4"><a href="lab-v-introduction-to-regression.html#cb292-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">avg_death_by_month =</span> <span class="fu">mean</span>(total_deaths))</span></code></pre></div>
-<pre><code>## # A tibble: 12 × 2
-##    StartMonth1 avg_death_by_month
-##          &lt;dbl&gt;              &lt;dbl&gt;
-##  1           1             15822.
-##  2           2              7943.
-##  3           3             62870.
-##  4           4             62369.
-##  5           5              6795 
-##  6           6             12310.
-##  7           7             64466.
-##  8           8              8315.
-##  9           9             14526.
-## 10          10             21916.
-## 11          11             48016.
-## 12          12             75963.</code></pre>
+<div id="interpret-the-following-plot." class="section level2 hasAnchor" number="8.6">
+<h2><span class="header-section-number">8.6</span> Interpret the following plot.<a href="lab-vii-interactions-categorical-variables.html#interpret-the-following-plot." class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="sourceCode" id="cb376"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb376-1"><a href="lab-vii-interactions-categorical-variables.html#cb376-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(dta<span class="sc">$</span>Age, dta<span class="sc">$</span>TrumpFT, <span class="at">color=</span>dta<span class="sc">$</span>Rep, <span class="at">col=</span><span class="fu">c</span>(<span class="st">&quot;red&quot;</span>, <span class="st">&quot;blue&quot;</span>), </span>
+<span id="cb376-2"><a href="lab-vii-interactions-categorical-variables.html#cb376-2" aria-hidden="true" tabindex="-1"></a>     <span class="at">main=</span><span class="st">&quot;The Effect of Age on Support for Trump Conditional on Party ID&quot;</span>,</span>
+<span id="cb376-3"><a href="lab-vii-interactions-categorical-variables.html#cb376-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">&quot;Age&quot;</span>, <span class="at">ylab =</span> <span class="st">&quot;Trump FT&quot;</span>, <span class="at">las=</span><span class="dv">1</span>, <span class="at">xlim=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">100</span>), <span class="at">pch=</span><span class="st">&quot;&quot;</span>)</span>
+<span id="cb376-4"><a href="lab-vii-interactions-categorical-variables.html#cb376-4" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="fu">lm</span>(TrumpFT<span class="sc">~</span>Age, <span class="at">data =</span> <span class="fu">subset</span>(dta, Rep<span class="sc">==</span><span class="cn">TRUE</span>)), <span class="at">col=</span><span class="st">&quot;dark red&quot;</span>, <span class="at">lwd=</span><span class="dv">3</span>)</span>
+<span id="cb376-5"><a href="lab-vii-interactions-categorical-variables.html#cb376-5" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="fu">lm</span>(TrumpFT<span class="sc">~</span>Age, <span class="at">data =</span> <span class="fu">subset</span>(dta, Dem<span class="sc">==</span><span class="cn">TRUE</span>)), <span class="at">col=</span><span class="st">&quot;dark blue&quot;</span>, <span class="at">lwd=</span><span class="dv">3</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-82-1.png" width="672" /></p>
 </div>
+<div id="what-are-your-predictions-for-how-women-may-feel-about-clinton-how-democrats-may-feel-about-clinton-and-how-democratic-women-may-feel-about-clinton-then-estimate-the-model." class="section level2 hasAnchor" number="8.7">
+<h2><span class="header-section-number">8.7</span> What are your predictions for how women may feel about Clinton, how Democrats may feel about Clinton, and how Democratic women may feel about Clinton? Then estimate the model.<a href="lab-vii-interactions-categorical-variables.html#what-are-your-predictions-for-how-women-may-feel-about-clinton-how-democrats-may-feel-about-clinton-and-how-democratic-women-may-feel-about-clinton-then-estimate-the-model." class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Most answers will be good here. The idea is just to think about conditional effects. For example, women may approve more of Clinton because she could have been the first woman president. Democrats probably approve of Clinton because she was the Democratic nominee for president. Democratic women, then, may support Clinton EVEN more than Republican women and Democratic men. The conditional effect of being a Democrat for women will be positive.</p>
+<div class="sourceCode" id="cb377"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb377-1"><a href="lab-vii-interactions-categorical-variables.html#cb377-1" aria-hidden="true" tabindex="-1"></a>model3 <span class="ot">&lt;-</span> <span class="fu">lm</span>(ClintonFT<span class="sc">~</span>Female<span class="sc">*</span>Dem, <span class="at">data=</span>dta)</span>
+<span id="cb377-2"><a href="lab-vii-interactions-categorical-variables.html#cb377-2" aria-hidden="true" tabindex="-1"></a>model3</span></code></pre></div>
+<pre><code>## 
+## Call:
+## lm(formula = ClintonFT ~ Female * Dem, data = dta)
+## 
+## Coefficients:
+##    (Intercept)          Female         DemTRUE  Female:DemTRUE  
+##         17.690           1.114          27.621           6.882</code></pre>
+</div>
+<div id="how-do-we-interpret-the-following" class="section level2 hasAnchor" number="8.8">
+<h2><span class="header-section-number">8.8</span> How do we interpret the following:<a href="lab-vii-interactions-categorical-variables.html#how-do-we-interpret-the-following" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<ul>
+<li><p>Intercept = Clinton Feelings for Male Republicans</p></li>
+<li><p>Intercept + Beta 1 = Clinton Feelings for Female Republicans</p></li>
+<li><p>Intercept + Beta 2 = Clinton Feelings for Male Democrats</p></li>
+<li><p>Intercept + Beta 1 + Beta 2 + Beta 3 = Clinton Feelings for Female Democrats</p></li>
+<li><p>Beta 1 - The Effect of Sex for Republicans</p></li>
+<li><p>Beta 2 - The Effect of Party for Men</p></li>
+<li><p>Beta 2 + Beta 3 - The Effect of Party for Women</p></li>
+<li><p>Beta 1 + Beta 3 - The Effect of Sex for Democrats</p></li>
+</ul>
+</div>
+<div id="estimate-the-the-same-model-as-above-but-for-trump-and-republicans." class="section level2 hasAnchor" number="8.9">
+<h2><span class="header-section-number">8.9</span> Estimate the the same model as above, but for Trump and Republicans.<a href="lab-vii-interactions-categorical-variables.html#estimate-the-the-same-model-as-above-but-for-trump-and-republicans." class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="sourceCode" id="cb379"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb379-1"><a href="lab-vii-interactions-categorical-variables.html#cb379-1" aria-hidden="true" tabindex="-1"></a>model4 <span class="ot">&lt;-</span> <span class="fu">lm</span>(TrumpFT<span class="sc">~</span>Female<span class="sc">*</span>Rep, <span class="at">data=</span>dta)</span>
+<span id="cb379-2"><a href="lab-vii-interactions-categorical-variables.html#cb379-2" aria-hidden="true" tabindex="-1"></a>model4</span></code></pre></div>
+<pre><code>## 
+## Call:
+## lm(formula = TrumpFT ~ Female * Rep, data = dta)
+## 
+## Coefficients:
+##    (Intercept)          Female         RepTRUE  Female:RepTRUE  
+##         19.134          -8.887          33.196           5.965</code></pre>
+</div>
+<div id="calculate-the-following" class="section level2 hasAnchor" number="8.10">
+<h2><span class="header-section-number">8.10</span> Calculate the following:<a href="lab-vii-interactions-categorical-variables.html#calculate-the-following" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<ul>
+<li><p>What is Trump’s average feeling for male Democrats? - 19.134</p></li>
+<li><p>What is Trump’s average feeling for female Democrats? - 10.247</p></li>
+<li><p>What is Trump’s average feeling for male Republicans? - 52.33</p></li>
+<li><p>What is Trump’s average feeling for female Republicans? - 49.408</p></li>
+</ul>
+
 </div>
 </div>
             </section>
@@ -626,8 +447,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           </div>
         </div>
       </div>
-<a href="lab-iv-loops-lists-conditional-statements.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="lab-vi-goodness-of-fit-multiple-regression.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="lab-vi-goodness-of-fit-multiple-regression.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

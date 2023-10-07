@@ -1621,3 +1621,134 @@ ggplot(phiData, aes(x = season, y = runs_scored)) +
        y = "Runs Scored", subtitle = "Philadelphia Phillies")
 
 ```
+
+# Lab VII: Interactions & Categorical Variables
+
+```{r, echo=FALSE}
+knitr::include_graphics("image_7.png")
+load("~/GOVT5001/Lab VII/Ch6_ChapterExample_Trump.RData")
+```
+
+## Categorical Variables and Reference Categories
+
+```{r, echo=TRUE}
+load("~/GOVT5001/Lab VII/social.RData")
+
+## My Four Categories
+unique(social$messages)
+
+## Regression Model
+reg1 <- lm(primary2006~messages, data=social)
+
+reg1$coefficients[1]
+reg1$coefficients[2]
+reg1$coefficients[3]
+reg1$coefficients[4]
+
+social$messages <- as.factor(social$messages)
+
+reg2 <- lm(primary2006~relevel(messages, "Control"), 
+           data=social)
+
+reg2$coefficients[1]
+reg2$coefficients[2]
+reg2$coefficients[3]
+reg2$coefficients[4]
+```
+
+## Interactions
+- How to use interactions
+  - In *R*
+    - `lm(y~x*z, data=data)` or `lm(y~x + z + x:z, data=data)`
+- We write a model with an interaction term as:
+
+$$\hat{Y_i}=\hat{\beta_0} + \hat{\beta_1}X_i + \hat{\beta_2}Z_i + \hat{\beta_3}(X_i*Z_i)$$
+
+## Interpreting Interactions
+
+$$\hat{Wage_i}=\hat{\beta_0} + \hat{\beta_1}Experience_i + \hat{\beta_2}Male_i + \hat{\beta_3}Experience_i*Male_i$$
+- $\beta_0$ - Predicted wage for women with no experience
+- $\beta_0 + \beta_1$ - Relationship between experience and earnings for women
+- $\beta_0 + \beta_1 + \beta_2 + \beta_3$ - Predicted Wage for men with experience
+- $\beta_1$ - The effect of experience for women
+- $\beta_0 + \beta_2$ - Predicted earnings for men when experience is zero
+- $\beta_1 + \beta_3$ - Relationship between experience and earnings for men
+
+## What is the effect of age on support for Trump, conditional on being a Republican? Do this with both the colon, ":", and the "*".
+
+```{r}
+model1a <- lm(TrumpFT~Rep*Age, data=dta)
+model1a
+
+model1b <- lm(TrumpFT~Rep + Age + Rep:Age, data=dta)
+model1b
+
+```
+
+## What is the effect of age on support for Trump, conditional on being a Democrat?
+
+```{r}
+model2a <- lm(TrumpFT~Dem*Age, data=dta)
+model2a
+
+model2b <- lm(TrumpFT~Dem + Age + Dem:Age, data=dta)
+model2b
+
+```
+
+## Interpret the following plot.
+
+```{r}
+plot(dta$Age, dta$TrumpFT, color=dta$Rep, col=c("red", "blue"), 
+     main="The Effect of Age on Support for Trump Conditional on Party ID",
+     xlab = "Age", ylab = "Trump FT", las=1, xlim=c(0,100), pch="")
+abline(lm(TrumpFT~Age, data = subset(dta, Rep==TRUE)), col="dark red", lwd=3)
+abline(lm(TrumpFT~Age, data = subset(dta, Dem==TRUE)), col="dark blue", lwd=3)
+
+```
+
+## What are your predictions for how women may feel about Clinton, how Democrats may feel about Clinton, and how Democratic women may feel about Clinton? Then estimate the model.
+
+Most answers will be good here. The idea is just to think about conditional effects. For example, women may approve more of Clinton because she could have been the first woman president. Democrats probably approve of Clinton because she was the Democratic nominee for president. Democratic women, then, may support Clinton EVEN more than Republican women and Democratic men. The conditional effect of being a Democrat for women will be positive.
+
+```{r}
+model3 <- lm(ClintonFT~Female*Dem, data=dta)
+model3
+
+```
+
+## How do we interpret the following:
+
+- Intercept = Clinton Feelings for Male Republicans
+
+- Intercept + Beta 1 = Clinton Feelings for Female Republicans
+
+- Intercept + Beta 2 = Clinton Feelings for Male Democrats
+
+- Intercept + Beta 1 + Beta 2 + Beta 3 = Clinton Feelings for Female Democrats
+
+- Beta 1 - The Effect of Sex for Republicans
+
+- Beta 2 - The Effect of Party for Men
+
+- Beta 2 + Beta 3 - The Effect of Party for Women
+
+- Beta 1 + Beta 3 - The Effect of Sex for Democrats
+
+## Estimate the the same model as above, but for Trump and Republicans.
+
+```{r}
+model4 <- lm(TrumpFT~Female*Rep, data=dta)
+model4
+
+```
+
+## Calculate the following:
+
+- What is Trump's average feeling for male Democrats? - 19.134
+
+- What is Trump's average feeling for female Democrats? - 10.247
+
+- What is Trump's average feeling for male Republicans? - 52.33
+
+- What is Trump's average feeling for female Republicans? - 49.408

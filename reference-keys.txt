@@ -76,3 +76,14 @@ use-your-preferred-model-to-predict-attendance-based-on-100-wins-500-runs-scored
 based-on-your-models-how-can-teams-increase-their-attendance
 your-colleague-argues-that-runs-have-been-increasing-over-time.-create-a-scatterplot-with-a-line-of-best-fit-to-evaluate-their-claim.
 the-analysis-above-is-for-the-full-mlb.-rerun-your-models-and-scatterplots-for-one-team.
+lab-vii-interactions-categorical-variables
+categorical-variables-and-reference-categories
+interactions
+interpreting-interactions
+what-is-the-effect-of-age-on-support-for-trump-conditional-on-being-a-republican-do-this-with-both-the-colon-and-the-.
+what-is-the-effect-of-age-on-support-for-trump-conditional-on-being-a-democrat
+interpret-the-following-plot.
+what-are-your-predictions-for-how-women-may-feel-about-clinton-how-democrats-may-feel-about-clinton-and-how-democratic-women-may-feel-about-clinton-then-estimate-the-model.
+how-do-we-interpret-the-following
+estimate-the-the-same-model-as-above-but-for-trump-and-republicans.
+calculate-the-following
