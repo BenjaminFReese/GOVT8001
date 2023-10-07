@@ -78,8 +78,13 @@ your-colleague-argues-that-runs-have-been-increasing-over-time.-create-a-scatter
 the-analysis-above-is-for-the-full-mlb.-rerun-your-models-and-scatterplots-for-one-team.
 lab-vii-interactions-categorical-variables
 categorical-variables-and-reference-categories
+loading-data-1
+the-four-categories-of-the-treatment-variable
+estimating-the-model
+difference-in-means-between-categories
 interactions
 interpreting-interactions
+lab-questions-2
 what-is-the-effect-of-age-on-support-for-trump-conditional-on-being-a-republican-do-this-with-both-the-colon-and-the-.
 what-is-the-effect-of-age-on-support-for-trump-conditional-on-being-a-democrat
 interpret-the-following-plot.

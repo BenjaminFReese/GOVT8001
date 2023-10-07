@@ -1631,20 +1631,32 @@ load("~/GOVT5001/Lab VII/Ch6_ChapterExample_Trump.RData")
 
 ## Categorical Variables and Reference Categories
 
+### Loading Data
 ```{r, echo=TRUE}
 load("~/GOVT5001/Lab VII/social.RData")
+```
 
-## My Four Categories
+### The Four Categories of the Treatment Variable
+
+```{r, echo=TRUE}
 unique(social$messages)
+```
 
-## Regression Model
+### Estimating the Model
+
+```{r, echo=TRUE}
 reg1 <- lm(primary2006~messages, data=social)
+```
 
+### Difference in Means Between Categories
+
+```{r, echo=TRUE}
 reg1$coefficients[1]
 reg1$coefficients[2]
 reg1$coefficients[3]
 reg1$coefficients[4]
 
+## Changing Reference Category
 social$messages <- as.factor(social$messages)
 
 reg2 <- lm(primary2006~relevel(messages, "Control"), 
@@ -1664,17 +1676,25 @@ reg2$coefficients[4]
 
 $$\hat{Y_i}=\hat{\beta_0} + \hat{\beta_1}X_i + \hat{\beta_2}Z_i + \hat{\beta_3}(X_i*Z_i)$$
 
-## Interpreting Interactions
+### Interpreting Interactions
 
 $$\hat{Wage_i}=\hat{\beta_0} + \hat{\beta_1}Experience_i + \hat{\beta_2}Male_i + \hat{\beta_3}Experience_i*Male_i$$
+
 - $\beta_0$ - Predicted wage for women with no experience
+
 - $\beta_0 + \beta_1$ - Relationship between experience and earnings for women
+
 - $\beta_0 + \beta_1 + \beta_2 + \beta_3$ - Predicted Wage for men with experience
+
 - $\beta_1$ - The effect of experience for women
+
 - $\beta_0 + \beta_2$ - Predicted earnings for men when experience is zero
+
 - $\beta_1 + \beta_3$ - Relationship between experience and earnings for men
 
-## What is the effect of age on support for Trump, conditional on being a Republican? Do this with both the colon, ":", and the "*".
+## Lab Questions
+
+### What is the effect of age on support for Trump, conditional on being a Republican? Do this with both the colon, ":", and the "*".
 
 ```{r}
 model1a <- lm(TrumpFT~Rep*Age, data=dta)
@@ -1685,7 +1705,7 @@ model1b
 
 ```
 
-## What is the effect of age on support for Trump, conditional on being a Democrat?
+### What is the effect of age on support for Trump, conditional on being a Democrat?
 
 ```{r}
 model2a <- lm(TrumpFT~Dem*Age, data=dta)
@@ -1696,7 +1716,7 @@ model2b
 
 ```
 
-## Interpret the following plot.
+### Interpret the following plot.
 
 ```{r}
 plot(dta$Age, dta$TrumpFT, color=dta$Rep, col=c("red", "blue"), 
@@ -1707,7 +1727,7 @@ abline(lm(TrumpFT~Age, data = subset(dta, Dem==TRUE)), col="dark blue", lwd=3)
 
 ```
 
-## What are your predictions for how women may feel about Clinton, how Democrats may feel about Clinton, and how Democratic women may feel about Clinton? Then estimate the model.
+### What are your predictions for how women may feel about Clinton, how Democrats may feel about Clinton, and how Democratic women may feel about Clinton? Then estimate the model.
 
 Most answers will be good here. The idea is just to think about conditional effects. For example, women may approve more of Clinton because she could have been the first woman president. Democrats probably approve of Clinton because she was the Democratic nominee for president. Democratic women, then, may support Clinton EVEN more than Republican women and Democratic men. The conditional effect of being a Democrat for women will be positive.
 
@@ -1717,7 +1737,7 @@ model3
 
 ```
 
-## How do we interpret the following:
+### How do we interpret the following:
 
 - Intercept = Clinton Feelings for Male Republicans
 
@@ -1735,7 +1755,7 @@ model3
 
 - Beta 1 + Beta 3 - The Effect of Sex for Democrats
 
-## Estimate the the same model as above, but for Trump and Republicans.
+### Estimate the the same model as above, but for Trump and Republicans.
 
 ```{r}
 model4 <- lm(TrumpFT~Female*Rep, data=dta)
@@ -1743,7 +1763,7 @@ model4
 
 ```
 
-## Calculate the following:
+### Calculate the following:
 
 - What is Trump's average feeling for male Democrats? - 19.134
 
