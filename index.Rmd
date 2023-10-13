@@ -1775,3 +1775,223 @@ model4
 - What is Trump's average feeling for male Republicans? - 52.33
 
 - What is Trump's average feeling for female Republicans? - 49.408
+
+# Lab VIII: Publication Ready Tables & Interactions (cont.)
+
+```{r, echo=FALSE}
+knitr::include_graphics("image_8.png")
+
+```
+
+## Making Tables
+
+```{r}
+## Loading Packages
+library(stargazer)
+
+## Loading Data - Change this to your working directory
+load("~/GOVT5001/Lab VI/bbData.RData")
+
+## Running Models
+model1 <- lm(home_attend ~ wins, data = bbData)
+model2 <- lm(home_attend ~ wins + runs_scored + runs_allowed, data=bbData)
+
+```
+
+```{r, results='asis', echo = FALSE}
+stargazer(model1, model2, type = "html")
+
+```
+
+```{r, results='asis'}
+stargazer(model1, model2, covariate.labels = c("Wins", "Runs Scored", "Runs Allowed"), 
+          dep.var.labels = "Home Attendance", header = FALSE,
+          title = "OLS Results", type = "html")
+
+```
+
+```{r, results='asis'}
+stargazer(model1, model2, covariate.labels = c("Wins", "Runs Scored", "Runs Allowed"), 
+          dep.var.labels = "Home Attendance", header = FALSE,
+          title = "OLS Results", omit.stat = c("rsq", "adj.rsq"),
+          column.labels = c("Model 1", "Model 2"), type = "html")
+
+```
+
+## Interactions Practice Problems
+
+These lab questions will test both your programming and interpretation skills! It covers most of the programming and regression related topics we have covered up until now. We will be exploring the relationship between politics and monetary policy in the US.
+
+### In your own words, what is an interaction term?
+
+An interaction occurs when an independent variable has a different effect on the outcome depending on the values of another independent variable. We can think of this as a conditional effect.
+
+### What is the Federal Reserve Funds Rate?
+
+The interest rate that banks charge each other to borrow or lend excess reserves overnight. It is "set" by the Federal Open Markets Committee. A higher Fed Funds Rate means more expensive borrowing costs. Banks can then pass on higher borrowing costs by raising the rates they charge for consumer loans.
+
+### What is the Federal Reserves' Dual Mandate?
+
+The dual mandate is usually discussed as keeping unemployment and inflation at normative rates. About 1-2% for inflation and 4-5% for unemployment.
+
+### Estimate a model with FEDFUNDS as the DV, Democrat and Quarters as the IVs, and include an interaction between Democrat and Quarters.
+
+```{r}
+## Loading Data
+load("~/GOVT8001/Lab 8/fed.RData")
+
+model1 <- lm(FEDFUNDS~Democrat + Quarters + Democrat:Quarters, data=dta)
+model1
+
+```
+
+### You can also create an "intereacted" variable and include it in the model. Re-estimate the model above with a new variable called dem_quarters that is the interaction term between quarters and Democrat.
+
+```{r}
+dta$dem_quarters <- dta$Democrat*dta$Quarters
+
+model2 <- lm(FEDFUNDS~ Democrat + Quarters + dem_quarters, data=dta)
+model2
+
+```
+
+### What change in federal fund rates is associated with a one-unit increase in the quarters variable when the president is a Republican?
+
+A one-unit increase in the election variable when the president is a Republican is associated with a fall in the Federal Funds rate of 0.26 percentage points.  It is simply the coefficient on the quarters variable.
+
+### What change in federal fund rates is associated with a one-unit increase in the election variable when the president is a Democrat?
+
+A one-unit increase in the election variable when the president is a Democrat is associated with an increase in the Federal Funds rate of -0.264 + 0.558 = 0.293 percentage points. The effect when a Democrat is president is the sum of the coefficients on the election variable and the interaction of the election variable and the dummy for Democratic presidents.
+
+### Create a Republican variable and estimate the same model as above, but for Republicans.
+
+```{r}
+dta <- dta %>%
+  mutate(Republican = if_else(dta$Democrat == 0, 1, 0))
+
+model2b <- lm(FEDFUNDS~Republican*Quarters, data=dta)
+model2b
+
+```
+
+### Create two scatterplots, for years in which a Democrat was president and one for years in  which a Republican was president, showing the relationship between inflation and the quarters since the previous election. Repeat this for the Fed Funds Rate.
+
+```{r}
+## Plot for Democrats
+dta %>%
+  filter(Democrat == 1) %>%
+  ggplot(aes(x = Quarters, y = inflation)) +
+  geom_point() +
+  geom_smooth(method = "lm", se = F, col = "blue") +
+  theme_bw() +
+  labs(title = "Inflation When Democrat is in Office",
+       x = "Quarters from Last Election",
+       y = "Inflation")
+
+## Plot for Republicans
+dta %>%
+  filter(Democrat == 0) %>%
+  ggplot(aes(x = Quarters, y = inflation)) +
+  geom_point() +
+  geom_smooth(method = "lm", se = F, col = "red") +
+  theme_bw() +
+  labs(title = "Inflation When Republican is in Office",
+       x = "Quarters from Last Election",
+       y = "Inflation")
+
+## Plot for Democrats
+dta %>%
+  filter(Democrat == 1) %>%
+  ggplot(aes(x = Quarters, y = FEDFUNDS)) +
+  geom_point() +
+  geom_smooth(method = "lm", se = F, col = "blue") +
+  theme_bw() +
+  labs(title = "Fed Funds Rate When Democrat is in Office",
+       x = "Quarters from Last Election",
+       y = "Fed Funds Rate")
+
+## Plot for Republicans
+dta %>%
+  filter(Democrat == 0) %>%
+  ggplot(aes(x = Quarters, y = FEDFUNDS)) +
+  geom_point() +
+  geom_smooth(method = "lm", se = F, col = "red") +
+  theme_bw() +
+  labs(title = "Fed Funds Rate When Republican is in Office",
+       x = "Quarters from Last Election",
+       y = "Fed Funds Rate")
+
+```
+
+### How responsive is the Fed to rising inflation? Present a scatterplot with a regression line and calculate the correlation coefficient and estimate a simple regression model.
+
+```{r}
+## Plot
+dta %>%
+  ggplot(aes(x = inflation, y = FEDFUNDS)) +
+  geom_point() +
+  geom_smooth(method = "lm", se = F) +
+  theme_bw() +
+  labs(title = "Fed Funds Rate & Inflation",
+       x = "Inflation",
+       y = "Fed Funds Rate")
+
+## Correlation Coefficient
+cor(dta$inflation, dta$FEDFUNDS, use="complete.obs")
+
+## Regression Model
+summary(lm(FEDFUNDS ~ inflation, data = dta))
+
+```
+
+### Let's find the average inflation rate for each presidential administration in our dataset. Start by creating a new categorical variable with the name of each president. Hint 1: run dta$president to see how the dataset codes presidents. Hint 2: Look up case_when().
+
+```{r}
+## With dplyr
+dta <- dta %>%
+  mutate(admin = case_when(
+    president == 1 ~ "Obama",
+    president == 2 | president == 3 ~ "Eisenhower",
+    president == 4 ~ "H.W.",
+    president == 5 | president == 6 ~ "Bush",
+    president == 7 ~ "Carter",
+    president == 8 ~ "Kennedy-Johnson",
+    president == 9 ~ "Johnson",
+    president == 10 ~ "Nixon-Ford",
+    president == 11 ~ "Nixon",
+    president == 12 | president == 13 ~ "Reagan",
+    president == 14 | president == 15 ~ "Clinton")
+    )
+
+## With Base R
+dta$admin2 <- NA
+dta$admin2[dta$president==1] <- "Obama"
+dta$admin2[dta$president==2 | dta$president==3] <- "Eisenhower"
+dta$admin2[dta$president==4] <- "H.W."
+dta$admin2[dta$president==5 | dta$president==6] <- "Bush"
+dta$admin2[dta$president==7] <- "Carter"
+dta$admin2[dta$president==8] <- "Kennedy-Johnson"
+dta$admin2[dta$president==9] <- "Johnson"
+dta$admin2[dta$president==10] <- "Nixon-Ford"
+dta$admin2[dta$president==11] <- "Nixon"
+dta$admin2[dta$president==12 | dta$president==13] <- "Reagan"
+dta$admin2[dta$president==14 | dta$president==15] <- "Clinton"
+
+```
+
+### Now find the average inflation rate for each administration.
+
+```{r}
+## WIth dplyr
+dta %>%
+  group_by(admin) %>%
+  summarise(avg_inflation = mean(inflation))
+
+## With Base R
+tapply(dta$inflation, dta$admin, mean)
+
+```
+
+## Problem IV
+
+With any time left, we will go over [last week's questions](https://benjaminfreese.github.io/GOVT8001/lab-vii-interactions-categorical-variables.html#lab-questions-2)!
