@@ -1798,7 +1798,7 @@ model2 <- lm(home_attend ~ wins + runs_scored + runs_allowed, data=bbData)
 
 ```
 
-```{r, results='asis', echo = FALSE}
+```{r, results='asis'}
 stargazer(model1, model2, type = "html")
 
 ```
