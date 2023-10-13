@@ -1813,7 +1813,7 @@ stargazer(model1, model2, covariate.labels = c("Wins", "Runs Scored", "Runs Allo
 ```{r, results='asis'}
 stargazer(model1, model2, covariate.labels = c("Wins", "Runs Scored", "Runs Allowed"), 
           dep.var.labels = "Home Attendance", header = FALSE,
-          title = "OLS Results", omit.stat = c("rsq", "adj.rsq"),
+          title = "OLS Results", keep.stat = c("rsq", "adj.rsq", "n"),
           column.labels = c("Model 1", "Model 2"), type = "html")
 
 ```
