@@ -1992,6 +1992,37 @@ tapply(dta$inflation, dta$admin, mean)
 
 ```
 
-## Problem IV
+### Problem IV
 
 With any time left, we will go over [last week's questions](https://benjaminfreese.github.io/GOVT8001/lab-vii-interactions-categorical-variables.html#lab-questions-2)!
+
+## Appendix: Additional Materials
+
+```{r}
+
+## Running Model
+model2 <- lm(home_attend ~ wins + runs_scored + runs_allowed, data=bbData)
+
+## Packages for Partial Effects Plot
+library(ggeffects)
+library(sjPlot)
+library(ggplot2)
+
+## Function for Partial Effects
+plot_model(model2, type = "pred", terms = "wins") +
+  theme_bw()
+
+## Loading Federal Reserve Data
+load("~/GOVT8001/Lab 8/fed.RData")
+
+## Plotting Interactions
+dta %>%
+  ggplot(aes(x = Quarters, y = FEDFUNDS, color = as.character(Democrat), group= Democrat)) +
+  geom_smooth(method = "lm", se = F) +
+  theme_bw() +
+  ylim(4.5, 6) +
+  labs(title = "Fed Funds Rate When Democrat is in Office",
+       x = "Quarters from Last Election",
+       y = "Fed Funds Rate", color = "Democrat")
+
+```

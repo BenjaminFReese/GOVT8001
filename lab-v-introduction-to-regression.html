@@ -287,8 +287,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="9.2.10" data-path="lab-viii-publication-ready-tables-interactions-cont..html"><a href="lab-viii-publication-ready-tables-interactions-cont..html#how-responsive-is-the-fed-to-rising-inflation-present-a-scatterplot-with-a-regression-line-and-calculate-the-correlation-coefficient-and-estimate-a-simple-regression-model."><i class="fa fa-check"></i><b>9.2.10</b> How responsive is the Fed to rising inflation? Present a scatterplot with a regression line and calculate the correlation coefficient and estimate a simple regression model.</a></li>
 <li class="chapter" data-level="9.2.11" data-path="lab-viii-publication-ready-tables-interactions-cont..html"><a href="lab-viii-publication-ready-tables-interactions-cont..html#lets-find-the-average-inflation-rate-for-each-presidential-administration-in-our-dataset.-start-by-creating-a-new-categorical-variable-with-the-name-of-each-president.-hint-1-run-dtapresident-to-see-how-the-dataset-codes-presidents.-hint-2-look-up-case_when."><i class="fa fa-check"></i><b>9.2.11</b> Let’s find the average inflation rate for each presidential administration in our dataset. Start by creating a new categorical variable with the name of each president. Hint 1: run dta$president to see how the dataset codes presidents. Hint 2: Look up case_when().</a></li>
 <li class="chapter" data-level="9.2.12" data-path="lab-viii-publication-ready-tables-interactions-cont..html"><a href="lab-viii-publication-ready-tables-interactions-cont..html#now-find-the-average-inflation-rate-for-each-administration."><i class="fa fa-check"></i><b>9.2.12</b> Now find the average inflation rate for each administration.</a></li>
+<li class="chapter" data-level="9.2.13" data-path="lab-viii-publication-ready-tables-interactions-cont..html"><a href="lab-viii-publication-ready-tables-interactions-cont..html#problem-iv"><i class="fa fa-check"></i><b>9.2.13</b> Problem IV</a></li>
 </ul></li>
-<li class="chapter" data-level="9.3" data-path="lab-viii-publication-ready-tables-interactions-cont..html"><a href="lab-viii-publication-ready-tables-interactions-cont..html#problem-iv"><i class="fa fa-check"></i><b>9.3</b> Problem IV</a></li>
+<li class="chapter" data-level="9.3" data-path="lab-viii-publication-ready-tables-interactions-cont..html"><a href="lab-viii-publication-ready-tables-interactions-cont..html#appendix-additional-materials"><i class="fa fa-check"></i><b>9.3</b> Appendix: Additional Materials</a></li>
 </ul></li>
 </ul>
 
@@ -325,7 +326,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul>
 <div id="correlation-scatterplots" class="section level3 hasAnchor" number="6.1.1">
 <h3><span class="header-section-number">6.1.1</span> Correlation &amp; Scatterplots<a href="lab-v-introduction-to-regression.html#correlation-scatterplots" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p><img src="_main_files/figure-html/unnamed-chunk-49-1.png" width="672" /><img src="_main_files/figure-html/unnamed-chunk-49-2.png" width="672" /><img src="_main_files/figure-html/unnamed-chunk-49-3.png" width="672" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-50-1.png" width="672" /><img src="_main_files/figure-html/unnamed-chunk-50-2.png" width="672" /><img src="_main_files/figure-html/unnamed-chunk-50-3.png" width="672" /></p>
 </div>
 </div>
 <div id="introduction-to-regression" class="section level2 hasAnchor" number="6.2">
@@ -462,17 +463,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="scatterplots-regression-lines" class="section level3 hasAnchor" number="6.2.7">
 <h3><span class="header-section-number">6.2.7</span> Scatterplots &amp; Regression Lines<a href="lab-v-introduction-to-regression.html#scatterplots-regression-lines" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p><img src="_main_files/figure-html/unnamed-chunk-51-1.png" width="672" />
+<p><img src="_main_files/figure-html/unnamed-chunk-52-1.png" width="672" />
 - How do we interpret <span class="math inline">\(\hat{\beta}\)</span> and <span class="math inline">\(\hat{\alpha}\)</span>?
 - What do you expect a child’s height will be if their father’s height is 70 inches?</p>
 <div class="sourceCode" id="cb276"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb276-1"><a href="lab-v-introduction-to-regression.html#cb276-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Mean when father is 70 inches tall</span></span>
 <span id="cb276-2"><a href="lab-v-introduction-to-regression.html#cb276-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(Galton<span class="sc">$</span>height[Galton<span class="sc">$</span>father <span class="sc">==</span> <span class="dv">70</span>])</span></code></pre></div>
 <pre><code>## [1] 66.94885</code></pre>
-<p><img src="_main_files/figure-html/unnamed-chunk-53-1.png" width="672" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-54-1.png" width="672" /></p>
 <ul>
 <li>How would we find the residuals?</li>
 </ul>
-<p><img src="_main_files/figure-html/unnamed-chunk-54-1.png" width="672" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-55-1.png" width="672" /></p>
 <ul>
 <li><span class="math inline">\(\hat{\epsilon} = y_i - \hat{y_i}\)</span></li>
 </ul>
@@ -503,7 +504,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb279-8"><a href="lab-v-introduction-to-regression.html#cb279-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_abline</span>(<span class="at">method =</span> <span class="st">&quot;lm&quot;</span>, <span class="at">col =</span> <span class="st">&quot;dark blue&quot;</span>) <span class="sc">+</span></span>
 <span id="cb279-9"><a href="lab-v-introduction-to-regression.html#cb279-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span></span>
 <span id="cb279-10"><a href="lab-v-introduction-to-regression.html#cb279-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Joint Distribution of War Deaths&quot;</span>)</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-56-1.png" width="672" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-57-1.png" width="672" /></p>
 </div>
 <div id="question-iii---what-is-the-correlation-coefficient-for-the-relationship-you-depicted-in-question-ii.-what-is-the-regression-coefficient-how-do-we-interpret-each-only-filter-out-the-less-than-zero-observations-for-this-question." class="section level3 hasAnchor" number="6.3.3">
 <h3><span class="header-section-number">6.3.3</span> Question III - What is the correlation coefficient for the relationship you depicted in Question II. What is the regression coefficient? How do we interpret each? Only filter out the less than zero observations for this question.<a href="lab-v-introduction-to-regression.html#question-iii---what-is-the-correlation-coefficient-for-the-relationship-you-depicted-in-question-ii.-what-is-the-regression-coefficient-how-do-we-interpret-each-only-filter-out-the-less-than-zero-observations-for-this-question." class="anchor-section" aria-label="Anchor link to header"></a></h3>

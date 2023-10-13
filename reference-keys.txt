@@ -109,3 +109,4 @@ how-responsive-is-the-fed-to-rising-inflation-present-a-scatterplot-with-a-regre
 lets-find-the-average-inflation-rate-for-each-presidential-administration-in-our-dataset.-start-by-creating-a-new-categorical-variable-with-the-name-of-each-president.-hint-1-run-dtapresident-to-see-how-the-dataset-codes-presidents.-hint-2-look-up-case_when.
 now-find-the-average-inflation-rate-for-each-administration.
 problem-iv
+appendix-additional-materials
