@@ -2021,7 +2021,7 @@ dta %>%
   geom_smooth(method = "lm", se = F) +
   theme_bw() +
   ylim(4.5, 6) +
-  labs(title = "Fed Funds Rate When Democrat is in Office",
+  labs(title = "Fed Funds Rate By President's Party",
        x = "Quarters from Last Election",
        y = "Fed Funds Rate", color = "Democrat")
 
