@@ -110,3 +110,7 @@ lets-find-the-average-inflation-rate-for-each-presidential-administration-in-our
 now-find-the-average-inflation-rate-for-each-administration.
 problem-iv
 appendix-additional-materials
+lab-ix-interactions-redux
+review-of-interactions
+librarymargins
+marginal-effects-plots

@@ -30,7 +30,7 @@
   
   
 <link rel="prev" href="lab-vii-interactions-categorical-variables.html"/>
-
+<link rel="next" href="lab-ix-interactions-redux.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -290,6 +290,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="9.2.13" data-path="lab-viii-publication-ready-tables-interactions-cont..html"><a href="lab-viii-publication-ready-tables-interactions-cont..html#problem-iv"><i class="fa fa-check"></i><b>9.2.13</b> Problem IV</a></li>
 </ul></li>
 <li class="chapter" data-level="9.3" data-path="lab-viii-publication-ready-tables-interactions-cont..html"><a href="lab-viii-publication-ready-tables-interactions-cont..html#appendix-additional-materials"><i class="fa fa-check"></i><b>9.3</b> Appendix: Additional Materials</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="lab-ix-interactions-redux.html"><a href="lab-ix-interactions-redux.html"><i class="fa fa-check"></i><b>10</b> Lab IX Interactions Redux</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="lab-ix-interactions-redux.html"><a href="lab-ix-interactions-redux.html#review-of-interactions"><i class="fa fa-check"></i><b>10.1</b> Review of Interactions</a></li>
+<li class="chapter" data-level="10.2" data-path="lab-ix-interactions-redux.html"><a href="lab-ix-interactions-redux.html#librarymargins"><i class="fa fa-check"></i><b>10.2</b> <code>library(margins)</code></a></li>
+<li class="chapter" data-level="10.3" data-path="lab-ix-interactions-redux.html"><a href="lab-ix-interactions-redux.html#marginal-effects-plots"><i class="fa fa-check"></i><b>10.3</b> Marginal Effects Plots</a></li>
 </ul></li>
 </ul>
 
@@ -1074,7 +1080,7 @@ Adjusted R<sup>2</sup>
 <span id="cb393-8"><a href="lab-viii-publication-ready-tables-interactions-cont..html#cb393-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Inflation When Democrat is in Office&quot;</span>,</span>
 <span id="cb393-9"><a href="lab-viii-publication-ready-tables-interactions-cont..html#cb393-9" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">&quot;Quarters from Last Election&quot;</span>,</span>
 <span id="cb393-10"><a href="lab-viii-publication-ready-tables-interactions-cont..html#cb393-10" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">&quot;Inflation&quot;</span>)</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-98-1.png" width="672" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-99-1.png" width="672" /></p>
 <div class="sourceCode" id="cb394"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb394-1"><a href="lab-viii-publication-ready-tables-interactions-cont..html#cb394-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Plot for Republicans</span></span>
 <span id="cb394-2"><a href="lab-viii-publication-ready-tables-interactions-cont..html#cb394-2" aria-hidden="true" tabindex="-1"></a>dta <span class="sc">%&gt;%</span></span>
 <span id="cb394-3"><a href="lab-viii-publication-ready-tables-interactions-cont..html#cb394-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Democrat <span class="sc">==</span> <span class="dv">0</span>) <span class="sc">%&gt;%</span></span>
@@ -1085,7 +1091,7 @@ Adjusted R<sup>2</sup>
 <span id="cb394-8"><a href="lab-viii-publication-ready-tables-interactions-cont..html#cb394-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Inflation When Republican is in Office&quot;</span>,</span>
 <span id="cb394-9"><a href="lab-viii-publication-ready-tables-interactions-cont..html#cb394-9" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">&quot;Quarters from Last Election&quot;</span>,</span>
 <span id="cb394-10"><a href="lab-viii-publication-ready-tables-interactions-cont..html#cb394-10" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">&quot;Inflation&quot;</span>)</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-98-2.png" width="672" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-99-2.png" width="672" /></p>
 <div class="sourceCode" id="cb395"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb395-1"><a href="lab-viii-publication-ready-tables-interactions-cont..html#cb395-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Plot for Democrats</span></span>
 <span id="cb395-2"><a href="lab-viii-publication-ready-tables-interactions-cont..html#cb395-2" aria-hidden="true" tabindex="-1"></a>dta <span class="sc">%&gt;%</span></span>
 <span id="cb395-3"><a href="lab-viii-publication-ready-tables-interactions-cont..html#cb395-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Democrat <span class="sc">==</span> <span class="dv">1</span>) <span class="sc">%&gt;%</span></span>
@@ -1096,7 +1102,7 @@ Adjusted R<sup>2</sup>
 <span id="cb395-8"><a href="lab-viii-publication-ready-tables-interactions-cont..html#cb395-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Fed Funds Rate When Democrat is in Office&quot;</span>,</span>
 <span id="cb395-9"><a href="lab-viii-publication-ready-tables-interactions-cont..html#cb395-9" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">&quot;Quarters from Last Election&quot;</span>,</span>
 <span id="cb395-10"><a href="lab-viii-publication-ready-tables-interactions-cont..html#cb395-10" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">&quot;Fed Funds Rate&quot;</span>)</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-98-3.png" width="672" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-99-3.png" width="672" /></p>
 <div class="sourceCode" id="cb396"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb396-1"><a href="lab-viii-publication-ready-tables-interactions-cont..html#cb396-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Plot for Republicans</span></span>
 <span id="cb396-2"><a href="lab-viii-publication-ready-tables-interactions-cont..html#cb396-2" aria-hidden="true" tabindex="-1"></a>dta <span class="sc">%&gt;%</span></span>
 <span id="cb396-3"><a href="lab-viii-publication-ready-tables-interactions-cont..html#cb396-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Democrat <span class="sc">==</span> <span class="dv">0</span>) <span class="sc">%&gt;%</span></span>
@@ -1107,7 +1113,7 @@ Adjusted R<sup>2</sup>
 <span id="cb396-8"><a href="lab-viii-publication-ready-tables-interactions-cont..html#cb396-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Fed Funds Rate When Republican is in Office&quot;</span>,</span>
 <span id="cb396-9"><a href="lab-viii-publication-ready-tables-interactions-cont..html#cb396-9" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">&quot;Quarters from Last Election&quot;</span>,</span>
 <span id="cb396-10"><a href="lab-viii-publication-ready-tables-interactions-cont..html#cb396-10" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">&quot;Fed Funds Rate&quot;</span>)</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-98-4.png" width="672" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-99-4.png" width="672" /></p>
 </div>
 <div id="how-responsive-is-the-fed-to-rising-inflation-present-a-scatterplot-with-a-regression-line-and-calculate-the-correlation-coefficient-and-estimate-a-simple-regression-model." class="section level3 hasAnchor" number="9.2.10">
 <h3><span class="header-section-number">9.2.10</span> How responsive is the Fed to rising inflation? Present a scatterplot with a regression line and calculate the correlation coefficient and estimate a simple regression model.<a href="lab-viii-publication-ready-tables-interactions-cont..html#how-responsive-is-the-fed-to-rising-inflation-present-a-scatterplot-with-a-regression-line-and-calculate-the-correlation-coefficient-and-estimate-a-simple-regression-model." class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -1120,7 +1126,7 @@ Adjusted R<sup>2</sup>
 <span id="cb397-7"><a href="lab-viii-publication-ready-tables-interactions-cont..html#cb397-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Fed Funds Rate &amp; Inflation&quot;</span>,</span>
 <span id="cb397-8"><a href="lab-viii-publication-ready-tables-interactions-cont..html#cb397-8" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">&quot;Inflation&quot;</span>,</span>
 <span id="cb397-9"><a href="lab-viii-publication-ready-tables-interactions-cont..html#cb397-9" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">&quot;Fed Funds Rate&quot;</span>)</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-99-1.png" width="672" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-100-1.png" width="672" /></p>
 <div class="sourceCode" id="cb398"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb398-1"><a href="lab-viii-publication-ready-tables-interactions-cont..html#cb398-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Correlation Coefficient</span></span>
 <span id="cb398-2"><a href="lab-viii-publication-ready-tables-interactions-cont..html#cb398-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(dta<span class="sc">$</span>inflation, dta<span class="sc">$</span>FEDFUNDS, <span class="at">use=</span><span class="st">&quot;complete.obs&quot;</span>)</span></code></pre></div>
 <pre><code>## [1] 0.6951576</code></pre>
@@ -1223,7 +1229,7 @@ Adjusted R<sup>2</sup>
 <span id="cb407-9"><a href="lab-viii-publication-ready-tables-interactions-cont..html#cb407-9" aria-hidden="true" tabindex="-1"></a><span class="do">## Function for Partial Effects</span></span>
 <span id="cb407-10"><a href="lab-viii-publication-ready-tables-interactions-cont..html#cb407-10" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_model</span>(model2, <span class="at">type =</span> <span class="st">&quot;pred&quot;</span>, <span class="at">terms =</span> <span class="st">&quot;wins&quot;</span>) <span class="sc">+</span></span>
 <span id="cb407-11"><a href="lab-viii-publication-ready-tables-interactions-cont..html#cb407-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-102-1.png" width="672" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-103-1.png" width="672" /></p>
 <div class="sourceCode" id="cb408"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb408-1"><a href="lab-viii-publication-ready-tables-interactions-cont..html#cb408-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Loading Federal Reserve Data</span></span>
 <span id="cb408-2"><a href="lab-viii-publication-ready-tables-interactions-cont..html#cb408-2" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(<span class="st">&quot;~/GOVT8001/Lab 8/fed.RData&quot;</span>)</span>
 <span id="cb408-3"><a href="lab-viii-publication-ready-tables-interactions-cont..html#cb408-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -1236,8 +1242,7 @@ Adjusted R<sup>2</sup>
 <span id="cb408-10"><a href="lab-viii-publication-ready-tables-interactions-cont..html#cb408-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Fed Funds Rate By President&#39;s Party&quot;</span>,</span>
 <span id="cb408-11"><a href="lab-viii-publication-ready-tables-interactions-cont..html#cb408-11" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">&quot;Quarters from Last Election&quot;</span>,</span>
 <span id="cb408-12"><a href="lab-viii-publication-ready-tables-interactions-cont..html#cb408-12" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">&quot;Fed Funds Rate&quot;</span>, <span class="at">color =</span> <span class="st">&quot;Democrat&quot;</span>)</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-102-2.png" width="672" /></p>
-
+<p><img src="_main_files/figure-html/unnamed-chunk-103-2.png" width="672" /></p>
 </div>
 </div>
             </section>
@@ -1245,8 +1250,8 @@ Adjusted R<sup>2</sup>
           </div>
         </div>
       </div>
-<a href="lab-vii-interactions-categorical-variables.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-
+<a href="lab-vii-interactions-categorical-variables.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="lab-ix-interactions-redux.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

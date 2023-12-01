@@ -2026,3 +2026,122 @@ dta %>%
        y = "Fed Funds Rate", color = "Democrat")
 
 ```
+
+# Lab IX Interactions Redux
+
+```{r, echo=FALSE}
+knitr::include_graphics("image_9.png")
+
+```
+
+```{r}
+## Data
+load("~/GOVT8001/Lab 10/Ch12_Exercise2_Global_warming.RData")
+
+## Packages
+library(tidyverse)
+library(margins)
+
+```
+
+## Review of Interactions
+
+- Baseline Model
+  - Consider the following model that regresses beliefs in human caused global warming on education, race, and political ideology
+
+$$Human\ Cause_i = \alpha + \beta_1 Educ_i +  \beta_2 White_i + \beta_3 Party7_i + \epsilon_i$$
+
+- `party7` is a 7 point ideological scale ranging from 0, most conservative, to 7, most liberal.
+- Interpret the following coefficients
+
+```{r, echo = FALSE}
+lm(humancause ~ educ + white + party7, data = dta) %>%
+  summary()
+
+```
+
+- Now let's interact `white` with `party7`
+$$Human\ Cause_i = \alpha + \beta_1 Educ_i +  \beta_2 White_i + \beta_3 Party7_i + \beta_4 (White_i \times Party7_i) + \epsilon_i$$
+- Interpret the following coefficients
+
+```{r, echo = FALSE}
+lm(humancause ~ educ + white*party7, data = dta) %>%
+  summary()
+
+```
+
+## `library(margins)`
+
+- [Vignette](https://cran.r-project.org/web/packages/margins/vignettes/Introduction.html)
+
+```{r, echo = TRUE}
+model1 <- lm(humancause ~ educ + white + party7, data = dta)
+margins(model1)
+model1
+
+```
+
+```{r, echo = TRUE}
+
+summary(margins(model1))
+
+```
+
+- You can select specific variables
+
+```{r, echo = TRUE}
+summary(margins(model1, variables = "white"))
+
+```
+
+- Now with the interaction term included
+- See the different marginal effects
+- This is useful if you want to see the marginal effect at representative cases (MER) or the marginal effect at the mean (MEM)
+```{r, echo=TRUE}
+model2 <- lm(humancause ~ educ + white*party7, data = dta)
+summary(margins(model2, at = list(white = 0:1)))
+summary(margins(model2, variables = "white", at = list(party7 = 0:7)))
+
+```
+
+- Let's consider a continuous interaction
+```{r, echo=TRUE}
+model3 <- lm(humancause ~ educ*party7, data = dta)
+summary(model3)
+summary(margins(model3, variables = "party7", at = list(educ = 0:16)))
+
+```
+
+## Marginal Effects Plots
+
+- Let's consider a continuous interaction plot
+
+```{r, echo=FALSE}
+cplot(model3, "educ", "party7", what = "effect", draw = FALSE)
+
+```
+
+```{r, echo=TRUE}
+c <- cplot(model3, "educ", "party7", what = "effect")
+ggplot(c, aes(x = xvals)) + 
+  geom_line(aes(y = yvals)) +
+  geom_line(aes(y = upper), linetype = 2) +
+  geom_line(aes(y = lower), linetype = 2) +
+  geom_hline(yintercept = 0) +
+  ggtitle("Effect of Becoming More Liberal By Education") +
+  xlab("Education") + ylab("AME party7") + theme_bw()
+```
+
+- Let's consider a model with a squared term
+$$Human\ Cause_i = \alpha + \beta_1 Age_i +  \beta_2 Age_i^2 + \epsilon_i$$
+
+```{r, echo = TRUE}
+model4 <- lm(humancause ~ age + I(age^2), data = dta)
+summary(margins(model4, variables = "age", at = list(age = c(20, 40, 60, 80))))
+
+```
+
+```{r, echo=TRUE}
+cplot(model4, "age", what = "effect", main = "AME of Age")
+
+```

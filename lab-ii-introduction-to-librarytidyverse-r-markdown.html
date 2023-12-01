@@ -291,6 +291,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="9.3" data-path="lab-viii-publication-ready-tables-interactions-cont..html"><a href="lab-viii-publication-ready-tables-interactions-cont..html#appendix-additional-materials"><i class="fa fa-check"></i><b>9.3</b> Appendix: Additional Materials</a></li>
 </ul></li>
+<li class="chapter" data-level="10" data-path="lab-ix-interactions-redux.html"><a href="lab-ix-interactions-redux.html"><i class="fa fa-check"></i><b>10</b> Lab IX Interactions Redux</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="lab-ix-interactions-redux.html"><a href="lab-ix-interactions-redux.html#review-of-interactions"><i class="fa fa-check"></i><b>10.1</b> Review of Interactions</a></li>
+<li class="chapter" data-level="10.2" data-path="lab-ix-interactions-redux.html"><a href="lab-ix-interactions-redux.html#librarymargins"><i class="fa fa-check"></i><b>10.2</b> <code>library(margins)</code></a></li>
+<li class="chapter" data-level="10.3" data-path="lab-ix-interactions-redux.html"><a href="lab-ix-interactions-redux.html#marginal-effects-plots"><i class="fa fa-check"></i><b>10.3</b> Marginal Effects Plots</a></li>
+</ul></li>
 </ul>
 
       </nav>
@@ -347,10 +353,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="sourceCode" id="cb171"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb171-1"><a href="lab-ii-introduction-to-librarytidyverse-r-markdown.html#cb171-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(resume)</span></code></pre></div>
 <pre><code>## Rows: 4,870
 ## Columns: 4
-## $ firstname &lt;chr&gt; &quot;Allison&quot;, &quot;Kristen&quot;, &quot;Lakisha&quot;, &quot;Latonya&quot;, &quot;Carrie&quot;, &quot;Jay&quot;, &quot;Jill&quot;, &quot;Kenya&quot;, &quot;Latonya&quot;, &quot;Tyrone&quot;, …
-## $ sex       &lt;chr&gt; &quot;female&quot;, &quot;female&quot;, &quot;female&quot;, &quot;female&quot;, &quot;female&quot;, &quot;male&quot;, &quot;female&quot;, &quot;female&quot;, &quot;female&quot;, &quot;male&quot;, &quot;fe…
-## $ race      &lt;chr&gt; &quot;white&quot;, &quot;white&quot;, &quot;black&quot;, &quot;black&quot;, &quot;white&quot;, &quot;white&quot;, &quot;white&quot;, &quot;black&quot;, &quot;black&quot;, &quot;black&quot;, &quot;black&quot;, …
-## $ call      &lt;int&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, …</code></pre>
+## $ firstname &lt;chr&gt; &quot;Allison&quot;, &quot;Kristen&quot;, &quot;Lakisha&quot;, &quot;Latonya&quot;, &quot;Carrie&quot;, &quot;Jay&quot;, &quot;Jill&quot;, &quot;Kenya&quot;, &quot;Latonya&quot;, &quot;Tyrone&quot;, &quot;Ai…
+## $ sex       &lt;chr&gt; &quot;female&quot;, &quot;female&quot;, &quot;female&quot;, &quot;female&quot;, &quot;female&quot;, &quot;male&quot;, &quot;female&quot;, &quot;female&quot;, &quot;female&quot;, &quot;male&quot;, &quot;femal…
+## $ race      &lt;chr&gt; &quot;white&quot;, &quot;white&quot;, &quot;black&quot;, &quot;black&quot;, &quot;white&quot;, &quot;white&quot;, &quot;white&quot;, &quot;black&quot;, &quot;black&quot;, &quot;black&quot;, &quot;black&quot;, &quot;wh…
+## $ call      &lt;int&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, …</code></pre>
 <div class="sourceCode" id="cb173"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb173-1"><a href="lab-ii-introduction-to-librarytidyverse-r-markdown.html#cb173-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(resume)</span></code></pre></div>
 <pre><code>## [1] 4870    4</code></pre>
 <div class="sourceCode" id="cb175"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb175-1"><a href="lab-ii-introduction-to-librarytidyverse-r-markdown.html#cb175-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(resume)</span></code></pre></div>

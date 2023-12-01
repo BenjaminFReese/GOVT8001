@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>7 Lab VI: Goodness of Fit &amp; Multiple Regression | GOVT 8001: Shared Working Book</title>
-  <meta name="description" content="7 Lab VI: Goodness of Fit &amp; Multiple Regression | GOVT 8001: Shared Working Book" />
+  <title>10 Lab IX Interactions Redux | GOVT 8001: Shared Working Book</title>
+  <meta name="description" content="10 Lab IX Interactions Redux | GOVT 8001: Shared Working Book" />
   <meta name="generator" content="bookdown 0.35 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="7 Lab VI: Goodness of Fit &amp; Multiple Regression | GOVT 8001: Shared Working Book" />
+  <meta property="og:title" content="10 Lab IX Interactions Redux | GOVT 8001: Shared Working Book" />
   <meta property="og:type" content="book" />
   
   
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="7 Lab VI: Goodness of Fit &amp; Multiple Regression | GOVT 8001: Shared Working Book" />
+  <meta name="twitter:title" content="10 Lab IX Interactions Redux | GOVT 8001: Shared Working Book" />
   
   
   
@@ -29,8 +29,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="lab-v-introduction-to-regression.html"/>
-<link rel="next" href="lab-vii-interactions-categorical-variables.html"/>
+<link rel="prev" href="lab-viii-publication-ready-tables-interactions-cont..html"/>
+
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -314,297 +314,204 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="lab-vi-goodness-of-fit-multiple-regression" class="section level1 hasAnchor" number="7">
-<h1><span class="header-section-number">7</span> Lab VI: Goodness of Fit &amp; Multiple Regression<a href="lab-vi-goodness-of-fit-multiple-regression.html#lab-vi-goodness-of-fit-multiple-regression" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<p><img src="image_6.png" width="834" /></p>
-<div class="sourceCode" id="cb294"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb294-1"><a href="lab-vi-goodness-of-fit-multiple-regression.html#cb294-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Packages</span></span>
-<span id="cb294-2"><a href="lab-vi-goodness-of-fit-multiple-regression.html#cb294-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb294-3"><a href="lab-vi-goodness-of-fit-multiple-regression.html#cb294-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidymodels)</span>
-<span id="cb294-4"><a href="lab-vi-goodness-of-fit-multiple-regression.html#cb294-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(mosaic)</span>
-<span id="cb294-5"><a href="lab-vi-goodness-of-fit-multiple-regression.html#cb294-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb294-6"><a href="lab-vi-goodness-of-fit-multiple-regression.html#cb294-6" aria-hidden="true" tabindex="-1"></a><span class="do">## Data</span></span>
-<span id="cb294-7"><a href="lab-vi-goodness-of-fit-multiple-regression.html#cb294-7" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(<span class="st">&quot;~/GOVT5001/Lab VI/sh.RData&quot;</span>)</span>
-<span id="cb294-8"><a href="lab-vi-goodness-of-fit-multiple-regression.html#cb294-8" aria-hidden="true" tabindex="-1"></a>house <span class="ot">&lt;-</span> SaratogaHouses</span>
-<span id="cb294-9"><a href="lab-vi-goodness-of-fit-multiple-regression.html#cb294-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb294-10"><a href="lab-vi-goodness-of-fit-multiple-regression.html#cb294-10" aria-hidden="true" tabindex="-1"></a><span class="do">## Model</span></span>
-<span id="cb294-11"><a href="lab-vi-goodness-of-fit-multiple-regression.html#cb294-11" aria-hidden="true" tabindex="-1"></a>model1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(price<span class="sc">~</span>bedrooms, <span class="at">data=</span>house)</span></code></pre></div>
-<div id="r2" class="section level2 hasAnchor" number="7.1">
-<h2><span class="header-section-number">7.1</span> <span class="math inline">\(R^2\)</span><a href="lab-vi-goodness-of-fit-multiple-regression.html#r2" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p><span class="math display">\[1-\frac{SSR}{TSS} = \frac{\sum\epsilon^2}{\sum(y_{i}-\bar{y})^2}=\frac{MSS}{TSS}=\frac{\sum(\hat{y_{i}}-\bar{y})^2}{\sum(y_{i}-\bar{y})^2}\]</span></p>
+<div id="lab-ix-interactions-redux" class="section level1 hasAnchor" number="10">
+<h1><span class="header-section-number">10</span> Lab IX Interactions Redux<a href="lab-ix-interactions-redux.html#lab-ix-interactions-redux" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p><img src="image_9.png" width="1050" /></p>
+<div class="sourceCode" id="cb409"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb409-1"><a href="lab-ix-interactions-redux.html#cb409-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Data</span></span>
+<span id="cb409-2"><a href="lab-ix-interactions-redux.html#cb409-2" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(<span class="st">&quot;~/GOVT8001/Lab 10/Ch12_Exercise2_Global_warming.RData&quot;</span>)</span>
+<span id="cb409-3"><a href="lab-ix-interactions-redux.html#cb409-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb409-4"><a href="lab-ix-interactions-redux.html#cb409-4" aria-hidden="true" tabindex="-1"></a><span class="do">## Packages</span></span>
+<span id="cb409-5"><a href="lab-ix-interactions-redux.html#cb409-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb409-6"><a href="lab-ix-interactions-redux.html#cb409-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(margins)</span></code></pre></div>
+<div id="review-of-interactions" class="section level2 hasAnchor" number="10.1">
+<h2><span class="header-section-number">10.1</span> Review of Interactions<a href="lab-ix-interactions-redux.html#review-of-interactions" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <ul>
-<li>Coefficient of Determination</li>
-<li>Proportion of the Variance in <span class="math inline">\(Y_{i}\)</span> explained by <span class="math inline">\(X_{i}\)</span></li>
-<li>“Goodness of Fit”</li>
-</ul>
-<div class="sourceCode" id="cb295"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb295-1"><a href="lab-vi-goodness-of-fit-multiple-regression.html#cb295-1" aria-hidden="true" tabindex="-1"></a><span class="do">##1-SSR/TSS</span></span>
-<span id="cb295-2"><a href="lab-vi-goodness-of-fit-multiple-regression.html#cb295-2" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span><span class="sc">-</span><span class="fu">sum</span>((model1<span class="sc">$</span>residuals)<span class="sc">^</span><span class="dv">2</span>)<span class="sc">/</span></span>
-<span id="cb295-3"><a href="lab-vi-goodness-of-fit-multiple-regression.html#cb295-3" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>((house<span class="sc">$</span>price<span class="sc">-</span><span class="fu">mean</span>(house<span class="sc">$</span>price))<span class="sc">^</span><span class="dv">2</span>)</span></code></pre></div>
-<pre><code>## [1] 0.1602791</code></pre>
-<div class="sourceCode" id="cb297"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb297-1"><a href="lab-vi-goodness-of-fit-multiple-regression.html#cb297-1" aria-hidden="true" tabindex="-1"></a><span class="do">## MSS/TSS</span></span>
-<span id="cb297-2"><a href="lab-vi-goodness-of-fit-multiple-regression.html#cb297-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>((model1<span class="sc">$</span>fitted.values<span class="sc">-</span><span class="fu">mean</span>(house<span class="sc">$</span>price))<span class="sc">^</span><span class="dv">2</span>)<span class="sc">/</span></span>
-<span id="cb297-3"><a href="lab-vi-goodness-of-fit-multiple-regression.html#cb297-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">sum</span>((house<span class="sc">$</span>price<span class="sc">-</span><span class="fu">mean</span>(house<span class="sc">$</span>price))<span class="sc">^</span><span class="dv">2</span>)</span></code></pre></div>
-<pre><code>## [1] 0.1602791</code></pre>
-<div class="sourceCode" id="cb299"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb299-1"><a href="lab-vi-goodness-of-fit-multiple-regression.html#cb299-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(model1)<span class="sc">$</span>r.squared</span></code></pre></div>
-<pre><code>## [1] 0.1602791</code></pre>
-<p><span class="math display">\[R^2=Cor(Y_i,\hat{Y_i})\]</span></p>
+<li>Baseline Model
 <ul>
-<li>Squared Correlation Between Observed Y and Fitted Y</li>
+<li>Consider the following model that regresses beliefs in human caused global warming on education, race, and political ideology</li>
+</ul></li>
 </ul>
-<div class="sourceCode" id="cb301"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb301-1"><a href="lab-vi-goodness-of-fit-multiple-regression.html#cb301-1" aria-hidden="true" tabindex="-1"></a>mod_aug <span class="ot">&lt;-</span> <span class="fu">augment</span>(model1)</span>
-<span id="cb301-2"><a href="lab-vi-goodness-of-fit-multiple-regression.html#cb301-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb301-3"><a href="lab-vi-goodness-of-fit-multiple-regression.html#cb301-3" aria-hidden="true" tabindex="-1"></a>(<span class="fu">cor</span>(mod_aug<span class="sc">$</span>.fitted, mod_aug<span class="sc">$</span>price)<span class="sc">^</span><span class="dv">2</span>)</span></code></pre></div>
-<pre><code>## [1] 0.1602791</code></pre>
+<p><span class="math display">\[Human\ Cause_i = \alpha + \beta_1 Educ_i +  \beta_2 White_i + \beta_3 Party7_i + \epsilon_i\]</span></p>
 <ul>
-<li><span class="math inline">\(R^2\)</span> as proportional reduction in error</li>
+<li><code>party7</code> is a 7 point ideological scale ranging from 0, most conservative, to 7, most liberal.</li>
+<li>Interpret the following coefficients</li>
 </ul>
-<div class="sourceCode" id="cb303"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb303-1"><a href="lab-vi-goodness-of-fit-multiple-regression.html#cb303-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Constant Only model</span></span>
-<span id="cb303-2"><a href="lab-vi-goodness-of-fit-multiple-regression.html#cb303-2" aria-hidden="true" tabindex="-1"></a>null_model <span class="ot">&lt;-</span> <span class="fu">lm</span>(house<span class="sc">$</span>price<span class="sc">~</span><span class="dv">1</span>)</span>
-<span id="cb303-3"><a href="lab-vi-goodness-of-fit-multiple-regression.html#cb303-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb303-4"><a href="lab-vi-goodness-of-fit-multiple-regression.html#cb303-4" aria-hidden="true" tabindex="-1"></a><span class="do">## The intercept is just the mean of Y</span></span>
-<span id="cb303-5"><a href="lab-vi-goodness-of-fit-multiple-regression.html#cb303-5" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(null_model)<span class="sc">$</span>coefficient</span></code></pre></div>
-<pre><code>##             Estimate Std. Error  t value Pr(&gt;|t|)
-## (Intercept) 211966.7   2368.132 89.50798        0</code></pre>
-<div class="sourceCode" id="cb305"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb305-1"><a href="lab-vi-goodness-of-fit-multiple-regression.html#cb305-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(house<span class="sc">$</span>price)</span></code></pre></div>
-<pre><code>## [1] 211966.7</code></pre>
-<div class="sourceCode" id="cb307"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb307-1"><a href="lab-vi-goodness-of-fit-multiple-regression.html#cb307-1" aria-hidden="true" tabindex="-1"></a><span class="do">## R Squared is 0</span></span>
-<span id="cb307-2"><a href="lab-vi-goodness-of-fit-multiple-regression.html#cb307-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(null_model)<span class="sc">$</span>r.squared</span></code></pre></div>
-<pre><code>## [1] 0</code></pre>
-<div class="sourceCode" id="cb309"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb309-1"><a href="lab-vi-goodness-of-fit-multiple-regression.html#cb309-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Squared of Model 1</span></span>
-<span id="cb309-2"><a href="lab-vi-goodness-of-fit-multiple-regression.html#cb309-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(model1)<span class="sc">$</span>r.squared</span></code></pre></div>
-<pre><code>## [1] 0.1602791</code></pre>
-<ul>
-<li>The number of bedrooms that a house has explains 16% of the variation in the price of a house</li>
-</ul>
-</div>
-<div id="mean-squared-error-root-mean-squared-error" class="section level2 hasAnchor" number="7.2">
-<h2><span class="header-section-number">7.2</span> Mean Squared Error &amp; Root Mean Squared Error<a href="lab-vi-goodness-of-fit-multiple-regression.html#mean-squared-error-root-mean-squared-error" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p><span class="math display">\[\hat{MSE} = \frac{1}{n}\sum^{n}_{i=1}(Y_{i}-\hat{Y_{i}})^2\]</span></p>
-<ul>
-<li><p>Average distance from the line-of-best-fit</p></li>
-<li><p>The root mean square error, or RMSE, is calculated by taking the square root of the MSE. Here is the formula:
-<span class="math display">\[\hat{RMSE} = \sqrt{\frac{1}{n}\sum^{n}_{i=1}(Y_{i}-\hat{Y_{i}})^2}\]</span></p></li>
-<li><p>The average prediction error in units of Y</p></li>
-</ul>
-<div class="sourceCode" id="cb311"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb311-1"><a href="lab-vi-goodness-of-fit-multiple-regression.html#cb311-1" aria-hidden="true" tabindex="-1"></a>fit <span class="ot">&lt;-</span> <span class="fu">lm</span>(Mustangs<span class="sc">$</span>Price <span class="sc">~</span> Mustangs<span class="sc">$</span>Miles)</span>
-<span id="cb311-2"><a href="lab-vi-goodness-of-fit-multiple-regression.html#cb311-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb311-3"><a href="lab-vi-goodness-of-fit-multiple-regression.html#cb311-3" aria-hidden="true" tabindex="-1"></a>Mustangs<span class="sc">$</span>predicted <span class="ot">&lt;-</span> <span class="fu">predict</span>(fit)</span>
-<span id="cb311-4"><a href="lab-vi-goodness-of-fit-multiple-regression.html#cb311-4" aria-hidden="true" tabindex="-1"></a>Mustangs<span class="sc">$</span>residuals <span class="ot">&lt;-</span> <span class="fu">residuals</span>(fit)</span>
-<span id="cb311-5"><a href="lab-vi-goodness-of-fit-multiple-regression.html#cb311-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb311-6"><a href="lab-vi-goodness-of-fit-multiple-regression.html#cb311-6" aria-hidden="true" tabindex="-1"></a>Mustangs <span class="sc">%&gt;%</span></span>
-<span id="cb311-7"><a href="lab-vi-goodness-of-fit-multiple-regression.html#cb311-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(Miles, Price)) <span class="sc">+</span></span>
-<span id="cb311-8"><a href="lab-vi-goodness-of-fit-multiple-regression.html#cb311-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">col =</span> <span class="st">&quot;black&quot;</span>, <span class="at">size =</span> <span class="dv">3</span>) <span class="sc">+</span></span>
-<span id="cb311-9"><a href="lab-vi-goodness-of-fit-multiple-regression.html#cb311-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">y =</span> predicted), <span class="at">shape =</span> <span class="dv">1</span>, <span class="at">size =</span> <span class="dv">3</span>) <span class="sc">+</span></span>
-<span id="cb311-10"><a href="lab-vi-goodness-of-fit-multiple-regression.html#cb311-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_segment</span>(<span class="fu">aes</span>(<span class="at">xend =</span> Miles, <span class="at">yend =</span> predicted)) <span class="sc">+</span></span>
-<span id="cb311-11"><a href="lab-vi-goodness-of-fit-multiple-regression.html#cb311-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span></span>
-<span id="cb311-12"><a href="lab-vi-goodness-of-fit-multiple-regression.html#cb311-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">&quot;lm&quot;</span>, <span class="at">se =</span> F) <span class="sc">+</span></span>
-<span id="cb311-13"><a href="lab-vi-goodness-of-fit-multiple-regression.html#cb311-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;X&quot;</span>, <span class="at">y =</span> <span class="st">&quot;Y&quot;</span>)</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-67-1.png" width="672" /></p>
-<ul>
-<li>Take the square root of the mean of the distance of the solid black lines for RMSE</li>
-</ul>
-<div class="sourceCode" id="cb312"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb312-1"><a href="lab-vi-goodness-of-fit-multiple-regression.html#cb312-1" aria-hidden="true" tabindex="-1"></a><span class="do">## MAE of Model 1</span></span>
-<span id="cb312-2"><a href="lab-vi-goodness-of-fit-multiple-regression.html#cb312-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(model1)<span class="sc">$</span>sigma</span></code></pre></div>
-<pre><code>## [1] 90234.16</code></pre>
-<div class="sourceCode" id="cb314"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb314-1"><a href="lab-vi-goodness-of-fit-multiple-regression.html#cb314-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Manually</span></span>
-<span id="cb314-2"><a href="lab-vi-goodness-of-fit-multiple-regression.html#cb314-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sqrt</span>(<span class="fu">mean</span>((mod_aug<span class="sc">$</span>.fitted <span class="sc">-</span> mod_aug<span class="sc">$</span>price)<span class="sc">^</span><span class="dv">2</span>))</span></code></pre></div>
-<pre><code>## [1] 90181.93</code></pre>
-</div>
-<div id="multiple-regression" class="section level2 hasAnchor" number="7.3">
-<h2><span class="header-section-number">7.3</span> Multiple Regression<a href="lab-vi-goodness-of-fit-multiple-regression.html#multiple-regression" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p><span class="math display">\[Price_{i}=\beta_{0} + \beta_{1}Bedrooms_{i} + \beta_{2}Bathrooms_{i} + \epsilon_{i}\]</span></p>
-<div class="sourceCode" id="cb316"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb316-1"><a href="lab-vi-goodness-of-fit-multiple-regression.html#cb316-1" aria-hidden="true" tabindex="-1"></a><span class="fu">lm</span>(price<span class="sc">~</span>bedrooms <span class="sc">+</span> bathrooms, <span class="at">data=</span>house)</span></code></pre></div>
 <pre><code>## 
 ## Call:
-## lm(formula = price ~ bedrooms + bathrooms, data = house)
+## lm(formula = humancause ~ educ + white + party7, data = dta)
+## 
+## Residuals:
+##     Min      1Q  Median      3Q     Max 
+## -0.6677 -0.3461 -0.1502  0.4478  1.0551 
 ## 
 ## Coefficients:
-## (Intercept)     bedrooms    bathrooms  
-##        2193        19325        78316</code></pre>
-</div>
-<div id="adjusted-r2" class="section level2 hasAnchor" number="7.4">
-<h2><span class="header-section-number">7.4</span> Adjusted <span class="math inline">\(R^2\)</span><a href="lab-vi-goodness-of-fit-multiple-regression.html#adjusted-r2" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p><span class="math display">\[Adjusted\space R^2 = 1- \frac{(1-R^2)(N-1)}{(N-k-1)}\]</span></p>
+##              Estimate Std. Error t value             Pr(&gt;|t|)    
+## (Intercept) -0.410810   0.070554  -5.823        0.00000000681 ***
+## educ         0.029916   0.005207   5.745        0.00000001072 ***
+## white        0.030842   0.024806   1.243                0.214    
+## party7       0.085558   0.005060  16.909 &lt; 0.0000000000000002 ***
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 0.4359 on 1851 degrees of freedom
+##   (17 observations deleted due to missingness)
+## Multiple R-squared:  0.1501, Adjusted R-squared:  0.1488 
+## F-statistic:   109 on 3 and 1851 DF,  p-value: &lt; 0.00000000000000022</code></pre>
 <ul>
-<li><span class="math inline">\(R^2\)</span> is just <span class="math inline">\(R^2\)</span></li>
-<li><span class="math inline">\(N\)</span> is the sample size</li>
-<li><span class="math inline">\(k\)</span> is the number of independent variables</li>
-<li>Penalizes us for just throwing more variables at the model</li>
-<li>Proportion of variation in <span class="math inline">\(Y_{i}\)</span> explained by the model</li>
+<li>Now let’s interact <code>white</code> with <code>party7</code>
+<span class="math display">\[Human\ Cause_i = \alpha + \beta_1 Educ_i +  \beta_2 White_i + \beta_3 Party7_i + \beta_4 (White_i \times Party7_i) + \epsilon_i\]</span></li>
+<li>Interpret the following coefficients</li>
 </ul>
-<div class="sourceCode" id="cb318"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb318-1"><a href="lab-vi-goodness-of-fit-multiple-regression.html#cb318-1" aria-hidden="true" tabindex="-1"></a>model2 <span class="ot">&lt;-</span> <span class="fu">lm</span>(price<span class="sc">~</span>bedrooms <span class="sc">+</span> bathrooms, <span class="at">data=</span>house)</span>
-<span id="cb318-2"><a href="lab-vi-goodness-of-fit-multiple-regression.html#cb318-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb318-3"><a href="lab-vi-goodness-of-fit-multiple-regression.html#cb318-3" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span><span class="sc">-</span>(<span class="dv">1</span><span class="sc">-</span><span class="fu">summary</span>(model2)<span class="sc">$</span>r.squared)<span class="sc">*</span>(<span class="fu">length</span>(house<span class="sc">$</span>price)<span class="sc">-</span><span class="dv">1</span>)<span class="sc">/</span></span>
-<span id="cb318-4"><a href="lab-vi-goodness-of-fit-multiple-regression.html#cb318-4" aria-hidden="true" tabindex="-1"></a>((<span class="fu">length</span>(house<span class="sc">$</span>price)<span class="sc">-</span><span class="dv">2-1</span>))</span></code></pre></div>
-<pre><code>## [1] 0.3763283</code></pre>
-<div class="sourceCode" id="cb320"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb320-1"><a href="lab-vi-goodness-of-fit-multiple-regression.html#cb320-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(model2)<span class="sc">$</span>adj.r.squared</span></code></pre></div>
-<pre><code>## [1] 0.3763283</code></pre>
+<pre><code>## 
+## Call:
+## lm(formula = humancause ~ educ + white * party7, data = dta)
+## 
+## Residuals:
+##     Min      1Q  Median      3Q     Max 
+## -0.7074 -0.3523 -0.1280  0.4208  1.0921 
+## 
+## Coefficients:
+##              Estimate Std. Error t value      Pr(&gt;|t|)    
+## (Intercept)  -0.17303    0.08618  -2.008      0.044829 *  
+## educ          0.03066    0.00518   5.920 0.00000000383 ***
+## white        -0.26183    0.06638  -3.944 0.00008298417 ***
+## party7        0.03761    0.01128   3.334      0.000874 ***
+## white:party7  0.05987    0.01261   4.749 0.00000220205 ***
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 0.4333 on 1850 degrees of freedom
+##   (17 observations deleted due to missingness)
+## Multiple R-squared:  0.1604, Adjusted R-squared:  0.1586 
+## F-statistic: 88.34 on 4 and 1850 DF,  p-value: &lt; 0.00000000000000022</code></pre>
 </div>
-<div id="lab-questions-congratulations-youve-been-hired-as-an-analyst-by-the-insert-your-favorite-baseball-team-name-here.-your-first-job-is-to-make-a-few-predictions-about-what-your-teams-future-will-look-like." class="section level2 hasAnchor" number="7.5">
-<h2><span class="header-section-number">7.5</span> Lab Questions: Congratulations! You’ve been hired as an analyst by the [insert your favorite baseball team name here]. Your first job is to make a few predictions about what your teams’ future will look like.<a href="lab-vi-goodness-of-fit-multiple-regression.html#lab-questions-congratulations-youve-been-hired-as-an-analyst-by-the-insert-your-favorite-baseball-team-name-here.-your-first-job-is-to-make-a-few-predictions-about-what-your-teams-future-will-look-like." class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="librarymargins" class="section level2 hasAnchor" number="10.2">
+<h2><span class="header-section-number">10.2</span> <code>library(margins)</code><a href="lab-ix-interactions-redux.html#librarymargins" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <ul>
-<li>Download lab_vi.Rmd from Canvas</li>
-<li>Download bbData.RData from Canvas</li>
-<li>Try the lab questions!</li>
+<li><a href="https://cran.r-project.org/web/packages/margins/vignettes/Introduction.html">Vignette</a></li>
 </ul>
-<div id="load-in-the-bbdta.rdata-file." class="section level3 hasAnchor" number="7.5.1">
-<h3><span class="header-section-number">7.5.1</span> Load in the bbDta.RData file.<a href="lab-vi-goodness-of-fit-multiple-regression.html#load-in-the-bbdta.rdata-file." class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb322"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb322-1"><a href="lab-vi-goodness-of-fit-multiple-regression.html#cb322-1" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(<span class="st">&quot;~/GOVT5001/Lab VI/bbData.RData&quot;</span>)</span></code></pre></div>
-</div>
-<div id="run-a-regression-model-with-attendance-as-the-dv-and-wins-as-the-iv.-save-as-model1." class="section level3 hasAnchor" number="7.5.2">
-<h3><span class="header-section-number">7.5.2</span> Run a regression model with attendance as the DV and wins as the IV. Save as model1.<a href="lab-vi-goodness-of-fit-multiple-regression.html#run-a-regression-model-with-attendance-as-the-dv-and-wins-as-the-iv.-save-as-model1." class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb323"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb323-1"><a href="lab-vi-goodness-of-fit-multiple-regression.html#cb323-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Simple Regression Model</span></span>
-<span id="cb323-2"><a href="lab-vi-goodness-of-fit-multiple-regression.html#cb323-2" aria-hidden="true" tabindex="-1"></a>model1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(home_attend <span class="sc">~</span> wins, <span class="at">data =</span> bbData)</span>
-<span id="cb323-3"><a href="lab-vi-goodness-of-fit-multiple-regression.html#cb323-3" aria-hidden="true" tabindex="-1"></a>model1</span></code></pre></div>
+<div class="sourceCode" id="cb412"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb412-1"><a href="lab-ix-interactions-redux.html#cb412-1" aria-hidden="true" tabindex="-1"></a>model1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(humancause <span class="sc">~</span> educ <span class="sc">+</span> white <span class="sc">+</span> party7, <span class="at">data =</span> dta)</span>
+<span id="cb412-2"><a href="lab-ix-interactions-redux.html#cb412-2" aria-hidden="true" tabindex="-1"></a><span class="fu">margins</span>(model1)</span></code></pre></div>
+<pre><code>##     educ   white  party7
+##  0.02992 0.03084 0.08556</code></pre>
+<div class="sourceCode" id="cb414"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb414-1"><a href="lab-ix-interactions-redux.html#cb414-1" aria-hidden="true" tabindex="-1"></a>model1</span></code></pre></div>
 <pre><code>## 
 ## Call:
-## lm(formula = home_attend ~ wins, data = bbData)
+## lm(formula = humancause ~ educ + white + party7, data = dta)
 ## 
 ## Coefficients:
-## (Intercept)         wins  
-##     -378164        27345</code></pre>
-</div>
-<div id="does-winning-increase-attendance-if-so-by-how-much" class="section level3 hasAnchor" number="7.5.3">
-<h3><span class="header-section-number">7.5.3</span> Does winning increase attendance? If so, by how much?<a href="lab-vi-goodness-of-fit-multiple-regression.html#does-winning-increase-attendance-if-so-by-how-much" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb325"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb325-1"><a href="lab-vi-goodness-of-fit-multiple-regression.html#cb325-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Pulling out coefficient</span></span>
-<span id="cb325-2"><a href="lab-vi-goodness-of-fit-multiple-regression.html#cb325-2" aria-hidden="true" tabindex="-1"></a>model1<span class="sc">$</span>coefficients[<span class="dv">2</span>]</span></code></pre></div>
-<pre><code>##     wins 
-## 27345.18</code></pre>
-</div>
-<div id="create-a-scatterplot-to-illustrate-your-results-from-a-and-b." class="section level3 hasAnchor" number="7.5.4">
-<h3><span class="header-section-number">7.5.4</span> Create a scatterplot to illustrate your results from A and B.<a href="lab-vi-goodness-of-fit-multiple-regression.html#create-a-scatterplot-to-illustrate-your-results-from-a-and-b." class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb327"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb327-1"><a href="lab-vi-goodness-of-fit-multiple-regression.html#cb327-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Hint: Run the line of code below to remove scientific notation.</span></span>
-<span id="cb327-2"><a href="lab-vi-goodness-of-fit-multiple-regression.html#cb327-2" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">scipen =</span> <span class="dv">999999</span>)</span>
-<span id="cb327-3"><a href="lab-vi-goodness-of-fit-multiple-regression.html#cb327-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb327-4"><a href="lab-vi-goodness-of-fit-multiple-regression.html#cb327-4" aria-hidden="true" tabindex="-1"></a><span class="do">## Creating Plot</span></span>
-<span id="cb327-5"><a href="lab-vi-goodness-of-fit-multiple-regression.html#cb327-5" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(bbData, <span class="fu">aes</span>(<span class="at">x =</span> wins, <span class="at">y =</span> home_attend<span class="sc">/</span><span class="dv">1000000</span>)) <span class="sc">+</span></span>
-<span id="cb327-6"><a href="lab-vi-goodness-of-fit-multiple-regression.html#cb327-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb327-7"><a href="lab-vi-goodness-of-fit-multiple-regression.html#cb327-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">&quot;lm&quot;</span>, <span class="at">se =</span> F) <span class="sc">+</span> </span>
-<span id="cb327-8"><a href="lab-vi-goodness-of-fit-multiple-regression.html#cb327-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span></span>
-<span id="cb327-9"><a href="lab-vi-goodness-of-fit-multiple-regression.html#cb327-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Baseball Attendance by Wins&quot;</span>, <span class="at">x =</span> <span class="st">&quot;Wins&quot;</span>, </span>
-<span id="cb327-10"><a href="lab-vi-goodness-of-fit-multiple-regression.html#cb327-10" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">&quot;Attendance At Home Games in Millions&quot;</span>)</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-74-1.png" width="672" /></p>
-</div>
-<div id="does-a-higher-number-of-wins-increase-attendance-when-you-include-runs_scored-and-runs_allowed-into-your-model-what-is-wins-new-effect.-save-the-results-as-model2." class="section level3 hasAnchor" number="7.5.5">
-<h3><span class="header-section-number">7.5.5</span> Does a higher number of wins increase attendance when you include runs_scored and runs_allowed into your model? What is wins’ new effect. Save the results as model2.<a href="lab-vi-goodness-of-fit-multiple-regression.html#does-a-higher-number-of-wins-increase-attendance-when-you-include-runs_scored-and-runs_allowed-into-your-model-what-is-wins-new-effect.-save-the-results-as-model2." class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb328"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb328-1"><a href="lab-vi-goodness-of-fit-multiple-regression.html#cb328-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Multiple Regression Model</span></span>
-<span id="cb328-2"><a href="lab-vi-goodness-of-fit-multiple-regression.html#cb328-2" aria-hidden="true" tabindex="-1"></a>model2 <span class="ot">&lt;-</span> <span class="fu">lm</span>(home_attend<span class="sc">~</span>wins <span class="sc">+</span> runs_scored <span class="sc">+</span> runs_allowed, <span class="at">data=</span>bbData)</span>
-<span id="cb328-3"><a href="lab-vi-goodness-of-fit-multiple-regression.html#cb328-3" aria-hidden="true" tabindex="-1"></a>model2</span></code></pre></div>
+## (Intercept)         educ        white       party7  
+##    -0.41081      0.02992      0.03084      0.08556</code></pre>
+<div class="sourceCode" id="cb416"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb416-1"><a href="lab-ix-interactions-redux.html#cb416-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(<span class="fu">margins</span>(model1))</span></code></pre></div>
+<pre><code>##  factor    AME     SE       z      p   lower  upper
+##    educ 0.0299 0.0052  5.7451 0.0000  0.0197 0.0401
+##  party7 0.0856 0.0051 16.9088 0.0000  0.0756 0.0955
+##   white 0.0308 0.0248  1.2433 0.2137 -0.0178 0.0795</code></pre>
+<ul>
+<li>You can select specific variables</li>
+</ul>
+<div class="sourceCode" id="cb418"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb418-1"><a href="lab-ix-interactions-redux.html#cb418-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(<span class="fu">margins</span>(model1, <span class="at">variables =</span> <span class="st">&quot;white&quot;</span>))</span></code></pre></div>
+<pre><code>##  factor    AME     SE      z      p   lower  upper
+##   white 0.0308 0.0248 1.2433 0.2137 -0.0178 0.0795</code></pre>
+<ul>
+<li>Now with the interaction term included</li>
+<li>See the different marginal effects</li>
+<li>This is useful if you want to see the marginal effect at representative cases (MER) or the marginal effect at the mean (MEM)</li>
+</ul>
+<div class="sourceCode" id="cb420"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb420-1"><a href="lab-ix-interactions-redux.html#cb420-1" aria-hidden="true" tabindex="-1"></a>model2 <span class="ot">&lt;-</span> <span class="fu">lm</span>(humancause <span class="sc">~</span> educ <span class="sc">+</span> white<span class="sc">*</span>party7, <span class="at">data =</span> dta)</span>
+<span id="cb420-2"><a href="lab-ix-interactions-redux.html#cb420-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(<span class="fu">margins</span>(model2, <span class="at">at =</span> <span class="fu">list</span>(<span class="at">white =</span> <span class="dv">0</span><span class="sc">:</span><span class="dv">1</span>)))</span></code></pre></div>
+<pre><code>##  factor  white     AME     SE       z      p   lower  upper
+##    educ 0.0000  0.0307 0.0052  5.9198 0.0000  0.0205 0.0408
+##    educ 1.0000  0.0307 0.0052  5.9198 0.0000  0.0205 0.0408
+##  party7 0.0000  0.0376 0.0113  3.3337 0.0009  0.0155 0.0597
+##  party7 1.0000  0.0975 0.0056 17.3388 0.0000  0.0865 0.1085
+##   white 0.0000 -0.0139 0.0264 -0.5260 0.5989 -0.0656 0.0379
+##   white 1.0000 -0.0139 0.0264 -0.5260 0.5989 -0.0656 0.0379</code></pre>
+<div class="sourceCode" id="cb422"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb422-1"><a href="lab-ix-interactions-redux.html#cb422-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(<span class="fu">margins</span>(model2, <span class="at">variables =</span> <span class="st">&quot;white&quot;</span>, <span class="at">at =</span> <span class="fu">list</span>(<span class="at">party7 =</span> <span class="dv">0</span><span class="sc">:</span><span class="dv">7</span>)))</span></code></pre></div>
+<pre><code>##  factor party7     AME     SE       z      p   lower   upper
+##   white 0.0000 -0.2618 0.0664 -3.9444 0.0001 -0.3919 -0.1317
+##   white 1.0000 -0.2020 0.0549 -3.6803 0.0002 -0.3095 -0.0944
+##   white 2.0000 -0.1421 0.0440 -3.2309 0.0012 -0.2283 -0.0559
+##   white 3.0000 -0.0822 0.0343 -2.3989 0.0164 -0.1494 -0.0150
+##   white 4.0000 -0.0224 0.0271 -0.8259 0.4089 -0.0755  0.0307
+##   white 5.0000  0.0375 0.0247  1.5177 0.1291 -0.0109  0.0859
+##   white 6.0000  0.0974 0.0284  3.4326 0.0006  0.0418  0.1529
+##   white 7.0000  0.1572 0.0363  4.3332 0.0000  0.0861  0.2283</code></pre>
+<ul>
+<li>Let’s consider a continuous interaction</li>
+</ul>
+<div class="sourceCode" id="cb424"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb424-1"><a href="lab-ix-interactions-redux.html#cb424-1" aria-hidden="true" tabindex="-1"></a>model3 <span class="ot">&lt;-</span> <span class="fu">lm</span>(humancause <span class="sc">~</span> educ<span class="sc">*</span>party7, <span class="at">data =</span> dta)</span>
+<span id="cb424-2"><a href="lab-ix-interactions-redux.html#cb424-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(model3)</span></code></pre></div>
 <pre><code>## 
 ## Call:
-## lm(formula = home_attend ~ wins + runs_scored + runs_allowed, 
-##     data = bbData)
+## lm(formula = humancause ~ educ * party7, data = dta)
+## 
+## Residuals:
+##     Min      1Q  Median      3Q     Max 
+## -0.8379 -0.2923 -0.1515  0.4413  0.9783 
 ## 
 ## Coefficients:
-##  (Intercept)          wins   runs_scored  runs_allowed  
-##      -270324          3261          4260         -1683</code></pre>
-<p>Wins increase attendance by 3,261 while holding all other factors equal.</p>
-</div>
-<div id="assess-fit.-what-is-the-change-in-r2-from-model1-to-model2" class="section level3 hasAnchor" number="7.5.6">
-<h3><span class="header-section-number">7.5.6</span> Assess fit. What is the change in R^2 from model1 to model2?<a href="lab-vi-goodness-of-fit-multiple-regression.html#assess-fit.-what-is-the-change-in-r2-from-model1-to-model2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb330"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb330-1"><a href="lab-vi-goodness-of-fit-multiple-regression.html#cb330-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Examining R Squared</span></span>
-<span id="cb330-2"><a href="lab-vi-goodness-of-fit-multiple-regression.html#cb330-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(model2)<span class="sc">$</span>adj.r.squared</span></code></pre></div>
-<pre><code>## [1] 0.2933172</code></pre>
-<div class="sourceCode" id="cb332"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb332-1"><a href="lab-vi-goodness-of-fit-multiple-regression.html#cb332-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(model2)<span class="sc">$</span>adj.r.squared <span class="sc">-</span> <span class="fu">summary</span>(model1)<span class="sc">$</span>r.squared</span></code></pre></div>
-<pre><code>## [1] 0.08311133</code></pre>
-<p>Model 2 explains 29% of the variation in home_attendance. The change is about * percentage points.</p>
-</div>
-<div id="which-model-do-you-think-is-best" class="section level3 hasAnchor" number="7.5.7">
-<h3><span class="header-section-number">7.5.7</span> Which model do you think is best?<a href="lab-vi-goodness-of-fit-multiple-regression.html#which-model-do-you-think-is-best" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>For our purposes, model 2 has the highest r squared, so model 2 is the best.</p>
-</div>
-<div id="use-your-preferred-model-to-predict-attendance-based-on-100-wins-500-runs-scored-and-360-runs-allowed." class="section level3 hasAnchor" number="7.5.8">
-<h3><span class="header-section-number">7.5.8</span> Use your preferred model to predict attendance based on 100 wins, 500 runs scored, and 360 runs allowed.<a href="lab-vi-goodness-of-fit-multiple-regression.html#use-your-preferred-model-to-predict-attendance-based-on-100-wins-500-runs-scored-and-360-runs-allowed." class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb334"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb334-1"><a href="lab-vi-goodness-of-fit-multiple-regression.html#cb334-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Making Predictions</span></span>
-<span id="cb334-2"><a href="lab-vi-goodness-of-fit-multiple-regression.html#cb334-2" aria-hidden="true" tabindex="-1"></a><span class="sc">-</span><span class="dv">270324</span> <span class="sc">+</span> (<span class="dv">3261</span><span class="sc">*</span><span class="dv">100</span>) <span class="sc">+</span> (<span class="dv">4260</span><span class="sc">*</span><span class="dv">500</span>) <span class="sc">+</span> (<span class="sc">-</span><span class="dv">1683</span><span class="sc">*</span><span class="dv">360</span>)</span></code></pre></div>
-<pre><code>## [1] 1579896</code></pre>
-<div class="sourceCode" id="cb336"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb336-1"><a href="lab-vi-goodness-of-fit-multiple-regression.html#cb336-1" aria-hidden="true" tabindex="-1"></a><span class="do">## With Code</span></span>
-<span id="cb336-2"><a href="lab-vi-goodness-of-fit-multiple-regression.html#cb336-2" aria-hidden="true" tabindex="-1"></a>model2<span class="sc">$</span>coefficients[<span class="dv">1</span>] <span class="sc">+</span> (model2<span class="sc">$</span>coefficients[<span class="dv">2</span>]<span class="sc">*</span><span class="dv">100</span>) <span class="sc">+</span> (model2<span class="sc">$</span>coefficients[<span class="dv">3</span>]<span class="sc">*</span><span class="dv">500</span>) <span class="sc">+</span> </span>
-<span id="cb336-3"><a href="lab-vi-goodness-of-fit-multiple-regression.html#cb336-3" aria-hidden="true" tabindex="-1"></a>  (model2<span class="sc">$</span>coefficients[<span class="dv">4</span>]<span class="sc">*</span><span class="dv">360</span>)</span></code></pre></div>
-<pre><code>## (Intercept) 
-##     1580066</code></pre>
-</div>
-<div id="based-on-your-models-how-can-teams-increase-their-attendance" class="section level3 hasAnchor" number="7.5.9">
-<h3><span class="header-section-number">7.5.9</span> Based on your models, how can teams increase their attendance?<a href="lab-vi-goodness-of-fit-multiple-regression.html#based-on-your-models-how-can-teams-increase-their-attendance" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>Answer: Teams should win more games, score more runs, and allow less runs scored against them. Easy!</p>
-</div>
-<div id="your-colleague-argues-that-runs-have-been-increasing-over-time.-create-a-scatterplot-with-a-line-of-best-fit-to-evaluate-their-claim." class="section level3 hasAnchor" number="7.5.10">
-<h3><span class="header-section-number">7.5.10</span> Your colleague argues that runs have been increasing over time. Create a scatterplot, with a line of best fit, to evaluate their claim.<a href="lab-vi-goodness-of-fit-multiple-regression.html#your-colleague-argues-that-runs-have-been-increasing-over-time.-create-a-scatterplot-with-a-line-of-best-fit-to-evaluate-their-claim." class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb338"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb338-1"><a href="lab-vi-goodness-of-fit-multiple-regression.html#cb338-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Plot</span></span>
-<span id="cb338-2"><a href="lab-vi-goodness-of-fit-multiple-regression.html#cb338-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(bbData, <span class="fu">aes</span>(<span class="at">x =</span> season, <span class="at">y =</span> runs_scored)) <span class="sc">+</span></span>
-<span id="cb338-3"><a href="lab-vi-goodness-of-fit-multiple-regression.html#cb338-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb338-4"><a href="lab-vi-goodness-of-fit-multiple-regression.html#cb338-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">&quot;lm&quot;</span>, <span class="at">se =</span> F) <span class="sc">+</span> </span>
-<span id="cb338-5"><a href="lab-vi-goodness-of-fit-multiple-regression.html#cb338-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span></span>
-<span id="cb338-6"><a href="lab-vi-goodness-of-fit-multiple-regression.html#cb338-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Runs Scored Over Time&quot;</span>, <span class="at">x =</span> <span class="st">&quot;Season Year&quot;</span>, </span>
-<span id="cb338-7"><a href="lab-vi-goodness-of-fit-multiple-regression.html#cb338-7" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">&quot;Runs Scored&quot;</span>)</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-78-1.png" width="672" /></p>
-</div>
-<div id="the-analysis-above-is-for-the-full-mlb.-rerun-your-models-and-scatterplots-for-one-team." class="section level3 hasAnchor" number="7.5.11">
-<h3><span class="header-section-number">7.5.11</span> The analysis above is for the full MLB. Rerun your models and scatterplots for one team.<a href="lab-vi-goodness-of-fit-multiple-regression.html#the-analysis-above-is-for-the-full-mlb.-rerun-your-models-and-scatterplots-for-one-team." class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb339"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb339-1"><a href="lab-vi-goodness-of-fit-multiple-regression.html#cb339-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Subset the data</span></span>
-<span id="cb339-2"><a href="lab-vi-goodness-of-fit-multiple-regression.html#cb339-2" aria-hidden="true" tabindex="-1"></a>phiData <span class="ot">&lt;-</span> <span class="fu">subset</span>(bbData, team <span class="sc">==</span> <span class="st">&quot;PHI&quot;</span>)</span>
-<span id="cb339-3"><a href="lab-vi-goodness-of-fit-multiple-regression.html#cb339-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb339-4"><a href="lab-vi-goodness-of-fit-multiple-regression.html#cb339-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb339-5"><a href="lab-vi-goodness-of-fit-multiple-regression.html#cb339-5" aria-hidden="true" tabindex="-1"></a><span class="do">## Models</span></span>
-<span id="cb339-6"><a href="lab-vi-goodness-of-fit-multiple-regression.html#cb339-6" aria-hidden="true" tabindex="-1"></a>model1b <span class="ot">&lt;-</span> <span class="fu">lm</span>(home_attend<span class="sc">~</span>wins, <span class="at">data =</span> phiData)</span>
-<span id="cb339-7"><a href="lab-vi-goodness-of-fit-multiple-regression.html#cb339-7" aria-hidden="true" tabindex="-1"></a>model1b</span></code></pre></div>
-<pre><code>## 
-## Call:
-## lm(formula = home_attend ~ wins, data = phiData)
+##             Estimate Std. Error t value      Pr(&gt;|t|)    
+## (Intercept)  0.45181    0.15279   2.957      0.003146 ** 
+## educ        -0.03694    0.01215  -3.041      0.002388 ** 
+## party7      -0.10965    0.03192  -3.435      0.000605 ***
+## educ:party7  0.01558    0.00254   6.134 0.00000000105 ***
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
 ## 
-## Coefficients:
-## (Intercept)         wins  
-##     -293337        29191</code></pre>
-<div class="sourceCode" id="cb341"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb341-1"><a href="lab-vi-goodness-of-fit-multiple-regression.html#cb341-1" aria-hidden="true" tabindex="-1"></a>model1</span></code></pre></div>
-<pre><code>## 
-## Call:
-## lm(formula = home_attend ~ wins, data = bbData)
-## 
-## Coefficients:
-## (Intercept)         wins  
-##     -378164        27345</code></pre>
-<div class="sourceCode" id="cb343"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb343-1"><a href="lab-vi-goodness-of-fit-multiple-regression.html#cb343-1" aria-hidden="true" tabindex="-1"></a>model2b <span class="ot">&lt;-</span> <span class="fu">lm</span>(home_attend<span class="sc">~</span>wins <span class="sc">+</span> runs_scored <span class="sc">+</span> runs_allowed, <span class="at">data =</span> phiData)</span>
-<span id="cb343-2"><a href="lab-vi-goodness-of-fit-multiple-regression.html#cb343-2" aria-hidden="true" tabindex="-1"></a>model2b</span></code></pre></div>
-<pre><code>## 
-## Call:
-## lm(formula = home_attend ~ wins + runs_scored + runs_allowed, 
-##     data = phiData)
-## 
-## Coefficients:
-##  (Intercept)          wins   runs_scored  runs_allowed  
-##      1060314         12020          2783         -2745</code></pre>
-<div class="sourceCode" id="cb345"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb345-1"><a href="lab-vi-goodness-of-fit-multiple-regression.html#cb345-1" aria-hidden="true" tabindex="-1"></a>model2</span></code></pre></div>
-<pre><code>## 
-## Call:
-## lm(formula = home_attend ~ wins + runs_scored + runs_allowed, 
-##     data = bbData)
-## 
-## Coefficients:
-##  (Intercept)          wins   runs_scored  runs_allowed  
-##      -270324          3261          4260         -1683</code></pre>
-<div class="sourceCode" id="cb347"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb347-1"><a href="lab-vi-goodness-of-fit-multiple-regression.html#cb347-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Wins and Attendance</span></span>
-<span id="cb347-2"><a href="lab-vi-goodness-of-fit-multiple-regression.html#cb347-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(bbData, <span class="fu">aes</span>(<span class="at">x =</span> wins, <span class="at">y =</span> home_attend<span class="sc">/</span><span class="dv">1000000</span>)) <span class="sc">+</span></span>
-<span id="cb347-3"><a href="lab-vi-goodness-of-fit-multiple-regression.html#cb347-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb347-4"><a href="lab-vi-goodness-of-fit-multiple-regression.html#cb347-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">&quot;lm&quot;</span>, <span class="at">se =</span> F) <span class="sc">+</span> </span>
-<span id="cb347-5"><a href="lab-vi-goodness-of-fit-multiple-regression.html#cb347-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span></span>
-<span id="cb347-6"><a href="lab-vi-goodness-of-fit-multiple-regression.html#cb347-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Baseball Attendance by Wins&quot;</span>, <span class="at">x =</span> <span class="st">&quot;Wins&quot;</span>, </span>
-<span id="cb347-7"><a href="lab-vi-goodness-of-fit-multiple-regression.html#cb347-7" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">&quot;Attendance At Home Games in Millions&quot;</span>, <span class="at">subtitle =</span> <span class="st">&quot;Philadelphia Phillies&quot;</span>)</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-79-1.png" width="672" /></p>
-<div class="sourceCode" id="cb348"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb348-1"><a href="lab-vi-goodness-of-fit-multiple-regression.html#cb348-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Runs Scored by Season</span></span>
-<span id="cb348-2"><a href="lab-vi-goodness-of-fit-multiple-regression.html#cb348-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(phiData, <span class="fu">aes</span>(<span class="at">x =</span> season, <span class="at">y =</span> runs_scored)) <span class="sc">+</span></span>
-<span id="cb348-3"><a href="lab-vi-goodness-of-fit-multiple-regression.html#cb348-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span></span>
-<span id="cb348-4"><a href="lab-vi-goodness-of-fit-multiple-regression.html#cb348-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span></span>
-<span id="cb348-5"><a href="lab-vi-goodness-of-fit-multiple-regression.html#cb348-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Runs Scored Over Time&quot;</span>, <span class="at">x =</span> <span class="st">&quot;Season Year&quot;</span>, </span>
-<span id="cb348-6"><a href="lab-vi-goodness-of-fit-multiple-regression.html#cb348-6" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">&quot;Runs Scored&quot;</span>, <span class="at">subtitle =</span> <span class="st">&quot;Philadelphia Phillies&quot;</span>)</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-79-2.png" width="672" /></p>
-<div class="sourceCode" id="cb349"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb349-1"><a href="lab-vi-goodness-of-fit-multiple-regression.html#cb349-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Line Plot</span></span>
-<span id="cb349-2"><a href="lab-vi-goodness-of-fit-multiple-regression.html#cb349-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(phiData, <span class="fu">aes</span>(<span class="at">x =</span> season, <span class="at">y =</span> runs_scored)) <span class="sc">+</span></span>
-<span id="cb349-3"><a href="lab-vi-goodness-of-fit-multiple-regression.html#cb349-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb349-4"><a href="lab-vi-goodness-of-fit-multiple-regression.html#cb349-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">&quot;lm&quot;</span>, <span class="at">se =</span> F) <span class="sc">+</span> </span>
-<span id="cb349-5"><a href="lab-vi-goodness-of-fit-multiple-regression.html#cb349-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span></span>
-<span id="cb349-6"><a href="lab-vi-goodness-of-fit-multiple-regression.html#cb349-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Runs Scored Over Time&quot;</span>, <span class="at">x =</span> <span class="st">&quot;Season Year&quot;</span>, </span>
-<span id="cb349-7"><a href="lab-vi-goodness-of-fit-multiple-regression.html#cb349-7" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">&quot;Runs Scored&quot;</span>, <span class="at">subtitle =</span> <span class="st">&quot;Philadelphia Phillies&quot;</span>)</span></code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-79-3.png" width="672" /></p>
+## Residual standard error: 0.4317 on 1851 degrees of freedom
+##   (17 observations deleted due to missingness)
+## Multiple R-squared:  0.1664, Adjusted R-squared:  0.165 
+## F-statistic: 123.1 on 3 and 1851 DF,  p-value: &lt; 0.00000000000000022</code></pre>
+<div class="sourceCode" id="cb426"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb426-1"><a href="lab-ix-interactions-redux.html#cb426-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(<span class="fu">margins</span>(model3, <span class="at">variables =</span> <span class="st">&quot;party7&quot;</span>, <span class="at">at =</span> <span class="fu">list</span>(<span class="at">educ =</span> <span class="dv">0</span><span class="sc">:</span><span class="dv">16</span>)))</span></code></pre></div>
+<pre><code>##  factor    educ     AME     SE       z      p   lower   upper
+##  party7  0.0000 -0.1096 0.0319 -3.4354 0.0006 -0.1722 -0.0471
+##  party7  1.0000 -0.0941 0.0294 -3.1986 0.0014 -0.1517 -0.0364
+##  party7  2.0000 -0.0785 0.0269 -2.9171 0.0035 -0.1312 -0.0258
+##  party7  3.0000 -0.0629 0.0244 -2.5770 0.0100 -0.1108 -0.0151
+##  party7  4.0000 -0.0473 0.0219 -2.1585 0.0309 -0.0903 -0.0044
+##  party7  5.0000 -0.0318 0.0195 -1.6319 0.1027 -0.0699  0.0064
+##  party7  6.0000 -0.0162 0.0170 -0.9510 0.3416 -0.0495  0.0172
+##  party7  7.0000 -0.0006 0.0146 -0.0411 0.9672 -0.0292  0.0280
+##  party7  8.0000  0.0150 0.0122  1.2253 0.2205 -0.0090  0.0389
+##  party7  9.0000  0.0306 0.0099  3.0735 0.0021  0.0111  0.0500
+##  party7 10.0000  0.0461 0.0078  5.8998 0.0000  0.0308  0.0615
+##  party7 11.0000  0.0617 0.0060 10.2359 0.0000  0.0499  0.0735
+##  party7 12.0000  0.0773 0.0049 15.6305 0.0000  0.0676  0.0870
+##  party7 13.0000  0.0929 0.0050 18.4070 0.0000  0.0830  0.1028
+##  party7 14.0000  0.1084 0.0063 17.2860 0.0000  0.0962  0.1207
+##  party7 15.0000  0.1240 0.0081 15.2475 0.0000  0.1081  0.1400
+##  party7 16.0000  0.1396 0.0103 13.5678 0.0000  0.1194  0.1598</code></pre>
 </div>
+<div id="marginal-effects-plots" class="section level2 hasAnchor" number="10.3">
+<h2><span class="header-section-number">10.3</span> Marginal Effects Plots<a href="lab-ix-interactions-redux.html#marginal-effects-plots" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<ul>
+<li>Let’s consider a continuous interaction plot</li>
+</ul>
+<div class="sourceCode" id="cb428"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb428-1"><a href="lab-ix-interactions-redux.html#cb428-1" aria-hidden="true" tabindex="-1"></a>c <span class="ot">&lt;-</span> <span class="fu">cplot</span>(model3, <span class="st">&quot;educ&quot;</span>, <span class="st">&quot;party7&quot;</span>, <span class="at">what =</span> <span class="st">&quot;effect&quot;</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-114-1.png" width="672" /></p>
+<div class="sourceCode" id="cb429"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb429-1"><a href="lab-ix-interactions-redux.html#cb429-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(c, <span class="fu">aes</span>(<span class="at">x =</span> xvals)) <span class="sc">+</span> </span>
+<span id="cb429-2"><a href="lab-ix-interactions-redux.html#cb429-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">y =</span> yvals)) <span class="sc">+</span></span>
+<span id="cb429-3"><a href="lab-ix-interactions-redux.html#cb429-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">y =</span> upper), <span class="at">linetype =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
+<span id="cb429-4"><a href="lab-ix-interactions-redux.html#cb429-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">y =</span> lower), <span class="at">linetype =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
+<span id="cb429-5"><a href="lab-ix-interactions-redux.html#cb429-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_hline</span>(<span class="at">yintercept =</span> <span class="dv">0</span>) <span class="sc">+</span></span>
+<span id="cb429-6"><a href="lab-ix-interactions-redux.html#cb429-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;Effect of Becoming More Liberal By Education&quot;</span>) <span class="sc">+</span></span>
+<span id="cb429-7"><a href="lab-ix-interactions-redux.html#cb429-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">&quot;Education&quot;</span>) <span class="sc">+</span> <span class="fu">ylab</span>(<span class="st">&quot;AME party7&quot;</span>) <span class="sc">+</span> <span class="fu">theme_bw</span>()</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-114-2.png" width="672" /></p>
+<ul>
+<li>Let’s consider a model with a squared term
+<span class="math display">\[Human\ Cause_i = \alpha + \beta_1 Age_i +  \beta_2 Age_i^2 + \epsilon_i\]</span></li>
+</ul>
+<div class="sourceCode" id="cb430"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb430-1"><a href="lab-ix-interactions-redux.html#cb430-1" aria-hidden="true" tabindex="-1"></a>model4 <span class="ot">&lt;-</span> <span class="fu">lm</span>(humancause <span class="sc">~</span> age <span class="sc">+</span> <span class="fu">I</span>(age<span class="sc">^</span><span class="dv">2</span>), <span class="at">data =</span> dta)</span>
+<span id="cb430-2"><a href="lab-ix-interactions-redux.html#cb430-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(<span class="fu">margins</span>(model4, <span class="at">variables =</span> <span class="st">&quot;age&quot;</span>, <span class="at">at =</span> <span class="fu">list</span>(<span class="at">age =</span> <span class="fu">c</span>(<span class="dv">20</span>, <span class="dv">40</span>, <span class="dv">60</span>, <span class="dv">80</span>))))</span></code></pre></div>
+<pre><code>##  factor     age     AME     SE       z      p   lower   upper
+##     age 20.0000 -0.0046 0.0022 -2.0836 0.0372 -0.0089 -0.0003
+##     age 40.0000 -0.0022 0.0009 -2.3593 0.0183 -0.0040 -0.0004
+##     age 60.0000  0.0002 0.0010  0.2386 0.8114 -0.0017  0.0022
+##     age 80.0000  0.0027 0.0023  1.1461 0.2518 -0.0019  0.0072</code></pre>
+<div class="sourceCode" id="cb432"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb432-1"><a href="lab-ix-interactions-redux.html#cb432-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cplot</span>(model4, <span class="st">&quot;age&quot;</span>, <span class="at">what =</span> <span class="st">&quot;effect&quot;</span>, <span class="at">main =</span> <span class="st">&quot;AME of Age&quot;</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-116-1.png" width="672" /></p>
+
 </div>
 </div>
             </section>
@@ -612,8 +519,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           </div>
         </div>
       </div>
-<a href="lab-v-introduction-to-regression.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="lab-vii-interactions-categorical-variables.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="lab-viii-publication-ready-tables-interactions-cont..html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
